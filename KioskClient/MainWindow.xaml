@@ -15,8 +15,8 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid Background="#33000000">
-            <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding Source={StaticResource TimeUpdater}, Path=Date, Mode=OneWay}" VerticalAlignment="Top" Foreground="White" FontSize="29.333" Width="362"/>
-            <TextBlock Margin="0,10,10,0" TextWrapping="Wrap" Text="{Binding Source={StaticResource TimeUpdater}, Path=Time, Mode=OneWay}" VerticalAlignment="Top" Foreground="White" FontSize="29.333" HorizontalAlignment="Right" Width="248" TextAlignment="Right"/>
+            <TextBlock HorizontalAlignment="Left" Margin="30,10,0,0" TextWrapping="Wrap" Text="{Binding Source={StaticResource TimeUpdater}, Path=Date, Mode=OneWay}" VerticalAlignment="Top" Foreground="White" FontSize="29.333" Width="362"/>
+            <TextBlock Margin="0,10,30,0" TextWrapping="Wrap" Text="{Binding Source={StaticResource TimeUpdater}, Path=Time, Mode=OneWay}" VerticalAlignment="Top" Foreground="White" FontSize="29.333" HorizontalAlignment="Right" Width="248" TextAlignment="Right"/>
         </Grid>
         <Frame Content="{Binding}" Grid.Row="1"/>
     </Grid>

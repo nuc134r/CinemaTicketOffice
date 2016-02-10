@@ -5,8 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:KioskClient"
       mc:Ignorable="d"
-      Title="CatalogPage" d:DesignWidth="822.714" d:DesignHeight="450">
+      Title="CatalogPage" d:DesignWidth="923.714" d:DesignHeight="486">
+    <Page.Resources>
+        <ResourceDictionary Source="Styles.xaml" />
+    </Page.Resources>
     <Grid>
-        
+        <Button Content="Жанры" Height="62" Margin="0,10,30,0" VerticalAlignment="Top" Style="{DynamicResource BigButtonStyle}" HorizontalAlignment="Right" Width="171" />
     </Grid>
 </Page>
