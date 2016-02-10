@@ -10,11 +10,5 @@ namespace KioskClient.View
         {
             InitializeComponent();
         }
-
-        private void button_Click_1(object sender, RoutedEventArgs e)
-        {
-            var window = (NavigationWindow)Window.GetWindow(this);
-            if (window != null) window.Close();
-        }
     }
 }

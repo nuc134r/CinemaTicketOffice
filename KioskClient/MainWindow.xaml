@@ -1,10 +1,23 @@
-﻿<NavigationWindow x:Class="KioskClient.MainWindow"
+﻿<Window x:Class="KioskClient.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KioskClient"
         mc:Ignorable="d"
-        Title="Cinema Ticket Office" Height="350" Width="525" WindowStartupLocation="CenterScreen" WindowState="Maximized" AllowsTransparency="True" WindowStyle="None" Background="#FF1F1F1F" Topmost="True" ShowsNavigationUI="False" >
-    
-</NavigationWindow>
+        Title="Cinema Ticket Office" WindowStartupLocation="CenterScreen" WindowState="Maximized" AllowsTransparency="True" WindowStyle="None" Background="#FF1F1F1F" Topmost="True" d:DesignWidth="835.105" d:DesignHeight="575.789" >
+    <Window.Resources>
+        <local:TimeUpdater x:Key="TimeUpdater"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Background="#33000000">
+            <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding Source={StaticResource TimeUpdater}, Path=Date, Mode=OneWay}" VerticalAlignment="Top" Foreground="White" FontSize="29.333" Width="362"/>
+            <TextBlock Margin="0,10,10,0" TextWrapping="Wrap" Text="{Binding Source={StaticResource TimeUpdater}, Path=Time, Mode=OneWay}" VerticalAlignment="Top" Foreground="White" FontSize="29.333" HorizontalAlignment="Right" Width="248" TextAlignment="Right"/>
+        </Grid>
+        <Frame Content="{Binding}" Grid.Row="1"/>
+    </Grid>
+</Window>

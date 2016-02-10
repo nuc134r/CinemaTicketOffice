@@ -68,6 +68,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\Movie.cs" />
+    <Compile Include="Model\MovieBuilder.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="TimeUpdater.cs" />
     <Compile Include="View\CatalogPage.xaml.cs">
       <DependentUpon>CatalogPage.xaml</DependentUpon>
     </Compile>
