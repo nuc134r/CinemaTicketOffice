@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:KioskClient"
         xmlns:viewModel="clr-namespace:KioskClient.ViewModel"
         mc:Ignorable="d"
-        Title="Cinema Ticket Office" WindowStartupLocation="CenterScreen" WindowState="Maximized" AllowsTransparency="True" WindowStyle="None" Background="#FF1F1F1F" Topmost="True" d:DesignWidth="1233.018" d:DesignHeight="595.267">
+        Title="Cinema Ticket Office" WindowStartupLocation="CenterScreen" WindowState="Maximized" 
+        AllowsTransparency="True" WindowStyle="None" Background="#FF1F1F1F" Topmost="True" 
+        d:DesignWidth="1233.018" d:DesignHeight="595.267" MinWidth="800" MinHeight="600" >
     <Window.Resources>
         <local:TimeUpdater x:Key="TimeUpdater"/>
     </Window.Resources>
@@ -17,6 +19,8 @@
         </Grid.RowDefinitions>
         <Grid Background="#33000000">
             <TextBlock Margin="0,0,30,0" TextWrapping="Wrap" Text="{Binding Source={StaticResource TimeUpdater}, Path=Time, Mode=OneWay}" Foreground="White" FontSize="34.667" TextAlignment="Right" Padding="0,3,0,0" HorizontalAlignment="Right" Width="341"/>
+            <TextBlock Margin="30,22,30,24" TextWrapping="Wrap" Text="{Binding Title}" Foreground="White" FontSize="34.667" TextAlignment="Center" Padding="0,3,0,0"/>
+            <Image Source="C:\CinemaTicketOffice/Images/logo.png" HorizontalAlignment="Left" Width="306"/>
         </Grid>
         <Frame Content="{Binding View}" Grid.Row="1"/>
     </Grid>

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using KioskClient.DataAccessLayer;
 using KioskClient.Model;
 using KioskClient.View;
@@ -10,14 +9,19 @@ namespace KioskClient.ViewModel
     {
         private readonly CatalogPageDataAccessLayer dataAccessLayer;
 
-        public List<Genre> Genres { get; private set; }
-
         public CatalogPageViewModel()
         {
             dataAccessLayer = new CatalogPageDataAccessLayer();
-            Genres = dataAccessLayer.GetMovieGenres();
-
             view = new CatalogPage(this);
+
+            Genres = dataAccessLayer.GetMovieGenres();
+        }
+
+        public List<Genre> Genres { get; private set; }
+
+        public override string Title
+        {
+            get { return "Выбор фильма"; }
         }
 
         public void ResetGenresFilter()
