@@ -4,6 +4,8 @@ namespace KioskClient.ViewModel
 {
     public class ViewModelBase
     {
-        public Page View { get; protected set; }
+        public Page View { get { return view; } }
+
+        protected Page view;
     }
 }

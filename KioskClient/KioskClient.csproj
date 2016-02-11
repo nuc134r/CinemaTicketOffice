@@ -76,7 +76,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DataAccessLayer\CatalogPageDataAccessLayer.cs" />
     <Compile Include="Model\Genre.cs" />
+    <Compile Include="Model\GenreBuilder.cs" />
     <Compile Include="Model\Movie.cs" />
     <Compile Include="Model\MovieBuilder.cs" />
     <Compile Include="Properties\Annotations.cs" />
@@ -118,9 +120,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataAccessLayer\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

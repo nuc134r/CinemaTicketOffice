@@ -1,16 +1,21 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using KioskClient.Annotations;
+using KioskClient.ViewModel;
 
 namespace KioskClient.View
 {
     public partial class CatalogPage : Page
     {
-        public CatalogPage()
+        private readonly CatalogPageViewModel viewModel;
+
+        public CatalogPage(CatalogPageViewModel viewModel)
         {
             InitializeComponent();
-            SetDefaults();
 
+            this.viewModel = viewModel;
+            DataContext = viewModel;
+            SetDefaults();
         }
 
         private void SetDefaults()
@@ -20,7 +25,7 @@ namespace KioskClient.View
 
         private void ResetFilterButton_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            viewModel.ResetGenresFilter();
         }
     }
 }

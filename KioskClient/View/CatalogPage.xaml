@@ -4,23 +4,24 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:KioskClient"
+      xmlns:model="clr-namespace:KioskClient.Model"
       mc:Ignorable="d"
       Title="CatalogPage" d:DesignWidth="903.714" d:DesignHeight="387">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="CatalogPageResources.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Styles.xaml" />
+                <ResourceDictionary Source="CatalogPageResources.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
-        <Grid x:Name="BackGrid">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="310"/>
             </Grid.ColumnDefinitions>
-            <Button Content="Жанры" Height="62" Margin="70,10,70,0" VerticalAlignment="Top" Style="{DynamicResource BigButtonStyle}" Grid.Column="1" >
+            <Button Content="Жанры" Height="62" Margin="70,30,70,0" VerticalAlignment="Top" Style="{DynamicResource BigButtonStyle}" Grid.Column="1" >
                 <Button.Triggers>
                     <EventTrigger RoutedEvent="ButtonBase.Click" >
                         <BeginStoryboard  Storyboard="{StaticResource ExpandGenresGrid}" />
@@ -30,7 +31,7 @@
         </Grid>
         <Grid x:Name="GenresGrid" Background="#FF323232" HorizontalAlignment="Right" Width="310" Margin="0" >
             <TextBlock Margin="30,10,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontSize="29.333" d:CopyToken="1e987d66-a6a4-4a74-b1dc-d66f5da3170e" Text="Жанры"/>
-            <TextBlock Height="19" Margin="136,30,0,0" TextWrapping="Wrap" Text="Всего: 12" VerticalAlignment="Top" Foreground="#B2FFFFFF" TextAlignment="Right" HorizontalAlignment="Left" Width="144"/>
+            <TextBlock Height="19" Margin="136,30,0,0" TextWrapping="Wrap" Text="{Binding Genres.Count, StringFormat=Всего: {0}}" VerticalAlignment="Top" Foreground="#B2FFFFFF" TextAlignment="Right" HorizontalAlignment="Left" Width="144"/>
             <Button Content="Сбросить" Margin="40,0,0,30" Style="{DynamicResource BigButtonStyle}" HorizontalAlignment="Left" Width="230" Height="62" VerticalAlignment="Bottom" Click="ResetFilterButton_OnClick" >
                 <Button.Triggers>
                     <EventTrigger RoutedEvent="ButtonBase.Click" >
@@ -38,6 +39,15 @@
                     </EventTrigger>
                 </Button.Triggers>
             </Button>
+            <ListBox ItemsSource="{Binding Genres}" Margin="30,54,0,97" Background="{x:Null}" BorderThickness="0" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Left" Width="250" ScrollViewer.CanContentScroll="False" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="model:Genre">
+                        <Grid Height="57">
+                            <CheckBox Content="{Binding Name}" FontSize="20" Style="{DynamicResource BigCheckBoxStyle}" IsChecked="{Binding IsSelected}" Margin="10"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Grid>
     </Grid>
 </Page>
