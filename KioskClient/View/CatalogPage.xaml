@@ -28,36 +28,46 @@
                     </EventTrigger>
                 </Button.Triggers>
             </Button>
-            <ListBox x:Name="listBox" Background="{x:Null}" BorderThickness="0"/>
-            <Grid Height="250" VerticalAlignment="Top">
-                <Image Source="C:\CinemaTicketOffice\Posters\5492.jpg" HorizontalAlignment="Left" Margin="10,10,0,10" Width="174" Stretch="UniformToFill"/>
-                <TextBlock Margin="198,0,10,105" TextWrapping="Wrap">
-                    <Run Text="Вечное Сияние Чистого Разума" Foreground="White" FontSize="26.667" FontFamily="Segoe UI Light"/>
-                    <LineBreak/>
-                    <Run Text="мелодрама, фантастика, драма" Foreground="#66FFFFFF" FontSize="21.333"/>
-                </TextBlock>
-                <ListBox x:Name="listBox1"  Margin="198,145,0,10" Background="{x:Null}" ScrollViewer.CanContentScroll="False" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ItemContainerStyle="{DynamicResource CleanListBoxItemStyle}" BorderThickness="0">
-                    <ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom"/>
-                        </ItemsPanelTemplate>
-                    </ListBox.ItemsPanel>
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Width="125" Height="65">
-                                <Button x:Name="button" Content="{Binding}" Style="{StaticResource BigButtonStyle}" Margin="0,0,10,0" BorderThickness="2">
-                                    <Button.Background>
-                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#7F4261EE" Offset="0"/>
-                                            <GradientStop Color="#7F2040CF" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </Button.Background>
-                                </Button>
-                            </Grid>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </Grid>
+            <ListBox ItemsSource="{Binding Movies}" Background="{x:Null}" BorderThickness="0" ItemContainerStyle="{DynamicResource CleanListBoxItemStyle}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.CanContentScroll="False">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Height="250" MaxWidth="600" VerticalAlignment="Top">
+                            <Image Source="C:\CinemaTicketOffice\Posters\5492.jpg" HorizontalAlignment="Left" Margin="10,10,0,10" Width="174" Stretch="UniformToFill"/>
+                            <TextBlock Margin="198,0,10,105" TextWrapping="Wrap">
+                                <Run Text="{Binding Title, Mode=OneWay}" Foreground="White" FontSize="26.667" FontFamily="Segoe UI Light"/>
+                                <LineBreak/>
+                                <Run Text="мелодрама, фантастика, драма" Foreground="#66FFFFFF" FontSize="21.333"/>
+                            </TextBlock>
+                            <ListBox x:Name="listBox1"  Margin="198,145,0,10" Background="{x:Null}" ScrollViewer.CanContentScroll="False" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ItemContainerStyle="{DynamicResource CleanListBoxItemStyle}" BorderThickness="0">
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom"/>
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Width="125" Height="65">
+                                            <Button x:Name="button" Content="{Binding}" Style="{StaticResource BigButtonStyle}" Margin="0,0,10,0" BorderThickness="2">
+                                                <Button.Background>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="#7F4261EE" Offset="0"/>
+                                                        <GradientStop Color="#7F2040CF" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Button.Background>
+                                            </Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Grid>
         <Grid x:Name="GenresGrid" Background="#FF323232" HorizontalAlignment="Right" Width="310" Margin="0" >
             <TextBlock Margin="30,10,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontSize="29.333" d:CopyToken="1e987d66-a6a4-4a74-b1dc-d66f5da3170e" Text="Жанры"/>

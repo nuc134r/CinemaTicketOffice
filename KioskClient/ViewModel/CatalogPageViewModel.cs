@@ -15,9 +15,11 @@ namespace KioskClient.ViewModel
             view = new CatalogPage(this);
 
             Genres = dataAccessLayer.GetMovieGenres();
+            Movies = dataAccessLayer.GetMovies();
         }
 
         public List<Genre> Genres { get; private set; }
+        public List<Movie> Movies { get; private set; }
 
         public override string Title
         {
