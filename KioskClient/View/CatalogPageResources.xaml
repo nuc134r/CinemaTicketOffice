@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:KioskClient.View">
+    <Storyboard x:Key="ExpandGenresGrid">
+        <DoubleAnimation From="0" To="310" Storyboard.TargetProperty="(Grid.Width)" 
+                         Storyboard.TargetName="GenresGrid" Duration="0:0:0:0.2" />
+    </Storyboard>
+    <Storyboard x:Key="HideGenresGrid">
+        <DoubleAnimation From="310" To="0" Storyboard.TargetProperty="(Grid.Width)" 
+                             Storyboard.TargetName="GenresGrid" Duration="0:0:0:0.2" />
+    </Storyboard>
+</ResourceDictionary>

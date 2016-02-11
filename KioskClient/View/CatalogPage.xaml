@@ -5,11 +5,39 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:KioskClient"
       mc:Ignorable="d"
-      Title="CatalogPage" d:DesignWidth="923.714" d:DesignHeight="486">
+      Title="CatalogPage" d:DesignWidth="903.714" d:DesignHeight="387">
     <Page.Resources>
-        <ResourceDictionary Source="Styles.xaml" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="CatalogPageResources.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Page.Resources>
     <Grid>
-        <Button Content="Жанры" Height="62" Margin="0,10,30,0" VerticalAlignment="Top" Style="{DynamicResource BigButtonStyle}" HorizontalAlignment="Right" Width="171" />
+        <Grid x:Name="BackGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="310"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Жанры" Height="62" Margin="70,10,70,0" VerticalAlignment="Top" Style="{DynamicResource BigButtonStyle}" Grid.Column="1" >
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="ButtonBase.Click" >
+                        <BeginStoryboard  Storyboard="{StaticResource ExpandGenresGrid}" />
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+        </Grid>
+        <Grid x:Name="GenresGrid" Background="#FF323232" HorizontalAlignment="Right" Width="310" Margin="0" >
+            <TextBlock Margin="30,10,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontSize="29.333" d:CopyToken="1e987d66-a6a4-4a74-b1dc-d66f5da3170e" Text="Жанры"/>
+            <TextBlock Height="19" Margin="136,30,0,0" TextWrapping="Wrap" Text="Всего: 12" VerticalAlignment="Top" Foreground="#B2FFFFFF" TextAlignment="Right" HorizontalAlignment="Left" Width="144"/>
+            <Button Content="Сбросить" Margin="40,0,0,30" Style="{DynamicResource BigButtonStyle}" HorizontalAlignment="Left" Width="230" Height="62" VerticalAlignment="Bottom" Click="ResetFilterButton_OnClick" >
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="ButtonBase.Click" >
+                        <BeginStoryboard  Storyboard="{StaticResource HideGenresGrid}" />
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+        </Grid>
     </Grid>
 </Page>

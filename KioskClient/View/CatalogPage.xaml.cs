@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Navigation;
+using KioskClient.Annotations;
 
 namespace KioskClient.View
 {
@@ -9,6 +9,18 @@ namespace KioskClient.View
         public CatalogPage()
         {
             InitializeComponent();
+            SetDefaults();
+
+        }
+
+        private void SetDefaults()
+        {
+            GenresGrid.Width = 0;
+        }
+
+        private void ResetFilterButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

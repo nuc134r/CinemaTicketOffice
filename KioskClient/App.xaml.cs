@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.Windows;
 using KioskClient.View;
+using KioskClient.ViewModel;
 
 namespace KioskClient
 {
@@ -26,7 +27,7 @@ namespace KioskClient
             mainWindow.Topmost = false;
 #endif
 
-            var catalogPage = new CatalogPage();
+            var catalogPage = new CatalogPageViewModel();
             mainWindow.DataContext = catalogPage;
 
             mainWindow.Show();
