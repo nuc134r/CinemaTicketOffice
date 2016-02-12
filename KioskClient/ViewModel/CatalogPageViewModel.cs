@@ -44,9 +44,9 @@ namespace KioskClient.ViewModel
                 genre.IsSelected = false;
             }
             Movies.Clear();
-            foreach (var matchingMovie in allMovies)
+            foreach (var movie in allMovies)
             {
-                Movies.Add(matchingMovie);
+                Movies.Add(movie);
             }
         }
 
@@ -56,7 +56,8 @@ namespace KioskClient.ViewModel
 
             var matchingMovies = 
                 allMovies.Where(movie => movie.Genres.Select(genre => genre.Name)
-                .Intersect(selectedGenres).Any()).ToList();
+                                                     .Intersect(selectedGenres)
+                                                     .Any()).ToList();
             
             Movies.Clear();
             foreach (var matchingMovie in matchingMovies)

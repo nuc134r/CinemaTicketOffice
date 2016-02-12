@@ -13,7 +13,7 @@ namespace KioskClient.Model
         private string plot;
         private BitmapImage poster;
         private DateTime releaseDate;
-        private List<int> showtimes;
+        private List<DateTime> showtimes = new List<DateTime>();
         private string title;
 
         public static MovieBuilder Create()
@@ -51,9 +51,15 @@ namespace KioskClient.Model
             return this;
         }
 
-        public MovieBuilder WithShowtimes(List<int> showtimes)
+        public MovieBuilder WithShowtime(DateTime showtime)
         {
-            this.showtimes = showtimes;
+            showtimes.Add(showtime);
+            return this;
+        }
+
+        public MovieBuilder WithGenre(Genre genre)
+        {
+            genres.Add(genre);
             return this;
         }
 

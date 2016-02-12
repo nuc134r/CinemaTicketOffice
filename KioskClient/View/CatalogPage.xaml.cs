@@ -28,10 +28,5 @@ namespace KioskClient.View
         {
             viewModel.ResetGenresFilter();
         }
-
-        private void ListBox_ManipulationCompleted(object sender, System.Windows.Input.ManipulationCompletedEventArgs e)
-        {
-            viewModel.FilterByGenres();
-        }
     }
 }
