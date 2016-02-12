@@ -27,7 +27,11 @@ namespace KioskClient.Model
 
         public string ShowtimesString
         {
-            get { return string.Join(", ", Showtimes.Select(_ => _.ToShortTimeString())); }
+            get
+            {
+                if (Showtimes.Count == 0) return "Нет сеансов";
+                return string.Join(", ", Showtimes.Select(_ => _.ToShortTimeString()));
+            }
         }
 
         public int Id { get; private set; }

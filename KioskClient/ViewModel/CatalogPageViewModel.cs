@@ -37,18 +37,13 @@ namespace KioskClient.ViewModel
             {
                 genre.IsSelected = false;
             }
-            Movies.Clear();
-            foreach (var movie in allMovies)
-            {
-                Movies.Add(movie);
-            }
         }
 
         private void FilterByGenres()
         {
-            var selectedGenres = Genres.Where(genre => genre.IsSelected).Select(_ => _.Name);
+            var selectedGenres = Genres.Where(genre => genre.IsSelected).Select(_ => _.Name).ToArray();
 
-            if (!selectedGenres.Any())
+            if (selectedGenres.Length == 0)
             {
                 Movies.Clear();
                 foreach (var movie in allMovies) { Movies.Add(movie); }

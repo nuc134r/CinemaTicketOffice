@@ -44,9 +44,9 @@
                                 <Run Text="{Binding GenresString, Mode=OneWay}" Foreground="#66FFFFFF" FontSize="21.333"/>
                             </TextBlock>
                             <TextBlock Margin="198,150,10,10" TextWrapping="Wrap">
-                                <Run Text="Сеансы:" Foreground="White" FontSize="21.333"/>
+                                <Run Text="Сеансы:" Foreground="#66FFFFFF" FontSize="21.333"/>
                                 <LineBreak/>
-                                <Run Text="{Binding ShowtimesString, Mode=OneWay}" Foreground="#66FFFFFF" FontSize="21.333"/>
+                                <Run Text="{Binding ShowtimesString, Mode=OneWay}" Foreground="White" FontSize="25" FontFamily="Consolas" />
                             </TextBlock>
                         </Grid>
                     </DataTemplate>

@@ -36,6 +36,22 @@ namespace KioskClient.Model
                 return base.Equals(obj);
         }
 
+        protected bool Equals(Genre other)
+        {
+            return isSelected == other.isSelected && Id == other.Id && string.Equals(Name, other.Name);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = isSelected.GetHashCode();
+                hashCode = (hashCode*397) ^ Id;
+                hashCode = (hashCode*397) ^ (Name != null ? Name.GetHashCode() : 0);
+                return hashCode;
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

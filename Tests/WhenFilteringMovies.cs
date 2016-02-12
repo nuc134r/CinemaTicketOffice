@@ -7,6 +7,7 @@ using KioskClient.DataAccessLayer;
 using KioskClient.Model;
 using KioskClient.ViewModel;
 using NUnit.Framework;
+using Tests.Stubs;
 
 namespace Tests
 {

@@ -54,6 +54,7 @@ namespace KioskClient.DataAccessLayer
                     .WithGenre(GetMovieGenres()[3])
                     .WithGenre(GetMovieGenres()[1])
                     .WithGenre(GetMovieGenres()[2])
+                    .WithShowtime(03.20.PM())
                     .Please(),
                 MovieBuilder.Create()
                     .WithTitle("Форрест Гамп")

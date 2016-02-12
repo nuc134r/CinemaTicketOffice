@@ -78,10 +78,12 @@
     </Compile>
     <Compile Include="DataAccessLayer\CatalogPageDataAccessLayer.cs" />
     <Compile Include="DataAccessLayer\ICatalogPageDataAccessLayer.cs" />
+    <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="Model\Genre.cs" />
     <Compile Include="Model\GenreBuilder.cs" />
     <Compile Include="Model\Movie.cs" />
     <Compile Include="Model\MovieBuilder.cs" />
+    <Compile Include="Model\Showtime.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="TimeUpdater.cs" />
     <Compile Include="ViewModel\CatalogPageViewModel.cs" />

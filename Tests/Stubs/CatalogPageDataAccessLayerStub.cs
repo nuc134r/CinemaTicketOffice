@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using KioskClient.DataAccessLayer;
 using KioskClient.Model;
 
-namespace Tests
+namespace Tests.Stubs
 {
     public class CatalogPageDataAccessLayerStub : ICatalogPageDataAccessLayer
     {
