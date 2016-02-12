@@ -5,7 +5,7 @@ using KioskClient.Model;
 
 namespace KioskClient.DataAccessLayer
 {
-    public class CatalogPageDataAccessLayer
+    public class CatalogPageDataAccessLayer : ICatalogPageDataAccessLayer
     {
         public List<Genre> GetMovieGenres()
         {

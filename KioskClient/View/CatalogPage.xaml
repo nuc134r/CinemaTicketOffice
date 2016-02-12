@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:KioskClient"
       xmlns:model="clr-namespace:KioskClient.Model"
       mc:Ignorable="d"
-      Title="CatalogPage" d:DesignWidth="800" d:DesignHeight="500">
+      Title="Выбор фильма" d:DesignWidth="800" d:DesignHeight="500">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -46,7 +46,7 @@
                             <TextBlock Margin="198,150,10,10" TextWrapping="Wrap">
                                 <Run Text="Сеансы:" Foreground="White" FontSize="21.333"/>
                                 <LineBreak/>
-                                <Run Text="{Binding ShowtimesString}" Foreground="#66FFFFFF" FontSize="21.333"/>
+                                <Run Text="{Binding ShowtimesString, Mode=OneWay}" Foreground="#66FFFFFF" FontSize="21.333"/>
                             </TextBlock>
                         </Grid>
                     </DataTemplate>

@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Windows;
+using KioskClient.DataAccessLayer;
 using KioskClient.View;
 using KioskClient.ViewModel;
 
@@ -26,8 +27,8 @@ namespace KioskClient
             mainWindow.WindowStyle = WindowStyle.SingleBorderWindow;
             mainWindow.Topmost = false;
 #endif
-
-            var catalogPage = new CatalogPageViewModel();
+            
+            var catalogPage = new CatalogPage();
             mainWindow.DataContext = catalogPage;
 
             mainWindow.Show();

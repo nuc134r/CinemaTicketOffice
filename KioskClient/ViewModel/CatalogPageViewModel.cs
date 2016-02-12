@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Controls;
 using KioskClient.DataAccessLayer;
 using KioskClient.Model;
 using KioskClient.View;
@@ -9,13 +10,11 @@ namespace KioskClient.ViewModel
 {
     public class CatalogPageViewModel : ViewModelBase
     {
-        private readonly CatalogPageDataAccessLayer dataAccessLayer;
-        private List<Movie> allMovies; 
+        private readonly List<Movie> allMovies; 
 
-        public CatalogPageViewModel()
+        public CatalogPageViewModel(Page view, ICatalogPageDataAccessLayer dataAccessLayer)
         {
-            dataAccessLayer = new CatalogPageDataAccessLayer();
-            view = new CatalogPage(this);
+            this.view = view;
 
             Genres = dataAccessLayer.GetMovieGenres();
 
@@ -32,11 +31,6 @@ namespace KioskClient.ViewModel
         public List<Genre> Genres { get; private set; }
         public ObservableCollection<Movie> Movies { get; private set; }
 
-        public override string Title
-        {
-            get { return "Выбор фильма"; }
-        }
-
         public void ResetGenresFilter()
         {
             foreach (var genre in Genres)
@@ -50,9 +44,16 @@ namespace KioskClient.ViewModel
             }
         }
 
-        public void FilterByGenres()
+        private void FilterByGenres()
         {
             var selectedGenres = Genres.Where(genre => genre.IsSelected).Select(_ => _.Name);
+
+            if (!selectedGenres.Any())
+            {
+                Movies.Clear();
+                foreach (var movie in allMovies) { Movies.Add(movie); }
+                return;
+            }
 
             var matchingMovies = 
                 allMovies.Where(movie => movie.Genres.Select(genre => genre.Name)
@@ -60,10 +61,7 @@ namespace KioskClient.ViewModel
                                                      .Any()).ToList();
             
             Movies.Clear();
-            foreach (var matchingMovie in matchingMovies)
-            {
-                Movies.Add(matchingMovie);
-            }
+            foreach (var movie in matchingMovies) { Movies.Add(movie); }
         }
     }
 }

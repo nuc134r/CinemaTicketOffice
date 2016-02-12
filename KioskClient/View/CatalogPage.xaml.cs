@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using KioskClient.Annotations;
+using KioskClient.DataAccessLayer;
 using KioskClient.ViewModel;
 
 namespace KioskClient.View
@@ -10,13 +11,13 @@ namespace KioskClient.View
     {
         private readonly CatalogPageViewModel viewModel;
 
-        public CatalogPage(CatalogPageViewModel viewModel)
+        public CatalogPage()
         {
             InitializeComponent();
-
-            this.viewModel = viewModel;
-            DataContext = viewModel;
             SetDefaults();
+
+            viewModel = new CatalogPageViewModel(this, new CatalogPageDataAccessLayer());
+            DataContext = viewModel;
         }
 
         private void SetDefaults()

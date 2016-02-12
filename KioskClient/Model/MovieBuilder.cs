@@ -8,7 +8,7 @@ namespace KioskClient.Model
     {
         private int duration;
 
-        private List<Genre> genres;
+        private List<Genre> genres = new List<Genre>();
         private int id;
         private string plot;
         private BitmapImage poster;

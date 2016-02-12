@@ -77,6 +77,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DataAccessLayer\CatalogPageDataAccessLayer.cs" />
+    <Compile Include="DataAccessLayer\ICatalogPageDataAccessLayer.cs" />
     <Compile Include="Model\Genre.cs" />
     <Compile Include="Model\GenreBuilder.cs" />
     <Compile Include="Model\Movie.cs" />

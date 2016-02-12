@@ -22,6 +22,6 @@
             <TextBlock Margin="30,22,30,24" TextWrapping="Wrap" Text="{Binding Title}" Foreground="White" FontSize="34.667" TextAlignment="Center" Padding="0,3,0,0"/>
             <Image Source="C:\CinemaTicketOffice/Images/logo.png" HorizontalAlignment="Left" Width="306"/>
         </Grid>
-        <Frame Content="{Binding View}" Grid.Row="1"/>
+        <Frame Content="{Binding}" Grid.Row="1"/>
     </Grid>
 </Window>
