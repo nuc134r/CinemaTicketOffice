@@ -27,6 +27,15 @@ namespace KioskClient.Model
             }
         }
 
+        public override bool Equals(object obj)
+        {
+            var genre = obj as Genre;
+            if (genre != null)
+                return Name == genre.Name;
+            else
+                return base.Equals(obj);
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

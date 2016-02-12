@@ -5,6 +5,11 @@ namespace KioskClient.Model
         private int id;
         private string name;
 
+        public static GenreBuilder Create()
+        {
+            return new GenreBuilder();
+        }
+
         public GenreBuilder WithId(int id)
         {
             this.id = id;

@@ -37,13 +37,13 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid Height="250" MaxWidth="600" VerticalAlignment="Top">
-                            <Image Source="C:\CinemaTicketOffice\Posters\5492.jpg" HorizontalAlignment="Left" Margin="10,10,0,10" Width="174" Stretch="UniformToFill"/>
+                            <Image Source="{Binding Path=Poster}" HorizontalAlignment="Left" Margin="10,10,0,10" Width="174" Stretch="UniformToFill"/>
                             <TextBlock Margin="198,0,10,105" TextWrapping="Wrap">
                                 <Run Text="{Binding Title, Mode=OneWay}" Foreground="White" FontSize="26.667" FontFamily="Segoe UI Light"/>
                                 <LineBreak/>
-                                <Run Text="мелодрама, фантастика, драма" Foreground="#66FFFFFF" FontSize="21.333"/>
+                                <Run Text="{Binding GenresString, Mode=OneWay}" Foreground="#66FFFFFF" FontSize="21.333"/>
                             </TextBlock>
-                            <ListBox x:Name="listBox1"  Margin="198,145,0,10" Background="{x:Null}" ScrollViewer.CanContentScroll="False" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ItemContainerStyle="{DynamicResource CleanListBoxItemStyle}" BorderThickness="0">
+                            <ListBox Margin="198,145,0,10" Background="{x:Null}" ScrollViewer.CanContentScroll="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ItemContainerStyle="{DynamicResource CleanListBoxItemStyle}" BorderThickness="0">
                                 <ListBox.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom"/>

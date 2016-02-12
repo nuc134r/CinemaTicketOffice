@@ -8,13 +8,18 @@ namespace KioskClient.Model
     {
         private int duration;
 
-        private List<string> genres;
+        private List<Genre> genres;
         private int id;
         private string plot;
         private BitmapImage poster;
         private DateTime releaseDate;
         private List<int> showtimes;
         private string title;
+
+        public static MovieBuilder Create()
+        {
+            return new MovieBuilder();
+        }
 
         public MovieBuilder WithId(int id)
         {
@@ -52,7 +57,7 @@ namespace KioskClient.Model
             return this;
         }
 
-        public MovieBuilder WithGenres(List<string> genres)
+        public MovieBuilder WithGenres(List<Genre> genres)
         {
             this.genres = genres;
             return this;
