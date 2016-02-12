@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace KioskClient.ViewModel
 {
@@ -11,9 +12,12 @@ namespace KioskClient.ViewModel
             get { return view; }
         }
 
-        public virtual string Title
+        protected MainWindow TheWindow
         {
-            get { return "Override this title"; }
+            get
+            {
+                return (MainWindow) Window.GetWindow(view);
+            }
         }
     }
 }

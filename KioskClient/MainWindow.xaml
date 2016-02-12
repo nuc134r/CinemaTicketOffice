@@ -19,9 +19,9 @@
         </Grid.RowDefinitions>
         <Grid Background="#33000000">
             <TextBlock Margin="0,0,30,0" TextWrapping="Wrap" Text="{Binding Source={StaticResource TimeUpdater}, Path=Time, Mode=OneWay}" Foreground="White" FontSize="34.667" TextAlignment="Right" Padding="0,3,0,0" HorizontalAlignment="Right" Width="341"/>
-            <TextBlock Margin="30,22,30,24" TextWrapping="Wrap" Text="{Binding Title}" Foreground="White" FontSize="34.667" TextAlignment="Center" Padding="0,3,0,0"/>
+            <TextBlock x:Name="TitleTextBlock" Margin="30,22,30,24" TextWrapping="Wrap" Text="{Binding Title}" Foreground="White" FontSize="34.667" TextAlignment="Center" Padding="0,3,0,0"/>
             <Image Source="C:\CinemaTicketOffice/Images/logo.png" HorizontalAlignment="Left" Width="306"/>
         </Grid>
-        <Frame Content="{Binding}" Grid.Row="1"/>
+        <Frame x:Name="MainFrame" Content="{Binding}" Grid.Row="1" NavigationUIVisibility="Hidden" Navigated="MainFrame_OnNavigated" />
     </Grid>
 </Window>
