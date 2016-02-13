@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Controls;
 using KioskClient.DataAccessLayer;
 using KioskClient.Model;
 using KioskClient.View;
@@ -72,7 +73,7 @@ namespace KioskClient.ViewModel
                         .Any()).ToList();
             }
 
-            view.DetachSelectionChangedHandler();
+            if (view != null) view.DetachSelectionChangedHandler();
 
             Movies.Clear();
             foreach (var movie in matchingMovies)
@@ -80,7 +81,7 @@ namespace KioskClient.ViewModel
                 Movies.Add(movie);
             }
 
-            view.AttachSelectionChangedHandler();
+            if (view != null) view.AttachSelectionChangedHandler();
         }
 
         public void NavigateToMovieDetails(Movie movie)

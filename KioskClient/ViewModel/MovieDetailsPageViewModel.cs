@@ -1,4 +1,5 @@
 using System.Windows.Controls;
+using KioskClient.Model;
 
 namespace KioskClient.ViewModel
 {
@@ -12,6 +13,11 @@ namespace KioskClient.ViewModel
         public void GoToMovieCatalog()
         {
             TheWindow.NavigateToMovieCatalog();
+        }
+
+        public void GoToShowtimeList(Movie movie)
+        {
+            TheWindow.NavigateToShowtimeList(movie);
         }
     }
 }

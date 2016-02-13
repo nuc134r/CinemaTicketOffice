@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using KioskClient.Model;
 using KioskClient.ViewModel;
 
 namespace KioskClient.View
@@ -18,6 +19,13 @@ namespace KioskClient.View
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             viewModel.GoToMovieCatalog();
+        }
+
+        private void BuyTicketsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var movie = (Movie) DataContext;
+
+            viewModel.GoToShowtimeList(movie);
         }
     }
 }
