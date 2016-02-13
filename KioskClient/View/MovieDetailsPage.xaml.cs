@@ -27,5 +27,10 @@ namespace KioskClient.View
             var window = Window.GetWindow(this);
             ((MainWindow) window).MainFrame.GoBack();
         }
+
+        private void ResetFilterButton_OnClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
