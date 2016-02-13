@@ -6,7 +6,7 @@ using KioskClient.View;
 
 namespace KioskClient
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IMainWindow
     {
         public MainWindow()
         {
@@ -22,6 +22,12 @@ namespace KioskClient
         {
             var movieDetailsPage = new MovieDetailsPage { DataContext = movie };
             DataContext = movieDetailsPage;
+        }
+
+        public void NavigateToMovieCatalog()
+        {
+            var catalogPage = new CatalogPage();
+            DataContext = catalogPage;
         }
     }
 }

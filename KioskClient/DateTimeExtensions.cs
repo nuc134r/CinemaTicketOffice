@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace KioskClient
 {
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public static class DateTimeExtensions
     {
         public static DateTime AM(this double value)

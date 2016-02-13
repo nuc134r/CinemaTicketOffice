@@ -17,7 +17,7 @@ namespace KioskClient.View
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.NaivigateBack();
+            viewModel.GoToMovieCatalog();
         }
     }
 }

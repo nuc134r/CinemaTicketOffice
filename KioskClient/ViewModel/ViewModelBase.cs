@@ -12,11 +12,11 @@ namespace KioskClient.ViewModel
             get { return view; }
         }
 
-        protected MainWindow TheWindow
+        protected IMainWindow TheWindow
         {
             get
             {
-                return (MainWindow) Window.GetWindow(view);
+                return (IMainWindow) Window.GetWindow(view);
             }
         }
     }

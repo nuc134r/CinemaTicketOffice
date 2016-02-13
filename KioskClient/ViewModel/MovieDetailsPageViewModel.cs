@@ -9,9 +9,9 @@ namespace KioskClient.ViewModel
             this.view = view;
         }
 
-        public void NaivigateBack()
+        public void GoToMovieCatalog()
         {
-            TheWindow.MainFrame.GoBack();
+            TheWindow.NavigateToMovieCatalog();
         }
     }
 }
