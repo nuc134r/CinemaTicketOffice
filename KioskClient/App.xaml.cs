@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Windows;
+using System.Windows.Markup;
 using KioskClient.DataAccessLayer;
 using KioskClient.View;
 using KioskClient.ViewModel;
@@ -12,6 +13,16 @@ namespace KioskClient
         {
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.CurrentCulture;
             CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.CurrentCulture;
+
+            FrameworkElement.LanguageProperty.OverrideMetadata(
+                typeof(FrameworkElement),
+                new FrameworkPropertyMetadata(
+                    XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
+
+            FrameworkElement.LanguageProperty.OverrideMetadata(
+                typeof(System.Windows.Documents.Run),
+                new FrameworkPropertyMetadata(
+                    XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
         }
 
         protected override void OnStartup(StartupEventArgs e)

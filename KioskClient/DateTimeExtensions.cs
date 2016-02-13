@@ -19,5 +19,15 @@ namespace KioskClient
 
             return DateTime.Today.AddHours(hours + 12).AddMinutes(minutes);
         }
+
+        public static DateTime of(this double value, int year)
+        {
+            var day = (int) value;
+            var month = (int) ((value - day) * 100);
+
+            return new DateTime(year, month, day);
+        }
+
+
     }
 }
