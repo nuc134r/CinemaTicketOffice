@@ -57,6 +57,12 @@ namespace KioskClient.Model
             return this;
         }
 
+        public MovieBuilder WithShowtimes(List<DateTime> showtimes)
+        {
+            this.showtimes = showtimes;
+            return this;
+        }
+
         public MovieBuilder WithGenre(Genre genre)
         {
             genres.Add(genre);
