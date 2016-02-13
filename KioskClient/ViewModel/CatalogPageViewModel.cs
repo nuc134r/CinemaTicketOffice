@@ -11,7 +11,7 @@ namespace KioskClient.ViewModel
     {
         private readonly List<Movie> allMovies;
         private bool pauseFiltering;
-        
+
         public CatalogPageViewModel(CatalogPage view, ICatalogPageDataAccessLayer dataAccessLayer)
         {
             this.view = view;
@@ -30,18 +30,24 @@ namespace KioskClient.ViewModel
         public List<Genre> Genres { get; private set; }
         public ObservableCollection<Movie> Movies { get; private set; }
 
+        private new CatalogPage view
+        {
+            get { return (CatalogPage) base.view; }
+            set { base.view = value; }
+        }
+
         public void ResetGenresFilter()
         {
             // Handler is attached to every Genre.IsSelected property
             // and will filter movies collection on every property change.
-            // So we stop it's filtering while unchecking IsSelected flags for performance. :)
+            // So we stop filtering while unchecking IsSelected flags for performance.
             pauseFiltering = true;
 
             foreach (var genre in Genres)
             {
                 genre.IsSelected = false;
             }
-            
+
             pauseFiltering = false;
             FilterByGenres();
         }
@@ -66,7 +72,7 @@ namespace KioskClient.ViewModel
                         .Any()).ToList();
             }
 
-            ((CatalogPage) view).DetachSelectionChangedHandler();
+            view.DetachSelectionChangedHandler();
 
             Movies.Clear();
             foreach (var movie in matchingMovies)
@@ -74,14 +80,12 @@ namespace KioskClient.ViewModel
                 Movies.Add(movie);
             }
 
-            ((CatalogPage) view).AttachSelectionChangedHandler();
+            view.AttachSelectionChangedHandler();
         }
 
         public void NavigateToMovieDetails(Movie movie)
         {
-            var movieDetailsPage = new MovieDetailsPage {DataContext = movie};
-
-            TheWindow.DataContext = movieDetailsPage;
+            TheWindow.NavigateToMovieDetails(movie);
         }
     }
 }

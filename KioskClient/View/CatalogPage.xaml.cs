@@ -37,6 +37,15 @@ namespace KioskClient.View
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             viewModel.ResetGenresFilter();
+            CleanUpBeforeLeaving();
+
+            var movie = (Movie) e.AddedItems[0];
+            viewModel.NavigateToMovieDetails(movie);
+        }
+
+        private void CleanUpBeforeLeaving()
+        {
+            GenresGrid.Width = 0;
 
             DetachSelectionChangedHandler();
             MoviesListBox.SelectedIndex = -1;
@@ -44,8 +53,6 @@ namespace KioskClient.View
 
             MoviesListBox.ScrollIntoView(MoviesListBox.Items[0]);
             GenresListBox.ScrollIntoView(GenresListBox.Items[0]);
-
-            viewModel.NavigateToMovieDetails((Movie) e.AddedItems[0]);
         }
 
         public void DetachSelectionChangedHandler()
