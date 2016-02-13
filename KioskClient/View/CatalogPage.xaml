@@ -21,7 +21,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="310"/>
             </Grid.ColumnDefinitions>
-            <Button Content="Жанры" Height="62" Margin="70,30,70,0" VerticalAlignment="Top" Style="{DynamicResource BigBlueButtonStyle}" Grid.Column="1" >
+            <Button Content="Жанры" Height="60" Margin="70,30,70,0" VerticalAlignment="Top" Style="{DynamicResource BigBlueButtonStyle}" Grid.Column="1" >
                 <Button.Triggers>
                     <EventTrigger RoutedEvent="ButtonBase.Click" >
                         <BeginStoryboard  Storyboard="{StaticResource ExpandGenresGrid}" />
@@ -53,7 +53,7 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </Grid>
-        <Grid x:Name="GenresGrid" Background="#FF323232" HorizontalAlignment="Right" Width="310" Margin="0" >
+        <Grid x:Name="GenresGrid" Background="#FF323232" HorizontalAlignment="Right" Width="310" Margin="0" d:IsHidden="True" >
             <TextBlock Margin="30,10,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontSize="29.333" d:CopyToken="1e987d66-a6a4-4a74-b1dc-d66f5da3170e" Text="Жанры"/>
             <TextBlock Height="19" Margin="136,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#B2FFFFFF" TextAlignment="Right" HorizontalAlignment="Left" Width="144">
                 <Run Text="Bсего:" />

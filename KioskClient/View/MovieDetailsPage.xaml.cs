@@ -1,36 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using KioskClient.ViewModel;
 
 namespace KioskClient.View
 {
     public partial class MovieDetailsPage : Page
     {
+        private readonly MovieDetailsPageViewModel viewModel;
+
         public MovieDetailsPage()
         {
             InitializeComponent();
+
+            viewModel = new MovieDetailsPageViewModel(this);
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            var window = Window.GetWindow(this);
-            ((MainWindow) window).MainFrame.GoBack();
-        }
-
-        private void ResetFilterButton_OnClick(object sender, RoutedEventArgs e)
-        {
-
+            viewModel.NaivigateBack();
         }
     }
 }

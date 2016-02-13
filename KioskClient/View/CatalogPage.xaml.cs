@@ -19,6 +19,7 @@ namespace KioskClient.View
             SetDefaults();
 
             viewModel = new CatalogPageViewModel(this, new CatalogPageDataAccessLayer());
+
             DataContext = viewModel;
         }
 
