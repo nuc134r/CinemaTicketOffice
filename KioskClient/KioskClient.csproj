@@ -57,6 +57,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="IMainWindow.cs" />
+    <Compile Include="Model\Auditorium.cs" />
+    <Compile Include="Model\ShowTimeBuilder.cs" />
     <Compile Include="ViewModel\MovieDetailsPageViewModel.cs" />
     <Compile Include="View\MovieDetailsPage.xaml.cs">
       <DependentUpon>MovieDetailsPage.xaml</DependentUpon>
@@ -92,7 +94,7 @@
     <Compile Include="Model\GenreBuilder.cs" />
     <Compile Include="Model\Movie.cs" />
     <Compile Include="Model\MovieBuilder.cs" />
-    <Compile Include="Model\Showtime.cs" />
+    <Compile Include="Model\ShowTime.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="TimeUpdater.cs" />
     <Compile Include="ViewModel\CatalogPageViewModel.cs" />
