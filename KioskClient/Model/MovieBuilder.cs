@@ -6,8 +6,8 @@ namespace KioskClient.Model
 {
     public class MovieBuilder
     {
+        private int ageLimit;
         private int duration;
-
         private List<Genre> genres = new List<Genre>();
         private int id;
         private string plot;
@@ -81,9 +81,15 @@ namespace KioskClient.Model
             return this;
         }
 
+        public MovieBuilder WithAgeLimit(int ageLimit)
+        {
+            this.ageLimit = ageLimit;
+            return this;
+        }
+
         public Movie Please()
         {
-            return new Movie(id, title, plot, duration, poster, showtimes, genres, releaseDate);
+            return new Movie(id, title, plot, duration, poster, showtimes, genres, releaseDate, ageLimit);
         }
     }
 }
