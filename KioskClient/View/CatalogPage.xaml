@@ -31,14 +31,14 @@
             <ListBox x:Name="MoviesListBox" ItemsSource="{Binding Movies}" Background="{x:Null}" BorderThickness="0" ItemContainerStyle="{DynamicResource CleanListBoxItemStyle}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.CanContentScroll="False" SelectionChanged="ListBox_SelectionChanged">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <StackPanel HorizontalAlignment="Center"/>
+                        <WrapPanel IsItemsHost="True" HorizontalAlignment="Center" Margin="5"/>
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid Height="250" MaxWidth="600" VerticalAlignment="Top" d:DesignWidth="562">
+                        <Grid Height="250" Width="460" VerticalAlignment="Top">
                             <Image Source="{Binding Path=Poster}" HorizontalAlignment="Left" Margin="10,10,0,10" Width="174" Stretch="UniformToFill"/>
-                            <TextBlock Margin="198,0,10,105" TextWrapping="Wrap">
+                            <TextBlock Margin="198,0,10,105" TextWrapping="WrapWithOverflow">
                                 <Run Text="{Binding Title, Mode=OneWay}" Foreground="White" FontSize="26.667" FontFamily="Segoe UI Light"/>
                                 <LineBreak/>
                                 <Run Text="{Binding GenresString, Mode=OneWay}" Foreground="Gray" FontSize="21.333"/>
@@ -46,7 +46,7 @@
                             <TextBlock Margin="198,150,10,10" TextWrapping="Wrap">
                                 <Run Text="Сеансы:" Foreground="#66FFFFFF" FontSize="21.333"/>
                                 <LineBreak/>
-                                <Run Text="{Binding ShowtimesString, Mode=OneWay}" Foreground="White" FontSize="25" FontFamily="Consolas" />
+                                <Run Text="{Binding ShowtimesString, Mode=OneWay}" Foreground="White" FontSize="23" FontFamily="Consolas" />
                             </TextBlock>
                         </Grid>
                     </DataTemplate>
