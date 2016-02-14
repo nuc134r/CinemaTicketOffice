@@ -7,11 +7,6 @@ namespace KioskClient.ViewModel
     {
         protected Page view;
 
-        public Page View
-        {
-            get { return view; }
-        }
-
         protected IMainWindow TheWindow
         {
             get

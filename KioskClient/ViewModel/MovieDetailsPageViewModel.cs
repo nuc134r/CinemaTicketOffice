@@ -1,5 +1,5 @@
 using System.Windows.Controls;
-using KioskClient.Model;
+using DataAccess.Model;
 
 namespace KioskClient.ViewModel
 {

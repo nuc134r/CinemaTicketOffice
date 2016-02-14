@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KioskClient.Model
+namespace DataAccess.Model
 {
     public class ShowTime
     {

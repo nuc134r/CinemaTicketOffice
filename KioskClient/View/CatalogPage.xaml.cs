@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using KioskClient.Annotations;
+using DataAccess.Model;
 using KioskClient.DataAccessLayer;
-using KioskClient.Model;
 using KioskClient.ViewModel;
 
 namespace KioskClient.View
 {
-    public partial class CatalogPage : Page
+    public partial class CatalogPage
     {
         private readonly CatalogPageViewModel viewModel;
 

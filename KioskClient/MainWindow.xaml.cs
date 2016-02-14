@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-using KioskClient.Model;
+using DataAccess.Model;
 using KioskClient.View;
 
 namespace KioskClient

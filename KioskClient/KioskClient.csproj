@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,8 +58,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="IMainWindow.cs" />
-    <Compile Include="Model\Auditorium.cs" />
-    <Compile Include="Model\ShowTimeBuilder.cs" />
     <Compile Include="ViewModel\MovieDetailsPageViewModel.cs" />
     <Compile Include="View\MovieDetailsPage.xaml.cs">
       <DependentUpon>MovieDetailsPage.xaml</DependentUpon>
@@ -90,12 +89,6 @@
     <Compile Include="DataAccessLayer\CatalogPageDataAccessLayer.cs" />
     <Compile Include="DataAccessLayer\ICatalogPageDataAccessLayer.cs" />
     <Compile Include="DateTimeExtensions.cs" />
-    <Compile Include="Model\Genre.cs" />
-    <Compile Include="Model\GenreBuilder.cs" />
-    <Compile Include="Model\Movie.cs" />
-    <Compile Include="Model\MovieBuilder.cs" />
-    <Compile Include="Model\ShowTime.cs" />
-    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="TimeUpdater.cs" />
     <Compile Include="ViewModel\CatalogPageViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
@@ -134,7 +127,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{b1b71a96-7931-4e2d-8b85-08e17697e82e}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Timers;
-using KioskClient.Annotations;
+using DataAccess;
 
 namespace KioskClient
 {

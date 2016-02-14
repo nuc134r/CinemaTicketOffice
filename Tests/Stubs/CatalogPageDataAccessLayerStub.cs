@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using DataAccess.Model;
 using KioskClient.DataAccessLayer;
-using KioskClient.Model;
 
 namespace Tests.Stubs
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Media.Imaging;
-using KioskClient.Model;
+using DataAccess.Model;
 
 namespace KioskClient.DataAccessLayer
 {

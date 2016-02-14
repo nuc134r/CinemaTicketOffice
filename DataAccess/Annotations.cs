@@ -8,7 +8,7 @@
 // ReSharper disable MemberCanBeProtected.Global
 // ReSharper disable InconsistentNaming
 
-namespace KioskClient.Annotations
+namespace DataAccess
 {
   /// <summary>
   /// Indicates that the value of the marked element could be <c>null</c> sometimes,
@@ -63,7 +63,7 @@ namespace KioskClient.Annotations
   /// <summary>
   /// Indicates that the marked method builds string by format pattern and (optional) arguments.
   /// Parameter, which contains format string, should be given in constructor. The format string
-  /// should be in <see cref="string.Format(IFormatProvider,string,object[])"/>-like form.
+  /// should be in <see cref="string.Format(System.IFormatProvider,string,object[])"/>-like form.
   /// </summary>
   /// <example><code>
   /// [StringFormatMethod("message")]

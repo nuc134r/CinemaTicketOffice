@@ -2,8 +2,8 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Controls;
+using DataAccess.Model;
 using KioskClient.DataAccessLayer;
-using KioskClient.Model;
 using KioskClient.View;
 
 namespace KioskClient.ViewModel
@@ -12,6 +12,12 @@ namespace KioskClient.ViewModel
     {
         private readonly List<Movie> allMovies;
         private bool pauseFiltering;
+
+        private new CatalogPage view
+        {
+            get { return (CatalogPage) base.view; }
+            set { base.view = value; }
+        }
 
         public CatalogPageViewModel(CatalogPage view, ICatalogPageDataAccessLayer dataAccessLayer)
         {
@@ -30,13 +36,7 @@ namespace KioskClient.ViewModel
 
         public List<Genre> Genres { get; private set; }
         public ObservableCollection<Movie> Movies { get; private set; }
-
-        private new CatalogPage view
-        {
-            get { return (CatalogPage) base.view; }
-            set { base.view = value; }
-        }
-
+        
         public void ResetGenresFilter()
         {
             // Handler is attached to every Genre.IsSelected property

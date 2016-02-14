@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using KioskClient.Annotations;
 
-namespace KioskClient.Model
+namespace DataAccess.Model
 {
     public class Genre : INotifyPropertyChanged
     {
@@ -32,8 +31,7 @@ namespace KioskClient.Model
             var genre = obj as Genre;
             if (genre != null)
                 return Name == genre.Name;
-            else
-                return base.Equals(obj);
+            return base.Equals(obj);
         }
 
         protected bool Equals(Genre other)

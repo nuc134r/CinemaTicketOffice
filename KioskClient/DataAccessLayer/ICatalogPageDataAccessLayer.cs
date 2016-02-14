@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using KioskClient.Model;
+using DataAccess.Model;
 
 namespace KioskClient.DataAccessLayer
 {

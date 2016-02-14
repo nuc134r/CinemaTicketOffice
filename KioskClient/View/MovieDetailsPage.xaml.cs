@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using KioskClient.Model;
+using DataAccess.Model;
 using KioskClient.ViewModel;
 
 namespace KioskClient.View

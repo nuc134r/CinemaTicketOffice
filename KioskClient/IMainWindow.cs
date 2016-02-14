@@ -1,4 +1,4 @@
-﻿using KioskClient.Model;
+﻿using DataAccess.Model;
 
 namespace KioskClient
 {

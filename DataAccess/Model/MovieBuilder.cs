@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Media.Imaging;
 
-namespace KioskClient.Model
+namespace DataAccess.Model
 {
     public class MovieBuilder
     {

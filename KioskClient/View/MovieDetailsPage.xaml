@@ -34,6 +34,7 @@
                 </TextBlock.Resources>
                 <Run Text="{Binding Title, Mode=OneWay}" FontFamily="Segoe UI Light" FontSize="37" />
                 <LineBreak/>
+				<LineBreak/>
                 <Run Text="🎬 " Foreground="{StaticResource IconColor}" FontSize="16" />
                 <Run Text="{Binding GenresString, Mode=OneWay}" Foreground="{StaticResource DimColor}" FontSize="20" />
                 <LineBreak/>
