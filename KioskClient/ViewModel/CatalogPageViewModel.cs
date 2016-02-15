@@ -39,9 +39,9 @@ namespace KioskClient.ViewModel
         
         public void ResetGenresFilter()
         {
-            // Handler is attached to every Genre.IsSelected property
-            // and will refilter movies collection on every property change.
-            // So we stop filtering while unchecking IsSelected flags for performance.
+            // Обработчик подключен к каждому свойству IsSelected в Genres
+            // и он будет перефильтровывать коллекцию Movies при его изменении.
+            // Поэтому во время сброса флагов отключаем фильтрацию в пользу производительности.
             pauseFiltering = true;
 
             foreach (var genre in Genres)
@@ -60,9 +60,9 @@ namespace KioskClient.ViewModel
             List<Movie> matchingMovies;
             var selectedGenres = Genres.Where(genre => genre.IsSelected).Select(_ => _.Name).ToArray();
 
+            // Если не выбран ни один жанр, то показываем все фильмы
             if (selectedGenres.Length == 0)
             {
-                // If no genres selected then show all the movies
                 matchingMovies = allMovies;
             }
             else
