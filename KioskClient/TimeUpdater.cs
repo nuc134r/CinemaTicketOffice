@@ -23,7 +23,12 @@ namespace KioskClient
 
         public string Time
         {
-            get { return DateTime.Now.ToString("d MMMM\n") + DateTime.Now.ToShortTimeString(); }
+            get { return DateTime.Now.ToShortTimeString(); }
+        }
+
+        public string Date
+        {
+            get { return DateTime.Now.ToString("d MMMM"); }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

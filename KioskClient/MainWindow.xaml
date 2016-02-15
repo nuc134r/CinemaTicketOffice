@@ -18,7 +18,11 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid Background="#33000000">
-            <TextBlock Margin="0,0,30,0" TextWrapping="Wrap" Text="{Binding Source={StaticResource TimeUpdater}, Path=Time, Mode=OneWay}" Foreground="White" FontSize="34.667" TextAlignment="Right" Padding="0,3,0,0" HorizontalAlignment="Right" Width="341"/>
+            <TextBlock LineHeight="35" LineStackingStrategy="BlockLineHeight" Margin="0,0,30,0" TextWrapping="Wrap" Foreground="White" TextAlignment="Right" Padding="0,20,0,0" HorizontalAlignment="Right" Width="341">
+                <Run Text="{Binding Source={StaticResource TimeUpdater}, Path=Time, Mode=OneWay}" FontSize="45"/>
+                <LineBreak/>
+                <Run Text="{Binding Source={StaticResource TimeUpdater}, Path=Date, Mode=OneWay}" FontSize="30"/>
+            </TextBlock>
             <TextBlock x:Name="TitleTextBlock" Margin="30,22,30,24" TextWrapping="Wrap" Text="{Binding Title}" Foreground="White" FontSize="34.667" TextAlignment="Center" Padding="0,3,0,0"/>
             <Image Source="C:\CinemaTicketOffice/Images/logo.png" HorizontalAlignment="Left" Width="306"/>
         </Grid>
