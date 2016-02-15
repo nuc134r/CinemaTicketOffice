@@ -1,4 +1,6 @@
-namespace DataAccess.Model
+using DataAccess.Model;
+
+namespace DataAccess.Builders
 {
     public class GenreBuilder
     {

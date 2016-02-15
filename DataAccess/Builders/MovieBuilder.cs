@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Media.Imaging;
+using DataAccess.Model;
 
-namespace DataAccess.Model
+namespace DataAccess.Builders
 {
     public class MovieBuilder
     {

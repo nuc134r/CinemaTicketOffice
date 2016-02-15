@@ -46,14 +46,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Annotations.cs" />
+    <Compile Include="Builders\AuditoriumBuilder.cs" />
+    <Compile Include="Builders\GenreBuilder.cs" />
+    <Compile Include="Builders\MovieBuilder.cs" />
+    <Compile Include="Builders\ShowtimeBuilder.cs" />
     <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="Model\Auditorium.cs" />
     <Compile Include="Model\Genre.cs" />
-    <Compile Include="Model\GenreBuilder.cs" />
     <Compile Include="Model\Movie.cs" />
-    <Compile Include="Model\MovieBuilder.cs" />
     <Compile Include="Model\Showtime.cs" />
-    <Compile Include="Model\ShowtimeBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IMovieRepository.cs" />
     <Compile Include="Repository\IShowtimeRepository.cs" />

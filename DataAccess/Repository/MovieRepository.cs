@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Media.Imaging;
+using DataAccess.Builders;
 using DataAccess.Model;
 
 namespace DataAccess.Repository
@@ -28,7 +29,7 @@ namespace DataAccess.Repository
             }
         }
 
-        public void RefreshData()
+        public void Refresh()
         {
             movies = LoadMovies();
             genres = LoadGenres();

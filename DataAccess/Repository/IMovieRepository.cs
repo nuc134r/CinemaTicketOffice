@@ -7,6 +7,6 @@ namespace DataAccess.Repository
     {
         List<Movie> Movies { get; }
         List<Genre> Genres { get; }
-        void RefreshData();
+        void Refresh();
     }
 }

@@ -19,7 +19,7 @@ namespace Tests.Stubs
             get { return GenresStorage; }
         }
 
-        public void RefreshData()
+        public void Refresh()
         {
         }
     }
