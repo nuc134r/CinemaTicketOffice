@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Controls;
 using DataAccess.Model;
-using KioskClient.DataAccessLayer;
+using DataAccess.Repository;
 using KioskClient.View;
 
 namespace KioskClient.ViewModel
@@ -19,13 +19,13 @@ namespace KioskClient.ViewModel
             set { base.view = value; }
         }
 
-        public CatalogPageViewModel(CatalogPage view, ICatalogPageDataAccessLayer dataAccessLayer)
+        public CatalogPageViewModel(CatalogPage view, IMovieRepository movieRepository)
         {
             this.view = view;
 
-            allMovies = dataAccessLayer.GetMovies();
+            Genres = movieRepository.Genres;
+            allMovies = movieRepository.Movies;
 
-            Genres = dataAccessLayer.GetMovieGenres();
             Movies = new ObservableCollection<Movie>(allMovies);
 
             foreach (var genre in Genres)

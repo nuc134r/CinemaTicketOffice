@@ -86,9 +86,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataAccessLayer\CatalogPageDataAccessLayer.cs" />
-    <Compile Include="DataAccessLayer\ICatalogPageDataAccessLayer.cs" />
-    <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="TimeUpdater.cs" />
     <Compile Include="ViewModel\CatalogPageViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />

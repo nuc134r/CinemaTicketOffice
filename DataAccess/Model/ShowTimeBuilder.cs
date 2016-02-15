@@ -2,45 +2,45 @@ using System;
 
 namespace DataAccess.Model
 {
-    public class ShowTimeBuilder
+    public class ShowtimeBuilder
     {
         private Auditorium auditorium;
         private int id;
         private Movie movie;
         private DateTime time;
 
-        public static ShowTimeBuilder Create()
+        public static ShowtimeBuilder Create()
         {
-            return new ShowTimeBuilder();
+            return new ShowtimeBuilder();
         }
 
-        public ShowTimeBuilder WithId(int id)
+        public ShowtimeBuilder WithId(int id)
         {
             this.id = id;
             return this;
         }
 
-        public ShowTimeBuilder WithMovie(Movie movie)
+        public ShowtimeBuilder WithMovie(Movie movie)
         {
             this.movie = movie;
             return this;
         }
 
-        public ShowTimeBuilder WithTime(DateTime time)
+        public ShowtimeBuilder WithTime(DateTime time)
         {
             this.time = time;
             return this;
         }
 
-        public ShowTimeBuilder WithAuditorium(Auditorium auditorium)
+        public ShowtimeBuilder WithAuditorium(Auditorium auditorium)
         {
             this.auditorium = auditorium;
             return this;
         }
 
-        public ShowTime Please()
+        public Showtime Please()
         {
-            return new ShowTime(id, movie, time, auditorium);
+            return new Showtime(id, movie, time, auditorium);
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Globalization;
 using System.Windows;
 using System.Windows.Markup;
-using KioskClient.DataAccessLayer;
 using KioskClient.View;
 using KioskClient.ViewModel;
 

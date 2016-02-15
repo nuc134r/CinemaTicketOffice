@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccess.Model;
-using KioskClient.DataAccessLayer;
 using KioskClient.ViewModel;
 using NUnit.Framework;
 using Tests.Stubs;
@@ -14,12 +13,12 @@ namespace Tests
     [TestFixture]
     public class WhenFilteringMovies
     {
-        private CatalogPageDataAccessLayerStub dataAccessLayer;
+        private MovieRepositoryStub movieRepository;
 
         [SetUp]
         public void SetUp()
         {
-            dataAccessLayer = new CatalogPageDataAccessLayerStub();
+            movieRepository = new MovieRepositoryStub();
 
             var genre1 = GenreBuilder.Create().WithName("action").Please();
             var genre2 = GenreBuilder.Create().WithName("comedy").Please();
@@ -29,14 +28,14 @@ namespace Tests
             var movie2 = MovieBuilder.Create().WithTitle("Comedy Movie").WithGenre(genre2).Please();
             var movie3 = MovieBuilder.Create().WithTitle("Adventure Movie").WithGenre(genre3).Please();
 
-            dataAccessLayer.Genres = new List<Genre> { genre1, genre2, genre3 };
-            dataAccessLayer.Movies = new List<Movie> { movie1, movie2, movie3 };
+            movieRepository.GenresStorage = new List<Genre> { genre1, genre2, genre3 };
+            movieRepository.MoviesStorage = new List<Movie> { movie1, movie2, movie3 };
         }
 
         [Test]
         public void OneMovieIsFiltered()
         {
-            var viewModel = new CatalogPageViewModel(null, dataAccessLayer);
+            var viewModel = new CatalogPageViewModel(null, movieRepository);
 
             viewModel.Genres[0].IsSelected = true;
 
@@ -47,7 +46,7 @@ namespace Tests
         [Test]
         public void TwoMoviesAreFiltered()
         {
-            var viewModel = new CatalogPageViewModel(null, dataAccessLayer);
+            var viewModel = new CatalogPageViewModel(null, movieRepository);
 
             viewModel.Genres[0].IsSelected = true;
             viewModel.Genres[1].IsSelected = true;
@@ -60,7 +59,7 @@ namespace Tests
         [Test]
         public void FilterIsReset()
         {
-            var viewModel = new CatalogPageViewModel(null, dataAccessLayer);
+            var viewModel = new CatalogPageViewModel(null, movieRepository);
 
             viewModel.Genres[0].IsSelected = true;
             viewModel.Genres[1].IsSelected = true;
@@ -72,7 +71,7 @@ namespace Tests
         [Test]
         public void AllMoviesShownIfNoGenreSelected()
         {
-            var viewModel = new CatalogPageViewModel(null, dataAccessLayer);
+            var viewModel = new CatalogPageViewModel(null, movieRepository);
 
             viewModel.Genres[0].IsSelected = false;
             viewModel.Genres[1].IsSelected = false;

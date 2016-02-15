@@ -2,9 +2,9 @@
 
 namespace DataAccess.Model
 {
-    public class ShowTime
+    public class Showtime
     {
-        public ShowTime(int id, Movie movie, DateTime time, Auditorium auditorium)
+        public Showtime(int id, Movie movie, DateTime time, Auditorium auditorium)
         {
             Id = id;
             Movie = movie;

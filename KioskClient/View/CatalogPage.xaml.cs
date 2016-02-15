@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using DataAccess.Model;
-using KioskClient.DataAccessLayer;
+using DataAccess.Repository;
 using KioskClient.ViewModel;
 
 namespace KioskClient.View
@@ -17,7 +17,7 @@ namespace KioskClient.View
             InitializeComponent();
             SetDefaults();
 
-            viewModel = new CatalogPageViewModel(this, new CatalogPageDataAccessLayer());
+            viewModel = new CatalogPageViewModel(this, new MovieRepository());
 
             DataContext = viewModel;
         }

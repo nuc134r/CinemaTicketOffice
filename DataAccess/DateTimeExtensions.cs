@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace KioskClient
+namespace DataAccess
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public static class DateTimeExtensions
