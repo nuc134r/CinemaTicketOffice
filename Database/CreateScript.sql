@@ -1,19 +1,45 @@
 ﻿USE [CinemaDB]
+SET NOCOUNT ON;
+
+/********************************
+ *	  Удаление старых таблиц	*
+ ********************************/
+IF OBJECT_ID('dbo.MovieGenres', 'U') IS NOT NULL DROP TABLE [MovieGenres];
+IF OBJECT_ID('dbo.Movie', 'U') IS NOT NULL DROP TABLE [Movie];
+IF OBJECT_ID('dbo.Genre', 'U') IS NOT NULL DROP TABLE [Genre];
+IF OBJECT_ID('dbo.AgeLimit', 'U') IS NOT NULL DROP TABLE [AgeLimit];
+
+/********************************
+ *	  Возрастные ограничения	*
+ ********************************/
+CREATE TABLE [AgeLimit]
+(
+	ID				INT					IDENTITY,
+	Limit			VARCHAR(3)			NOT NULL,
+
+	CONSTRAINT AgeLimitPK PRIMARY KEY (ID),
+)
+
+INSERT INTO [AgeLimit] (Limit) VALUES ('0+'), ('6+'), ('12+'), ('14+'), ('16+'), ('18+')
 
 /********************************
  *			  Фильмы			*
  ********************************/
-CREATE TABLE [Movie] 
+CREATE TABLE [Movie]
 (
 	ID				INT					IDENTITY,
-	Title			NVARCHAR (128)		NOT NULL,
+	Title			NVARCHAR (128)		NOT NULL, 
 	Plot			NVARCHAR (4000)		NOT NULL,
 	Duration		INT					NOT NULL,
 	Poster			IMAGE				NOT NULL,
 	ReleaseDate		DATE				NOT NULL,
-	AgeLimit		INT					NOT NULL,
+	AgeLimitID		INT					NOT NULL DEFAULT 1, 
 
-	CONSTRAINT MoviePK PRIMARY KEY (ID)
+	CONSTRAINT MoviePK PRIMARY KEY (ID),
+	CONSTRAINT MovieTitleAK UNIQUE (Title),
+	CONSTRAINT AgeLimitFK FOREIGN KEY (AgeLimitID) REFERENCES [AgeLimit] (ID),
+
+	CONSTRAINT TitleFilledCK CHECK (Title <> '')
 )
 
 /********************************
@@ -21,10 +47,11 @@ CREATE TABLE [Movie]
  ********************************/
 CREATE TABLE [Genre] 
 (
-	ID				INT					IDENTITY,
+	ID				INT					IDENTITY,  
 	Name			NVARCHAR (128)		NOT NULL,
-
-	CONSTRAINT GenrePK PRIMARY KEY (ID)
+	
+	CONSTRAINT GenrePK PRIMARY KEY (ID),
+	CONSTRAINT GenreNameAK UNIQUE (Name),
 )
 
 /********************************
@@ -38,24 +65,4 @@ CREATE TABLE [MovieGenres]
 	CONSTRAINT MovieGenreFK FOREIGN KEY (MovieID) REFERENCES [Movie] (ID),
 	CONSTRAINT GenreMovieFK FOREIGN KEY (GenreID) REFERENCES [Genre] (ID),
 	CONSTRAINT MovieGenreAK UNIQUE (MovieID, GenreID)
-)
-
-
-
-
-
-
-
-
-CREATE TABLE [Term]
-(
-	ID				INT					IDENTITY,
-	SubjectID		INT					NULL,
-	Name_RU			NVARCHAR (128)		NOT NULL,
-	Definition_RU	NVARCHAR (2048)		NOT NULL,
-	Name_EN			VARCHAR  (128)		NOT NULL,
-	Definition_EN	VARCHAR  (2048)		NOT NULL,
-
-	CONSTRAINT TermPK PRIMARY KEY (ID),
-	CONSTRAINT TermSubjectFK FOREIGN KEY (SubjectID) REFERENCES [Subject] (ID)
 )
