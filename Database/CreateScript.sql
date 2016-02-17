@@ -1,4 +1,5 @@
 ﻿USE [CinemaDB]
+
 SET NOCOUNT ON;
 
 /********************************
@@ -15,12 +16,12 @@ IF OBJECT_ID('dbo.AgeLimit', 'U') IS NOT NULL DROP TABLE [AgeLimit];
 CREATE TABLE [AgeLimit]
 (
 	ID				INT					IDENTITY,
-	Limit			VARCHAR(3)			NOT NULL,
+	Limit			TINYINT				NOT NULL,
 
 	CONSTRAINT AgeLimitPK PRIMARY KEY (ID),
 )
 
-INSERT INTO [AgeLimit] (Limit) VALUES ('0+'), ('6+'), ('12+'), ('14+'), ('16+'), ('18+')
+INSERT INTO [AgeLimit] (Limit) VALUES (0), (6), (12), (14), (16), (18)
 
 /********************************
  *			  Фильмы			*
@@ -36,9 +37,9 @@ CREATE TABLE [Movie]
 	AgeLimitID		INT					NOT NULL DEFAULT 1, 
 
 	CONSTRAINT MoviePK PRIMARY KEY (ID),
-	CONSTRAINT MovieTitleAK UNIQUE (Title),
 	CONSTRAINT AgeLimitFK FOREIGN KEY (AgeLimitID) REFERENCES [AgeLimit] (ID),
-
+	
+	CONSTRAINT MovieTitleAK	UNIQUE (Title),
 	CONSTRAINT TitleFilledCK CHECK (Title <> '')
 )
 
@@ -59,8 +60,8 @@ CREATE TABLE [Genre]
  ********************************/
 CREATE TABLE [MovieGenres] 
 (
-	MovieID				INT				NOT NULL,
-	GenreID				INT				NOT NULL,
+	MovieID			INT				NOT NULL,
+	GenreID			INT				NOT NULL,
 	
 	CONSTRAINT MovieGenreFK FOREIGN KEY (MovieID) REFERENCES [Movie] (ID),
 	CONSTRAINT GenreMovieFK FOREIGN KEY (GenreID) REFERENCES [Genre] (ID),
