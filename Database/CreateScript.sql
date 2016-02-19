@@ -22,7 +22,7 @@ CREATE TABLE [AgeLimit]
 
 	CONSTRAINT AgeLimitPK PRIMARY KEY (Id),
 	CONSTRAINT AgeLimitAK UNIQUE (Limit),
-	CONSTRAINT AgeLimitCK CHECK (Limit = 0 OR Limit = 6 OR Limit = 12 OR Limit = 14 OR Limit = 16 OR Limit = 18)
+	CONSTRAINT AgeLimitCK CHECK (Limit IN (0, 6, 12, 14, 16, 18))
 )
 
 INSERT INTO [AgeLimit] (Limit) VALUES (0), (6), (12), (14), (16), (18)
@@ -35,7 +35,7 @@ CREATE TABLE [Movie]
 	Id				INT					IDENTITY,
 	Title			NVARCHAR (128)		NOT NULL, 
 	Plot			NVARCHAR (4000)		NOT NULL,
-	Duration		INT					NOT NULL,
+	Duration		SMALLINT			NOT NULL,  -- Modern Times Forever (2011 Documentary) lasts 14400 minutes
 	Poster			IMAGE				NOT NULL,
 	ReleaseDate		DATE				NOT NULL,
 	AgeLimitId		INT					NOT NULL DEFAULT 1, 
@@ -80,9 +80,8 @@ CREATE TABLE [MovieGenres]
 CREATE TABLE [Auditorium]
 (
 	Id				INT				IDENTITY,
-	SeatsNumber		INT				NOT NULL,
-	RowsNumber		INT				NOT NULL,
-	ThreeDee		BIT				NOT NULL DEFAULT 0,
+	SeatsNumber		TINYINT			NOT NULL,
+	RowsNumber		TINYINT			NOT NULL,
 
 	CONSTRAINT AuditoriumPK PRIMARY KEY (Id),
 	CONSTRAINT AuditoriumSeatsNumberPositiveCK CHECK (SeatsNumber > 0),
@@ -97,10 +96,13 @@ CREATE TABLE [Showtime]
 	Id				INT				IDENTITY,
 	MovieId			INT				NOT NULL,
 	AuditoriumId	INT				NOT NULL,
+	ShowtimeDate	DateTime		NOT NULL,
 	Price			MONEY			NOT NULL,
+	ThreeDee		BIT				NOT NULL DEFAULT 0,
 	
 	CONSTRAINT ShowtimePK PRIMARY KEY (Id),
 	CONSTRAINT MovieShowtimeFK FOREIGN KEY (MovieId) REFERENCES [Movie] (Id),
 	CONSTRAINT AuditoriumShowtimeFK FOREIGN KEY (AuditoriumId) REFERENCES [Auditorium] (Id),
-	CONSTRAINT ShowtimePricePositiveCK CHECK (Price > 0)
+	CONSTRAINT ShowtimePricePositiveCK CHECK (Price > 0),
+	CONSTRAINT ShowtimeAK UNIQUE (MovieId, AuditoriumId, ShowtimeDate)
 )
