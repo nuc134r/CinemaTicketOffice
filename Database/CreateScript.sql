@@ -1,16 +1,18 @@
-﻿USE [CinemaDB]
+﻿-- https://www.mssqltips.com/sqlservertip/2365/sql-server-foreign-key-update-and-delete-rules/
+
+USE [CinemaDB]
 
 SET NOCOUNT ON;
 
 /********************************
  *	  Удаление старых таблиц	*
  ********************************/
-IF OBJECT_ID('dbo.MovieGenres', 'U') IS NOT NULL DROP TABLE [MovieGenres];
-IF OBJECT_ID('dbo.Showtime', 'U') IS NOT NULL DROP TABLE [Showtime];
-IF OBJECT_ID('dbo.Movie', 'U') IS NOT NULL DROP TABLE [Movie];
-IF OBJECT_ID('dbo.AgeLimit', 'U') IS NOT NULL DROP TABLE [AgeLimit];
-IF OBJECT_ID('dbo.Genre', 'U') IS NOT NULL DROP TABLE [Genre];
-IF OBJECT_ID('dbo.Auditorium', 'U') IS NOT NULL DROP TABLE [Auditorium];
+IF OBJECT_ID('dbo.MovieGenres', 'U')	IS NOT NULL DROP TABLE [MovieGenres];
+IF OBJECT_ID('dbo.Showtime', 'U')		IS NOT NULL DROP TABLE [Showtime];
+IF OBJECT_ID('dbo.Movie', 'U')			IS NOT NULL DROP TABLE [Movie];
+IF OBJECT_ID('dbo.AgeLimit', 'U')		IS NOT NULL DROP TABLE [AgeLimit];
+IF OBJECT_ID('dbo.Genre', 'U')			IS NOT NULL DROP TABLE [Genre];
+IF OBJECT_ID('dbo.Auditorium', 'U')		IS NOT NULL DROP TABLE [Auditorium];
 
 /********************************
  *	  Возрастные ограничения	*
@@ -69,8 +71,8 @@ CREATE TABLE [MovieGenres]
 	MovieId			INT				NOT NULL,
 	GenreId			INT				NOT NULL,
 	
-	CONSTRAINT MovieGenreFK FOREIGN KEY (MovieId) REFERENCES [Movie] (Id),
-	CONSTRAINT GenreMovieFK FOREIGN KEY (GenreId) REFERENCES [Genre] (Id),
+	CONSTRAINT MovieGenreFK FOREIGN KEY (MovieId) REFERENCES [Movie] (Id) ON DELETE CASCADE,
+	CONSTRAINT GenreMovieFK FOREIGN KEY (GenreId) REFERENCES [Genre] (Id) ON DELETE CASCADE,
 	CONSTRAINT MovieGenreAK UNIQUE (MovieId, GenreId)
 )
 
@@ -101,8 +103,8 @@ CREATE TABLE [Showtime]
 	ThreeDee		BIT				NOT NULL DEFAULT 0,
 	
 	CONSTRAINT ShowtimePK PRIMARY KEY (Id),
-	CONSTRAINT MovieShowtimeFK FOREIGN KEY (MovieId) REFERENCES [Movie] (Id),
-	CONSTRAINT AuditoriumShowtimeFK FOREIGN KEY (AuditoriumId) REFERENCES [Auditorium] (Id),
+	CONSTRAINT MovieShowtimeFK FOREIGN KEY (MovieId) REFERENCES [Movie] (Id) ON DELETE CASCADE,
+	CONSTRAINT AuditoriumShowtimeFK FOREIGN KEY (AuditoriumId) REFERENCES [Auditorium] (Id) ON DELETE CASCADE,
 	CONSTRAINT ShowtimePricePositiveCK CHECK (Price > 0),
 	CONSTRAINT ShowtimeAK UNIQUE (MovieId, AuditoriumId, ShowtimeDate)
 )
