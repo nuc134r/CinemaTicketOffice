@@ -18,9 +18,9 @@ namespace Tests
             var genre2 = new Genre {Name = "comedy" };
             var genre3 = new Genre {Name = "adventure" };
 
-            var movie1 = new Movie {Title = "Action movie", Genres = new List<Genre> {genre1}};
-            var movie2 = new Movie {Title = "Comedy movie", Genres = new List<Genre> {genre2}};
-            var movie3 = new Movie {Title = "Adventure movie", Genres = new List<Genre> {genre3}};
+            var movie1 = new Movie {Title = "Action Movie", Genres = new List<Genre> {genre1}};
+            var movie2 = new Movie {Title = "Comedy Movie", Genres = new List<Genre> {genre2}};
+            var movie3 = new Movie {Title = "Adventure Movie", Genres = new List<Genre> {genre3}};
 
             movieRepository.GenresStorage = new List<Genre> {genre1, genre2, genre3};
             movieRepository.MoviesStorage = new List<Movie> {movie1, movie2, movie3};
