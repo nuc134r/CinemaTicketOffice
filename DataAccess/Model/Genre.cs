@@ -7,14 +7,8 @@ namespace DataAccess.Model
     {
         private bool isSelected;
 
-        public Genre(int id, string name)
-        {
-            Id = id;
-            Name = name;
-        }
-
-        public int Id { get; private set; }
-        public string Name { get; private set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
 
         public bool IsSelected
         {
@@ -32,11 +26,6 @@ namespace DataAccess.Model
             if (genre != null)
                 return Name == genre.Name;
             return base.Equals(obj);
-        }
-
-        protected bool Equals(Genre other)
-        {
-            return isSelected == other.isSelected && Id == other.Id && string.Equals(Name, other.Name);
         }
 
         public override int GetHashCode()

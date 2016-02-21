@@ -7,20 +7,6 @@ namespace DataAccess.Model
 {
     public class Movie
     {
-        public Movie(int id, string title, string plot, int duration, BitmapImage poster, List<DateTime> showtimes,
-            List<Genre> genres, DateTime releaseDate, int ageLimit)
-        {
-            Id = id;
-            Title = title;
-            Plot = plot;
-            Duration = duration;
-            Poster = poster;
-            Showtimes = showtimes;
-            Genres = genres;
-            ReleaseDate = releaseDate;
-            AgeLimit = ageLimit;
-        }
-
         public string GenresString
         {
             get { return string.Join(", ", Genres.Select(_ => _.Name)); }
@@ -40,14 +26,14 @@ namespace DataAccess.Model
             get { return AgeLimit + "+"; }
         }
 
-        public int Id { get; private set; }
-        public string Title { get; private set; }
-        public string Plot { get; private set; }
-        public int Duration { get; private set; }
-        public int AgeLimit { get; private set; }
-        public BitmapImage Poster { get; private set; }
-        public List<DateTime> Showtimes { get; private set; }
-        public List<Genre> Genres { get; private set; }
-        public DateTime ReleaseDate { get; private set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Plot { get; set; }
+        public int Duration { get; set; }
+        public int AgeLimit { get; set; }
+        public BitmapImage Poster { get; set; }
+        public List<DateTime> Showtimes { get; set; }
+        public List<Genre> Genres { get; set; }
+        public DateTime ReleaseDate { get; set; }
     }
 }

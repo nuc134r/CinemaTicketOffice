@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Media.Imaging;
-using DataAccess.Builders;
 using DataAccess.Model;
 
 namespace DataAccess.Repository
@@ -39,7 +38,7 @@ namespace DataAccess.Repository
         {
             return new List<Movie>
             {
-                MovieBuilder.Create()
+                /*MovieBuilder.Create()
                     .WithTitle("Вечное сияние чистого разума")
                     .WithPoster(new BitmapImage(new Uri(@"C:\CinemaTicketOffice\Posters\5492.jpg")))
                     .WithGenre(genres[3])
@@ -86,7 +85,7 @@ namespace DataAccess.Repository
                     .WithPlot(
                         "По сюжету главная героиня родилась вместе с XX веком и живет на свете уже сто лет, но при этом не стареет. Несмотря на свою долгую жизнь, Адалин так и не смогла найти любимого человека. Однако наконец-то она встречает мужчину, ради которого сможет снова стать смертной и состариться вместе с ним.")
                     .WithReleaseDate(08.04.of(2015))
-                    .Please()
+                    .Please()*/
             };
         }
 
@@ -94,7 +93,7 @@ namespace DataAccess.Repository
         {
             return new List<Genre>
             {
-                GenreBuilder.Create()
+                /*GenreBuilder.Create()
                     .WithName("боевик") // 0
                     .Please(),
                 GenreBuilder.Create()
@@ -123,7 +122,7 @@ namespace DataAccess.Repository
                     .Please(),
                 GenreBuilder.Create()
                     .WithName("фэнтези") // 9
-                    .Please()
+                    .Please()*/
             };
         }
     }

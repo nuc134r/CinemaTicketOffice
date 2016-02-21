@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using DataAccess.Builders;
 using DataAccess.Model;
 
 namespace DataAccess.Repository
@@ -42,10 +41,7 @@ namespace DataAccess.Repository
         {
             return new List<Showtime>
             {
-                ShowtimeBuilder.Create()
-                    .WithMovie(movie)
-                    .WithAuditorium(null)
-                    .Please()
+                new Showtime() { Movie = movie }
             };
         }
     }

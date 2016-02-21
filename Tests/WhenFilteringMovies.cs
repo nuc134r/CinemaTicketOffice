@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataAccess.Builders;
+﻿using System.Collections.Generic;
 using DataAccess.Model;
 using KioskClient.ViewModel;
 using NUnit.Framework;
@@ -14,23 +9,47 @@ namespace Tests
     [TestFixture]
     public class WhenFilteringMovies
     {
-        private MovieRepositoryStub movieRepository;
-
         [SetUp]
         public void SetUp()
         {
             movieRepository = new MovieRepositoryStub();
 
-            var genre1 = GenreBuilder.Create().WithName("action").Please();
-            var genre2 = GenreBuilder.Create().WithName("comedy").Please();
-            var genre3 = GenreBuilder.Create().WithName("adventure").Please();
+            var genre1 = new Genre {Name = "action"};
+            var genre2 = new Genre {Name = "comedy" };
+            var genre3 = new Genre {Name = "adventure" };
 
-            var movie1 = MovieBuilder.Create().WithTitle("Action Movie").WithGenre(genre1).Please();
-            var movie2 = MovieBuilder.Create().WithTitle("Comedy Movie").WithGenre(genre2).Please();
-            var movie3 = MovieBuilder.Create().WithTitle("Adventure Movie").WithGenre(genre3).Please();
+            var movie1 = new Movie {Title = "Action movie", Genres = new List<Genre> {genre1}};
+            var movie2 = new Movie {Title = "Comedy movie", Genres = new List<Genre> {genre2}};
+            var movie3 = new Movie {Title = "Adventure movie", Genres = new List<Genre> {genre3}};
 
-            movieRepository.GenresStorage = new List<Genre> { genre1, genre2, genre3 };
-            movieRepository.MoviesStorage = new List<Movie> { movie1, movie2, movie3 };
+            movieRepository.GenresStorage = new List<Genre> {genre1, genre2, genre3};
+            movieRepository.MoviesStorage = new List<Movie> {movie1, movie2, movie3};
+        }
+
+        private MovieRepositoryStub movieRepository;
+
+        [Test]
+        public void AllMoviesShownIfNoGenreSelected()
+        {
+            var viewModel = new CatalogPageViewModel(null, movieRepository);
+
+            viewModel.Genres[0].IsSelected = false;
+            viewModel.Genres[1].IsSelected = false;
+            viewModel.Genres[2].IsSelected = false;
+
+            Assert.AreEqual(viewModel.Movies.Count, 3);
+        }
+
+        [Test]
+        public void FilterIsReset()
+        {
+            var viewModel = new CatalogPageViewModel(null, movieRepository);
+
+            viewModel.Genres[0].IsSelected = true;
+            viewModel.Genres[1].IsSelected = true;
+            viewModel.ResetGenresFilter();
+
+            Assert.AreEqual(viewModel.Movies.Count, 3);
         }
 
         [Test]
@@ -55,30 +74,6 @@ namespace Tests
             Assert.AreEqual(viewModel.Movies.Count, 2);
             Assert.AreEqual(viewModel.Movies[0].Title, "Action Movie");
             Assert.AreEqual(viewModel.Movies[1].Title, "Comedy Movie");
-        }
-
-        [Test]
-        public void FilterIsReset()
-        {
-            var viewModel = new CatalogPageViewModel(null, movieRepository);
-
-            viewModel.Genres[0].IsSelected = true;
-            viewModel.Genres[1].IsSelected = true;
-            viewModel.ResetGenresFilter();
-
-            Assert.AreEqual(viewModel.Movies.Count, 3);
-        }
-
-        [Test]
-        public void AllMoviesShownIfNoGenreSelected()
-        {
-            var viewModel = new CatalogPageViewModel(null, movieRepository);
-
-            viewModel.Genres[0].IsSelected = false;
-            viewModel.Genres[1].IsSelected = false;
-            viewModel.Genres[2].IsSelected = false;
-
-            Assert.AreEqual(viewModel.Movies.Count, 3);
         }
     }
 }

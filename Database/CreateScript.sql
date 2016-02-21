@@ -26,7 +26,7 @@ CREATE TABLE [AgeLimit]
 	CONSTRAINT AgeLimitAK UNIQUE (Limit),
 	CONSTRAINT AgeLimitCK CHECK (Limit IN (0, 6, 12, 14, 16, 18))
 )
-
+								/*     1    2    3     4     5     6   */
 INSERT INTO [AgeLimit] (Limit) VALUES (0), (6), (12), (14), (16), (18)
 
 /********************************
