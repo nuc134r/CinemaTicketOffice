@@ -39,7 +39,7 @@
             </StatusBar.ItemsPanel>
             <StatusBarItem Content="Подключение:" HorizontalAlignment="Left" Foreground="#FF6C6C6C" />
             <StatusBarItem Content="sergio-laptop/MSSQLSERVER2014" HorizontalAlignment="Left" Margin="85,0,0,0"/>
-            <StatusBarItem Content="{Binding ListCount}" Grid.Column="1" HorizontalAlignment="Right" Margin="0" Width="32"/>
+            <StatusBarItem x:Name="StatusBarCount" Grid.Column="1" HorizontalAlignment="Right" Margin="0" Width="32"/>
             <StatusBarItem Content="Всего:" Foreground="#FF6C6C6C" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,32,0"/>
         </StatusBar>
     </Grid>

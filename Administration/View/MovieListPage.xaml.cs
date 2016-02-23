@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,13 +21,13 @@ namespace Administration.View
 {
     public partial class MovieListPage : Page
     {
-        public int ListCount { get { return movies != null ? movies.Count : 0; } }
-
+        private readonly MainWindow window;
         private ObservableCollection<Movie> movies;
         private readonly MovieRepository repository = new MovieRepository();
 
-        public MovieListPage()
+        public MovieListPage(MainWindow window)
         {
+            this.window = window;
             InitializeComponent();
 
             DataContext = movies;
@@ -34,14 +35,20 @@ namespace Administration.View
 
         private void MovieListPage_OnLoaded(object sender, RoutedEventArgs e)
         {
-            
             movies = new ObservableCollection<Movie>(repository.GetMovies());
+            window.StatusBarCount.Content = movies.Count;
+            movies.CollectionChanged += MoviesOnCollectionChanged;
             listView.ItemsSource = movies;
+        }
+
+        private void MoviesOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
+        {
+            window.StatusBarCount.Content = movies.Count;
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            movies.Clear();
+            
         }
     }
 }
