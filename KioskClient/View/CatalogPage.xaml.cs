@@ -30,7 +30,8 @@ namespace KioskClient.View
         private void ResetFilterButton_OnClick(object sender, RoutedEventArgs e)
         {
             viewModel.ResetGenresFilter();
-            GenresListBox.ScrollIntoView(GenresListBox.Items[0]);
+            if (GenresListBox.Items.Count != 0)
+                GenresListBox.ScrollIntoView(GenresListBox.Items[0]);
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

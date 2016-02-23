@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Controls;
 using DataAccess.Model;
@@ -10,8 +13,11 @@ namespace KioskClient.ViewModel
 {
     public class CatalogPageViewModel : ViewModelBase
     {
-        private readonly List<Movie> allMovies;
+        private readonly IMovieRepository movieRepository;
+        private List<Movie> allMovies;
         private bool pauseFiltering;
+
+        private readonly BackgroundWorker movieDetailsRetriever = new BackgroundWorker();
 
         private new CatalogPage view
         {
@@ -21,20 +27,23 @@ namespace KioskClient.ViewModel
 
         public CatalogPageViewModel(CatalogPage view, IMovieRepository movieRepository)
         {
+            this.movieRepository = movieRepository;
             this.view = view;
 
-            Genres = movieRepository.Genres;
-            allMovies = movieRepository.Movies;
-
-            Movies = new ObservableCollection<Movie>(allMovies);
+            Genres = new ObservableCollection<Genre>(movieRepository.GetGenres());
 
             foreach (var genre in Genres)
             {
                 genre.PropertyChanged += (sender, args) => FilterByGenres();
             }
-        }
 
-        public List<Genre> Genres { get; private set; }
+            allMovies = movieRepository.GetMovies().ToList();
+            Movies = new ObservableCollection<Movie>(allMovies);
+
+            allMovies.ForEach(movieRepository.GetMovieDetails);
+        }
+        
+        public ObservableCollection<Genre> Genres { get; private set; }
         public ObservableCollection<Movie> Movies { get; private set; }
         
         public void ResetGenresFilter()
@@ -57,28 +66,24 @@ namespace KioskClient.ViewModel
         {
             if (pauseFiltering) return;
 
-            List<Movie> matchingMovies;
-            var selectedGenres = Genres.Where(genre => genre.IsSelected).Select(_ => _.Name).ToArray();
+            var selectedGenres = Genres.Where(genre => genre.IsSelected).Select(_ => _.Id).ToArray();
 
-            // Если не выбран ни один жанр, то показываем все фильмы
-            if (selectedGenres.Length == 0)
+            if (view != null) view.DetachSelectionChangedHandler();
+            Movies.Clear();
+
+            if (!selectedGenres.Any())
             {
-                matchingMovies = allMovies;
+                allMovies.ForEach(movie => Movies.Add(movie));
             }
             else
             {
-                matchingMovies =
-                    allMovies.Where(movie => movie.Genres.Select(genre => genre.Name)
-                        .Intersect(selectedGenres)
-                        .Any()).ToList();
-            }
-
-            if (view != null) view.DetachSelectionChangedHandler();
-
-            Movies.Clear();
-            foreach (var movie in matchingMovies)
-            {
-                Movies.Add(movie);
+                foreach (var movie in allMovies)
+                {
+                    if (movie.Genres.Any(_ => selectedGenres.Contains(_.Id)))
+                    {
+                        Movies.Add(movie);
+                    }
+                }
             }
 
             if (view != null) view.AttachSelectionChangedHandler();

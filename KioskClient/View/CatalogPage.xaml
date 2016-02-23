@@ -54,7 +54,7 @@
             </ListBox>
         </Grid>
         <Grid x:Name="GenresGrid" Background="#FF323232" HorizontalAlignment="Right" Width="310" Margin="0" >
-            <TextBlock Margin="30,10,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontSize="29.333" d:CopyToken="1e987d66-a6a4-4a74-b1dc-d66f5da3170e" Text="Жанры"/>
+            <TextBlock Margin="30,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontSize="29.333" d:CopyToken="1e987d66-a6a4-4a74-b1dc-d66f5da3170e" Text="Жанры" HorizontalAlignment="Left" Width="250"/>
             <TextBlock Height="19" Margin="136,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#B2FFFFFF" TextAlignment="Right" HorizontalAlignment="Left" Width="144">
                 <Run Text="Bсего:" />
                 <Run Text="{Binding Genres.Count, Mode=OneWay}" />

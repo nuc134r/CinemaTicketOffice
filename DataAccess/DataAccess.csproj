@@ -34,6 +34,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -51,10 +52,13 @@
     <Compile Include="Model\Genre.cs" />
     <Compile Include="Model\Movie.cs" />
     <Compile Include="Model\Showtime.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CommandExecutor.cs" />
     <Compile Include="Repository\IMovieRepository.cs" />
     <Compile Include="Repository\IShowtimeRepository.cs" />
     <Compile Include="Repository\MovieRepository.cs" />
+    <Compile Include="ObjectExtensions.cs" />
     <Compile Include="Repository\ShowtimeRepository.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

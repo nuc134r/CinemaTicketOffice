@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using DataAccess.Model;
 using KioskClient.ViewModel;
 using NUnit.Framework;

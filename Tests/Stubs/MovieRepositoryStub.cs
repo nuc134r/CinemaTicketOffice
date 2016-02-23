@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DataAccess.Model;
 using DataAccess.Repository;
@@ -9,14 +10,19 @@ namespace Tests.Stubs
         public List<Genre> GenresStorage = new List<Genre>();
         public List<Movie> MoviesStorage = new List<Movie>();
 
-        public List<Movie> Movies
+        public IEnumerable<Movie> GetMovies()
         {
-            get { return MoviesStorage; }
+            return MoviesStorage;
         }
 
-        public List<Genre> Genres
+        public IEnumerable<Genre> GetGenres()
         {
-            get { return GenresStorage; }
+            return GenresStorage;
+        }
+
+        public void GetMovieDetails(Movie movie)
+        {
+            
         }
 
         public void Refresh()

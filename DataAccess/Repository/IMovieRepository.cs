@@ -5,8 +5,8 @@ namespace DataAccess.Repository
 {
     public interface IMovieRepository
     {
-        List<Movie> Movies { get; }
-        List<Genre> Genres { get; }
-        void Refresh();
+        IEnumerable<Movie> GetMovies();
+        IEnumerable<Genre> GetGenres();
+        void GetMovieDetails(Movie movie);
     }
 }

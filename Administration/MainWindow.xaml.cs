@@ -24,13 +24,7 @@ namespace Administration
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-            listBox.ItemsSource = new List<EntityType>
-            {
-                new EntityType() {Title = "Фильмы", Count = 4},
-                new EntityType() {Title = "Сеансы", Count = 16},
-                new EntityType() {Title = "Кинозалы", Count = 3},
-                new EntityType() {Title = "Жанры", Count = 10}
-            };
+            
         }
     }
 }
