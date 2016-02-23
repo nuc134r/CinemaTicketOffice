@@ -19,7 +19,7 @@
             <ColumnDefinition Width="11"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Frame x:Name="mainFrame" Grid.Column="2" Margin="0,10,10,28"/>
+        <Frame x:Name="mainFrame" Content="{Binding}" Grid.Column="2" Margin="0,10,10,28"/>
         <TreeView Grid.Column="0" Margin="10,10,0,28">
             <TreeViewItem Header="Фильмы" IsSelected="True" />
             <TreeViewItem Header="Жанры"/>
@@ -39,7 +39,7 @@
             </StatusBar.ItemsPanel>
             <StatusBarItem Content="Подключение:" HorizontalAlignment="Left" Foreground="#FF6C6C6C" />
             <StatusBarItem Content="sergio-laptop/MSSQLSERVER2014" HorizontalAlignment="Left" Margin="85,0,0,0"/>
-            <StatusBarItem Content="30" Grid.Column="1" HorizontalAlignment="Right" Margin="0" Width="32"/>
+            <StatusBarItem Content="{Binding ListCount}" Grid.Column="1" HorizontalAlignment="Right" Margin="0" Width="32"/>
             <StatusBarItem Content="Всего:" Foreground="#FF6C6C6C" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,32,0"/>
         </StatusBar>
     </Grid>

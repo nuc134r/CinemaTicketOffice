@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows.Media.Imaging;
 
 namespace DataAccess.Model
 {
-    public class Movie : INotifyPropertyChanged
+    public class Movie
     {
         public string GenresString
         {
@@ -42,18 +40,5 @@ namespace DataAccess.Model
         public List<DateTime> Showtimes { get; set; }
         public List<Genre> Genres { get; set; }
         public DateTime ReleaseDate { get; set; }
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void NotifyChanged()
-        {
-            OnPropertyChanged();
-        }
-
-        [Annotations.NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

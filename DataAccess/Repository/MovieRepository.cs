@@ -7,6 +7,8 @@ using DataAccess.Model;
 
 namespace DataAccess.Repository
 {
+    // http://stackoverflow.com/questions/2440060/whats-the-best-way-to-test-sql-server-connection-programmatically
+
     public class MovieRepository : IMovieRepository
     {
         public IEnumerable<Movie> GetMovies()

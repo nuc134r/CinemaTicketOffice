@@ -15,11 +15,10 @@ using System.Windows.Shapes;
 
 namespace Administration.View
 {
-    /// <summary>
-    /// Interaction logic for ListPageBase.xaml
-    /// </summary>
     public partial class ListPageBase : Page
     {
+        public virtual int ListCount { get { return 0; } }
+
         public ListPageBase()
         {
             InitializeComponent();

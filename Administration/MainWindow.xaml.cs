@@ -25,8 +25,8 @@ namespace Administration
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-            var page = new ListPageBase();
-            mainFrame.Content = page;
+            var page = new MovieListPage();
+            DataContext = page;
         }
     }
 }
