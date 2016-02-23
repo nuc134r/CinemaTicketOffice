@@ -7,14 +7,10 @@ IF OBJECT_ID('dbo.ListGenres', 'P')	IS NOT NULL DROP PROCEDURE [ListGenres]
 IF OBJECT_ID('dbo.MovieDetails', 'P') IS NOT NULL DROP PROCEDURE [MovieDetails]
 GO
 
-/*
-SELECT * FROM MovieGenres
-
-*/
-
 CREATE PROCEDURE dbo.ListMovies
 AS 
     SET NOCOUNT ON;
+
     SELECT 
 		Id,
 		Title,
@@ -30,6 +26,7 @@ GO
 CREATE PROCEDURE dbo.ListGenres
 AS 
     SET NOCOUNT ON;
+
     SELECT 
 		Id,
 		Name

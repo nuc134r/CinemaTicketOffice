@@ -12,21 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Administration.View;
 
-namespace Administration
+namespace Administration.View
 {
-    public partial class MainWindow : Window
+    /// <summary>
+    /// Interaction logic for ListPageBase.xaml
+    /// </summary>
+    public partial class ListPageBase : Page
     {
-        public MainWindow()
+        public ListPageBase()
         {
             InitializeComponent();
-        }
-
-        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
-        {
-            var page = new ListPageBase();
-            mainFrame.Content = page;
         }
     }
 }
