@@ -21,6 +21,12 @@ namespace Administration
             viewModel.CheckConnection();
         }
 
+        public string Password
+        {
+            get { return passwordBox.Password; }
+            set { passwordBox.Password = value; }
+        }
+
         public void IndicateSuccess()
         {
             DialogResult = true;
