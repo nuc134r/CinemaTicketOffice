@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.ComponentModel;
 using System.Linq;
-using System.Windows.Controls;
+using System.Windows;
 using DataAccess.Model;
 using DataAccess.Repository;
 using KioskClient.View;
@@ -13,25 +11,15 @@ namespace KioskClient.ViewModel
 {
     public class CatalogPageViewModel : ViewModelBase
     {
-        private readonly IMovieRepository movieRepository;
-        private List<Movie> allMovies;
+        private readonly List<Movie> allMovies;
         private bool pauseFiltering;
-
-        private readonly BackgroundWorker movieDetailsRetriever = new BackgroundWorker();
-
-        private new CatalogPage view
-        {
-            get { return (CatalogPage) base.view; }
-            set { base.view = value; }
-        }
 
         public CatalogPageViewModel(CatalogPage view, IMovieRepository movieRepository)
         {
-            this.movieRepository = movieRepository;
             this.view = view;
-
+            
             Genres = new ObservableCollection<Genre>(movieRepository.GetGenres());
-
+            
             foreach (var genre in Genres)
             {
                 genre.PropertyChanged += (sender, args) => FilterByGenres();
@@ -42,10 +30,16 @@ namespace KioskClient.ViewModel
 
             allMovies.ForEach(movieRepository.GetMovieDetails);
         }
-        
+
+        private new CatalogPage view
+        {
+            get { return (CatalogPage) base.view; }
+            set { base.view = value; }
+        }
+
         public ObservableCollection<Genre> Genres { get; private set; }
         public ObservableCollection<Movie> Movies { get; private set; }
-        
+
         public void ResetGenresFilter()
         {
             // Обработчик подключен к каждому свойству IsSelected в Genres

@@ -1,6 +1,4 @@
-﻿-- https://www.mssqltips.com/sqlservertip/2365/sql-server-foreign-key-update-and-delete-rules/
-
-USE [CinemaDB]
+﻿USE [CinemaDB]
 
 SET NOCOUNT ON;
 

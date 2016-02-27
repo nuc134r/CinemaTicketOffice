@@ -1,20 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using DataAccess.Model;
+﻿using System.Windows.Controls;
+using Administration.Properties;
+using Administration.ViewModel;
+using DataAccess;
 using DataAccess.Repository;
 
 namespace Administration.View
@@ -22,33 +9,27 @@ namespace Administration.View
     public partial class MovieListPage : Page
     {
         private readonly MainWindow window;
-        private ObservableCollection<Movie> movies;
-        private readonly MovieRepository repository = new MovieRepository();
 
         public MovieListPage(MainWindow window)
         {
             this.window = window;
             InitializeComponent();
 
-            DataContext = movies;
+            var connectionString = ConnectionStringBuilder.Build(
+                Settings.Default.server,
+                Settings.Default.database,
+                Settings.Default.user,
+                Settings.Default.password);
+
+            var repository = new MovieRepository(connectionString);
+
+            var viewModel = new MoviesListPageViewModel(this, repository);
+            DataContext = viewModel.Movies;
         }
 
-        private void MovieListPage_OnLoaded(object sender, RoutedEventArgs e)
+        public int ListCount
         {
-            movies = new ObservableCollection<Movie>(repository.GetMovies());
-            window.StatusBarCount.Content = movies.Count;
-            movies.CollectionChanged += MoviesOnCollectionChanged;
-            listView.ItemsSource = movies;
-        }
-
-        private void MoviesOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
-        {
-            window.StatusBarCount.Content = movies.Count;
-        }
-
-        private void CreateButton_Click(object sender, RoutedEventArgs e)
-        {
-            
+            set { window.StatusBarCount.Content = value; }
         }
     }
 }

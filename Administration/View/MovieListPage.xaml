@@ -6,13 +6,13 @@
       xmlns:local="clr-namespace:Administration.View"
       mc:Ignorable="d" 
       d:DesignHeight="363.324" d:DesignWidth="594.53"
-      Title="ListPageBase" Loaded="MovieListPage_OnLoaded">
+      Title="ListPageBase" >
 
     <Grid>
-        <Button x:Name="CreateButton" Content="Создать" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="CreateButton_Click"/>
+        <Button x:Name="CreateButton" Content="Создать" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"  />
         <Button x:Name="EditButton" Content="Изменить" Margin="0,0,80,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75"/>
         <Button x:Name="DeleteButton" Content="Удалить" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75"/>
-        <ListView x:Name="listView" Margin="0,25,0,0" Foreground="Black" >
+        <ListView x:Name="listView" ItemsSource="{Binding}" Margin="0,25,0,0" Foreground="Black" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Название"  DisplayMemberBinding="{Binding Title}" />
@@ -23,6 +23,5 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
     </Grid>
 </Page>

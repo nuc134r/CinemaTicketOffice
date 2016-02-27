@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using DataAccess;
 using DataAccess.Model;
 using DataAccess.Repository;
+using KioskClient.Properties;
 using KioskClient.ViewModel;
 
 namespace KioskClient.View
@@ -17,7 +19,14 @@ namespace KioskClient.View
             InitializeComponent();
             SetDefaults();
 
-            viewModel = new CatalogPageViewModel(this, new MovieRepository());
+            var connectionString = ConnectionStringBuilder.Build(
+                Settings.Default.server,
+                Settings.Default.database,
+                Settings.Default.user,
+                Settings.Default.password);
+
+            var repository = new MovieRepository(connectionString);
+            viewModel = new CatalogPageViewModel(this, repository);
 
             DataContext = viewModel;
         }

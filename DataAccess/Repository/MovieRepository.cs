@@ -3,21 +3,31 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Windows.Media.Imaging;
+using DataAccess.Connection;
 using DataAccess.Model;
 
 namespace DataAccess.Repository
 {
-    // http://stackoverflow.com/questions/2440060/whats-the-best-way-to-test-sql-server-connection-programmatically
-
     public class MovieRepository : IMovieRepository
     {
+        private readonly string connectionString;
+
+        public MovieRepository(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
+
         public IEnumerable<Movie> GetMovies()
         {
-            var moviesConnection = new CommandExecutor("dbo.ListMovies");
-
+            var moviesConnection = new CommandExecutor("dbo.ListMovies", connectionString);
             var result = moviesConnection.ExecuteCommand();
 
-            foreach (DataRow row in result.Tables[0].Rows)
+            var exception = result as Exception;
+            if (exception != null) throw exception;
+
+            var dataSet = result as DataSet;
+            
+            foreach (DataRow row in dataSet.Tables[0].Rows)
             {
                 yield return new Movie
                 {
@@ -34,11 +44,15 @@ namespace DataAccess.Repository
 
         public IEnumerable<Genre> GetGenres()
         {
-            var genresConnection = new CommandExecutor("dbo.ListGenres");
-
+            var genresConnection = new CommandExecutor("dbo.ListGenres", connectionString);
             var result = genresConnection.ExecuteCommand();
 
-            foreach (DataRow row in result.Tables[0].Rows)
+            var exception = result as Exception;
+            if (exception != null) throw exception;
+
+            var dataSet = result as DataSet;
+
+            foreach (DataRow row in dataSet.Tables[0].Rows)
             {
                 yield return new Genre
                 {
@@ -50,15 +64,19 @@ namespace DataAccess.Repository
 
         public void GetMovieDetails(Movie movie)
         {
-            var moviesConnection = new CommandExecutor("dbo.MovieDetails");
+            var moviesConnection = new CommandExecutor("dbo.MovieDetails", connectionString);
             moviesConnection["@MovieId"] = movie.Id;
-
             var result = moviesConnection.ExecuteCommand();
 
-            var posterRow = result.Tables[0].Rows[0];
-            var ageLimitRow = result.Tables[1].Rows[0];
-            var genresRows = result.Tables[2].Rows;
-            var showtimeRows = result.Tables[3].Rows;
+            var exception = result as Exception;
+            if (exception != null) throw exception;
+
+            var dataSet = result as DataSet;
+
+            var posterRow = dataSet.Tables[0].Rows[0];
+            var ageLimitRow = dataSet.Tables[1].Rows[0];
+            var genresRows = dataSet.Tables[2].Rows;
+            var showtimeRows = dataSet.Tables[3].Rows;
 
             movie.AgeLimit = ageLimitRow[0].ToInt();
 
