@@ -1,6 +1,4 @@
-﻿USE [CinemaDB]
-
-SET NOCOUNT ON;
+﻿SET NOCOUNT ON;
 
 /********************************
  *	  Удаление старых таблиц	*

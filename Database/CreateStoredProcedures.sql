@@ -1,6 +1,4 @@
-﻿USE CinemaDB;
-
-SET NOCOUNT ON;
+﻿SET NOCOUNT ON;
 
 IF OBJECT_ID('dbo.ListMovies', 'P')	IS NOT NULL DROP PROCEDURE [ListMovies]
 IF OBJECT_ID('dbo.ListGenres', 'P')	IS NOT NULL DROP PROCEDURE [ListGenres]

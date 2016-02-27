@@ -1,4 +1,4 @@
-﻿USE [CinemaDB]
+﻿SET NOCOUNT ON;
 
 INSERT INTO Genre 
 (

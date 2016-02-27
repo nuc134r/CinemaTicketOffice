@@ -4,10 +4,7 @@ using Administration.ViewModel;
 
 namespace Administration
 {
-    /// <summary>
-    ///     Interaction logic for LoginWindow.xaml
-    /// </summary>
-    public partial class LoginWindow : Window, ILoginWindow
+    public partial class LoginWindow : ILoginWindow
     {
         private readonly LoginWindowViewModel viewModel;
 

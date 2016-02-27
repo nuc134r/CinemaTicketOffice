@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CreateUsers.sql" />
     <Content Include="CreateStoredProcedures.sql" />
     <Content Include="FillScript.sql" />
     <Compile Include="Properties\AssemblyInfo.cs" />

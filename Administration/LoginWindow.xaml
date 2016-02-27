@@ -5,23 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Administration"
         mc:Ignorable="d"
-        Title="Подключение" Height="239" Width="332" Topmost="True" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Подключение" Height="219" Width="296" Topmost="True" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="88"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock Height="36" Margin="10,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2">
-            Введите информацию, необходимую для соединения с базой данных:
+        <TextBlock Height="20" Margin="10,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2">
+            Введите необходимые для соединения данные:
         </TextBlock>
-        <Label Content="Сервер:" Margin="10,51,10,0" VerticalAlignment="Top" Height="26"/>
-        <TextBox Grid.Column="1" Text="{Binding Server}" Height="23" Margin="0,55,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Label Content="Имя базы:" Margin="10,79,10,0" VerticalAlignment="Top" Height="26"/>
-        <TextBox Grid.Column="1" Text="{Binding Database}" Height="23" Margin="0,83,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Label Content="Логин:" Margin="10,107,10,0" VerticalAlignment="Top" Height="26"/>
-        <TextBox Grid.Column="1" Text="{Binding User}" Height="23" Margin="0,111,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Label Content="Пароль:" Margin="10,135,10,0" VerticalAlignment="Top" Height="26"/>
-        <TextBox Grid.Column="1" Text="{Binding Password}" Height="23" Margin="0,139,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Button Content="Соединить" Grid.Column="1" Margin="0,0,10,10" HorizontalAlignment="Right" Width="90" Height="20" VerticalAlignment="Bottom" Click="Button_Click"/>
+        <Label Content="Сервер:" Margin="10,34,10,0" VerticalAlignment="Top" Height="26"/>
+        <TextBox Grid.Column="1" Text="{Binding Server}" Height="23" Margin="0,38,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Label Content="Имя базы:" Margin="10,62,10,0" VerticalAlignment="Top" Height="26"/>
+        <TextBox Grid.Column="1" Text="{Binding Database}" Height="23" Margin="0,66,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Label Content="Логин:" Margin="10,90,10,0" VerticalAlignment="Top" Height="26"/>
+        <TextBox Grid.Column="1" Text="{Binding User}" Height="23" Margin="0,94,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Label Content="Пароль:" Margin="10,118,10,0" VerticalAlignment="Top" Height="26"/>
+        <TextBox Grid.Column="1" Text="{Binding Password}" Height="23" Margin="0,122,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button Content="Соединить" Grid.Column="1" Margin="0,0,10,10" HorizontalAlignment="Right" Width="90" Click="Button_Click" Height="20" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>
