@@ -40,7 +40,7 @@
             <StatusBarItem Content="Подключение:" HorizontalAlignment="Left" Foreground="#FF6C6C6C" />
             <StatusBarItem x:Name="ServerNameLabel" HorizontalAlignment="Left" Margin="85,0,0,0"/>
             <StatusBarItem x:Name="StatusBarCount" Grid.Column="1" HorizontalAlignment="Right" Margin="0" Width="32"/>
-            <StatusBarItem Content="Всего:" Foreground="#FF6C6C6C" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,32,0"/>
+            <StatusBarItem Content="Записей:" Foreground="#FF6C6C6C" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,32,0"/>
         </StatusBar>
     </Grid>
 </Window>
