@@ -19,7 +19,7 @@ namespace DataAccess.Repository
 
         public IEnumerable<Movie> GetMovies()
         {
-            var moviesConnection = new CommandExecutor("dbo.ListMovies", connectionString);
+            var moviesConnection = new CommandExecutor("dbo.BrowseMovies", connectionString);
             var result = moviesConnection.ExecuteCommand();
 
             var exception = result as Exception;

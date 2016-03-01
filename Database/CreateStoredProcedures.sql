@@ -1,11 +1,11 @@
 ﻿SET NOCOUNT ON;
 
-IF OBJECT_ID('dbo.ListMovies', 'P')	IS NOT NULL DROP PROCEDURE [ListMovies]
+IF OBJECT_ID('dbo.BrowseMovies', 'P') IS NOT NULL DROP PROCEDURE [BrowseMovies]
 IF OBJECT_ID('dbo.ListGenres', 'P')	IS NOT NULL DROP PROCEDURE [ListGenres]
 IF OBJECT_ID('dbo.MovieDetails', 'P') IS NOT NULL DROP PROCEDURE [MovieDetails]
 GO
 
-CREATE PROCEDURE dbo.ListMovies
+CREATE PROCEDURE dbo.BrowseMovies
 AS 
     SET NOCOUNT ON;
 

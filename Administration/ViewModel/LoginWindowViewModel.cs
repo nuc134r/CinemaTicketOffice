@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.Windows;
 using Administration.Interfaces;
 using Administration.Properties;
@@ -9,16 +10,20 @@ namespace Administration.ViewModel
 {
     public class LoginWindowViewModel
     {
+        private readonly BackgroundWorker checkConnectionWorker;
         private readonly ILoginWindow view;
-
+        
         public LoginWindowViewModel(ILoginWindow view)
         {
             this.view = view;
-
+            
             Server = Settings.Default.server;
             Database = Settings.Default.database;
             User = Settings.Default.user;
             Password = Settings.Default.password;
+
+            checkConnectionWorker = new BackgroundWorker();
+            checkConnectionWorker.DoWork += CheckConnectionWorkerOnDoWork;
         }
 
         public string Server { get; set; }
@@ -31,27 +36,38 @@ namespace Administration.ViewModel
             set { view.Password = value; }
         }
 
-        public void CheckConnection()
+        private void CheckConnectionWorkerOnDoWork(object sender, DoWorkEventArgs doWorkEventArgs)
         {
             var connectionString = ConnectionStringBuilder.Build(Server, Database, User, Password);
 
             var executor = new CommandExecutor("SELECT 1", connectionString, false);
             var result = executor.ExecuteCommand();
 
-            var exception = result as Exception;
-            if (exception != null)
+            view.Dispatcher.Invoke(() =>
             {
-                MessageBox.Show(exception.Message);
-                return;
-            }
+                view.IndicateConnectingFinished();
 
-            Settings.Default.server = Server;
-            Settings.Default.database = Database;
-            Settings.Default.user = User;
-            Settings.Default.password = Password;
-            Settings.Default.Save();
+                var exception = result as Exception;
+                if (exception != null)
+                {
+                    MessageBox.Show(exception.Message);
+                    return;
+                }
 
-            view.IndicateSuccess();
+                Settings.Default.server = Server;
+                Settings.Default.database = Database;
+                Settings.Default.user = User;
+                Settings.Default.password = Password;
+                Settings.Default.Save();
+
+                view.IndicateSuccess();
+            });
+        }
+
+        public void CheckConnection()
+        {
+            view.IndicateConnecting();
+            checkConnectionWorker.RunWorkerAsync();
         }
     }
 }

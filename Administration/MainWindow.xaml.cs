@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using Administration.Properties;
 using Administration.View;
 
 namespace Administration
@@ -13,6 +14,8 @@ namespace Administration
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
+            ServerNameLabel.Content = Settings.Default.server + "/" + Settings.Default.database;
+
             try
             {
                 var page = new MovieListPage(this);
