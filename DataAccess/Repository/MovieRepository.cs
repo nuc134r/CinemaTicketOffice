@@ -65,7 +65,7 @@ namespace DataAccess.Repository
         public void GetMovieDetails(Movie movie)
         {
             var moviesConnection = new CommandExecutor("dbo.MovieDetails", connectionString);
-            moviesConnection["@MovieId"] = movie.Id;
+            moviesConnection.AddParam("@MovieId", movie.Id, SqlDbType.Int);
             var result = moviesConnection.ExecuteCommand();
 
             var exception = result as Exception;

@@ -40,13 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CreateUsers.sql" />
-    <Content Include="CreateStoredProcedures.sql" />
-    <Content Include="FillScript.sql" />
+    <Content Include="2. CreateUsers.sql" />
+    <Content Include="4. Rights.sql" />
+    <Content Include="3. CreateStoredProcedures.sql" />
+    <Content Include="5. FillScript.sql" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CreateSchema.sql" />
+    <Content Include="1. CreateSchema.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

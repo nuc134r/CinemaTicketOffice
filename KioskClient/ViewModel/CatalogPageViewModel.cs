@@ -11,24 +11,27 @@ namespace KioskClient.ViewModel
 {
     public class CatalogPageViewModel : ViewModelBase
     {
-        private readonly List<Movie> allMovies;
+        private readonly IMovieRepository movieRepository;
+        private List<Movie> allMovies;
         private bool pauseFiltering;
 
         public CatalogPageViewModel(CatalogPage view, IMovieRepository movieRepository)
         {
+            this.movieRepository = movieRepository;
             this.view = view;
-            
-            Genres = new ObservableCollection<Genre>(movieRepository.GetGenres());
-            
-            foreach (var genre in Genres)
+
+            Genres = new ObservableCollection<Genre>();
+            Movies = new ObservableCollection<Movie>();
+            allMovies = new List<Movie>();
+
+            try
             {
-                genre.PropertyChanged += (sender, args) => FilterByGenres();
+                RetrieveData();
             }
-
-            allMovies = movieRepository.GetMovies().ToList();
-            Movies = new ObservableCollection<Movie>(allMovies);
-
-            allMovies.ForEach(movieRepository.GetMovieDetails);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private new CatalogPage view
@@ -39,6 +42,22 @@ namespace KioskClient.ViewModel
 
         public ObservableCollection<Genre> Genres { get; private set; }
         public ObservableCollection<Movie> Movies { get; private set; }
+
+        private void RetrieveData()
+        {
+            var genres = movieRepository.GetGenres();
+            Genres = new ObservableCollection<Genre>(genres);
+
+            foreach (var genre in Genres)
+            {
+                genre.PropertyChanged += (sender, args) => FilterByGenres();
+            }
+
+            allMovies = movieRepository.GetMovies().ToList();
+            Movies = new ObservableCollection<Movie>(allMovies);
+
+            allMovies.ForEach(movieRepository.GetMovieDetails);
+        }
 
         public void ResetGenresFilter()
         {

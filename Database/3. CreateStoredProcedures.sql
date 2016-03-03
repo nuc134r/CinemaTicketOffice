@@ -3,6 +3,7 @@
 IF OBJECT_ID('dbo.BrowseMovies', 'P') IS NOT NULL DROP PROCEDURE [BrowseMovies]
 IF OBJECT_ID('dbo.ListGenres', 'P')	IS NOT NULL DROP PROCEDURE [ListGenres]
 IF OBJECT_ID('dbo.MovieDetails', 'P') IS NOT NULL DROP PROCEDURE [MovieDetails]
+IF OBJECT_ID('dbo.CreateMovie', 'P') IS NOT NULL DROP PROCEDURE [CreateMovie]
 GO
 
 CREATE PROCEDURE dbo.BrowseMovies
@@ -58,4 +59,32 @@ AS
 	SELECT ShowtimeDate
 	FROM Showtime
 	WHERE MovieId = @MovieId
+GO
+
+CREATE PROCEDURE dbo.CreateMovie
+	@Title NVARCHAR (128),
+	@Plot NVARCHAR (4000),
+	@Duration SMALLINT,
+	@Poster IMAGE,
+	@ReleaseDate DATE,
+	@AgeLimitId INT
+AS 
+    SET NOCOUNT ON;
+
+	INSERT INTO Movie 
+	(
+		Title, 
+		Plot, 
+		Duration, 
+		Poster, 
+		ReleaseDate, 
+		AgeLimitId
+	)
+	SELECT
+		@Title,
+		@Plot,
+		@Duration,
+		@Poster,
+		@ReleaseDate,
+		@AgeLimitId
 GO

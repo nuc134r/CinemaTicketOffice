@@ -12,7 +12,7 @@ namespace DataAccess.Connection
         private readonly string command;
         private readonly string connectionString;
         private readonly bool storedProc;
-        private readonly Dictionary<string, object> parameters = new Dictionary<string, object>();
+        private readonly List<SqlParameter> paramList = new List<SqlParameter>();
 
         public CommandExecutor(string command, string connectionString, bool storedProc = true)
         {
@@ -21,9 +21,14 @@ namespace DataAccess.Connection
             this.storedProc = storedProc;
         }
 
-        public object this[string index]
+        public void AddParam(string name, object value, SqlDbType type)
         {
-            set { parameters.Add(index, value); }
+            var param = new SqlParameter(name, type)
+            {
+                Value = value
+            };
+
+            paramList.Add(param);
         }
 
         public object ExecuteCommand()
@@ -35,9 +40,11 @@ namespace DataAccess.Connection
             {
                 connection.ConnectionString = connectionString;
                 var adapter = new SqlDataAdapter();
-                var sqlCommand = new SqlCommand(command, connection);
-                if (storedProc) { sqlCommand.CommandType = CommandType.StoredProcedure; }
-                AddParametersTo(sqlCommand);
+                var sqlCommand = new SqlCommand(command, connection)
+                {
+                    CommandType = storedProc ? CommandType.StoredProcedure : CommandType.Text
+                };
+                paramList.ForEach(param => sqlCommand.Parameters.Add(param));
                 adapter.SelectCommand = sqlCommand;
 
                 try
@@ -57,19 +64,6 @@ namespace DataAccess.Connection
             }
 
             return result;
-        }
-
-        private void AddParametersTo(SqlCommand sqlCommand)
-        {
-            if (parameters == null || parameters.Count == 0) return;
-            foreach (var param in parameters)
-            {
-                var sqlParameter = new SqlParameter(param.Key, param.Value is int ? SqlDbType.Int : SqlDbType.NVarChar)
-                {
-                    Value = param.Value
-                };
-                sqlCommand.Parameters.Add(sqlParameter);
-            }
         }
     }
 }
