@@ -30,5 +30,11 @@ namespace Administration.ViewModel
         {
             view.ListCount = Movies.Count;
         }
+
+        public void OpenMovieDetails(Movie movie)
+        {
+            var movieEditor = new MovieEditorWindow(movie);
+            movieEditor.ShowDialog();
+        }
     }
 }

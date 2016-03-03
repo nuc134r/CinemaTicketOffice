@@ -2,6 +2,7 @@
 using Administration.Properties;
 using Administration.ViewModel;
 using DataAccess;
+using DataAccess.Model;
 using DataAccess.Repository;
 
 namespace Administration.View
@@ -9,6 +10,7 @@ namespace Administration.View
     public partial class MovieListPage : Page
     {
         private readonly MainWindow window;
+        private readonly MoviesListPageViewModel viewModel;
 
         public MovieListPage(MainWindow window)
         {
@@ -22,14 +24,19 @@ namespace Administration.View
                 Settings.Default.password);
 
             var repository = new MovieRepository(connectionString);
-
-            var viewModel = new MoviesListPageViewModel(this, repository);
+            
+            viewModel = new MoviesListPageViewModel(this, repository);
             DataContext = viewModel.Movies;
         }
 
         public int ListCount
         {
             set { window.StatusBarCount.Content = value; }
+        }
+        
+        private void listView_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            viewModel.OpenMovieDetails((Movie)listView.SelectedItem);
         }
     }
 }
