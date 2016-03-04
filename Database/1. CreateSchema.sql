@@ -43,7 +43,8 @@ CREATE TABLE [Movie]
 	
 	CONSTRAINT MovieTitleAK	UNIQUE (Title),
 	CONSTRAINT MovieTitleFilledCK CHECK (Title <> ''),
-	CONSTRAINT MoviePlotFilledCK CHECK (Plot <> '')
+	CONSTRAINT MoviePlotFilledCK CHECK (Plot <> ''),
+	CONSTRAINT MovieDurationPositiveCK CHECK (Duration > 0)
 )
 
 /********************************

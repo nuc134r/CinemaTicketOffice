@@ -6,23 +6,24 @@
         xmlns:local="clr-namespace:Administration"
         xmlns:model="clr-namespace:DataAccess.Model;assembly=DataAccess"
         mc:Ignorable="d"
-        Title="Новый фильм" Height="580" Width="714" ResizeMode="CanMinimize">
+        Title="Новый фильм" Height="580" Width="714" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="11"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="85"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="5"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Content="Название:" Margin="10,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Grid.Row="1" Height="26"/>
-        <Label Content="Сюжет:" Margin="10,26,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Grid.Row="1" Height="26"/>
-        <TextBox Text="{Binding Movie.Title}" Grid.Column="1" Height="23" Margin="10,3,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1" Grid.ColumnSpan="3"/>
-        <TextBox Text="{Binding Movie.Plot}" Grid.Column="1" Height="100" Margin="10,31,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1" Grid.ColumnSpan="3"/>
-        <ListBox ItemsSource="{Binding Genres}" Grid.Column="1" Height="100" Margin="10,136,10,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3">
+        <Label Content="Название" VerticalAlignment="Top" Grid.Row="1" Height="26" Margin="10,0,0,0" HorizontalAlignment="Left" Width="68"/>
+        <Label Content="Сюжет:" Margin="10,49,0,0" VerticalAlignment="Top" Grid.Row="1" Height="26" HorizontalAlignment="Left" Width="137"/>
+        <TextBox Text="{Binding Movie.Title}" Height="23" Margin="10,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1"/>
+        <TextBox Text="{Binding Movie.Plot}" Height="100" Margin="10,75,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1" Grid.ColumnSpan="5"/>
+        <ListBox ItemsSource="{Binding Genres}" Height="100" Margin="11,201,0,0" Grid.Row="1" VerticalAlignment="Top">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel IsItemsHost="True" />
@@ -34,16 +35,25 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Label Content="Жанр:" Margin="10,134,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Grid.Row="1" Height="26"/>
-        <Calendar DisplayDate="{Binding Movie.ReleaseDate}" SelectedDate="{Binding Movie.ReleaseDate}" Grid.Column="1" HorizontalAlignment="Left" Height="171" Margin="7,270,0,0" Grid.Row="1" VerticalAlignment="Top" Width="183" FirstDayOfWeek="Monday"/>
-        <Label Content="Дата выхода:" Margin="10,244,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Grid.Row="1" Height="26"/>
-        <Label Content="Возраст:" Margin="10,244,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Grid.Row="1" Height="26" Grid.Column="2"/>
-        <ComboBox ItemsSource="{Binding AgeLimits}" Grid.Column="3" Margin="10,248,10,0" Grid.Row="1" VerticalAlignment="Top" Height="22"/>
-        <Label Content="Постер:" Margin="10,270,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Grid.Row="1" Height="26" Grid.Column="2"/>
-        <Image Source="{Binding Movie.Poster}" Grid.Column="3" HorizontalAlignment="Left" Height="216" Margin="90,276,0,0" Grid.Row="1" VerticalAlignment="Top" Width="165"/>
-        <Button Content="Обзор..." HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="3" Margin="10,276,0,0" Grid.Row="1"/>
-        <Button Content="Сохранить" Grid.Column="3" Margin="0,0,10,10" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" />
-        <Button Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="3" Margin="10,301,0,0" Grid.Row="1"/>
-        <Label Content="{Binding Movie.ReleaseDate, StringFormat='{}{0:d MMMM yyyy}'}" Margin="10,248,10,0" VerticalAlignment="Top" Grid.Row="1" Height="26" Grid.Column="1"/>
+        <Label Content="Жанр:" Margin="11,175,201,0" VerticalAlignment="Top" Grid.Row="1" Height="26"/>
+        <Label Content="Дата выхода:" VerticalAlignment="Top" Grid.Row="1" Height="26" Grid.Column="4" HorizontalAlignment="Left" Width="132"/>
+        <Label Content="Возраст:" Margin="0,10,0,0" VerticalAlignment="Top" Height="26" Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Left" Width="150"/>
+        <ComboBox ItemsSource="{Binding AgeLimits}" Margin="0,26,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" Grid.Column="2"/>
+        <Label Content="Постер:" Margin="0,175,22,0" VerticalAlignment="Top" Grid.Row="1" Height="26" Grid.Column="2"/>
+        <Image Source="{Binding Movie.Poster}" Margin="85,201,10,46" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"/>
+        <Button Content="Обзор..." HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="5,206,0,0" Grid.Row="1" Height="20" Grid.Column="2"/>
+        <Button Content="Сохранить" Margin="0,0,10,10" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" Height="20" Grid.Column="4" />
+        <Button Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="5,231,0,0" Grid.Row="1" Height="20" Grid.Column="2"/>
+        <Label Content="Продолжительность:" Margin="11,301,209,0" VerticalAlignment="Top" Grid.Row="1" Height="26"/>
+        <DatePicker DisplayDate="{Binding Movie.ReleaseDate}" SelectedDate="{Binding Movie.ReleaseDate}" Margin="0,26,10,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Grid.Column="4" BorderThickness="0"/>
+        <TextBox Height="23" Margin="11,327,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Movie.Duration}" VerticalAlignment="Top">
+            <TextBox.InputScope>
+                <InputScope>
+                    <InputScope.Names>
+                        <InputScopeName NameValue="Number"/>
+                    </InputScope.Names>
+                </InputScope>
+            </TextBox.InputScope>
+        </TextBox>
     </Grid>
 </Window>
