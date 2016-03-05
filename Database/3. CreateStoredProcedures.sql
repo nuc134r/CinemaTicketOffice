@@ -2,6 +2,7 @@
 
 IF OBJECT_ID('dbo.BrowseMovies', 'P') IS NOT NULL DROP PROCEDURE [BrowseMovies]
 IF OBJECT_ID('dbo.ListGenres', 'P')	IS NOT NULL DROP PROCEDURE [ListGenres]
+IF OBJECT_ID('dbo.ListAgeLimits', 'P')	IS NOT NULL DROP PROCEDURE [ListAgeLimits]
 IF OBJECT_ID('dbo.MovieDetails', 'P') IS NOT NULL DROP PROCEDURE [MovieDetails]
 IF OBJECT_ID('dbo.CreateMovie', 'P') IS NOT NULL DROP PROCEDURE [CreateMovie]
 GO
@@ -35,6 +36,19 @@ AS
 		Id
 GO
 
+CREATE PROCEDURE dbo.ListAgeLimits
+AS 
+    SET NOCOUNT ON;
+
+    SELECT 
+		Id,
+		Limit
+    FROM 
+		AgeLimit
+	ORDER BY
+		Id
+GO
+
 CREATE PROCEDURE dbo.MovieDetails
 	@MovieId INT
 AS 
@@ -44,11 +58,10 @@ AS
     FROM Movie
 	WHERE Movie.Id = @MovieId
 
-	SELECT Limit
+	SELECT [L].Id, [L].Limit
     FROM Movie AS [M]
 	INNER JOIN AgeLimit AS [L]
-	ON [L].Id = [M].AgeLimitId
-	WHERE [M].Id = @MovieId
+	ON [M].AgeLimitId = [L].Id
 
 	SELECT Id, Name
     FROM MovieGenres
@@ -87,4 +100,28 @@ AS
 		@Poster,
 		@ReleaseDate,
 		@AgeLimitId
+GO
+
+/********************************
+ *			  Admin				*
+ ********************************/
+
+GRANT EXECUTE ON dbo.BrowseMovies TO adminuser
+GO
+GRANT EXECUTE ON dbo.MovieDetails TO adminuser
+GO
+GRANT EXECUTE ON dbo.ListAgeLimits TO adminuser
+GO
+GRANT EXECUTE ON dbo.ListGenres TO adminuser
+GO
+
+/********************************
+ *			  Kiosk				*
+ ********************************/
+
+GRANT EXECUTE ON dbo.BrowseMovies TO kioskuser
+GO
+GRANT EXECUTE ON dbo.MovieDetails TO kioskuser
+GO
+GRANT EXECUTE ON dbo.ListGenres TO kioskuser
 GO

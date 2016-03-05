@@ -12,13 +12,13 @@
         <Button x:Name="CreateButton" Content="Создать" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"  />
         <Button x:Name="EditButton" Content="Изменить" Margin="0,0,80,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75"/>
         <Button x:Name="DeleteButton" Content="Удалить" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75"/>
-        <ListView x:Name="listView" ItemsSource="{Binding}" Margin="0,25,0,0" Foreground="Black" MouseDoubleClick="listView_MouseDoubleClick" >
+        <ListView x:Name="listView" ItemsSource="{Binding}" Margin="0,25,0,0" Foreground="Black" MouseDoubleClick="listView_MouseDoubleClick" SelectedIndex="0" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Название"  DisplayMemberBinding="{Binding Title}" />
                     <GridViewColumn Header="Дата выхода"  DisplayMemberBinding="{Binding ReleaseDate, StringFormat='{}{0:d MMMM yyyy}'}" />
                     <GridViewColumn Header="Продолжительность" DisplayMemberBinding="{Binding Duration}" />
-                    <GridViewColumn Header="Возраст" DisplayMemberBinding="{Binding AgeLimitString}" />
+                    <GridViewColumn Header="Возраст" DisplayMemberBinding="{Binding AgeLimit}" />
                     <GridViewColumn Header="Жанр"  DisplayMemberBinding="{Binding GenresString}" />
                 </GridView>
             </ListView.View>

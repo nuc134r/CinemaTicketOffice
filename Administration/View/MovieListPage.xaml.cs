@@ -36,7 +36,8 @@ namespace Administration.View
         
         private void listView_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            viewModel.OpenMovieDetails((Movie)listView.SelectedItem);
+            var movie = (Movie)listView.SelectedItem;
+            viewModel.OpenMovieDetails(movie.Clone());
         }
     }
 }

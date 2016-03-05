@@ -49,6 +49,7 @@
     <Compile Include="ConnectionStringBuilder.cs" />
     <Compile Include="Connection\CommandExecutor.cs" />
     <Compile Include="DateTimeExtensions.cs" />
+    <Compile Include="Model\AgeLimit.cs" />
     <Compile Include="Model\Auditorium.cs" />
     <Compile Include="Model\Genre.cs" />
     <Compile Include="Model\Movie.cs" />

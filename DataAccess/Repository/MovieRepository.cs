@@ -26,7 +26,7 @@ namespace DataAccess.Repository
             if (exception != null) throw exception;
 
             var dataSet = result as DataSet;
-            
+
             foreach (DataRow row in dataSet.Tables[0].Rows)
             {
                 yield return new Movie
@@ -78,7 +78,11 @@ namespace DataAccess.Repository
             var genresRows = dataSet.Tables[2].Rows;
             var showtimeRows = dataSet.Tables[3].Rows;
 
-            movie.AgeLimit = ageLimitRow[0].ToInt();
+            movie.AgeLimit = new AgeLimit
+            {
+                Id = ageLimitRow[0].ToInt(),
+                Limit = ageLimitRow[1].ToString()
+            };
 
             var posterBytes = (byte[]) posterRow[0];
             movie.Poster = new BitmapImage();
@@ -98,6 +102,26 @@ namespace DataAccess.Repository
             foreach (DataRow row in showtimeRows)
             {
                 movie.Showtimes.Add(row["ShowtimeDate"].ToDate());
+            }
+        }
+
+        public IEnumerable<AgeLimit> GetAgeLimits()
+        {
+            var genresConnection = new CommandExecutor("dbo.ListAgeLimits", connectionString);
+            var result = genresConnection.ExecuteCommand();
+
+            var exception = result as Exception;
+            if (exception != null) throw exception;
+
+            var dataSet = result as DataSet;
+
+            foreach (DataRow row in dataSet.Tables[0].Rows)
+            {
+                yield return new AgeLimit
+                {
+                    Id = row["Id"].ToInt(),
+                    Limit = row["Limit"].ToString()
+                };
             }
         }
     }
