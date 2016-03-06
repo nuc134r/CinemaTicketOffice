@@ -36,9 +36,7 @@ namespace Administration
 
             var repository = new MovieRepository(connectionString);
 
-            var movieRepository = new MovieRepository(connectionString);
-
-            viewModel = new MovieEditorWindowViewModel(this, movie, movieRepository);
+            viewModel = new MovieEditorWindowViewModel(this, movie, repository);
             DataContext = viewModel;
         }
 
@@ -47,13 +45,9 @@ namespace Administration
             set { ageLimitBox.SelectedIndex = value; }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
+            // Блокируем ввод значения, которое невозможно преобразовать в short
             var text = ((TextBox) sender).Text + e.Text;
             short value;
 

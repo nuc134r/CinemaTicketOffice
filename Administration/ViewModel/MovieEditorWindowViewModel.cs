@@ -9,6 +9,8 @@ namespace Administration.ViewModel
 {
     public class MovieEditorWindowViewModel
     {
+        private bool createMode;
+
         private readonly IMovieEditorWindow view;
         public Movie Movie { get; set; }
         public ObservableCollection<Genre> Genres { get; set; }
@@ -18,11 +20,19 @@ namespace Administration.ViewModel
 
         public MovieEditorWindowViewModel(IMovieEditorWindow view, Movie movie, MovieRepository movieRepository)
         {
+            if (movie == null)
+            {
+                createMode = true;
+                movie = new Movie();
+            }
+
             this.view = view;
             Movie = movie;
 
             Genres = new ObservableCollection<Genre>(movieRepository.GetGenres());
             AgeLimits = movieRepository.GetAgeLimits().ToList();
+
+            if (createMode) return;
 
             AgeLimit = AgeLimits.FirstOrDefault(limit => limit.Id == movie.AgeLimit.Id);
             view.SelectedAgeLimitIndex = AgeLimits.IndexOf(AgeLimit);

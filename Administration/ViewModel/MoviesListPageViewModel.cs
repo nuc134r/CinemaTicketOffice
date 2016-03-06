@@ -31,9 +31,9 @@ namespace Administration.ViewModel
             view.ListCount = Movies.Count;
         }
 
-        public void OpenMovieDetails(Movie movie)
+        public void OpenMovieEditor(Movie movie)
         {
-            var movieEditor = new MovieEditorWindow(movie);
+            var movieEditor = new MovieEditorWindow(movie != null ? movie.Clone() : null);
             movieEditor.ShowDialog();
         }
     }

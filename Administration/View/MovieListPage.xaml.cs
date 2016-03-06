@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Input;
 using Administration.Properties;
 using Administration.ViewModel;
 using DataAccess;
@@ -7,10 +8,10 @@ using DataAccess.Repository;
 
 namespace Administration.View
 {
-    public partial class MovieListPage : Page
+    public partial class MovieListPage
     {
-        private readonly MainWindow window;
         private readonly MoviesListPageViewModel viewModel;
+        private readonly MainWindow window;
 
         public MovieListPage(MainWindow window)
         {
@@ -24,7 +25,7 @@ namespace Administration.View
                 Settings.Default.password);
 
             var repository = new MovieRepository(connectionString);
-            
+
             viewModel = new MoviesListPageViewModel(this, repository);
             DataContext = viewModel.Movies;
         }
@@ -33,11 +34,20 @@ namespace Administration.View
         {
             set { window.StatusBarCount.Content = value; }
         }
-        
-        private void listView_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+
+        private void listView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var movie = (Movie)listView.SelectedItem;
-            viewModel.OpenMovieDetails(movie.Clone());
+            viewModel.OpenMovieEditor((Movie)listView.SelectedItem);
+        }
+
+        private void CreateButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.OpenMovieEditor(null);
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.OpenMovieEditor((Movie)listView.SelectedItem);
         }
     }
 }

@@ -22,8 +22,8 @@
         <Label Content="Название" VerticalAlignment="Top" Grid.Row="1" Height="26" Margin="10,0,0,0" HorizontalAlignment="Left" Width="68"/>
         <Label Content="Сюжет:" Margin="10,49,0,0" VerticalAlignment="Top" Grid.Row="1" Height="26" HorizontalAlignment="Left" Width="137"/>
         <TextBox Text="{Binding Movie.Title}" Height="23" Margin="10,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1"/>
-        <TextBox Text="{Binding Movie.Plot}" Height="100" Margin="10,75,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1" Grid.ColumnSpan="5"/>
-        <ListBox ItemsSource="{Binding Genres}" Height="100" Margin="10,255,1,0" Grid.Row="1" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <TextBox Text="{Binding Movie.Plot}" Height="100" Margin="10,75,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1" Grid.ColumnSpan="5" AcceptsReturn="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+        <ListBox ItemsSource="{Binding Genres}" Height="100" Margin="10,231,1,0" Grid.Row="1" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel IsItemsHost="True" />
@@ -35,18 +35,18 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Label Content="Жанр:" Margin="10,229,202,0" VerticalAlignment="Top" Grid.Row="1" Height="26"/>
+        <Label Content="Жанр:" Margin="10,205,202,0" VerticalAlignment="Top" Grid.Row="1" Height="26"/>
         <Label Content="Дата выхода:" VerticalAlignment="Top" Grid.Row="1" Height="26" Grid.Column="4" HorizontalAlignment="Left" Width="132"/>
         <Label Content="Возраст:" Margin="0,10,0,0" VerticalAlignment="Top" Height="26" Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Left" Width="150"/>
-        <ComboBox x:Name="ageLimitBox" ItemsSource="{Binding AgeLimits}" Margin="0,26,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" Grid.Column="2"/>
-        <Label Content="Постер:" Margin="0,175,22,0" VerticalAlignment="Top" Grid.Row="1" Height="26" Grid.Column="2"/>
-        <Image Source="{Binding Movie.Poster}" Margin="85,201,10,46" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"/>
-        <Button Content="Обзор..." HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="5,206,0,0" Grid.Row="1" Height="20" Grid.Column="2"/>
-        <Button Content="Сохранить" Margin="0,0,10,10" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" Height="20" Grid.Column="4" Click="Button_Click" />
-        <Button Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="5,231,0,0" Grid.Row="1" Height="20" Grid.Column="2"/>
-        <Label Content="Продолжительность:" Margin="10,180,210,0" VerticalAlignment="Top" Grid.Row="1" Height="26"/>
+        <ComboBox x:Name="ageLimitBox" ItemsSource="{Binding AgeLimits}" Margin="0,26,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" Grid.Column="2" SelectedIndex="0"/>
+        <Label Content="Постер:" Margin="0,179,22,0" VerticalAlignment="Top" Grid.Row="1" Height="26" Grid.Column="2"/>
+        <Image Source="{Binding Movie.Poster}" Margin="85,205,10,42" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"/>
+        <Button Content="Обзор..." HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="5,210,0,0" Grid.Row="1" Height="20" Grid.Column="2"/>
+        <Button Content="Сохранить" Margin="0,0,10,10" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" Height="20" Grid.Column="4" />
+        <Button Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="5,235,0,0" Grid.Row="1" Height="20" Grid.Column="2"/>
+        <Label Content="Продолжительность:" Margin="10,179,210,0" VerticalAlignment="Top" Grid.Row="1" Height="26"/>
         <DatePicker DisplayDate="{Binding Movie.ReleaseDate}" SelectedDate="{Binding Movie.ReleaseDate}" Margin="0,26,10,0" Grid.Row="1" VerticalAlignment="Top" Height="24" Grid.Column="4" BorderThickness="1"/>
-        <TextBox Height="23" Margin="10,206,257,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Movie.Duration}" VerticalAlignment="Top" PreviewTextInput="TextBox_PreviewTextInput">
+        <TextBox Height="23" Margin="166,182,1,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Movie.Duration}" VerticalAlignment="Top" PreviewTextInput="TextBox_PreviewTextInput">
             <TextBox.InputScope>
                 <InputScope>
                     <InputScope.Names>
