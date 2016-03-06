@@ -45,6 +45,11 @@ namespace Administration
             set { ageLimitBox.SelectedIndex = value; }
         }
 
+        public AgeLimit AgeLimit
+        {
+            get { return (AgeLimit) ageLimitBox.SelectedItem; }
+        }
+
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             // Блокируем ввод значения, которое невозможно преобразовать в short
@@ -54,6 +59,19 @@ namespace Administration
             if (!short.TryParse(text, out value))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                viewModel.Save();
+                DialogResult = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

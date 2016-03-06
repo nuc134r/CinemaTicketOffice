@@ -34,7 +34,7 @@ CREATE TABLE [Movie]
 	Title			NVARCHAR (128)		NOT NULL, 
 	Plot			NVARCHAR (4000)		NOT NULL,
 	Duration		SMALLINT			NOT NULL,  -- Modern Times Forever (2011 Documentary) lasts 14400 minutes
-	Poster			IMAGE				NOT NULL,
+	Poster			IMAGE				NULL,
 	ReleaseDate		DATE				NOT NULL,
 	AgeLimitId		INT					NOT NULL DEFAULT 1, 
 
@@ -105,3 +105,10 @@ CREATE TABLE [Showtime]
 	CONSTRAINT ShowtimePricePositiveCK CHECK (Price > 0),
 	CONSTRAINT ShowtimeAK UNIQUE (MovieId, AuditoriumId, ShowtimeDate)
 )
+
+/********************************
+ *    Список идентификаторов	*
+ ********************************/
+CREATE TYPE [dbo].[IdList] AS TABLE(
+    [Id] INT NOT NULL
+);

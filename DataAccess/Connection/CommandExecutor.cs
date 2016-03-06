@@ -21,17 +21,22 @@ namespace DataAccess.Connection
             this.storedProc = storedProc;
         }
 
-        public void AddParam(string name, object value, SqlDbType type)
+        public void AddParam(string name, object value, SqlDbType type, string typeName = null)
         {
             var param = new SqlParameter(name, type)
             {
                 Value = value
             };
 
+            if (typeName != null)
+            {
+                param.TypeName = typeName;
+            }
+
             paramList.Add(param);
         }
 
-        public object ExecuteCommand()
+        public object ExecuteCommand(bool nonQuery = false)
         {
             object result;
             var dataSet = new DataSet();
@@ -49,9 +54,18 @@ namespace DataAccess.Connection
 
                 try
                 {
-                    connection.Open();
-                    adapter.Fill(dataSet);
-                    result = dataSet;
+                    if (nonQuery)
+                    {
+                        connection.Open();
+                        sqlCommand.ExecuteNonQuery();
+                        result = null;
+                    }
+                    else
+                    {
+                        connection.Open();
+                        adapter.Fill(dataSet);
+                        result = dataSet;
+                    }
                 }
                 catch (Exception ex)
                 {

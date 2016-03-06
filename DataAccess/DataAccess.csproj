@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Annotations.cs" />
+    <Compile Include="BitmapImageExtensions.cs" />
     <Compile Include="ConnectionStringBuilder.cs" />
     <Compile Include="Connection\CommandExecutor.cs" />
     <Compile Include="DateTimeExtensions.cs" />

@@ -79,6 +79,7 @@ CREATE PROCEDURE dbo.CreateMovie
 	@Plot NVARCHAR (4000),
 	@Duration SMALLINT,
 	@Poster IMAGE,
+	@Genres IdList READONLY,
 	@ReleaseDate DATE,
 	@AgeLimitId INT
 AS 
@@ -113,6 +114,10 @@ GO
 GRANT EXECUTE ON dbo.ListAgeLimits TO adminuser
 GO
 GRANT EXECUTE ON dbo.ListGenres TO adminuser
+GO
+GRANT EXECUTE ON dbo.CreateMovie TO adminuser
+GO
+GRANT EXEC ON TYPE::dbo.IdList TO adminuser
 GO
 
 /********************************

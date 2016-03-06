@@ -64,9 +64,9 @@ namespace DataAccess.Repository
 
         public void GetMovieDetails(Movie movie)
         {
-            var moviesConnection = new CommandExecutor("dbo.MovieDetails", connectionString);
-            moviesConnection.AddParam("@MovieId", movie.Id, SqlDbType.Int);
-            var result = moviesConnection.ExecuteCommand();
+            var movieConnection = new CommandExecutor("dbo.MovieDetails", connectionString);
+            movieConnection.AddParam("@MovieId", movie.Id, SqlDbType.Int);
+            var result = movieConnection.ExecuteCommand();
 
             var exception = result as Exception;
             if (exception != null) throw exception;
@@ -83,12 +83,14 @@ namespace DataAccess.Repository
                 Id = ageLimitRow[0].ToInt(),
                 Limit = ageLimitRow[1].ToString()
             };
-
-            var posterBytes = (byte[]) posterRow[0];
-            movie.Poster = new BitmapImage();
-            movie.Poster.BeginInit();
-            movie.Poster.StreamSource = new MemoryStream(posterBytes);
-            movie.Poster.EndInit();
+            if (!(posterRow[0] is DBNull))
+            {
+                var posterBytes = (byte[]) posterRow[0];
+                movie.Poster = new BitmapImage();
+                movie.Poster.BeginInit();
+                movie.Poster.StreamSource = new MemoryStream(posterBytes);
+                movie.Poster.EndInit();
+            }
 
             foreach (DataRow row in genresRows)
             {
@@ -123,6 +125,27 @@ namespace DataAccess.Repository
                     Limit = row["Limit"].ToString()
                 };
             }
+        }
+
+        public void CreateMovie(Movie movie)
+        {
+            var movieConnection = new CommandExecutor("dbo.CreateMovie", connectionString);
+            movieConnection.AddParam("@Title", movie.Title, SqlDbType.NVarChar);
+            movieConnection.AddParam("@Plot", movie.Plot, SqlDbType.NVarChar);
+            movieConnection.AddParam("@Duration", movie.Duration, SqlDbType.SmallInt);
+            movieConnection.AddParam("@Poster", movie.Poster == null ? DBNull.Value : (object)movie.Poster.ToByteArray(), SqlDbType.Image);
+
+            var genresList = new DataTable();
+            genresList.Columns.Add("Id");
+
+            movie.Genres.ForEach(genre => genresList.Rows.Add(genre.Id));
+            
+            movieConnection.AddParam("@Genres", genresList, SqlDbType.Structured, "dbo.IdList");
+            movieConnection.AddParam("@ReleaseDate", movie.ReleaseDate, SqlDbType.NVarChar);
+            movieConnection.AddParam("@AgeLimitId", movie.AgeLimit.Id, SqlDbType.NVarChar);
+
+            var exception = movieConnection.ExecuteCommand(true) as Exception;
+            if (exception != null) throw exception;
         }
     }
 }

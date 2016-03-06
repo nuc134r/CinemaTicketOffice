@@ -11,13 +11,20 @@ namespace Administration.ViewModel
     public class MoviesListPageViewModel
     {
         private readonly MovieListPage view;
+        private readonly IMovieRepository repository;
 
-        public readonly ObservableCollection<Movie> Movies;
+        public ObservableCollection<Movie> Movies;
 
         public MoviesListPageViewModel(MovieListPage view, IMovieRepository repository)
         {
             this.view = view;
+            this.repository = repository;
 
+            RetrieveMovies();
+        }
+
+        private void RetrieveMovies()
+        {
             var movies = repository.GetMovies().ToList();
             movies.ForEach(repository.GetMovieDetails);
 
@@ -34,7 +41,12 @@ namespace Administration.ViewModel
         public void OpenMovieEditor(Movie movie)
         {
             var movieEditor = new MovieEditorWindow(movie != null ? movie.Clone() : null);
-            movieEditor.ShowDialog();
+            var result = movieEditor.ShowDialog();
+
+            if (result.HasValue && result.Value)
+            {
+                RetrieveMovies();
+            }
         }
     }
 }
