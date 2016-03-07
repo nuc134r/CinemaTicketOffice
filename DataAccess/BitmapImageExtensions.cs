@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Runtime.Serialization;
 using System.Windows.Media.Imaging;
 
 namespace DataAccess
@@ -8,7 +9,23 @@ namespace DataAccess
     {
         public static byte[] ToByteArray(this BitmapImage image)
         {
-            return File.ReadAllBytes(image.UriSource.AbsolutePath);
+            if (image.StreamSource == null)
+            {
+                return File.ReadAllBytes(image.UriSource.AbsolutePath);
+            }
+
+            var stream = image.StreamSource;
+            byte[] buffer = null;
+            if (stream != null && stream.Length > 0)
+            {
+                using (var reader = new BinaryReader(stream))
+                {
+                    stream.Position = 0;
+                    buffer = reader.ReadBytes((int)stream.Length);
+                }
+            }
+
+            return buffer;
         }
     }
 }

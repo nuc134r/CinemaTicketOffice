@@ -2,23 +2,18 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using Administration.Interfaces;
-using DataAccess.Annotations;
 using DataAccess.Model;
 using DataAccess.Repository;
 
 namespace Administration.ViewModel
 {
-    public sealed class MovieEditorWindowViewModel : INotifyPropertyChanged
+    public sealed class MovieEditorWindowViewModel
     {
-        private bool createMode;
+        private readonly MovieRepository repository;
 
         private readonly IMovieEditorWindow view;
-        private readonly MovieRepository repository;
-        public Movie Movie { get; set; }
-        public ObservableCollection<Genre> Genres { get; set; }
-        public List<AgeLimit> AgeLimits { get; set; }
+        private readonly bool createMode;
 
         public MovieEditorWindowViewModel(IMovieEditorWindow view, Movie movie, MovieRepository repository)
         {
@@ -40,14 +35,18 @@ namespace Administration.ViewModel
             var limit = AgeLimits.FirstOrDefault(_ => _.Id == movie.AgeLimit.Id);
             view.SelectedAgeLimitIndex = AgeLimits.IndexOf(limit);
 
-            var selectedGenres = Genres.Join(movie.Genres, 
-                genre => genre.Id, 
+            var selectedGenres = Genres.Join(movie.Genres,
+                genre => genre.Id,
                 genre => genre.Id,
                 (genre1, genre2) => genre1).ToList();
 
             selectedGenres.ForEach(_ => _.IsSelected = true);
         }
 
+        public Movie Movie { get; set; }
+        public ObservableCollection<Genre> Genres { get; set; }
+        public List<AgeLimit> AgeLimits { get; set; }
+        
         public void Save()
         {
             Movie.Genres = Genres.Where(_ => _.IsSelected).ToList();
@@ -55,17 +54,12 @@ namespace Administration.ViewModel
 
             if (createMode)
             {
-                repository.CreateMovie(Movie);
+                repository.SaveMovie(Movie);
             }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        public void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+            else
+            {
+                repository.SaveMovie(Movie, true);
+            }
         }
     }
 }

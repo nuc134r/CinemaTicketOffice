@@ -127,9 +127,18 @@ namespace DataAccess.Repository
             }
         }
 
-        public void CreateMovie(Movie movie)
+        public void SaveMovie(Movie movie, bool update = false)
         {
-            var movieConnection = new CommandExecutor("dbo.CreateMovie", connectionString);
+            CommandExecutor movieConnection;
+            if (update)
+            {
+                movieConnection = new CommandExecutor("dbo.UpdateMovie", connectionString);
+                movieConnection.AddParam("@Id", movie.Id, SqlDbType.Int);
+            }
+            else
+            {
+                movieConnection = new CommandExecutor("dbo.CreateMovie", connectionString);
+            }
             movieConnection.AddParam("@Title", movie.Title, SqlDbType.NVarChar);
             movieConnection.AddParam("@Plot", movie.Plot, SqlDbType.NVarChar);
             movieConnection.AddParam("@Duration", movie.Duration, SqlDbType.SmallInt);

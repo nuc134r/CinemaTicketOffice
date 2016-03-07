@@ -33,7 +33,6 @@ namespace Administration.ViewModel
             Movies.Clear();
 
             var movies = repository.GetMovies().ToList();
-            movies.ForEach(repository.GetMovieDetails);
 
             movies.ForEach(movie => Movies.Add(movie));
         }
@@ -46,6 +45,7 @@ namespace Administration.ViewModel
 
         public void OpenMovieEditor(Movie movie)
         {
+            repository.GetMovieDetails(movie);
             var movieEditor = new MovieEditorWindow(movie != null ? movie.Clone() : null);
             var result = movieEditor.ShowDialog();
 
