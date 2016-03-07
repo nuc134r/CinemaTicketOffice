@@ -133,7 +133,9 @@ namespace DataAccess.Repository
             movieConnection.AddParam("@Title", movie.Title, SqlDbType.NVarChar);
             movieConnection.AddParam("@Plot", movie.Plot, SqlDbType.NVarChar);
             movieConnection.AddParam("@Duration", movie.Duration, SqlDbType.SmallInt);
-            movieConnection.AddParam("@Poster", movie.Poster == null ? DBNull.Value : (object)movie.Poster.ToByteArray(), SqlDbType.Image);
+
+            var poster = movie.Poster == null ? DBNull.Value : (object)movie.Poster.ToByteArray();
+            movieConnection.AddParam("@Poster", poster, SqlDbType.Image);
 
             var genresList = new DataTable();
             genresList.Columns.Add("Id");

@@ -1,13 +1,16 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Administration.Interfaces;
+using DataAccess.Annotations;
 using DataAccess.Model;
 using DataAccess.Repository;
 
 namespace Administration.ViewModel
 {
-    public class MovieEditorWindowViewModel
+    public sealed class MovieEditorWindowViewModel : INotifyPropertyChanged
     {
         private bool createMode;
 
@@ -16,8 +19,6 @@ namespace Administration.ViewModel
         public Movie Movie { get; set; }
         public ObservableCollection<Genre> Genres { get; set; }
         public List<AgeLimit> AgeLimits { get; set; }
-        
-        public AgeLimit AgeLimit { get; set; }
 
         public MovieEditorWindowViewModel(IMovieEditorWindow view, Movie movie, MovieRepository repository)
         {
@@ -35,8 +36,9 @@ namespace Administration.ViewModel
             AgeLimits = repository.GetAgeLimits().ToList();
 
             if (createMode) return;
-            
-            view.SelectedAgeLimitIndex = AgeLimits.IndexOf(AgeLimit);
+
+            var limit = AgeLimits.FirstOrDefault(_ => _.Id == movie.AgeLimit.Id);
+            view.SelectedAgeLimitIndex = AgeLimits.IndexOf(limit);
 
             var selectedGenres = Genres.Join(movie.Genres, 
                 genre => genre.Id, 
@@ -55,6 +57,15 @@ namespace Administration.ViewModel
             {
                 repository.CreateMovie(Movie);
             }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        public void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            var handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

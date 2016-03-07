@@ -17,6 +17,7 @@ using Administration.ViewModel;
 using DataAccess;
 using DataAccess.Model;
 using DataAccess.Repository;
+using Microsoft.Win32;
 
 namespace Administration
 {
@@ -73,6 +74,24 @@ namespace Administration
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void BrowseButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new OpenFileDialog {Filter = "Image Files (*.bmp, *.jpg)|*.bmp;*.jpg"};
+            var result = dialog.ShowDialog(this);
+            if (result.Value)
+            {
+                viewModel.Movie.Poster = new BitmapImage(new Uri(dialog.FileName));
+            }
+
+            PosterImage.Source = viewModel.Movie.Poster;
+        }
+
+        private void DeletePosterButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.Movie.Poster = null;
+            PosterImage.Source = null;
         }
     }
 }

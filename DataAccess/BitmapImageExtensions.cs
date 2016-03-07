@@ -6,19 +6,9 @@ namespace DataAccess
 {
     public static class BitmapImageExtensions
     {
-        public static byte[] ToByteArray(this BitmapImage imageSource)
+        public static byte[] ToByteArray(this BitmapImage image)
         {
-            var stream = imageSource.StreamSource;
-            byte[] buffer = null;
-            if (stream != null && stream.Length > 0)
-            {
-                using (var reader = new BinaryReader(stream))
-                {
-                    buffer = reader.ReadBytes((Int32)stream.Length);
-                }
-            }
-
-            return buffer;
+            return File.ReadAllBytes(image.UriSource.AbsolutePath);
         }
     }
 }
