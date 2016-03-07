@@ -60,6 +60,7 @@
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MenuSection.cs" />
     <Compile Include="MovieEditorWindow.xaml.cs">
       <DependentUpon>MovieEditorWindow.xaml</DependentUpon>
     </Compile>

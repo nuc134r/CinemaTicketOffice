@@ -30,10 +30,9 @@ namespace Administration.ViewModel
                 Movies.CollectionChanged += MoviesOnCollectionChanged;
             }
 
-            Movies.Clear();
-
             var movies = repository.GetMovies().ToList();
 
+            Movies.Clear();
             movies.ForEach(movie => Movies.Add(movie));
         }
 
@@ -50,6 +49,7 @@ namespace Administration.ViewModel
                 repository.GetMovieDetails(movie);
                 movie = movie.Clone();
             }
+
             var movieEditor = new MovieEditorWindow(movie);
             var result = movieEditor.ShowDialog();
 

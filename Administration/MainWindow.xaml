@@ -19,12 +19,12 @@
             <ColumnDefinition Width="11"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Frame x:Name="mainFrame" Content="{Binding}" Grid.Column="2" Margin="0,10,10,28"/>
-        <TreeView Grid.Column="0" Margin="10,10,0,28">
-            <TreeViewItem Header="Фильмы" IsSelected="True" />
-            <TreeViewItem Header="Жанры"/>
-            <TreeViewItem Header="Сеансы"/>
-            <TreeViewItem Header="Залы"/>
+        <Frame x:Name="mainFrame" Content="{Binding}" Grid.Column="2" Margin="0,10,10,28" NavigationUIVisibility="Hidden"/>
+        <TreeView x:Name="SectionListTreeView" Grid.Column="0" DisplayMemberPath="Name" Margin="10,10,0,28" >
+            <TreeViewItem Header="Фильмы" IsSelected="True" Tag="0" />
+            <TreeViewItem Header="Жанры" Tag="1"/>
+            <TreeViewItem Header="Сеансы" Tag="2"/>
+            <TreeViewItem Header="Залы" Tag="3"/>
         </TreeView>
         <StatusBar Margin="0" Grid.ColumnSpan="3" Height="23" VerticalAlignment="Bottom">
             <StatusBar.ItemsPanel>

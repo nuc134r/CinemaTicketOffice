@@ -44,7 +44,7 @@ CREATE TABLE [Movie]
 	CONSTRAINT MovieTitleAK	UNIQUE (Title),
 	CONSTRAINT MovieTitleFilledCK CHECK (Title <> ''),
 	CONSTRAINT MoviePlotFilledCK CHECK (Plot <> ''),
-	CONSTRAINT MovieDurationPositiveCK CHECK (Duration > 0)
+	CONSTRAINT MovieDurationPositiveCK CHECK (Duration >= 0)
 )
 
 /********************************
@@ -102,13 +102,14 @@ CREATE TABLE [Showtime]
 	CONSTRAINT ShowtimePK PRIMARY KEY (Id),
 	CONSTRAINT MovieShowtimeFK FOREIGN KEY (MovieId) REFERENCES [Movie] (Id) ON DELETE CASCADE,
 	CONSTRAINT AuditoriumShowtimeFK FOREIGN KEY (AuditoriumId) REFERENCES [Auditorium] (Id) ON DELETE CASCADE,
-	CONSTRAINT ShowtimePricePositiveCK CHECK (Price > 0),
+	CONSTRAINT ShowtimePricePositiveCK CHECK (Price >= 0),
 	CONSTRAINT ShowtimeAK UNIQUE (MovieId, AuditoriumId, ShowtimeDate)
 )
 
 /********************************
  *    Список идентификаторов	*
  ********************************/
+IF TYPE_ID('dbo.IdList') IS NULL
 CREATE TYPE [dbo].[IdList] AS TABLE(
     [Id] INT NOT NULL
 );
