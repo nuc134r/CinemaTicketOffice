@@ -141,10 +141,11 @@ namespace DataAccess.Repository
             movie.Genres.ForEach(genre => genresList.Rows.Add(genre.Id));
             
             movieConnection.AddParam("@Genres", genresList, SqlDbType.Structured, "dbo.IdList");
-            movieConnection.AddParam("@ReleaseDate", movie.ReleaseDate, SqlDbType.NVarChar);
-            movieConnection.AddParam("@AgeLimitId", movie.AgeLimit.Id, SqlDbType.NVarChar);
+            movieConnection.AddParam("@ReleaseDate", movie.ReleaseDate, SqlDbType.Date);
+            movieConnection.AddParam("@AgeLimitId", movie.AgeLimit.Id, SqlDbType.Int);
 
-            var exception = movieConnection.ExecuteCommand(true) as Exception;
+            var result = movieConnection.ExecuteCommand(true);
+            var exception = result as Exception;
             if (exception != null) throw exception;
         }
     }

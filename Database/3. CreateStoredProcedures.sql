@@ -54,24 +54,38 @@ CREATE PROCEDURE dbo.MovieDetails
 AS 
     SET NOCOUNT ON;
 
-    SELECT Poster
-    FROM Movie
-	WHERE Movie.Id = @MovieId
+    SELECT 
+		Poster
+    FROM 
+		Movie
+	WHERE 
+		Movie.Id = @MovieId
 
-	SELECT [L].Id, [L].Limit
-    FROM Movie AS [M]
-	INNER JOIN AgeLimit AS [L]
-	ON [M].AgeLimitId = [L].Id
+	SELECT
+		Id, 
+		Limit
+	FROM 
+		AgeLimit
+	WHERE 
+		Id = (SELECT AgeLimitId 
+			  FROM Movie 
+			  WHERE Id = @MovieId)
 
-	SELECT Id, Name
-    FROM MovieGenres
-	INNER JOIN Genre
-	ON Id = GenreId
-	WHERE MovieId = @MovieId
+	SELECT 
+		Id, Name
+	FROM 
+		Genre
+	WHERE
+		Id IN (SELECT GenreId 
+				FROM MovieGenres
+				WHERE MovieId = @MovieId)
 	
-	SELECT ShowtimeDate
-	FROM Showtime
-	WHERE MovieId = @MovieId
+	SELECT 
+		ShowtimeDate
+	FROM 
+		Showtime
+	WHERE 
+		MovieId = @MovieId
 GO
 
 CREATE PROCEDURE dbo.CreateMovie
@@ -101,6 +115,26 @@ AS
 		@Poster,
 		@ReleaseDate,
 		@AgeLimitId
+
+	DECLARE @MovieId INT, @GenreId INT
+	SET @MovieId = SCOPE_IDENTITY();
+
+	DECLARE GenresCursor CURSOR FOR 
+	SELECT Id FROM @Genres
+ 
+	OPEN GenresCursor
+	FETCH NEXT FROM GenresCursor INTO @GenreId
+ 
+	WHILE @@FETCH_STATUS=0
+	BEGIN
+		INSERT INTO MovieGenres
+		SELECT @MovieId, @GenreId
+
+		FETCH NEXT FROM GenresCursor INTO @GenreId
+	END
+	CLOSE GenresCursor
+	DEALLOCATE GenresCursor
+	GO
 GO
 
 /********************************
