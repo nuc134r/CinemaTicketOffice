@@ -45,8 +45,12 @@ namespace Administration.ViewModel
 
         public void OpenMovieEditor(Movie movie)
         {
-            repository.GetMovieDetails(movie);
-            var movieEditor = new MovieEditorWindow(movie != null ? movie.Clone() : null);
+            if (movie != null)
+            {
+                repository.GetMovieDetails(movie);
+                movie = movie.Clone();
+            }
+            var movieEditor = new MovieEditorWindow(movie);
             var result = movieEditor.ShowDialog();
 
             if (result.HasValue && result.Value)
