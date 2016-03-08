@@ -166,5 +166,10 @@ namespace DataAccess.Repository
             var exception = result as Exception;
             if (exception != null) throw exception;
         }
+
+        public void SaveGenre(Genre genre, bool update)
+        {
+            
+        }
     }
 }

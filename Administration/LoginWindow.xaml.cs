@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -11,7 +12,9 @@ namespace Administration
     public partial class LoginWindow : ILoginWindow
     {
         private readonly LoginWindowViewModel viewModel;
-        private SolidColorBrush connectingTextBrush = new SolidColorBrush();
+        private readonly SolidColorBrush connectingTextBrush = new SolidColorBrush();
+
+        private readonly List<FrameworkElement> inputs; 
 
         public LoginWindow()
         {
@@ -21,6 +24,15 @@ namespace Administration
             DataContext = viewModel;
 
             SetUpAnimations();
+
+            inputs = new List<FrameworkElement>
+            {
+                serverTB,
+                databaseTB,
+                loginTB,
+                passwordBox,
+                connectButton
+            };
         }
 
         private void SetUpAnimations()
@@ -59,22 +71,14 @@ namespace Administration
 
         public void IndicateConnecting()
         {
-            serverTB.IsEnabled = false;
-            databaseTB.IsEnabled = false;
-            loginTB.IsEnabled = false;
-            passwordBox.IsEnabled = false;
-            connectButton.IsEnabled = false;
+            inputs.ForEach(input => input.IsEnabled = false);
 
             ConnectingStatusLabel.Visibility = Visibility.Visible;
         }
 
         public void IndicateConnectingFinished()
         {
-            serverTB.IsEnabled = true;
-            databaseTB.IsEnabled = true;
-            loginTB.IsEnabled = true;
-            passwordBox.IsEnabled = true;
-            connectButton.IsEnabled = true;
+            inputs.ForEach(input => input.IsEnabled = true);
 
             ConnectingStatusLabel.Visibility = Visibility.Collapsed;
         }

@@ -41,5 +41,21 @@ namespace Administration.ViewModel
         {
             view.ListCount = Genres.Count;
         }
+
+        public void OpenGenreEditor(Genre genre)
+        {
+            if (genre != null)
+            {
+                genre = genre.Clone();
+            }
+
+            var editor = new GenreEditorWindow(genre);
+            var result = editor.ShowDialog();
+
+            if (result.HasValue && result.Value)
+            {
+                RetrieveGenres();
+            }
+        }
     }
 }

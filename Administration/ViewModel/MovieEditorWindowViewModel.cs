@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using Administration.Interfaces;
 using DataAccess.Model;
@@ -52,14 +51,7 @@ namespace Administration.ViewModel
             Movie.Genres = Genres.Where(_ => _.IsSelected).ToList();
             Movie.AgeLimit = view.AgeLimit;
 
-            if (createMode)
-            {
-                repository.SaveMovie(Movie);
-            }
-            else
-            {
-                repository.SaveMovie(Movie, true);
-            }
+            repository.SaveMovie(Movie, !createMode);
         }
     }
 }

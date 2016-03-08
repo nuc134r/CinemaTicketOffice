@@ -47,5 +47,14 @@ namespace DataAccess.Model
             var handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public Genre Clone()
+        {
+            return new Genre
+            {
+                Id = Id,
+                Name = Name
+            };
+        }
     }
 }

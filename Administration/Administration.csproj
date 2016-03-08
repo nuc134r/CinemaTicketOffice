@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GenreEditorWindow.xaml.cs">
+      <DependentUpon>GenreEditorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\ILoginWindow.cs" />
     <Compile Include="Interfaces\IMovieEditorWindow.cs" />
     <Compile Include="LoginWindow.xaml.cs">
@@ -64,6 +67,7 @@
     <Compile Include="MovieEditorWindow.xaml.cs">
       <DependentUpon>MovieEditorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\GenreEditorWindowViewModel.cs" />
     <Compile Include="ViewModel\GenreListPageViewModel.cs" />
     <Compile Include="ViewModel\LoginWindowViewModel.cs" />
     <Compile Include="ViewModel\MovieEditorWindowViewModel.cs" />
@@ -77,6 +81,10 @@
     <Compile Include="View\ListPageBase.xaml.cs">
       <DependentUpon>ListPageBase.xaml</DependentUpon>
     </Compile>
+    <Page Include="GenreEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -98,8 +106,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MovieEditorWindow.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\GenreListPage.xaml">
       <Generator>MSBuild:Compile</Generator>
