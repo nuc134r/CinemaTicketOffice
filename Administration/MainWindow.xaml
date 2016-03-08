@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Administration"
         mc:Ignorable="d"
-        Title="Система Автоматизации Продажи Билетов - Администрирование" MinWidth="800" MinHeight="600" Loaded="MainWindow_OnLoaded" d:DesignWidth="749" d:DesignHeight="440">
+        Title="Система Автоматизации Продажи Билетов - Администрирование" MinWidth="500" MinHeight="300" Loaded="MainWindow_OnLoaded" d:DesignWidth="749" d:DesignHeight="440">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

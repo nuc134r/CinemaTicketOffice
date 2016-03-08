@@ -1,27 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
 
 namespace Administration.View
 {
-    public partial class ListPageBase : Page
+    public partial class ListPageBase
     {
-        public virtual int ListCount { get { return 0; } }
+        private readonly MainWindow window;
 
-        public ListPageBase()
+        public ListPageBase(MainWindow window)
         {
+            this.window = window;
             InitializeComponent();
+        }
+
+        public int ListCount
+        {
+            set { window.StatusBarCount.Content = value; }
         }
     }
 }

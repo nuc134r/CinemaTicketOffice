@@ -64,9 +64,13 @@
     <Compile Include="MovieEditorWindow.xaml.cs">
       <DependentUpon>MovieEditorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\GenreListPageViewModel.cs" />
     <Compile Include="ViewModel\LoginWindowViewModel.cs" />
     <Compile Include="ViewModel\MovieEditorWindowViewModel.cs" />
     <Compile Include="ViewModel\MoviesListPageViewModel.cs" />
+    <Compile Include="View\GenreListPage.xaml.cs">
+      <DependentUpon>GenreListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MovieListPage.xaml.cs">
       <DependentUpon>MovieListPage.xaml</DependentUpon>
     </Compile>
@@ -96,6 +100,10 @@
     <Page Include="MovieEditorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GenreListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\MovieListPage.xaml">
       <Generator>MSBuild:Compile</Generator>

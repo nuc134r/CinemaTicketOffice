@@ -1,4 +1,4 @@
-﻿<Page x:Class="Administration.View.ListPageBase"
+﻿<Page x:Class="Administration.View.GenreListPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,13 +9,13 @@
       Title="ListPageBase">
 
     <Grid>
-        <Button x:Name="CreateButton" Content="Создать" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="EditButton" Content="Изменить" Margin="0,0,80,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75"/>
-        <Button x:Name="DeleteButton" Content="Удалить" HorizontalAlignment="Right" Width="75" Height="20" VerticalAlignment="Top"/>
+        <Button x:Name="CreateButton" Content="Создать" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="CreateButton_Click"/>
+        <Button x:Name="EditButton" Content="Изменить" Margin="0,0,80,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Click="EditButton_Click"/>
+        <Button x:Name="DeleteButton" Content="Удалить" HorizontalAlignment="Right" Width="75" Click="DeleteButton_Click" Height="20" VerticalAlignment="Top"/>
         <ListView x:Name="listView" ItemsSource="{Binding}" Margin="0,25,0,0" Foreground="Black" SelectedIndex="0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Header="Имя"  DisplayMemberBinding="{Binding Name}" />
                 </GridView>
             </ListView.View>
         </ListView>
