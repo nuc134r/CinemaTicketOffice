@@ -107,6 +107,13 @@ namespace DataAccess.Repository
             }
         }
 
+        public void DeleteMovie(Movie movie)
+        {
+            var movieConnection = new CommandExecutor("dbo.DeleteMovie", connectionString);
+            movieConnection.AddParam("@MovieId", movie.Id, SqlDbType.Int);
+            movieConnection.ExecuteCommand();
+        }
+
         public IEnumerable<AgeLimit> GetAgeLimits()
         {
             var genresConnection = new CommandExecutor("dbo.ListAgeLimits", connectionString);

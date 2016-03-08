@@ -8,5 +8,6 @@ namespace DataAccess.Repository
         IEnumerable<Movie> GetMovies();
         IEnumerable<Genre> GetGenres();
         void GetMovieDetails(Movie movie);
+        void DeleteMovie(Movie movie);
     }
 }

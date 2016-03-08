@@ -1,6 +1,7 @@
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Windows;
 using Administration.View;
 using DataAccess.Model;
 using DataAccess.Repository;
@@ -55,6 +56,18 @@ namespace Administration.ViewModel
 
             if (result.HasValue && result.Value)
             {
+                RetrieveMovies();
+            }
+        }
+
+        public void DeleteMovie(Movie movie)
+        {
+            const string caption = "Подтверждение";
+            const string text = "Предпринимается попытка удалить фильм \"{0}\". Подтвердить удаление?";
+
+            if (MessageBox.Show(string.Format(text, movie.Title), caption, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                repository.DeleteMovie(movie);
                 RetrieveMovies();
             }
         }

@@ -6,6 +6,7 @@ IF OBJECT_ID('dbo.ListAgeLimits', 'P')	IS NOT NULL DROP PROCEDURE [ListAgeLimits
 IF OBJECT_ID('dbo.MovieDetails', 'P') IS NOT NULL DROP PROCEDURE [MovieDetails]
 IF OBJECT_ID('dbo.CreateMovie', 'P') IS NOT NULL DROP PROCEDURE [CreateMovie]
 IF OBJECT_ID('dbo.UpdateMovie', 'P') IS NOT NULL DROP PROCEDURE [UpdateMovie]
+IF OBJECT_ID('dbo.DeleteMovie', 'P') IS NOT NULL DROP PROCEDURE [DeleteMovie]
 GO
 
 CREATE PROCEDURE dbo.BrowseMovies
@@ -184,10 +185,15 @@ AS
 	GO
 GO
 
+CREATE PROCEDURE dbo.DeleteMovie
+	@MovieId INT
+AS
+	DELETE FROM Movie WHERE Id = @MovieId
+GO
+
 /********************************
  *			  Admin				*
  ********************************/
-
 GRANT EXECUTE ON dbo.BrowseMovies TO adminuser
 GO
 GRANT EXECUTE ON dbo.MovieDetails TO adminuser
@@ -199,6 +205,8 @@ GO
 GRANT EXECUTE ON dbo.CreateMovie TO adminuser
 GO
 GRANT EXECUTE ON dbo.UpdateMovie TO adminuser
+GO
+GRANT EXECUTE ON dbo.DeleteMovie TO adminuser
 GO
 GRANT EXEC ON TYPE::dbo.IdList TO adminuser
 GO

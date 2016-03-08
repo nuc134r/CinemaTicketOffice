@@ -25,8 +25,9 @@ namespace Tests.Stubs
             
         }
 
-        public void Refresh()
+        public void DeleteMovie(Movie movie)
         {
+            
         }
     }
 }

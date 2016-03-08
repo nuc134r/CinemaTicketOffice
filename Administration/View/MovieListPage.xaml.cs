@@ -13,6 +13,11 @@ namespace Administration.View
         private readonly MoviesListPageViewModel viewModel;
         private readonly MainWindow window;
 
+        private Movie SelectedMovie
+        {
+            get { return (Movie) listView.SelectedItem; }
+        }
+
         public MovieListPage(MainWindow window)
         {
             this.window = window;
@@ -37,7 +42,7 @@ namespace Administration.View
 
         private void listView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            viewModel.OpenMovieEditor((Movie)listView.SelectedItem);
+            viewModel.OpenMovieEditor(SelectedMovie);
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
@@ -47,7 +52,12 @@ namespace Administration.View
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.OpenMovieEditor((Movie)listView.SelectedItem);
+            viewModel.OpenMovieEditor(SelectedMovie);
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.DeleteMovie(SelectedMovie);
         }
     }
 }
