@@ -57,6 +57,7 @@ namespace Administration.View
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            if (SelectedMovie == null) return;
             viewModel.DeleteMovie(SelectedMovie);
         }
     }

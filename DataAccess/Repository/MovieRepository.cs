@@ -111,7 +111,10 @@ namespace DataAccess.Repository
         {
             var movieConnection = new CommandExecutor("dbo.DeleteMovie", connectionString);
             movieConnection.AddParam("@MovieId", movie.Id, SqlDbType.Int);
-            movieConnection.ExecuteCommand();
+            var result = movieConnection.ExecuteCommand();
+
+            var exception = result as Exception;
+            if (exception != null) throw exception;
         }
 
         public IEnumerable<AgeLimit> GetAgeLimits()
@@ -169,7 +172,32 @@ namespace DataAccess.Repository
 
         public void SaveGenre(Genre genre, bool update)
         {
-            
+            CommandExecutor genreConnection;
+            if (update)
+            {
+                genreConnection = new CommandExecutor("dbo.UpdateGenre", connectionString);
+                genreConnection.AddParam("@Id", genre.Id, SqlDbType.Int);
+            }
+            else
+            {
+                genreConnection = new CommandExecutor("dbo.CreateGenre", connectionString);
+            }
+
+            genreConnection.AddParam("@Name", genre.Name, SqlDbType.NVarChar);
+
+            var result = genreConnection.ExecuteCommand(true);
+            var exception = result as Exception;
+            if (exception != null) throw exception;
+        }
+
+        public void DeleteGenre(Genre genre)
+        {
+            var genreConnection = new CommandExecutor("dbo.DeleteGenre", connectionString);
+            genreConnection.AddParam("@GenreId", genre.Id, SqlDbType.Int);
+            var result = genreConnection.ExecuteCommand();
+
+            var exception = result as Exception;
+            if (exception != null) throw exception;
         }
     }
 }

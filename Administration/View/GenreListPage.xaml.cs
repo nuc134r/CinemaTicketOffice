@@ -57,7 +57,8 @@ namespace Administration.View
 
         private void DeleteButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-
+            if (SelectedGenre == null) return;
+            viewModel.DeleteGenre(SelectedGenre);
         }
     }
 }

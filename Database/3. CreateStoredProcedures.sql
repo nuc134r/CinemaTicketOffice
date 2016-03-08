@@ -7,6 +7,9 @@ IF OBJECT_ID('dbo.MovieDetails', 'P') IS NOT NULL DROP PROCEDURE [MovieDetails]
 IF OBJECT_ID('dbo.CreateMovie', 'P') IS NOT NULL DROP PROCEDURE [CreateMovie]
 IF OBJECT_ID('dbo.UpdateMovie', 'P') IS NOT NULL DROP PROCEDURE [UpdateMovie]
 IF OBJECT_ID('dbo.DeleteMovie', 'P') IS NOT NULL DROP PROCEDURE [DeleteMovie]
+IF OBJECT_ID('dbo.CreateGenre', 'P') IS NOT NULL DROP PROCEDURE [CreateGenre]
+IF OBJECT_ID('dbo.UpdateGenre', 'P') IS NOT NULL DROP PROCEDURE [UpdateGenre]
+IF OBJECT_ID('dbo.DeleteGenre', 'P') IS NOT NULL DROP PROCEDURE [DeleteGenre]
 GO
 
 CREATE PROCEDURE dbo.BrowseMovies
@@ -191,6 +194,32 @@ AS
 	DELETE FROM Movie WHERE Id = @MovieId
 GO
 
+CREATE PROCEDURE dbo.CreateGenre
+	@Name NVARCHAR (128)
+AS 
+    SET NOCOUNT ON;
+
+	INSERT INTO Genre (Name) SELECT @Name
+GO
+
+CREATE PROCEDURE dbo.UpdateGenre
+	@Id INT,
+	@Name NVARCHAR (128)
+AS 
+    SET NOCOUNT ON;
+
+	UPDATE Genre SET
+		Name = @Name
+	WHERE
+		Id = @Id
+GO
+
+CREATE PROCEDURE dbo.DeleteGenre
+	@GenreId INT
+AS
+	DELETE FROM Genre WHERE Id = @GenreId
+GO
+
 /********************************
  *			  Admin				*
  ********************************/
@@ -207,6 +236,12 @@ GO
 GRANT EXECUTE ON dbo.UpdateMovie TO adminuser
 GO
 GRANT EXECUTE ON dbo.DeleteMovie TO adminuser
+GO
+GRANT EXECUTE ON dbo.CreateGenre TO adminuser
+GO
+GRANT EXECUTE ON dbo.UpdateGenre TO adminuser
+GO
+GRANT EXECUTE ON dbo.DeleteGenre TO adminuser
 GO
 GRANT EXEC ON TYPE::dbo.IdList TO adminuser
 GO

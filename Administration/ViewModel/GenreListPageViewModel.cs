@@ -2,6 +2,8 @@ using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Windows;
+using Administration.Properties;
 using Administration.View;
 using DataAccess.Model;
 using DataAccess.Repository;
@@ -55,6 +57,27 @@ namespace Administration.ViewModel
             if (result.HasValue && result.Value)
             {
                 RetrieveGenres();
+            }
+        }
+
+        public void DeleteGenre(Genre genre)
+        {
+            var result = MessageBox.Show(
+                string.Format(Resources.DeleteGenreConfirmation, genre.Name),
+                Resources.DeleteConfirmationCaption,
+                MessageBoxButton.YesNo);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    repository.DeleteGenre(genre);
+                    RetrieveGenres();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }

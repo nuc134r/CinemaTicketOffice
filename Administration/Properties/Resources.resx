@@ -117,10 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DeleteConfirmationCaption" xml:space="preserve">
+    <value>Подтверждение</value>
+  </data>
+  <data name="DeleteGenreConfirmation" xml:space="preserve">
+    <value>Предпринимается попытка удалить жанр "{0}". Подтвердить удаление?</value>
+  </data>
   <data name="DeleteMovieConfirmation" xml:space="preserve">
     <value>Предпринимается попытка удалить фильм "{0}". Подтвердить удаление?</value>
-  </data>
-  <data name="DeleteMovieConfirmationCaption" xml:space="preserve">
-    <value>Подтверждение</value>
   </data>
 </root>

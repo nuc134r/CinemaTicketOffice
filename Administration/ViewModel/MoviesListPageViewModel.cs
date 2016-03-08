@@ -1,3 +1,4 @@
+using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
@@ -65,13 +66,20 @@ namespace Administration.ViewModel
         {
             var result = MessageBox.Show(
                 string.Format(Resources.DeleteMovieConfirmation, movie.Title),
-                Resources.DeleteMovieConfirmationCaption,
+                Resources.DeleteConfirmationCaption,
                 MessageBoxButton.YesNo);
 
             if (result == MessageBoxResult.Yes)
             {
-                repository.DeleteMovie(movie);
-                RetrieveMovies();
+                try
+                {
+                    repository.DeleteMovie(movie);
+                    RetrieveMovies();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }
