@@ -32,7 +32,8 @@ namespace KioskClient
 
         public void NavigateToShowtimeList(Movie movie)
         {
-            //TODO
+            var showtimesPage = new MovieShowtimesPage(movie);
+            DataContext = showtimesPage;
         }
     }
 }

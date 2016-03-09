@@ -11,13 +11,13 @@ namespace KioskClient.ViewModel
 {
     public class CatalogPageViewModel : ViewModelBase
     {
-        private readonly IMovieRepository movieRepository;
+        private readonly IMovieRepository repository;
         private List<Movie> allMovies;
         private bool pauseFiltering;
 
-        public CatalogPageViewModel(CatalogPage view, IMovieRepository movieRepository)
+        public CatalogPageViewModel(CatalogPage view, IMovieRepository repository)
         {
-            this.movieRepository = movieRepository;
+            this.repository = repository;
             this.view = view;
 
             Genres = new ObservableCollection<Genre>();
@@ -45,7 +45,7 @@ namespace KioskClient.ViewModel
 
         private void RetrieveData()
         {
-            var genres = movieRepository.GetGenres();
+            var genres = repository.GetGenres();
             Genres = new ObservableCollection<Genre>(genres);
 
             foreach (var genre in Genres)
@@ -53,10 +53,10 @@ namespace KioskClient.ViewModel
                 genre.PropertyChanged += (sender, args) => FilterByGenres();
             }
 
-            allMovies = movieRepository.GetMovies().ToList();
+            allMovies = repository.GetMovies().ToList();
             Movies = new ObservableCollection<Movie>(allMovies);
 
-            allMovies.ForEach(movieRepository.GetMovieDetails);
+            allMovies.ForEach(repository.GetMovieDetails);
         }
 
         public void ResetGenresFilter()
@@ -98,13 +98,13 @@ namespace KioskClient.ViewModel
                     }
                 }
             }
-
+            
             if (view != null) view.AttachSelectionChangedHandler();
         }
 
-        public void NavigateToMovieDetails(Movie movie)
+        public void GoToMovieDetails(Movie movie)
         {
-            TheWindow.NavigateToMovieDetails(movie);
+            Window.NavigateToMovieDetails(movie);
         }
     }
 }

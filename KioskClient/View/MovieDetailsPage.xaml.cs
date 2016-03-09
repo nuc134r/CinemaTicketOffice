@@ -5,7 +5,7 @@ using KioskClient.ViewModel;
 
 namespace KioskClient.View
 {
-    public partial class MovieDetailsPage : Page
+    public partial class MovieDetailsPage
     {
         private readonly MovieDetailsPageViewModel viewModel;
 
@@ -18,14 +18,12 @@ namespace KioskClient.View
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.GoToMovieCatalog();
+            viewModel.GoBack();
         }
 
         private void BuyTicketsButton_Click(object sender, RoutedEventArgs e)
         {
-            var movie = (Movie) DataContext;
-
-            viewModel.GoToShowtimeList(movie);
+            viewModel.GoToShowtimeList((Movie)DataContext);
         }
     }
 }

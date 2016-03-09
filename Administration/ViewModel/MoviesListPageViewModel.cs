@@ -22,10 +22,10 @@ namespace Administration.ViewModel
             this.view = view;
             this.repository = repository;
 
-            RetrieveMovies();
+            RetrieveData();
         }
 
-        private void RetrieveMovies()
+        private void RetrieveData()
         {
             if (Movies == null)
             {
@@ -58,7 +58,7 @@ namespace Administration.ViewModel
 
             if (result.HasValue && result.Value)
             {
-                RetrieveMovies();
+                RetrieveData();
             }
         }
 
@@ -74,7 +74,7 @@ namespace Administration.ViewModel
                 try
                 {
                     repository.DeleteMovie(movie);
-                    RetrieveMovies();
+                    RetrieveData();
                 }
                 catch (Exception ex)
                 {

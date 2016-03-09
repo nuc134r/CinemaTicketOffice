@@ -3,46 +3,18 @@ using DataAccess.Model;
 
 namespace DataAccess.Repository
 {
-    public class ShowtimeRepository : IShowtimeRepository
+    public class ShowtimeRepository
     {
-        private readonly Movie movie;
-        private List<Auditorium> auditoriums;
-        private List<Showtime> showtimes;
+        private readonly string connectionString;
 
-        public ShowtimeRepository(Movie movie)
+        public ShowtimeRepository(string connectionString)
         {
-            this.movie = movie;
+            this.connectionString = connectionString;
         }
 
-        public List<Showtime> Showtimes
+        public IEnumerable<Showtime> GetShowtimes()
         {
-            get
-            {
-                auditoriums = auditoriums ?? LoadAuditoriums();
-                showtimes = showtimes ?? LoadShowtimes();
-                return showtimes;
-            }
-        }
-
-        public void Refresh()
-        {
-            showtimes = LoadShowtimes();
-        }
-
-        private List<Auditorium> LoadAuditoriums()
-        {
-            return new List<Auditorium>
-            {
-                
-            };
-        }
-
-        private List<Showtime> LoadShowtimes()
-        {
-            return new List<Showtime>
-            {
-                new Showtime() { Movie = movie }
-            };
-        }
+            return new List<Showtime>();
+        } 
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using DataAccess;
 using DataAccess.Model;
@@ -46,7 +44,7 @@ namespace KioskClient.View
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var movie = (Movie) e.AddedItems[0];
-            viewModel.NavigateToMovieDetails(movie);
+            viewModel.GoToMovieDetails(movie);
         }
 
         public void DetachSelectionChangedHandler()

@@ -10,14 +10,14 @@ namespace KioskClient.ViewModel
             this.view = view;
         }
 
-        public void GoToMovieCatalog()
+        public void GoBack()
         {
-            TheWindow.NavigateToMovieCatalog();
+            Window.NavigateToMovieCatalog();
         }
 
         public void GoToShowtimeList(Movie movie)
         {
-            TheWindow.NavigateToShowtimeList(movie);
+            Window.NavigateToShowtimeList(movie);
         }
     }
 }

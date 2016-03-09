@@ -1,0 +1,14 @@
+﻿<Page x:Class="KioskClient.View.AuditoriumMapPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KioskClient.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="301.446" d:DesignWidth="513.253"
+      Title="AuditoriumMapPage">
+
+    <Grid>
+        <Viewbox HorizontalAlignment="Left" Height="141" Margin="45,27,0,0" VerticalAlignment="Top" Width="279"/>
+    </Grid>
+</Page>

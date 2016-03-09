@@ -20,12 +20,12 @@ namespace Administration.ViewModel
             this.view = view;
             this.repository = repository;
 
-            RetrieveGenres();
+            RetrieveData();
         }
 
         public ObservableCollection<Genre> Genres { get; private set; }
 
-        private void RetrieveGenres()
+        private void RetrieveData()
         {
             if (Genres == null)
             {
@@ -56,7 +56,7 @@ namespace Administration.ViewModel
 
             if (result.HasValue && result.Value)
             {
-                RetrieveGenres();
+                RetrieveData();
             }
         }
 
@@ -72,7 +72,7 @@ namespace Administration.ViewModel
                 try
                 {
                     repository.DeleteGenre(genre);
-                    RetrieveGenres();
+                    RetrieveData();
                 }
                 catch (Exception ex)
                 {

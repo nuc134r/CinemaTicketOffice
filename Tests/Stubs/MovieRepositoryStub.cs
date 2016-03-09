@@ -29,5 +29,25 @@ namespace Tests.Stubs
         {
             
         }
+
+        public IEnumerable<AgeLimit> GetAgeLimits()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveMovie(Movie movie, bool update = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveGenre(Genre genre, bool update)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteGenre(Genre genre)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
