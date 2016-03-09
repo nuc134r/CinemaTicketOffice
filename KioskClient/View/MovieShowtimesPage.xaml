@@ -4,8 +4,9 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:KioskClient.View"
+      xmlns:model="clr-namespace:DataAccess.Model;assembly=DataAccess"
       mc:Ignorable="d" 
-      d:DesignWidth="800" d:DesignHeight="500"
+      d:DesignWidth="852" d:DesignHeight="488"
       Title="Сеансы">
     <Page.Resources>
         <ResourceDictionary>
@@ -19,19 +20,50 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="35"/>
             <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="35"/>
+            <ColumnDefinition Width="18"/>
             <ColumnDefinition/>
             <ColumnDefinition Width="239"/>
         </Grid.ColumnDefinitions>
         <Button Content="Назад" Margin="35,30,35,0" Style="{DynamicResource BigBlueButtonStyle}" Grid.Column="4" Height="60" VerticalAlignment="Top" Click="BackButton_Click" />
-        <Image Source="{Binding Movie.Poster}" Height="264" Margin="0,55,10,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <!--<Image Source="C:\CinemaTicketOffice\Posters\5492.jpg" Height="264" Margin="10,55,10,0" VerticalAlignment="Top"/>-->
+        <!--<Image Source="{Binding Movie.Poster}" Height="264" Margin="0,55,10,0" VerticalAlignment="Top" Grid.Column="1"/>-->
+        <Image Source="C:\CinemaTicketOffice\Posters\5492.jpg" Height="264" Margin="0,55,10,0" VerticalAlignment="Top" Grid.Column="1"/>
         <TextBlock Margin="0,324,10,10" TextWrapping="Wrap" Foreground="White" Grid.Column="1">
-            <Run Text="{Binding Movie.Title}" FontFamily="Segoe UI Light" FontSize="22" />
-            <!--<Run Text="Вечное Сияние Чистого Разума" FontSize="22" />-->
-            <Run Text="{Binding Movie.GenresString, Mode=OneWay}" Foreground="#9D9A9A" FontSize="16" />
-            <!--<Run Text="драма, мелодрама" Foreground="#9D9A9A" FontSize="16" />-->
+            <!--<Run Text="{Binding Movie.Title}" FontFamily="Segoe UI Light" FontSize="22" />-->
+            <Run Text="Вечное Сияние Чистого Разума" FontSize="22" />
+            <LineBreak />
+            <!--<Run Text="{Binding Movie.GenresString, Mode=OneWay}" Foreground="#9D9A9A" FontSize="16" />-->
+            <Run Text="драма, мелодрама" Foreground="#9D9A9A" FontSize="16" />
         </TextBlock>
-        <Label x:Name="label" Content="Выбранный фильм:" Margin="0,6,10,0" Padding="0,5,0,0" Foreground="#9D9A9A" FontSize="20" VerticalAlignment="Top" Grid.Column="1" Height="34"/>
+        <Label Content="Выбранный фильм:" Margin="0,6,10,0" Padding="0,5,0,0" Foreground="#9D9A9A" FontSize="20" VerticalAlignment="Top" Grid.Column="1" Height="34"/>
+        <ListBox HorizontalContentAlignment="Stretch" Grid.Column="3" Margin="0,35,0,35" Background="{x:Null}" BorderThickness="0">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="model:Showtime">
+                    <Grid Height="66" >
+                        <TextBlock TextWrapping="Wrap" Foreground="White" Margin="0" HorizontalAlignment="Left" Width="141" ScrollViewer.VerticalScrollBarVisibility="Disabled" Padding="0">
+                            <Run Text="{Binding Time, StringFormat='{}{0:HH:mm}'}" FontSize="40" />
+                            <Run Text=" " />
+                            <Run Text="{Binding ThreeDeeLabelText, Mode=OneWay}" FontSize="20" FontWeight="Bold" Foreground="#FF79A9FD" BaselineAlignment="Center" />
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Foreground="#9D9A9A" FontSize="16" Margin="0,41,0,0" TextAlignment="Left" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="123" Padding="0,2,0,0">
+                            <Run Text="{Binding AdditionalTimeString, Mode=OneWay}" />
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" TextAlignment="Right" Foreground="White" FontSize="30" FontFamily="Segoe UI Light" Margin="0,6,0,0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Right" Width="99">
+                            <Run Text="{Binding Price}" />
+                            <Run Text="₽" />
+                        </TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.Items>
+                <model:Showtime Time="22:40" ThreeD="True" Price="500" />
+                <model:Showtime Time="23:55" ThreeD="True" Price="550" />
+                <model:Showtime Time="03/10/2016 0:20" ThreeD="False" Price="350" />
+            </ListBox.Items>
+        </ListBox>
     </Grid>
 </Page>
