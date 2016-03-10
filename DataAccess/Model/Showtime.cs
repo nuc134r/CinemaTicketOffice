@@ -11,29 +11,37 @@ namespace DataAccess.Model
         public int Price { get; set; }
         public bool ThreeD { get; set; }
 
+        private const string FarDateFormat = "M";
+        private const int SoonMovieBoundary = 15;
+
         public string AdditionalTimeString
         {
             get
             {
-                var minutesLeft = (Time - DateTime.Now).TotalMinutes;
-                if (minutesLeft <= 15 && minutesLeft > 0)
+                var minutesLeft = Math.Ceiling((Time - DateTime.Now).TotalMinutes);
+                if (minutesLeft <= SoonMovieBoundary && minutesLeft > 0)
                 {
                     return string.Format(Resources.TimeLeftString, minutesLeft);
                 }
 
-                var isTomorrow = DateTime.Today + TimeSpan.FromDays(1) == Time.Date;
+                var isTomorrow = Time.Date == DateTime.Today + TimeSpan.FromDays(1);
                 if (isTomorrow)
                 {
-                    return "завтра";
+                    return Resources.TomorrowText;
                 }
 
-                return "";
+                if (Time.Date == DateTime.Now.Date)
+                {
+                    return string.Empty;
+                }
+
+                return Time.ToString(FarDateFormat);
             }
         }
 
         public string ThreeDeeLabelText
         {
-            get { return ThreeD ? "3D" : ""; }
+            get { return ThreeD ? Resources.ThreeDeeText : string.Empty; }
         }
     }
 }

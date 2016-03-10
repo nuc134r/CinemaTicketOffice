@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:KioskClient.View"
       xmlns:model="clr-namespace:DataAccess.Model;assembly=DataAccess"
       mc:Ignorable="d" 
-      d:DesignWidth="852" d:DesignHeight="488"
+      d:DesignWidth="879" d:DesignHeight="510"
       Title="Сеансы">
     <Page.Resources>
         <ResourceDictionary>
@@ -26,7 +26,7 @@
         </Grid.ColumnDefinitions>
         <Button Content="Назад" Margin="35,30,35,0" Style="{DynamicResource BigBlueButtonStyle}" Grid.Column="4" Height="60" VerticalAlignment="Top" Click="BackButton_Click" />
         <!--<Image Source="{Binding Movie.Poster}" Height="264" Margin="0,55,10,0" VerticalAlignment="Top" Grid.Column="1"/>-->
-        <Image Source="C:\CinemaTicketOffice\Posters\5492.jpg" Height="264" Margin="0,55,10,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Image Source="C:\CinemaTicketOffice\Posters\5492.jpg" Height="264" Margin="0,55,10,0" VerticalAlignment="Top" Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Left"/>
         <TextBlock Margin="0,324,10,10" TextWrapping="Wrap" Foreground="White" Grid.Column="1">
             <!--<Run Text="{Binding Movie.Title}" FontFamily="Segoe UI Light" FontSize="22" />-->
             <Run Text="Вечное Сияние Чистого Разума" FontSize="22" />
@@ -35,15 +35,16 @@
             <Run Text="драма, мелодрама" Foreground="#9D9A9A" FontSize="16" />
         </TextBlock>
         <Label Content="Выбранный фильм:" Margin="0,6,10,0" Padding="0,5,0,0" Foreground="#9D9A9A" FontSize="20" VerticalAlignment="Top" Grid.Column="1" Height="34"/>
-        <ListBox HorizontalContentAlignment="Stretch" Grid.Column="3" Margin="0,35,0,35" Background="{x:Null}" BorderThickness="0">
+        <ListBox ItemsSource="{Binding Showtimes}" HorizontalContentAlignment="Stretch" Grid.Column="3" Margin="0,35,0,35" Background="{x:Null}" BorderThickness="0" Padding="0">
             <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
+                <Style TargetType="ListBoxItem" BasedOn="{StaticResource CleanListBoxItemStyle}">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                    <Setter Property="Margin" Value="0,3"></Setter>
                 </Style>
             </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="model:Showtime">
-                    <Grid Height="66" >
+                    <Grid Height="66" MinWidth="250" MaxWidth="450" >
                         <TextBlock TextWrapping="Wrap" Foreground="White" Margin="0" HorizontalAlignment="Left" Width="141" ScrollViewer.VerticalScrollBarVisibility="Disabled" Padding="0">
                             <Run Text="{Binding Time, StringFormat='{}{0:HH:mm}'}" FontSize="40" />
                             <Run Text=" " />
@@ -59,11 +60,6 @@
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-            <ListBox.Items>
-                <model:Showtime Time="22:40" ThreeD="True" Price="500" />
-                <model:Showtime Time="23:55" ThreeD="True" Price="550" />
-                <model:Showtime Time="03/10/2016 0:20" ThreeD="False" Price="350" />
-            </ListBox.Items>
         </ListBox>
     </Grid>
 </Page>

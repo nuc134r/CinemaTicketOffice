@@ -61,11 +61,56 @@ namespace DataAccess {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to минуту.
+        /// </summary>
+        internal static string MinutesGenetivePlural {
+            get {
+                return ResourceManager.GetString("MinutesGenetivePlural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to минуты.
+        /// </summary>
+        internal static string MinutesGenitiveSingular {
+            get {
+                return ResourceManager.GetString("MinutesGenitiveSingular", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to минута.
+        /// </summary>
+        internal static string MinutesNominative {
+            get {
+                return ResourceManager.GetString("MinutesNominative", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3D.
+        /// </summary>
+        internal static string ThreeDeeText {
+            get {
+                return ResourceManager.GetString("ThreeDeeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to через {0} мин.
         /// </summary>
         internal static string TimeLeftString {
             get {
                 return ResourceManager.GetString("TimeLeftString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to завтра.
+        /// </summary>
+        internal static string TomorrowText {
+            get {
+                return ResourceManager.GetString("TomorrowText", resourceCulture);
             }
         }
     }
