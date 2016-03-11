@@ -9,11 +9,12 @@ namespace KioskClient.View
     {
         private readonly MovieDetailsPageViewModel viewModel;
 
-        public MovieDetailsPage()
+        public MovieDetailsPage(Movie movie)
         {
             InitializeComponent();
 
-            viewModel = new MovieDetailsPageViewModel(this);
+            viewModel = new MovieDetailsPageViewModel(movie, this);
+            DataContext = viewModel;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

@@ -20,7 +20,7 @@ namespace KioskClient
 
         public void NavigateToMovieDetails(Movie movie)
         {
-            var movieDetailsPage = new MovieDetailsPage { DataContext = movie };
+            var movieDetailsPage = new MovieDetailsPage(movie);
             DataContext = movieDetailsPage;
         }
 

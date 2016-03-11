@@ -130,7 +130,7 @@
     <value>3D</value>
   </data>
   <data name="TimeLeftString" xml:space="preserve">
-    <value>через {0} мин</value>
+    <value>осталось {0} мин</value>
   </data>
   <data name="TomorrowText" xml:space="preserve">
     <value>завтра</value>

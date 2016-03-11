@@ -36,11 +36,10 @@
         <GradientStop Color="#FF38AE1F" Offset="1"/>
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="Button.Disabled.Background" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#FFD7DBEE" Offset="0"/>
-        <GradientStop Color="#FF8A8D9E" Offset="1"/>
+        <GradientStop Color="#999999" Offset="0"/>
     </LinearGradientBrush>
-    <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
-    <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+    <SolidColorBrush x:Key="Button.Disabled.Border" Color="#5F5E5E"/>
+    <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#5F5E5E"/>
     <Style x:Key="BigBlueButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource Button.Static.BackgroundBlue}"/>

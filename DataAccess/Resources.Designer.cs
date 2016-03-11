@@ -97,7 +97,7 @@ namespace DataAccess {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to через {0} мин.
+        ///   Looks up a localized string similar to осталось {0} мин.
         /// </summary>
         internal static string TimeLeftString {
             get {

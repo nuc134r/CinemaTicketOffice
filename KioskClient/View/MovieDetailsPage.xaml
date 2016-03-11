@@ -32,29 +32,29 @@
                     <SolidColorBrush x:Key="IconColor" Color="White"/>
                     <SolidColorBrush x:Key="DimColor" Color="#9D9A9A"/>
                 </TextBlock.Resources>
-                <Run Text="{Binding Title}" FontFamily="Segoe UI Light" FontSize="37" />
+                <Run Text="{Binding Movie.Title}" FontFamily="Segoe UI Light" FontSize="37" />
                 <LineBreak/>
 				<LineBreak/>
                 <Run Text="🎬 " Foreground="{StaticResource IconColor}" FontSize="16" />
-                <Run Text="{Binding GenresString, Mode=OneWay}" Foreground="{StaticResource DimColor}" FontSize="20" />
+                <Run Text="{Binding Movie.GenresString, Mode=OneWay}" Foreground="{StaticResource DimColor}" FontSize="20" />
                 <LineBreak/>
                 <Run Text="🕓 " Foreground="{StaticResource IconColor}" FontSize="16" /> 
-                <Run Text="{Binding Duration}" Foreground="{StaticResource DimColor}" FontSize="20" />
+                <Run Text="{Binding Movie.Duration}" Foreground="{StaticResource DimColor}" FontSize="20" />
                 <Run Text="мин" Foreground="{StaticResource DimColor}" FontSize="20" />
                 <LineBreak/>
                 <Run Text="📆 " Foreground="{StaticResource IconColor}" FontSize="16" /> 
-                <Run Text="{Binding ReleaseDate, StringFormat='{}{0:d MMMM yyyy}'}" Foreground="{StaticResource DimColor}" FontSize="20" />
+                <Run Text="{Binding Movie.ReleaseDate, StringFormat='{}{0:d MMMM yyyy}'}" Foreground="{StaticResource DimColor}" FontSize="20" />
                 <LineBreak/>
                 <LineBreak/>
                 <Run Text="Возрастное ограничение: " Foreground="{StaticResource DimColor}" FontSize="20" />
-                <Run Text="{Binding AgeLimit, Mode=OneWay}" Foreground="{StaticResource DimColor}" FontSize="20" />
+                <Run Text="{Binding Movie.AgeLimit, Mode=OneWay}" Foreground="{StaticResource DimColor}" FontSize="20" />
                 <LineBreak/>
                 <LineBreak/>
-                <Run Text="{Binding Plot}" FontSize="18.5" />
+                <Run Text="{Binding Movie.Plot}" FontSize="18.5" />
             </TextBlock>
         </ScrollViewer>
-        <Image Source="{Binding Poster}"  Margin="0,10,10,10" HorizontalAlignment="Right" Grid.Column="1" Grid.RowSpan="2" />
+        <Image Source="{Binding Movie.Poster}"  Margin="0,10,10,10" HorizontalAlignment="Right" Grid.Column="1" Grid.RowSpan="2" />
         <Button Content="Назад" Margin="35,30,35,0" Style="{DynamicResource BigBlueButtonStyle}" Grid.Column="3" Height="60" VerticalAlignment="Top" Click="BackButton_Click" />
-        <Button Content="Список сеансов" Margin="35,0,35,30" Style="{DynamicResource BigGreenButtonStyle}" Grid.Column="2" Height="75" VerticalAlignment="Bottom" Grid.Row="1" Grid.ColumnSpan="2" FontSize="33.333" Click="BuyTicketsButton_Click" />
+        <Button Content="{Binding ShowtimesButtonText}" Margin="35,0,35,30" Style="{DynamicResource BigGreenButtonStyle}" IsEnabled="{Binding IsShowtimesButtonEnabled}" Grid.Column="2" Height="75" VerticalAlignment="Bottom" Grid.Row="1" Grid.ColumnSpan="2" FontSize="33.333" Click="BuyTicketsButton_Click" />
     </Grid>
 </Page>

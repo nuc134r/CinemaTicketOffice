@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:KioskClient.View"
       xmlns:model="clr-namespace:DataAccess.Model;assembly=DataAccess"
       mc:Ignorable="d" 
-      d:DesignWidth="879" d:DesignHeight="510"
+      d:DesignWidth="800" d:DesignHeight="498"
       Title="Сеансы">
     <Page.Resources>
         <ResourceDictionary>
@@ -44,16 +44,16 @@
             </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="model:Showtime">
-                    <Grid Height="66" MinWidth="250" MaxWidth="450" >
-                        <TextBlock TextWrapping="Wrap" Foreground="White" Margin="0" HorizontalAlignment="Left" Width="141" ScrollViewer.VerticalScrollBarVisibility="Disabled" Padding="0">
+                    <Grid Height="66" MinWidth="250" MaxWidth="450" Background="#343131" >
+                        <TextBlock TextWrapping="Wrap" Foreground="White" Margin="6,0" HorizontalAlignment="Left" ScrollViewer.VerticalScrollBarVisibility="Disabled" Padding="0,4">
                             <Run Text="{Binding Time, StringFormat='{}{0:HH:mm}'}" FontSize="40" />
                             <Run Text=" " />
                             <Run Text="{Binding ThreeDeeLabelText, Mode=OneWay}" FontSize="20" FontWeight="Bold" Foreground="#FF79A9FD" BaselineAlignment="Center" />
                         </TextBlock>
-                        <TextBlock TextWrapping="Wrap" Foreground="#9D9A9A" FontSize="16" Margin="0,41,0,0" TextAlignment="Left" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="123" Padding="0,2,0,0">
-                            <Run Text="{Binding AdditionalTimeString, Mode=OneWay}" />
+                        <TextBlock TextWrapping="Wrap" Foreground="White" Margin="5,1" TextAlignment="Right" HorizontalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Disabled" Padding="0" VerticalAlignment="Top">
+                            <Run Text="{Binding AdditionalTimeString, Mode=OneWay}" Foreground="#7A7777" FontSize="16" />
                         </TextBlock>
-                        <TextBlock TextWrapping="Wrap" TextAlignment="Right" Foreground="White" FontSize="30" FontFamily="Segoe UI Light" Margin="0,6,0,0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Right" Width="99">
+                        <TextBlock TextWrapping="Wrap" TextAlignment="Right" Foreground="White" FontSize="30" FontFamily="Segoe UI Light" Margin="7,3" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="99">
                             <Run Text="{Binding Price}" />
                             <Run Text="₽" />
                         </TextBlock>
