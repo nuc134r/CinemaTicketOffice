@@ -10,14 +10,14 @@ using DataAccess.Repository;
 
 namespace Administration.ViewModel
 {
-    public class MoviesListPageViewModel
+    public class MovieListPageViewModel
     {
         private readonly IMovieRepository repository;
         private readonly MovieListPage view;
 
         public ObservableCollection<Movie> Movies { get; private set; } 
 
-        public MoviesListPageViewModel(MovieListPage view, IMovieRepository repository)
+        public MovieListPageViewModel(MovieListPage view, IMovieRepository repository)
         {
             this.view = view;
             this.repository = repository;
@@ -45,7 +45,7 @@ namespace Administration.ViewModel
             view.ListCount = Movies.Count;
         }
 
-        public void OpenMovieEditor(Movie movie)
+        public void OpenEditor(Movie movie)
         {
             if (movie != null)
             {
@@ -62,7 +62,7 @@ namespace Administration.ViewModel
             }
         }
 
-        public void DeleteMovie(Movie movie)
+        public void Delete(Movie movie)
         {
             var result = MessageBox.Show(
                 string.Format(Resources.DeleteMovieConfirmation, movie.Title),

@@ -42,6 +42,9 @@ namespace Administration
                 case "1":
                     DataContext = new GenreListPage(this);
                     break;
+                case "2":
+                    DataContext = new ShowtimeListPage(this);
+                    break;
                 default:
                     DataContext = null;
                     break;

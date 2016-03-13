@@ -59,5 +59,23 @@ namespace KioskClient.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сеансов нет.
+        /// </summary>
+        internal static string NoShowtimesText {
+            get {
+                return ResourceManager.GetString("NoShowtimesText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Список сеансов.
+        /// </summary>
+        internal static string ShowtimesListText {
+            get {
+                return ResourceManager.GetString("ShowtimesListText", resourceCulture);
+            }
+        }
     }
 }

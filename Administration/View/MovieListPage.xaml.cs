@@ -10,7 +10,7 @@ namespace Administration.View
 {
     public partial class MovieListPage
     {
-        private readonly MoviesListPageViewModel viewModel;
+        private readonly MovieListPageViewModel viewModel;
         private readonly MainWindow window;
 
         private Movie SelectedMovie
@@ -31,7 +31,7 @@ namespace Administration.View
 
             var repository = new MovieRepository(connectionString);
 
-            viewModel = new MoviesListPageViewModel(this, repository);
+            viewModel = new MovieListPageViewModel(this, repository);
             DataContext = viewModel.Movies;
         }
 
@@ -42,23 +42,23 @@ namespace Administration.View
 
         private void listView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            viewModel.OpenMovieEditor(SelectedMovie);
+            viewModel.OpenEditor(SelectedMovie);
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.OpenMovieEditor(null);
+            viewModel.OpenEditor(null);
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.OpenMovieEditor(SelectedMovie);
+            viewModel.OpenEditor(SelectedMovie);
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             if (SelectedMovie == null) return;
-            viewModel.DeleteMovie(SelectedMovie);
+            viewModel.Delete(SelectedMovie);
         }
     }
 }

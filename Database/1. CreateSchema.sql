@@ -79,6 +79,7 @@ CREATE TABLE [MovieGenres]
 CREATE TABLE [Auditorium]
 (
 	Id				INT				IDENTITY,
+	Name			NVARCHAR (128)	NOT NULL,
 	SeatsNumber		TINYINT			NOT NULL,
 	RowsNumber		TINYINT			NOT NULL,
 

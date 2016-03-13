@@ -1,5 +1,6 @@
 using System.Windows.Controls;
 using DataAccess.Model;
+using KioskClient.Properties;
 
 namespace KioskClient.ViewModel
 {
@@ -9,7 +10,7 @@ namespace KioskClient.ViewModel
 
         public string ShowtimesButtonText
         {
-            get { return Movie.Showtimes.Count == 0 ? "Сеансов нет" : "Список сеансов"; }
+            get { return Movie.Showtimes.Count == 0 ? Resources.NoShowtimesText : Resources.ShowtimesListText; }
         }
 
         public bool IsShowtimesButtonEnabled
