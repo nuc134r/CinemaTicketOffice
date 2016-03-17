@@ -38,16 +38,14 @@
                     <DataTemplate>
                         <Grid Height="250" Width="460" VerticalAlignment="Top">
                             <Image Source="{Binding Path=Poster}" HorizontalAlignment="Left" Margin="10,10,0,10" Width="174" Stretch="UniformToFill"/>
-                            <TextBlock Margin="198,0,10,105" TextWrapping="WrapWithOverflow">
+                            <TextBlock Margin="198,0,10,0" TextWrapping="WrapWithOverflow">
                                 <Run Text="{Binding Title, Mode=OneWay}" Foreground="White" FontSize="26.667" FontFamily="Segoe UI Light"/>
                                 <LineBreak/>
                                 <Run Text="{Binding GenresString, Mode=OneWay}" Foreground="Gray" FontSize="21.333"/>
-                            </TextBlock>
-                            <TextBlock Margin="198,150,10,10" TextWrapping="Wrap">
-                                <Run Text="Сеансы:" Foreground="#66FFFFFF" FontSize="21.333"/>
                                 <LineBreak/>
                                 <Run Text="{Binding ShowtimesString, Mode=OneWay}" Foreground="White" FontSize="23" FontFamily="Consolas" />
                             </TextBlock>
+                            
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

@@ -51,7 +51,7 @@ namespace Administration.ViewModel
             Movie.Genres = Genres.Where(_ => _.IsSelected).ToList();
             Movie.AgeLimit = view.AgeLimit;
 
-            repository.SaveMovie(Movie, !createMode);
+            repository.Save(Movie, !createMode);
         }
     }
 }

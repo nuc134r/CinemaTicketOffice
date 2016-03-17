@@ -67,6 +67,9 @@
     <Compile Include="MovieEditorWindow.xaml.cs">
       <DependentUpon>MovieEditorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ShowtimeEditorWindow.xaml.cs">
+      <DependentUpon>ShowtimeEditorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\GenreEditorWindowViewModel.cs" />
     <Compile Include="ViewModel\GenreListPageViewModel.cs" />
     <Compile Include="ViewModel\LoginWindowViewModel.cs" />
@@ -86,8 +89,8 @@
       <DependentUpon>ListPageBase.xaml</DependentUpon>
     </Compile>
     <Page Include="GenreEditorWindow.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
@@ -112,6 +115,10 @@
     <Page Include="MovieEditorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ShowtimeEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\GenreListPage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -157,7 +164,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Editors\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{b1b71a96-7931-4e2d-8b85-08e17697e82e}</Project>

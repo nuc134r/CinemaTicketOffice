@@ -12,8 +12,8 @@ namespace Administration.ViewModel
 {
     public class MovieListPageViewModel
     {
-        private readonly IMovieRepository repository;
         private readonly MovieListPage view;
+        private readonly IMovieRepository repository;
 
         public ObservableCollection<Movie> Movies { get; private set; } 
 
@@ -39,33 +39,39 @@ namespace Administration.ViewModel
             movies.ForEach(movie => Movies.Add(movie));
         }
 
-        private void MoviesOnCollectionChanged(object sender,
-            NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
+        private void MoviesOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             view.ListCount = Movies.Count;
         }
 
         public void OpenEditor(Movie movie)
         {
-            if (movie != null)
+            try
             {
-                repository.GetMovieDetails(movie);
-                movie = movie.Clone();
+                if (movie != null)
+                {
+                    repository.GetMovieDetails(movie);
+                    movie = movie.Clone();
+                }
+
+                var movieEditor = new MovieEditorWindow(movie);
+                var result = movieEditor.ShowDialog();
+
+                if (result.HasValue && result.Value)
+                {
+                    RetrieveData();
+                }
             }
-
-            var movieEditor = new MovieEditorWindow(movie);
-            var result = movieEditor.ShowDialog();
-
-            if (result.HasValue && result.Value)
+            catch (Exception ex)
             {
-                RetrieveData();
+                MessageBox.Show(ex.Message);
             }
         }
 
         public void Delete(Movie movie)
         {
             var result = MessageBox.Show(
-                string.Format(Resources.DeleteMovieConfirmation, movie.Title),
+                string.Format(Resources.DeleteMovieConfirmationText, movie.Title),
                 Resources.DeleteConfirmationCaption,
                 MessageBoxButton.YesNo);
 
@@ -73,7 +79,7 @@ namespace Administration.ViewModel
             {
                 try
                 {
-                    repository.DeleteMovie(movie);
+                    repository.Delete(movie);
                     RetrieveData();
                 }
                 catch (Exception ex)

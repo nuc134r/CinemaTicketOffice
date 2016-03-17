@@ -24,7 +24,7 @@ namespace Administration.ViewModel
 
         public void Save()
         {
-            repository.SaveGenre(Genre, !createMode);
+            repository.Save(Genre, !createMode);
         }
     }
 }

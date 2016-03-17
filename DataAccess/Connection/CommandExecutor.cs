@@ -54,15 +54,14 @@ namespace DataAccess.Connection
 
                 try
                 {
+                    connection.Open();
                     if (nonQuery)
-                    {
-                        connection.Open();
+                    {   
                         sqlCommand.ExecuteNonQuery();
                         result = null;
                     }
                     else
                     {
-                        connection.Open();
                         adapter.Fill(dataSet);
                         result = dataSet;
                     }

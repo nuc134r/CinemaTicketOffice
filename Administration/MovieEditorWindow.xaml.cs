@@ -70,7 +70,7 @@ namespace Administration
 
         private void BrowseButton_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new OpenFileDialog {Filter = "Image Files (*.bmp, *.jpg)|*.bmp;*.jpg"};
+            var dialog = new OpenFileDialog {Filter = "JPEG Image File (*.jpg)|*.jpg"};
             var result = dialog.ShowDialog(this);
             if (result.Value)
             {

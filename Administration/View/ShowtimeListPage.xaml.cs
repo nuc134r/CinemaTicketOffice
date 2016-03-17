@@ -1,7 +1,10 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 using Administration.Properties;
 using Administration.ViewModel;
 using DataAccess;
+using DataAccess.Model;
 using DataAccess.Repository;
 
 namespace Administration.View
@@ -28,9 +31,34 @@ namespace Administration.View
             DataContext = viewModel;
         }
 
+        private Showtime SelectedShowtime
+        {
+            get { return (Showtime)listView.SelectedItem; }
+        }
+
         public int ListCount
         {
             set { window.StatusBarCount.Content = value; }
+        }
+
+        private void ListView_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            viewModel.OpenEditor(SelectedShowtime);
+        }
+
+        private void CreateButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            viewModel.OpenEditor(null);
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.OpenEditor(SelectedShowtime);
+        }
+
+        private void DeleteButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            viewModel.Delete(SelectedShowtime);
         }
     }
 }

@@ -62,6 +62,26 @@ namespace DataAccess.Repository
             }
         }
 
+        public IEnumerable<AgeLimit> GetAgeLimits()
+        {
+            var genresConnection = new CommandExecutor("dbo.ListAgeLimits", connectionString);
+            var result = genresConnection.ExecuteCommand();
+
+            var exception = result as Exception;
+            if (exception != null) throw exception;
+
+            var dataSet = result as DataSet;
+
+            foreach (DataRow row in dataSet.Tables[0].Rows)
+            {
+                yield return new AgeLimit
+                {
+                    Id = row["Id"].ToInt(),
+                    Limit = row["Limit"].ToString()
+                };
+            }
+        }
+
         public void GetMovieDetails(Movie movie)
         {
             var movieConnection = new CommandExecutor("dbo.MovieDetails", connectionString);
@@ -107,37 +127,7 @@ namespace DataAccess.Repository
             }
         }
 
-        public void DeleteMovie(Movie movie)
-        {
-            var movieConnection = new CommandExecutor("dbo.DeleteMovie", connectionString);
-            movieConnection.AddParam("@MovieId", movie.Id, SqlDbType.Int);
-            var result = movieConnection.ExecuteCommand();
-
-            var exception = result as Exception;
-            if (exception != null) throw exception;
-        }
-
-        public IEnumerable<AgeLimit> GetAgeLimits()
-        {
-            var genresConnection = new CommandExecutor("dbo.ListAgeLimits", connectionString);
-            var result = genresConnection.ExecuteCommand();
-
-            var exception = result as Exception;
-            if (exception != null) throw exception;
-
-            var dataSet = result as DataSet;
-
-            foreach (DataRow row in dataSet.Tables[0].Rows)
-            {
-                yield return new AgeLimit
-                {
-                    Id = row["Id"].ToInt(),
-                    Limit = row["Limit"].ToString()
-                };
-            }
-        }
-
-        public void SaveMovie(Movie movie, bool update = false)
+        public void Save(Movie movie, bool update = false)
         {
             CommandExecutor movieConnection;
             if (update)
@@ -170,7 +160,17 @@ namespace DataAccess.Repository
             if (exception != null) throw exception;
         }
 
-        public void SaveGenre(Genre genre, bool update)
+        public void Delete(Movie movie)
+        {
+            var movieConnection = new CommandExecutor("dbo.DeleteMovie", connectionString);
+            movieConnection.AddParam("@MovieId", movie.Id, SqlDbType.Int);
+            var result = movieConnection.ExecuteCommand();
+
+            var exception = result as Exception;
+            if (exception != null) throw exception;
+        }
+
+        public void Save(Genre genre, bool update)
         {
             CommandExecutor genreConnection;
             if (update)
@@ -190,7 +190,7 @@ namespace DataAccess.Repository
             if (exception != null) throw exception;
         }
 
-        public void DeleteGenre(Genre genre)
+        public void Delete(Genre genre)
         {
             var genreConnection = new CommandExecutor("dbo.DeleteGenre", connectionString);
             genreConnection.AddParam("@GenreId", genre.Id, SqlDbType.Int);

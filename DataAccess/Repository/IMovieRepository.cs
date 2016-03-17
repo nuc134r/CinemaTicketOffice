@@ -8,10 +8,10 @@ namespace DataAccess.Repository
         IEnumerable<Movie> GetMovies();
         IEnumerable<Genre> GetGenres();
         void GetMovieDetails(Movie movie);
-        void DeleteMovie(Movie movie);
+        void Delete(Movie movie);
         IEnumerable<AgeLimit> GetAgeLimits();
-        void SaveMovie(Movie movie, bool update = false);
-        void SaveGenre(Genre genre, bool update);
-        void DeleteGenre(Genre genre);
+        void Save(Movie movie, bool update = false);
+        void Save(Genre genre, bool update);
+        void Delete(Genre genre);
     }
 }

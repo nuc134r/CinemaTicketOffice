@@ -72,18 +72,27 @@ namespace Administration.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Предпринимается попытка удалить жанр &quot;{0}&quot;. Подтвердить удаление?.
         /// </summary>
-        internal static string DeleteGenreConfirmation {
+        internal static string DeleteGenreConfirmationText {
             get {
-                return ResourceManager.GetString("DeleteGenreConfirmation", resourceCulture);
+                return ResourceManager.GetString("DeleteGenreConfirmationText", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Предпринимается попытка удалить фильм &quot;{0}&quot;. Подтвердить удаление?.
         /// </summary>
-        internal static string DeleteMovieConfirmation {
+        internal static string DeleteMovieConfirmationText {
             get {
-                return ResourceManager.GetString("DeleteMovieConfirmation", resourceCulture);
+                return ResourceManager.GetString("DeleteMovieConfirmationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Предпринимается попытка удалить сеанс на фильм &quot;{0}&quot;. Подтвердить удаление?.
+        /// </summary>
+        internal static string DeleteShowtimeConfirmatonText {
+            get {
+                return ResourceManager.GetString("DeleteShowtimeConfirmatonText", resourceCulture);
             }
         }
     }

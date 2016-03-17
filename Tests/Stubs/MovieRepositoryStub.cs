@@ -25,7 +25,7 @@ namespace Tests.Stubs
             
         }
 
-        public void DeleteMovie(Movie movie)
+        public void Delete(Movie movie)
         {
             
         }
@@ -35,17 +35,17 @@ namespace Tests.Stubs
             throw new NotImplementedException();
         }
 
-        public void SaveMovie(Movie movie, bool update = false)
+        public void Save(Movie movie, bool update = false)
         {
             throw new NotImplementedException();
         }
 
-        public void SaveGenre(Genre genre, bool update)
+        public void Save(Genre genre, bool update)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteGenre(Genre genre)
+        public void Delete(Genre genre)
         {
             throw new NotImplementedException();
         }

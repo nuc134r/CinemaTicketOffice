@@ -120,10 +120,13 @@
   <data name="DeleteConfirmationCaption" xml:space="preserve">
     <value>Подтверждение</value>
   </data>
-  <data name="DeleteGenreConfirmation" xml:space="preserve">
+  <data name="DeleteGenreConfirmationText" xml:space="preserve">
     <value>Предпринимается попытка удалить жанр "{0}". Подтвердить удаление?</value>
   </data>
-  <data name="DeleteMovieConfirmation" xml:space="preserve">
+  <data name="DeleteMovieConfirmationText" xml:space="preserve">
     <value>Предпринимается попытка удалить фильм "{0}". Подтвердить удаление?</value>
+  </data>
+  <data name="DeleteShowtimeConfirmatonText" xml:space="preserve">
+    <value>Предпринимается попытка удалить сеанс на фильм "{0}". Подтвердить удаление?</value>
   </data>
 </root>

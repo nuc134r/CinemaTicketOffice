@@ -13,11 +13,6 @@ namespace Administration.View
         private readonly MovieListPageViewModel viewModel;
         private readonly MainWindow window;
 
-        private Movie SelectedMovie
-        {
-            get { return (Movie) listView.SelectedItem; }
-        }
-
         public MovieListPage(MainWindow window)
         {
             this.window = window;
@@ -33,6 +28,11 @@ namespace Administration.View
 
             viewModel = new MovieListPageViewModel(this, repository);
             DataContext = viewModel.Movies;
+        }
+
+        private Movie SelectedMovie
+        {
+            get { return (Movie) listView.SelectedItem; }
         }
 
         public int ListCount

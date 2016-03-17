@@ -21,6 +21,11 @@ namespace DataAccess.Repository
                 new Showtime() { Time = new DateTime(2016, 03, 11, 0, 05, 00), Price = 500, ThreeD = true},
                 new Showtime() { Time = new DateTime(2016, 03, 12, 15, 00, 00), Price = 350, ThreeD = false}
             };
-        } 
+        }
+
+        public void Delete(Showtime showtime)
+        {
+            
+        }
     }
 }

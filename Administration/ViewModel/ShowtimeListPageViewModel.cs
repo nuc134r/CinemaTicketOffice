@@ -1,6 +1,9 @@
+using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Windows;
+using Administration.Properties;
 using Administration.View;
 using DataAccess.Model;
 using DataAccess.Repository;
@@ -39,6 +42,40 @@ namespace Administration.ViewModel
         private void ShowtimesOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             view.ListCount = Showtimes.Count;
+        }
+
+        public void OpenEditor(Showtime showtime)
+        {
+            try
+            {
+                var editor = new ShowtimeEditorWindow();
+                editor.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void Delete(Showtime showtime)
+        {
+            var result = MessageBox.Show(
+                string.Format(Resources.DeleteShowtimeConfirmatonText, showtime.Movie.Title),
+                Resources.DeleteConfirmationCaption,
+                MessageBoxButton.YesNo);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    repository.Delete(showtime);
+                    RetrieveData();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }

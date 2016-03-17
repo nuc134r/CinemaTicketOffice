@@ -2,7 +2,7 @@
 
 IF OBJECT_ID('dbo.BrowseMovies', 'P') IS NOT NULL DROP PROCEDURE [BrowseMovies]
 IF OBJECT_ID('dbo.ListGenres', 'P')	IS NOT NULL DROP PROCEDURE [ListGenres]
-IF OBJECT_ID('dbo.ListAgeLimits', 'P')	IS NOT NULL DROP PROCEDURE [ListAgeLimits]
+IF OBJECT_ID('dbo.ListAgeLimits', 'P') IS NOT NULL DROP PROCEDURE [ListAgeLimits]
 IF OBJECT_ID('dbo.MovieDetails', 'P') IS NOT NULL DROP PROCEDURE [MovieDetails]
 IF OBJECT_ID('dbo.CreateMovie', 'P') IS NOT NULL DROP PROCEDURE [CreateMovie]
 IF OBJECT_ID('dbo.UpdateMovie', 'P') IS NOT NULL DROP PROCEDURE [UpdateMovie]

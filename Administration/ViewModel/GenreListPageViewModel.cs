@@ -46,24 +46,31 @@ namespace Administration.ViewModel
 
         public void OpenGenreEditor(Genre genre)
         {
-            if (genre != null)
+            try
             {
-                genre = genre.Clone();
+                if (genre != null)
+                {
+                    genre = genre.Clone();
+                }
+
+                var editor = new GenreEditorWindow(genre);
+                var result = editor.ShowDialog();
+
+                if (result.HasValue && result.Value)
+                {
+                    RetrieveData();
+                }
             }
-
-            var editor = new GenreEditorWindow(genre);
-            var result = editor.ShowDialog();
-
-            if (result.HasValue && result.Value)
+            catch (Exception ex)
             {
-                RetrieveData();
+                MessageBox.Show(ex.Message);
             }
         }
 
         public void DeleteGenre(Genre genre)
         {
             var result = MessageBox.Show(
-                string.Format(Resources.DeleteGenreConfirmation, genre.Name),
+                string.Format(Resources.DeleteGenreConfirmationText, genre.Name),
                 Resources.DeleteConfirmationCaption,
                 MessageBoxButton.YesNo);
 
@@ -71,7 +78,7 @@ namespace Administration.ViewModel
             {
                 try
                 {
-                    repository.DeleteGenre(genre);
+                    repository.Delete(genre);
                     RetrieveData();
                 }
                 catch (Exception ex)
