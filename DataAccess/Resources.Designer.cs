@@ -61,6 +61,15 @@ namespace DataAccess {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to осталось {0} ч {1} мин.
+        /// </summary>
+        internal static string HoursLeftString {
+            get {
+                return ResourceManager.GetString("HoursLeftString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to минуту.
         /// </summary>
         internal static string MinutesGenetivePlural {
@@ -79,6 +88,15 @@ namespace DataAccess {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to осталось {0} мин.
+        /// </summary>
+        internal static string MinutesLeftString {
+            get {
+                return ResourceManager.GetString("MinutesLeftString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to минута.
         /// </summary>
         internal static string MinutesNominative {
@@ -88,20 +106,20 @@ namespace DataAccess {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Нет сеансов сегодня.
+        /// </summary>
+        internal static string NoShowtimesTodayText {
+            get {
+                return ResourceManager.GetString("NoShowtimesTodayText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 3D.
         /// </summary>
         internal static string ThreeDeeText {
             get {
                 return ResourceManager.GetString("ThreeDeeText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to осталось {0} мин.
-        /// </summary>
-        internal static string TimeLeftString {
-            get {
-                return ResourceManager.GetString("TimeLeftString", resourceCulture);
             }
         }
         

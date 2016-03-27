@@ -71,7 +71,7 @@ namespace Administration.ViewModel
         public void Delete(Showtime showtime)
         {
             var result = MessageBox.Show(
-                string.Format(Resources.DeleteShowtimeConfirmatonText, showtime.Movie.Title),
+                string.Format(Resources.DeleteShowtimeConfirmatonText, showtime.Time.ToLongDateString(), showtime.Movie.Title),
                 Resources.DeleteConfirmationCaption,
                 MessageBoxButton.YesNo);
 

@@ -25,30 +25,27 @@ namespace DataAccess.Model
             {
                 var hours = Math.Ceiling((Time - DateTime.Now).TotalHours); 
                 var minutes = Math.Ceiling((Time - DateTime.Now).TotalMinutes);
-                
-                var isTomorrow = hours > 24 && hours < 48;
-                var isToday = hours < 24;
-                
-                if (hours < 6)
+
+                var isToday = Time.Date == DateTime.Now.Date;
+                var isTomorrow = Time.Date == DateTime.Now.Date.AddDays(1);
+
+                if (hours < 3)
                 {
                     if (minutes < 60)
                     {
-                        return string.Format(Resources.TimeLeftString, minutes);
+                        return string.Format(Resources.MinutesLeftString, minutes);
                     }
-                    else
-                    {
-                        return string.Format("осталось {0} ч {1} мин", (int)(minutes / 60), minutes % 60);
-                    }
+                    return string.Format(Resources.HoursLeftString, (int)(minutes / 60), minutes % 60);
                 }
-                else if (isToday)
+                if (isToday)
                 {
                     return string.Empty;
                 }
-                else if (isTomorrow)
+                if (isTomorrow)
                 {
                     return Resources.TomorrowText;
                 }
-                
+
                 return Time.ToString(FarDateFormat);
             }
         }

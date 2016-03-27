@@ -117,20 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="HoursLeftString" xml:space="preserve">
+    <value>осталось {0} ч {1} мин</value>
+  </data>
   <data name="MinutesGenetivePlural" xml:space="preserve">
     <value>минуту</value>
   </data>
   <data name="MinutesGenitiveSingular" xml:space="preserve">
     <value>минуты</value>
   </data>
+  <data name="MinutesLeftString" xml:space="preserve">
+    <value>осталось {0} мин</value>
+  </data>
   <data name="MinutesNominative" xml:space="preserve">
     <value>минута</value>
   </data>
+  <data name="NoShowtimesTodayText" xml:space="preserve">
+    <value>Нет сеансов сегодня</value>
+  </data>
   <data name="ThreeDeeText" xml:space="preserve">
     <value>3D</value>
-  </data>
-  <data name="TimeLeftString" xml:space="preserve">
-    <value>осталось {0} мин</value>
   </data>
   <data name="TomorrowText" xml:space="preserve">
     <value>завтра</value>

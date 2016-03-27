@@ -88,7 +88,7 @@ namespace Administration.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Предпринимается попытка удалить сеанс на фильм &quot;{0}&quot;. Подтвердить удаление?.
+        ///   Looks up a localized string similar to Предпринимается попытка удалить сеанс {0} (&quot;{1}&quot;) . Подтвердить удаление?.
         /// </summary>
         internal static string DeleteShowtimeConfirmatonText {
             get {

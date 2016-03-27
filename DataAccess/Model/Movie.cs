@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows.Media.Imaging;
 
@@ -8,12 +7,19 @@ namespace DataAccess.Model
 {
     public class Movie
     {
+        public Movie()
+        {
+            ReleaseDate = DateTime.Now.Date;
+        }
+
         public string GenresString
         {
             get
             {
                 if (Genres != null)
+                {
                     return string.Join(", ", Genres.Select(_ => _.Name));
+                }
                 return string.Empty;
             }
         }
@@ -22,14 +28,23 @@ namespace DataAccess.Model
         {
             get
             {
-                if (Showtimes == null || Showtimes.Count == 0) return "Нет сеансов";
-                return string.Join(" ", Showtimes.Where(_ => _.Date == DateTime.Today).Select(_ => _.ToShortTimeString()));
-            }
-        }
+                var showtimes = Showtimes
+                    .Where(showtime => showtime.Date == DateTime.Today)
+                    .Select(showtime => showtime.ToShortTimeString())
+                    .ToList();
 
-        public Movie()
-        {
-            ReleaseDate = DateTime.Now.Date;
+                if (!showtimes.Any())
+                {
+                    return Resources.NoShowtimesTodayText;
+                }
+
+                if (Showtimes.All(_ => _.Date > DateTime.Now.Date))
+                {
+                    return Resources.TomorrowText;
+                }
+
+                return string.Join(" ", showtimes);
+            }
         }
 
         public int Id { get; set; }
