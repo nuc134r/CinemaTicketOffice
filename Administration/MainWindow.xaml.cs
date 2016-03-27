@@ -45,6 +45,9 @@ namespace Administration
                 case "2":
                     DataContext = new ShowtimeListPage(this);
                     break;
+                case "5":
+                    DataContext = new LogoSetupPage();
+                    break;
                 default:
                     DataContext = null;
                     break;

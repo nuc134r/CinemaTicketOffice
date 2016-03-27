@@ -80,6 +80,9 @@
     <Compile Include="View\GenreListPage.xaml.cs">
       <DependentUpon>GenreListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\LogoSetupPage.xaml.cs">
+      <DependentUpon>LogoSetupPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ShowtimeListPage.xaml.cs">
       <DependentUpon>ShowtimeListPage.xaml</DependentUpon>
     </Compile>
@@ -122,6 +125,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\GenreListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\LogoSetupPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

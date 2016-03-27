@@ -21,10 +21,14 @@
         </Grid.ColumnDefinitions>
         <Frame x:Name="mainFrame" Content="{Binding}" Grid.Column="2" Margin="0,10,10,28" NavigationUIVisibility="Hidden"/>
         <TreeView x:Name="SectionListTreeView" Grid.Column="0" DisplayMemberPath="Name" Margin="10,10,0,28" >
-            <TreeViewItem Header="Фильмы" IsSelected="True" Tag="0" />
-            <TreeViewItem Header="Жанры" Tag="1"/>
-            <TreeViewItem Header="Сеансы" Tag="2"/>
-            <TreeViewItem Header="Залы" Tag="3"/>
+            <TreeViewItem Header="Билеты" Tag="4" />
+            <TreeViewItem Header="Настройка логотипа" Tag="5" />
+            <TreeViewItem Header="База данных" IsExpanded="True">
+                <TreeViewItem Header="Фильмы" IsSelected="True" Tag="0" />
+                <TreeViewItem Header="Жанры" Tag="1" />
+                <TreeViewItem Header="Сеансы" Tag="2" />
+                <TreeViewItem Header="Залы" Tag="3" />
+            </TreeViewItem>
         </TreeView>
         <StatusBar Margin="0" Grid.ColumnSpan="3" Height="23" VerticalAlignment="Bottom">
             <StatusBar.ItemsPanel>
