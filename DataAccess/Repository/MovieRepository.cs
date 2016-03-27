@@ -129,33 +129,33 @@ namespace DataAccess.Repository
 
         public void Save(Movie movie, bool update = false)
         {
-            CommandExecutor movieConnection;
+            CommandExecutor executor;
             if (update)
             {
-                movieConnection = new CommandExecutor("dbo.UpdateMovie", connectionString);
-                movieConnection.AddParam("@Id", movie.Id, SqlDbType.Int);
+                executor = new CommandExecutor("dbo.UpdateMovie", connectionString);
+                executor.AddParam("@Id", movie.Id, SqlDbType.Int);
             }
             else
             {
-                movieConnection = new CommandExecutor("dbo.CreateMovie", connectionString);
+                executor = new CommandExecutor("dbo.CreateMovie", connectionString);
             }
-            movieConnection.AddParam("@Title", movie.Title, SqlDbType.NVarChar);
-            movieConnection.AddParam("@Plot", movie.Plot, SqlDbType.NVarChar);
-            movieConnection.AddParam("@Duration", movie.Duration, SqlDbType.SmallInt);
+            executor.AddParam("@Title", movie.Title, SqlDbType.NVarChar);
+            executor.AddParam("@Plot", movie.Plot, SqlDbType.NVarChar);
+            executor.AddParam("@Duration", movie.Duration, SqlDbType.SmallInt);
 
             var poster = movie.Poster == null ? DBNull.Value : (object)movie.Poster.ToByteArray();
-            movieConnection.AddParam("@Poster", poster, SqlDbType.Image);
+            executor.AddParam("@Poster", poster, SqlDbType.Image);
 
             var genresList = new DataTable();
             genresList.Columns.Add("Id");
 
             movie.Genres.ForEach(genre => genresList.Rows.Add(genre.Id));
             
-            movieConnection.AddParam("@Genres", genresList, SqlDbType.Structured, "dbo.IdList");
-            movieConnection.AddParam("@ReleaseDate", movie.ReleaseDate, SqlDbType.Date);
-            movieConnection.AddParam("@AgeLimitId", movie.AgeLimit.Id, SqlDbType.Int);
+            executor.AddParam("@Genres", genresList, SqlDbType.Structured, "dbo.IdList");
+            executor.AddParam("@ReleaseDate", movie.ReleaseDate, SqlDbType.Date);
+            executor.AddParam("@AgeLimitId", movie.AgeLimit.Id, SqlDbType.Int);
 
-            var result = movieConnection.ExecuteCommand(true);
+            var result = executor.ExecuteCommand(true);
             var exception = result as Exception;
             if (exception != null) throw exception;
         }

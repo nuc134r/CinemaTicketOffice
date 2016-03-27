@@ -18,15 +18,6 @@ namespace Administration
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
             ServerNameLabel.Content = Settings.Default.server;
-
-            try
-            {
-                DataContext = new MovieListPage(this);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
@@ -46,7 +37,7 @@ namespace Administration
                     DataContext = new ShowtimeListPage(this);
                     break;
                 case "5":
-                    DataContext = new LogoSetupPage();
+                    DataContext = new LogoSetupPage(this);
                     break;
                 default:
                     DataContext = null;

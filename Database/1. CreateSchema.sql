@@ -9,7 +9,7 @@ IF OBJECT_ID('dbo.Movie', 'U')			IS NOT NULL DROP TABLE [Movie];
 IF OBJECT_ID('dbo.AgeLimit', 'U')		IS NOT NULL DROP TABLE [AgeLimit];
 IF OBJECT_ID('dbo.Genre', 'U')			IS NOT NULL DROP TABLE [Genre];
 IF OBJECT_ID('dbo.Auditorium', 'U')		IS NOT NULL DROP TABLE [Auditorium];
-IF OBJECT_ID('dbo.Settings', 'U')		IS NOT NULL DROP TABLE [Settings];
+IF OBJECT_ID('dbo.Logo', 'U')			IS NOT NULL DROP TABLE [Logo];
 
 /********************************
  *	  Возрастные ограничения	*
@@ -117,18 +117,18 @@ CREATE TYPE [dbo].[IdList] AS TABLE(
 );
 
 /********************************
- *			  Настройки			*
+ *			  Логотип			*
  ********************************/
-CREATE TABLE [Settings]
+CREATE TABLE [Logo]
 (
-	Name			NVARCHAR (128)		NOT NULL,
-	SValue			SQL_VARIANT				NULL,
+	Logo	IMAGE	NULL
 )
 
-INSERT INTO [Settings] 
+INSERT INTO [Logo] 
 (
-	Name,
-	SValue
+	Logo
 )
 VALUES
-('Logo', NULL)
+(
+	NULL
+)

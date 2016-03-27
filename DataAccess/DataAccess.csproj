@@ -62,6 +62,7 @@
     <Compile Include="Repository\IShowtimeRepository.cs" />
     <Compile Include="Repository\MovieRepository.cs" />
     <Compile Include="ObjectExtensions.cs" />
+    <Compile Include="Repository\SettingsRepository.cs" />
     <Compile Include="Repository\ShowtimeRepository.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>

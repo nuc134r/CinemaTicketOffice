@@ -24,7 +24,7 @@
             <TreeViewItem Header="Билеты" Tag="4" />
             <TreeViewItem Header="Настройка логотипа" Tag="5" />
             <TreeViewItem Header="База данных" IsExpanded="True">
-                <TreeViewItem Header="Фильмы" IsSelected="True" Tag="0" />
+                <TreeViewItem Header="Фильмы" Tag="0" />
                 <TreeViewItem Header="Жанры" Tag="1" />
                 <TreeViewItem Header="Сеансы" Tag="2" />
                 <TreeViewItem Header="Залы" Tag="3" />

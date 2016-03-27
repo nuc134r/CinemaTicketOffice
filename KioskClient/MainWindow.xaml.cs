@@ -1,7 +1,10 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using DataAccess;
 using DataAccess.Model;
+using DataAccess.Repository;
+using KioskClient.Properties;
 using KioskClient.View;
 
 namespace KioskClient
@@ -11,6 +14,19 @@ namespace KioskClient
         public MainWindow()
         {
             InitializeComponent();
+            SetupLogo();
+        }
+
+        private void SetupLogo()
+        {
+            var connectionString = ConnectionStringBuilder.Build(
+                            Settings.Default.server,
+                            Settings.Default.database,
+                            Settings.Default.user,
+                            Settings.Default.password);
+
+            var repository = new SettingsRepository(connectionString);
+            LogoImage.Source = repository.GetLogo();
         }
 
         private void MainFrame_OnNavigated(object sender, NavigationEventArgs e)

@@ -331,6 +331,31 @@ AS
 		[S].ShowtimeDate
 GO
 
+IF OBJECT_ID('dbo.GetLogo', 'P') IS NOT NULL DROP PROCEDURE [GetLogo]
+GO
+CREATE PROCEDURE dbo.GetLogo
+AS 
+    SET NOCOUNT ON;
+
+	SELECT 
+		Logo
+	FROM 
+		[Logo]
+GO
+
+IF OBJECT_ID('dbo.SetLogo', 'P') IS NOT NULL DROP PROCEDURE [SetLogo]
+GO
+CREATE PROCEDURE dbo.SetLogo
+	@Logo IMAGE
+AS 
+    SET NOCOUNT ON;
+
+	UPDATE 
+		[Logo] 
+	SET		
+		Logo = @Logo
+GO
+
 /********************************
  *			  Admin				*
  ********************************/
@@ -360,6 +385,10 @@ GRANT EXECUTE ON dbo.UpdateShowtime TO adminuser
 GO
 GRANT EXECUTE ON dbo.BrowseShowtimes TO adminuser
 GO
+GRANT EXECUTE ON dbo.GetLogo TO adminuser
+GO
+GRANT EXECUTE ON dbo.SetLogo TO adminuser
+GO
 GRANT EXEC ON TYPE::dbo.IdList TO adminuser
 GO
 
@@ -372,6 +401,8 @@ GO
 GRANT EXECUTE ON dbo.MovieDetails TO kioskuser
 GO
 GRANT EXECUTE ON dbo.ListGenres TO kioskuser
+GO
+GRANT EXECUTE ON dbo.GetLogo TO kioskuser
 GO
 GRANT EXECUTE ON dbo.BrowsePendingShowtimes TO kioskuser
 GO
