@@ -5,7 +5,7 @@
  ********************************/
 
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'adminuser') 
-CREATE LOGIN adminuser WITH PASSWORD = 'admin'
+CREATE LOGIN adminuser WITH PASSWORD = 'admin-1234'
 GO
 CREATE USER adminuser FOR LOGIN adminuser
 GO
@@ -18,7 +18,7 @@ GO
  ********************************/
 
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'kioskuser') 
-CREATE LOGIN kioskuser WITH PASSWORD = 'kiosk'
+CREATE LOGIN kioskuser WITH PASSWORD = 'kiosk-1234'
 GO
 CREATE USER kioskuser FOR LOGIN kioskuser
 GO

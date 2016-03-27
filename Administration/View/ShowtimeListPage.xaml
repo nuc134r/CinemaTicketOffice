@@ -15,7 +15,7 @@
         <ListView x:Name="listView" ItemsSource="{Binding Showtimes}" Margin="0,25,0,0" Foreground="Black" SelectedIndex="0" MouseDoubleClick="ListView_OnMouseDoubleClick" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding Time, StringFormat='{}{0:d MMMM yyyy}'}" />
+                    <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding Time, StringFormat='{}{0:d MMMM yyyy HH:mm}'}" />
                     <GridViewColumn Header="Фильм"  DisplayMemberBinding="{Binding Movie.Title}" />
                     <GridViewColumn Header="Зал"  DisplayMemberBinding="{Binding Auditorium.Name}" />
                 </GridView>

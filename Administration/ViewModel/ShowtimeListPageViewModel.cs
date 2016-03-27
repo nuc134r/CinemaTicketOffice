@@ -48,8 +48,19 @@ namespace Administration.ViewModel
         {
             try
             {
-                var editor = new ShowtimeEditorWindow();
-                editor.ShowDialog();
+                if (showtime != null)
+                {
+                    repository.GetShowtimeDetails(showtime);
+                    showtime = showtime.Clone();
+                }
+
+                var editor = new ShowtimeEditorWindow(showtime);
+                var result = editor.ShowDialog();
+
+                if (result.HasValue && result.Value)
+                {
+                    RetrieveData();
+                }
             }
             catch (Exception ex)
             {

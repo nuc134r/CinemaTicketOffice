@@ -1,17 +1,7 @@
 ﻿SET NOCOUNT ON;
 
 IF OBJECT_ID('dbo.BrowseMovies', 'P') IS NOT NULL DROP PROCEDURE [BrowseMovies]
-IF OBJECT_ID('dbo.ListGenres', 'P')	IS NOT NULL DROP PROCEDURE [ListGenres]
-IF OBJECT_ID('dbo.ListAgeLimits', 'P') IS NOT NULL DROP PROCEDURE [ListAgeLimits]
-IF OBJECT_ID('dbo.MovieDetails', 'P') IS NOT NULL DROP PROCEDURE [MovieDetails]
-IF OBJECT_ID('dbo.CreateMovie', 'P') IS NOT NULL DROP PROCEDURE [CreateMovie]
-IF OBJECT_ID('dbo.UpdateMovie', 'P') IS NOT NULL DROP PROCEDURE [UpdateMovie]
-IF OBJECT_ID('dbo.DeleteMovie', 'P') IS NOT NULL DROP PROCEDURE [DeleteMovie]
-IF OBJECT_ID('dbo.CreateGenre', 'P') IS NOT NULL DROP PROCEDURE [CreateGenre]
-IF OBJECT_ID('dbo.UpdateGenre', 'P') IS NOT NULL DROP PROCEDURE [UpdateGenre]
-IF OBJECT_ID('dbo.DeleteGenre', 'P') IS NOT NULL DROP PROCEDURE [DeleteGenre]
 GO
-
 CREATE PROCEDURE dbo.BrowseMovies
 AS 
     SET NOCOUNT ON;
@@ -28,6 +18,8 @@ AS
 		Id
 GO
 
+IF OBJECT_ID('dbo.ListGenres', 'P')	IS NOT NULL DROP PROCEDURE [ListGenres]
+GO
 CREATE PROCEDURE dbo.ListGenres
 AS 
     SET NOCOUNT ON;
@@ -41,6 +33,8 @@ AS
 		Id
 GO
 
+IF OBJECT_ID('dbo.ListAgeLimits', 'P') IS NOT NULL DROP PROCEDURE [ListAgeLimits]
+GO
 CREATE PROCEDURE dbo.ListAgeLimits
 AS 
     SET NOCOUNT ON;
@@ -54,6 +48,8 @@ AS
 		Id
 GO
 
+IF OBJECT_ID('dbo.MovieDetails', 'P') IS NOT NULL DROP PROCEDURE [MovieDetails]
+GO
 CREATE PROCEDURE dbo.MovieDetails
 	@MovieId INT
 AS 
@@ -91,8 +87,12 @@ AS
 		Showtime
 	WHERE 
 		MovieId = @MovieId
+		AND
+		ShowtimeDate > DATEADD(hour, 3, GETDATE())
 GO
 
+IF OBJECT_ID('dbo.CreateMovie', 'P') IS NOT NULL DROP PROCEDURE [CreateMovie]
+GO
 CREATE PROCEDURE dbo.CreateMovie
 	@Title NVARCHAR (128),
 	@Plot NVARCHAR (4000),
@@ -142,6 +142,8 @@ AS
 	GO
 GO
 
+IF OBJECT_ID('dbo.UpdateMovie', 'P') IS NOT NULL DROP PROCEDURE [UpdateMovie]
+GO
 CREATE PROCEDURE dbo.UpdateMovie
 	@Id INT,
 	@Title NVARCHAR (128),
@@ -188,12 +190,16 @@ AS
 	GO
 GO
 
+IF OBJECT_ID('dbo.DeleteMovie', 'P') IS NOT NULL DROP PROCEDURE [DeleteMovie]
+GO
 CREATE PROCEDURE dbo.DeleteMovie
 	@MovieId INT
 AS
 	DELETE FROM Movie WHERE Id = @MovieId
 GO
 
+IF OBJECT_ID('dbo.CreateGenre', 'P') IS NOT NULL DROP PROCEDURE [CreateGenre]
+GO
 CREATE PROCEDURE dbo.CreateGenre
 	@Name NVARCHAR (128)
 AS 
@@ -202,6 +208,8 @@ AS
 	INSERT INTO Genre (Name) SELECT @Name
 GO
 
+IF OBJECT_ID('dbo.UpdateGenre', 'P') IS NOT NULL DROP PROCEDURE [UpdateGenre]
+GO
 CREATE PROCEDURE dbo.UpdateGenre
 	@Id INT,
 	@Name NVARCHAR (128)
@@ -214,10 +222,113 @@ AS
 		Id = @Id
 GO
 
+IF OBJECT_ID('dbo.DeleteGenre', 'P') IS NOT NULL DROP PROCEDURE [DeleteGenre]
+GO
 CREATE PROCEDURE dbo.DeleteGenre
 	@GenreId INT
 AS
 	DELETE FROM Genre WHERE Id = @GenreId
+GO
+
+IF OBJECT_ID('dbo.CreateShowtime', 'P') IS NOT NULL DROP PROCEDURE [CreateShowtime]
+GO
+CREATE PROCEDURE dbo.CreateShowtime
+	@MovieId INT,
+	@AuditoriumId INT,
+	@ShowtimeDate DateTime,
+	@Price MONEY,
+	@ThreeDee BIT
+AS 
+    SET NOCOUNT ON;
+
+	INSERT INTO Showtime 
+	(		
+		MovieId,	
+		AuditoriumId,
+		ShowtimeDate,
+		Price,
+		ThreeDee	
+	)
+	SELECT
+		@MovieId,	
+		@AuditoriumId,
+		@ShowtimeDate,
+		@Price,
+		@ThreeDee
+GO
+
+IF OBJECT_ID('dbo.UpdateShowtime', 'P') IS NOT NULL DROP PROCEDURE [UpdateShowtime]
+GO
+CREATE PROCEDURE dbo.UpdateShowtime
+	@Id INT,
+	@MovieId INT,
+	@AuditoriumId INT,
+	@ShowtimeDate DateTime,
+	@Price MONEY,
+	@ThreeDee BIT
+AS 
+    SET NOCOUNT ON;
+
+	UPDATE Showtime SET
+		MovieId = @MovieId,
+		AuditoriumId = @AuditoriumId,
+		ShowtimeDate = @ShowtimeDate,
+		Price = @Price,
+		ThreeDee = @ThreeDee
+	WHERE
+		Id = @Id
+GO
+
+IF OBJECT_ID('dbo.DeleteShowtime', 'P') IS NOT NULL DROP PROCEDURE [DeleteShowtime]
+GO
+CREATE PROCEDURE dbo.DeleteShowtime
+	@Id INT
+AS
+	DELETE FROM Showtime WHERE Id = @Id
+GO
+
+IF OBJECT_ID('dbo.BrowseShowtimes', 'P') IS NOT NULL DROP PROCEDURE [BrowseShowtimes]
+GO
+CREATE PROCEDURE dbo.BrowseShowtimes
+AS 
+    SET NOCOUNT ON;
+
+    SELECT 
+		[S].Id,
+		[S].ShowtimeDate,
+		[S].Price,
+		[S].ThreeDee,
+		[M].Id AS [MovieId],
+		[M].Title AS [MovieTitle],
+		[A].Id AS [AuditoriumId],
+		[A].Name AS [AuditoriumName]
+    FROM 
+		Showtime as [S]
+	LEFT JOIN Auditorium AS [A]
+		ON [A].Id = [S].AuditoriumId
+	LEFT JOIN Movie AS [M]
+		ON [M].Id = [S].MovieId
+	ORDER BY
+		[S].Id
+GO
+
+IF OBJECT_ID('dbo.BrowsePendingShowtimes', 'P') IS NOT NULL DROP PROCEDURE [BrowsePendingShowtimes]
+GO
+CREATE PROCEDURE dbo.BrowsePendingShowtimes
+AS 
+    SET NOCOUNT ON;
+
+    SELECT 
+		[S].Id,
+		[S].ShowtimeDate,
+		[S].Price,
+		[S].ThreeDee
+    FROM 
+		Showtime as [S]
+	WHERE
+		[S].ShowtimeDate > DATEADD(hour, 3, GETDATE())
+	ORDER BY
+		[S].ShowtimeDate
 GO
 
 /********************************
@@ -243,6 +354,12 @@ GRANT EXECUTE ON dbo.UpdateGenre TO adminuser
 GO
 GRANT EXECUTE ON dbo.DeleteGenre TO adminuser
 GO
+GRANT EXECUTE ON dbo.CreateShowtime TO adminuser
+GO
+GRANT EXECUTE ON dbo.UpdateShowtime TO adminuser
+GO
+GRANT EXECUTE ON dbo.BrowseShowtimes TO adminuser
+GO
 GRANT EXEC ON TYPE::dbo.IdList TO adminuser
 GO
 
@@ -255,4 +372,6 @@ GO
 GRANT EXECUTE ON dbo.MovieDetails TO kioskuser
 GO
 GRANT EXECUTE ON dbo.ListGenres TO kioskuser
+GO
+GRANT EXECUTE ON dbo.BrowsePendingShowtimes TO kioskuser
 GO

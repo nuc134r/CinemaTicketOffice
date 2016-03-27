@@ -24,14 +24,7 @@ namespace KioskClient.ViewModel
             Movies = new ObservableCollection<Movie>();
             allMovies = new List<Movie>();
 
-            try
-            {
-                RetrieveData();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            RetrieveData();
         }
 
         private new CatalogPage view

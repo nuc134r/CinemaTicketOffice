@@ -14,7 +14,7 @@ namespace DataAccess.Model
             {
                 if (Genres != null)
                     return string.Join(", ", Genres.Select(_ => _.Name));
-                return "";
+                return string.Empty;
             }
         }
 
@@ -23,7 +23,7 @@ namespace DataAccess.Model
             get
             {
                 if (Showtimes == null || Showtimes.Count == 0) return "Нет сеансов";
-                return string.Join(", ", Showtimes.Select(_ => _.ToShortTimeString()));
+                return string.Join(" ", Showtimes.Where(_ => _.Date == DateTime.Today).Select(_ => _.ToShortTimeString()));
             }
         }
 

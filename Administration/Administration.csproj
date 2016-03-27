@@ -75,6 +75,7 @@
     <Compile Include="ViewModel\LoginWindowViewModel.cs" />
     <Compile Include="ViewModel\MovieEditorWindowViewModel.cs" />
     <Compile Include="ViewModel\MovieListPageViewModel.cs" />
+    <Compile Include="ViewModel\ShowtimeEditorWindowViewModel.cs" />
     <Compile Include="ViewModel\ShowtimeListPageViewModel.cs" />
     <Compile Include="View\GenreListPage.xaml.cs">
       <DependentUpon>GenreListPage.xaml</DependentUpon>

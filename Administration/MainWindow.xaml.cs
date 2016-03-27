@@ -17,7 +17,7 @@ namespace Administration
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-            ServerNameLabel.Content = Settings.Default.server + "/" + Settings.Default.database;
+            ServerNameLabel.Content = Settings.Default.server;
 
             try
             {

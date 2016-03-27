@@ -68,7 +68,7 @@ namespace KioskClient.ViewModel
                 Showtimes = new ObservableCollection<Showtime>();
             }
 
-            var showtimes = repository.GetShowtimes().ToList();
+            var showtimes = repository.GetPendingShowtimes().ToList();
 
             Showtimes.Clear();
             showtimes.ForEach(showtime => Showtimes.Add(showtime));

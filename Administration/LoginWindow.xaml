@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Administration"
         mc:Ignorable="d"
-        Title="Авторизация" Height="201" Width="296" Topmost="True" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Авторизация" Height="200" Width="325" Topmost="True" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="88"/>

@@ -9,10 +9,10 @@ namespace Administration.ViewModel
 {
     public sealed class MovieEditorWindowViewModel
     {
+        private readonly bool createMode;
         private readonly MovieRepository repository;
 
         private readonly IMovieEditorWindow view;
-        private readonly bool createMode;
 
         public MovieEditorWindowViewModel(IMovieEditorWindow view, Movie movie, MovieRepository repository)
         {
@@ -45,7 +45,7 @@ namespace Administration.ViewModel
         public Movie Movie { get; set; }
         public ObservableCollection<Genre> Genres { get; set; }
         public List<AgeLimit> AgeLimits { get; set; }
-        
+
         public void Save()
         {
             Movie.Genres = Genres.Where(_ => _.IsSelected).ToList();

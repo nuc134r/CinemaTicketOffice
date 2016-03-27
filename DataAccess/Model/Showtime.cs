@@ -4,45 +4,72 @@ namespace DataAccess.Model
 {
     public class Showtime
     {
+        public Showtime()
+        {
+            Time = DateTime.Now;
+            ShowTimeLeft = true;
+        }
+
         private const string FarDateFormat = "M";
-        private const int SoonMovieBoundary = 30;
         public int Id { get; set; }
         public Movie Movie { get; set; }
         public DateTime Time { get; set; }
         public Auditorium Auditorium { get; set; }
         public int Price { get; set; }
-        public bool ThreeD { get; set; }
+        public bool ThreeDee { get; set; }
         public bool ShowTimeLeft { get; set; }
 
         public string AdditionalTimeString
         {
             get
             {
-                var minutesLeft = Math.Ceiling((Time - DateTime.Now).TotalMinutes);
-                if (minutesLeft <= SoonMovieBoundary && minutesLeft > 0 && ShowTimeLeft)
+                var hours = Math.Ceiling((Time - DateTime.Now).TotalHours); 
+                var minutes = Math.Ceiling((Time - DateTime.Now).TotalMinutes);
+                
+                var isTomorrow = hours > 24 && hours < 48;
+                var isToday = hours < 24;
+                
+                if (hours < 6)
                 {
-                    return string.Format(Resources.TimeLeftString, minutesLeft);
+                    if (minutes < 60)
+                    {
+                        return string.Format(Resources.TimeLeftString, minutes);
+                    }
+                    else
+                    {
+                        return string.Format("осталось {0} ч {1} мин", (int)(minutes / 60), minutes % 60);
+                    }
                 }
-
-                var isTomorrow = Time.Date == DateTime.Today + TimeSpan.FromDays(1);
-                if (isTomorrow)
-                {
-                    if (Time.Hour < 6) return string.Empty;
-                    return Resources.TomorrowText;
-                }
-
-                if (Time.Date == DateTime.Now.Date)
+                else if (isToday)
                 {
                     return string.Empty;
                 }
-
+                else if (isTomorrow)
+                {
+                    return Resources.TomorrowText;
+                }
+                
                 return Time.ToString(FarDateFormat);
             }
         }
 
         public string ThreeDeeLabelText
         {
-            get { return ThreeD ? Resources.ThreeDeeText : string.Empty; }
+            get { return ThreeDee ? Resources.ThreeDeeText : string.Empty; }
+        }
+
+        public Showtime Clone()
+        {
+            return new Showtime
+            {
+                Movie = Movie,
+                Id = Id,
+                Time = Time,
+                ThreeDee = ThreeDee,
+                Auditorium = Auditorium,
+                Price = Price,
+                ShowTimeLeft = ShowTimeLeft
+            };
         }
     }
 }

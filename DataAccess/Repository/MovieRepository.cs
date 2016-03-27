@@ -162,9 +162,9 @@ namespace DataAccess.Repository
 
         public void Delete(Movie movie)
         {
-            var movieConnection = new CommandExecutor("dbo.DeleteMovie", connectionString);
-            movieConnection.AddParam("@MovieId", movie.Id, SqlDbType.Int);
-            var result = movieConnection.ExecuteCommand();
+            var executor = new CommandExecutor("dbo.DeleteMovie", connectionString);
+            executor.AddParam("@MovieId", movie.Id, SqlDbType.Int);
+            var result = executor.ExecuteCommand();
 
             var exception = result as Exception;
             if (exception != null) throw exception;

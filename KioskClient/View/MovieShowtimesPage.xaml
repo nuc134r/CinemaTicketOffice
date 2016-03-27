@@ -25,14 +25,11 @@
             <ColumnDefinition Width="239"/>
         </Grid.ColumnDefinitions>
         <Button Content="Назад" Margin="35,30,35,0" Style="{DynamicResource BigBlueButtonStyle}" Grid.Column="4" Height="60" VerticalAlignment="Top" Click="BackButton_Click" />
-        <!--<Image Source="{Binding Movie.Poster}" Height="264" Margin="0,55,10,0" VerticalAlignment="Top" Grid.Column="1"/>-->
-        <Image Source="C:\CinemaTicketOffice\Posters\5492.jpg" Height="264" Margin="0,55,10,0" VerticalAlignment="Top" Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Left"/>
+        <Image Source="{Binding Movie.Poster}" Height="264" Margin="0,55,10,0" VerticalAlignment="Top" Grid.Column="1"/>
         <TextBlock Margin="0,324,10,10" TextWrapping="Wrap" Foreground="White" Grid.Column="1">
-            <!--<Run Text="{Binding Movie.Title}" FontFamily="Segoe UI Light" FontSize="22" />-->
-            <Run Text="Вечное Сияние Чистого Разума" FontSize="22" />
+            <Run Text="{Binding Movie.Title}" FontFamily="Segoe UI Light" FontSize="22" />
             <LineBreak />
-            <!--<Run Text="{Binding Movie.GenresString, Mode=OneWay}" Foreground="#9D9A9A" FontSize="16" />-->
-            <Run Text="драма, мелодрама" Foreground="#9D9A9A" FontSize="16" />
+            <Run Text="{Binding Movie.GenresString, Mode=OneWay}" Foreground="#9D9A9A" FontSize="16" />
         </TextBlock>
         <Label Content="Выбранный фильм:" Margin="0,6,10,0" Padding="0,5,0,0" Foreground="#9D9A9A" FontSize="20" VerticalAlignment="Top" Grid.Column="1" Height="34"/>
         <ListBox ItemsSource="{Binding Showtimes}" HorizontalContentAlignment="Stretch" Grid.Column="3" Margin="0,35,0,35" Background="{x:Null}" BorderThickness="0" Padding="0">

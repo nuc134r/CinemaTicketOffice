@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Markup;
 using KioskClient.View;
@@ -37,11 +38,16 @@ namespace KioskClient
             mainWindow.WindowStyle = WindowStyle.SingleBorderWindow;
             mainWindow.Topmost = false;
 #endif
-            
-            var catalogPage = new CatalogPage();
-            mainWindow.DataContext = catalogPage;
-
-            mainWindow.Show();
+            try
+            {
+                var catalogPage = new CatalogPage();
+                mainWindow.DataContext = catalogPage;
+                mainWindow.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
