@@ -50,7 +50,6 @@ namespace Administration.ViewModel
             {
                 if (showtime != null)
                 {
-                    repository.GetShowtimeDetails(showtime);
                     showtime = showtime.Clone();
                 }
 

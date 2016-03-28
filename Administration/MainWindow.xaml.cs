@@ -23,9 +23,11 @@ namespace Administration
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             var item = (TreeViewItem) SectionListTreeView.SelectedItem;
-            var id = item.Tag.ToString();
+            if (item == null || item.Tag == null) return;
 
-            switch (id)
+            var pageNumber = item.Tag.ToString();
+
+            switch (pageNumber)
             {
                 case "0":
                     DataContext = new MovieListPage(this);
@@ -38,6 +40,9 @@ namespace Administration
                     break;
                 case "5":
                     DataContext = new LogoSetupPage(this);
+                    break;
+                case "3":
+                    DataContext = new AuditoriumListPage(this);
                     break;
                 default:
                     DataContext = null;

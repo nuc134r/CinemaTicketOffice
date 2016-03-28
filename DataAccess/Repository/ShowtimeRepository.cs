@@ -103,9 +103,26 @@ namespace DataAccess.Repository
             if (exception != null) throw exception;
         }
 
-        public void GetShowtimeDetails(Showtime showtime)
+        public IEnumerable<Auditorium> GetAuditoriums()
         {
-            
+            var executor = new CommandExecutor("dbo.BrowseAuditoriums", connectionString);
+            var result = executor.ExecuteCommand();
+
+            var exception = result as Exception;
+            if (exception != null) throw exception;
+
+            var dataSet = result as DataSet;
+
+            foreach (DataRow row in dataSet.Tables[0].Rows)
+            {
+                yield return new Auditorium
+                {
+                    Id = row["Id"].ToInt(),
+                    Name = row["Name"].ToString(),
+                    Rows = row["RowsNumber"].ToInt(),
+                    Seats = row["SeatsNumber"].ToInt()
+                };
+            }
         }
     }
 }

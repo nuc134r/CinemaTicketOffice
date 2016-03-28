@@ -356,6 +356,23 @@ AS
 		Logo = @Logo
 GO
 
+IF OBJECT_ID('dbo.BrowseAuditoriums', 'P') IS NOT NULL DROP PROCEDURE [BrowseAuditoriums]
+GO
+CREATE PROCEDURE dbo.BrowseAuditoriums
+AS 
+    SET NOCOUNT ON;
+
+    SELECT 
+		[A].Id,
+		[A].Name,
+		[A].RowsNumber,
+		[A].SeatsNumber
+    FROM 
+		Auditorium as [A]
+	ORDER BY
+		[A].Id
+GO
+
 /********************************
  *			  Admin				*
  ********************************/
@@ -384,6 +401,8 @@ GO
 GRANT EXECUTE ON dbo.UpdateShowtime TO adminuser
 GO
 GRANT EXECUTE ON dbo.BrowseShowtimes TO adminuser
+GO
+GRANT EXECUTE ON dbo.BrowseAuditoriums TO adminuser
 GO
 GRANT EXECUTE ON dbo.GetLogo TO adminuser
 GO

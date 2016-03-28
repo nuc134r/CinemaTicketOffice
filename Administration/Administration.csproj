@@ -70,6 +70,7 @@
     <Compile Include="ShowtimeEditorWindow.xaml.cs">
       <DependentUpon>ShowtimeEditorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AuditoriumListPageViewModel.cs" />
     <Compile Include="ViewModel\GenreEditorWindowViewModel.cs" />
     <Compile Include="ViewModel\GenreListPageViewModel.cs" />
     <Compile Include="ViewModel\LoginWindowViewModel.cs" />
@@ -77,6 +78,9 @@
     <Compile Include="ViewModel\MovieListPageViewModel.cs" />
     <Compile Include="ViewModel\ShowtimeEditorWindowViewModel.cs" />
     <Compile Include="ViewModel\ShowtimeListPageViewModel.cs" />
+    <Compile Include="View\AuditoriumListPage.xaml.cs">
+      <DependentUpon>AuditoriumListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\GenreListPage.xaml.cs">
       <DependentUpon>GenreListPage.xaml</DependentUpon>
     </Compile>
@@ -123,6 +127,10 @@
     <Page Include="ShowtimeEditorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AuditoriumListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\GenreListPage.xaml">
       <Generator>MSBuild:Compile</Generator>
