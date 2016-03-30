@@ -51,5 +51,11 @@ namespace KioskClient
             var showtimesPage = new MovieShowtimesPage(movie);
             DataContext = showtimesPage;
         }
+
+        public void NavigateToAuditoriumMap(Showtime showtime)
+        {
+            var auditoriumMapPage = new AuditoriumMapPage(showtime);
+            DataContext = auditoriumMapPage;
+        }
     }
 }

@@ -44,5 +44,11 @@ namespace KioskClient.View
         {
             viewModel.GoBack();
         }
+
+        private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var showtime = (Showtime)e.AddedItems[0];
+            viewModel.GoToShowtimeDetails(showtime);
+        }
     }
 }

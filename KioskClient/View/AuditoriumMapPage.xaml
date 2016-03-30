@@ -5,10 +5,79 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:KioskClient.View"
       mc:Ignorable="d" 
-      d:DesignHeight="301.446" d:DesignWidth="513.253"
-      Title="AuditoriumMapPage">
+      d:DesignHeight="498" d:DesignWidth="800"
+      Title="Выбор мест">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="CommonStyles.xaml" />
+                <ResourceDictionary Source="CatalogPageResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
 
     <Grid>
-        <Viewbox HorizontalAlignment="Left" Height="141" Margin="45,27,0,0" VerticalAlignment="Top" Width="279"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="239"/>
+        </Grid.ColumnDefinitions>
+        <Viewbox Margin="35,30,0,100" >
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" >
+                    <Canvas Height="30" Width="30" Margin="0">
+                        <TextBlock Text="1" Width="30" Height="27" TextAlignment="Center" Foreground="White" FontSize="18.667" Canvas.Top="3" />
+                    </Canvas>
+                    <Canvas Height="30" Width="30" Margin="0">
+                        <Rectangle Margin="3" Stroke="#FF4F4F4F" RadiusX="2" RadiusY="2" Height="25" Width="25">
+                            <Rectangle.Fill>
+                                <LinearGradientBrush EndPoint="1,0" StartPoint="1,1">
+                                    <GradientStop Color="#FF515151"/>
+                                    <GradientStop Color="#FFBDBDBD" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <TextBlock Text="1" Width="30" Height="25" TextAlignment="Center" Canvas.Top="7" Foreground="White" />
+                    </Canvas>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" >
+                    <Canvas Height="30" Width="30" Margin="0">
+                        <TextBlock Text="2" Width="30" Height="27" TextAlignment="Center" Foreground="White" FontSize="18.667" Canvas.Top="3" />
+                    </Canvas>
+                    <Canvas Height="30" Width="30" Margin="0">
+                        <Rectangle Fill="#FFF4F4F5" Margin="3" Stroke="Black" RadiusX="2" RadiusY="2" Height="25" Width="25"/>
+                        <TextBlock Text="1" Width="30" Height="25" TextAlignment="Center" Canvas.Top="7" />
+                    </Canvas>
+                    <Canvas Height="30" Width="30" Margin="0">
+                        <Rectangle Fill="#FFF4F4F5" Margin="3" Stroke="Black" RadiusX="2" RadiusY="2" Height="25" Width="25"/>
+                        <TextBlock Text="2" Width="30" Height="25" TextAlignment="Center" Canvas.Top="7" />
+                    </Canvas>
+                    <Canvas Height="30" Width="30" Margin="0">
+                        <Rectangle Fill="#FFF4F4F5" Margin="3" Stroke="Black" RadiusX="2" RadiusY="2" Height="25" Width="25"/>
+                        <TextBlock Text="3" Width="30" Height="25" TextAlignment="Center" Canvas.Top="7" />
+                    </Canvas>
+                    <Canvas Height="30" Width="30" Margin="0">
+                        <Rectangle Fill="#FFF4F4F5" Margin="3" Stroke="Black" RadiusX="2" RadiusY="2" Height="25" Width="25"/>
+                        <TextBlock Text="4" Width="30" Height="25" TextAlignment="Center" Canvas.Top="7" />
+                    </Canvas>
+                    <Canvas Height="30" Width="30" Margin="0">
+                        <Rectangle Fill="#FFF4F4F5" Margin="3" Stroke="Black" RadiusX="2" RadiusY="2" Height="25" Width="25"/>
+                        <TextBlock Text="5" Width="30" Height="25" TextAlignment="Center" Canvas.Top="7" />
+                    </Canvas>
+                    <Canvas Height="30" Width="30" Margin="0">
+                        <Rectangle Fill="#FFF4F4F5" Margin="3" Stroke="Black" RadiusX="2" RadiusY="2" Height="25" Width="25"/>
+                        <TextBlock Text="6" Width="30" Height="25" TextAlignment="Center" Canvas.Top="7" />
+                    </Canvas>
+                    <Canvas Height="30" Width="30" Margin="0">
+                        <Rectangle Fill="#FFF4F4F5" Margin="3" Stroke="Black" RadiusX="2" RadiusY="2" Height="25" Width="25"/>
+                        <TextBlock Text="7" Width="30" Height="25" TextAlignment="Center" Canvas.Top="7" />
+                    </Canvas>
+                    <Canvas Height="30" Width="30" Margin="0">
+                        <Rectangle Fill="#FFF4F4F5" Margin="3" Stroke="Black" RadiusX="2" RadiusY="2" Height="25" Width="25"/>
+                        <TextBlock Text="8" Width="30" Height="25" TextAlignment="Center" Canvas.Top="7" />
+                    </Canvas>
+                </StackPanel>
+            </StackPanel>
+        </Viewbox>
+        <Button Content="Назад" Margin="35,30,35,0" Style="{DynamicResource BigBlueButtonStyle}" Grid.Column="1" Height="60" VerticalAlignment="Top" Click="BackButton_Click" />
     </Grid>
 </Page>

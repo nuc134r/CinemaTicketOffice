@@ -84,5 +84,10 @@ namespace KioskClient.ViewModel
             showtimesUpdaterTimer.Elapsed -= ShowtimesUpdaterTimerOnElapsed;
             showtimesUpdaterTimer.Stop();
         }
+
+        public void GoToShowtimeDetails(Showtime showtime)
+        {
+            Window.NavigateToAuditoriumMap(showtime);
+        }
     }
 }
