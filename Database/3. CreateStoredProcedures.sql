@@ -18,9 +18,9 @@ AS
 		Id
 GO
 
-IF OBJECT_ID('dbo.ListGenres', 'P')	IS NOT NULL DROP PROCEDURE [ListGenres]
+IF OBJECT_ID('dbo.BrowseGenres', 'P')	IS NOT NULL DROP PROCEDURE [BrowseGenres]
 GO
-CREATE PROCEDURE dbo.ListGenres
+CREATE PROCEDURE dbo.BrowseGenres
 AS 
     SET NOCOUNT ON;
 
@@ -373,6 +373,53 @@ AS
 		[A].Id
 GO
 
+IF OBJECT_ID('dbo.CreateAuditorium', 'P') IS NOT NULL DROP PROCEDURE [CreateAuditorium]
+GO
+CREATE PROCEDURE dbo.CreateAuditorium
+	@Name NVARCHAR (128),
+	@Rows INT,
+	@Seats INT
+AS 
+    SET NOCOUNT ON;
+
+	INSERT INTO Auditorium 
+	(		
+		Name,
+		RowsNumber,
+		SeatsNumber
+	)
+	SELECT
+		@Name,
+		@Rows,
+		@Seats
+GO
+
+IF OBJECT_ID('dbo.UpdateAuditorium', 'P') IS NOT NULL DROP PROCEDURE [UpdateAuditorium]
+GO
+CREATE PROCEDURE dbo.UpdateAuditorium
+	@Id INT,
+	@Name NVARCHAR (128),
+	@Rows INT,
+	@Seats INT
+AS 
+    SET NOCOUNT ON;
+
+	UPDATE Auditorium SET
+		Name = @Name,
+		RowsNumber = @Rows,
+		SeatsNumber = @Seats
+	WHERE
+		Id = @Id
+GO
+
+IF OBJECT_ID('dbo.DeleteAuditorium', 'P') IS NOT NULL DROP PROCEDURE [DeleteAuditorium]
+GO
+CREATE PROCEDURE dbo.DeleteAuditorium
+	@Id INT
+AS
+	DELETE FROM Auditorium WHERE Id = @Id
+GO
+
 /********************************
  *			  Admin				*
  ********************************/
@@ -382,7 +429,7 @@ GRANT EXECUTE ON dbo.MovieDetails TO adminuser
 GO
 GRANT EXECUTE ON dbo.ListAgeLimits TO adminuser
 GO
-GRANT EXECUTE ON dbo.ListGenres TO adminuser
+GRANT EXECUTE ON dbo.BrowseGenres TO adminuser
 GO
 GRANT EXECUTE ON dbo.CreateMovie TO adminuser
 GO
@@ -408,6 +455,12 @@ GRANT EXECUTE ON dbo.GetLogo TO adminuser
 GO
 GRANT EXECUTE ON dbo.SetLogo TO adminuser
 GO
+GRANT EXECUTE ON dbo.CreateAuditorium TO adminuser
+GO
+GRANT EXECUTE ON dbo.UpdateAuditorium TO adminuser
+GO
+GRANT EXECUTE ON dbo.DeleteAuditorium TO adminuser
+GO
 GRANT EXEC ON TYPE::dbo.IdList TO adminuser
 GO
 
@@ -419,7 +472,7 @@ GRANT EXECUTE ON dbo.BrowseMovies TO kioskuser
 GO
 GRANT EXECUTE ON dbo.MovieDetails TO kioskuser
 GO
-GRANT EXECUTE ON dbo.ListGenres TO kioskuser
+GRANT EXECUTE ON dbo.BrowseGenres TO kioskuser
 GO
 GRANT EXECUTE ON dbo.GetLogo TO kioskuser
 GO

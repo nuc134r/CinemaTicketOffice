@@ -20,8 +20,7 @@ namespace DataAccess.Repository
             var executor = new CommandExecutor("dbo.BrowseShowtimes", connectionString);
             var result = executor.ExecuteCommand();
 
-            var exception = result as Exception;
-            if (exception != null) throw exception;
+            result.ThrowIfException();
 
             var dataSet = result as DataSet;
 
@@ -52,8 +51,7 @@ namespace DataAccess.Repository
             var executor = new CommandExecutor("dbo.BrowsePendingShowtimes", connectionString);
             var result = executor.ExecuteCommand();
 
-            var exception = result as Exception;
-            if (exception != null) throw exception;
+            result.ThrowIfException();
 
             var dataSet = result as DataSet;
 
@@ -83,24 +81,20 @@ namespace DataAccess.Repository
             }
 
             executor.AddParam("@MovieId", showtime.Movie.Id, SqlDbType.Int);
-            executor.AddParam("@AuditoriumId", 1, SqlDbType.Int);
+            executor.AddParam("@AuditoriumId", showtime.Auditorium.Id, SqlDbType.Int);
             executor.AddParam("@ShowtimeDate", showtime.Time, SqlDbType.DateTime);
             executor.AddParam("@Price", showtime.Price, SqlDbType.Money);
             executor.AddParam("@ThreeDee", showtime.ThreeDee, SqlDbType.Bit);
 
-            var result = executor.ExecuteCommand(true);
-            var exception = result as Exception;
-            if (exception != null) throw exception;
+            executor.ExecuteCommand(true).ThrowIfException();
         }
 
         public void Delete(Showtime showtime)
         {
             var executor = new CommandExecutor("dbo.DeleteShowtime", connectionString);
             executor.AddParam("@Id", showtime.Id, SqlDbType.Int);
-            var result = executor.ExecuteCommand();
 
-            var exception = result as Exception;
-            if (exception != null) throw exception;
+            executor.ExecuteCommand(true).ThrowIfException();
         }
 
         public IEnumerable<Auditorium> GetAuditoriums()
@@ -108,8 +102,7 @@ namespace DataAccess.Repository
             var executor = new CommandExecutor("dbo.BrowseAuditoriums", connectionString);
             var result = executor.ExecuteCommand();
 
-            var exception = result as Exception;
-            if (exception != null) throw exception;
+            result.ThrowIfException();
 
             var dataSet = result as DataSet;
 
@@ -123,6 +116,34 @@ namespace DataAccess.Repository
                     Seats = row["SeatsNumber"].ToInt()
                 };
             }
+        }
+
+        public void Save(Auditorium auditorium, bool update)
+        {
+            CommandExecutor executor;
+            if (update)
+            {
+                executor = new CommandExecutor("dbo.UpdateAuditorium", connectionString);
+                executor.AddParam("@Id", auditorium.Id, SqlDbType.Int);
+            }
+            else
+            {
+                executor = new CommandExecutor("dbo.CreateAuditorium", connectionString);
+            }
+
+            executor.AddParam("@Name", auditorium.Name, SqlDbType.NVarChar);
+            executor.AddParam("@Rows", auditorium.Rows, SqlDbType.Int);
+            executor.AddParam("@Seats", auditorium.Seats, SqlDbType.Int);
+
+            executor.ExecuteCommand(true).ThrowIfException();
+        }
+
+        public void Delete(Auditorium auditorium)
+        {
+            var executor = new CommandExecutor("dbo.DeleteAuditorium", connectionString);
+            executor.AddParam("@Id", auditorium.Id, SqlDbType.Int);
+
+            executor.ExecuteCommand(true).ThrowIfException();
         }
     }
 }

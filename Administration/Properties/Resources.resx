@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DeleteAuditoriumConfirmationText" xml:space="preserve">
+    <value>Предпринимается попытка удалить зал "{0}". Все сеансы в этом зале будут удалены. Подтвердить удаление?</value>
+  </data>
   <data name="DeleteConfirmationCaption" xml:space="preserve">
     <value>Подтверждение</value>
   </data>
@@ -127,6 +130,6 @@
     <value>Предпринимается попытка удалить фильм "{0}". Подтвердить удаление?</value>
   </data>
   <data name="DeleteShowtimeConfirmatonText" xml:space="preserve">
-    <value>Предпринимается попытка удалить сеанс {0} ("{1}") . Подтвердить удаление?</value>
+    <value>Предпринимается попытка удалить сеанс {0} ("{1}"). Подтвердить удаление?</value>
   </data>
 </root>

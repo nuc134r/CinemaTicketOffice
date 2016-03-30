@@ -20,8 +20,7 @@ namespace DataAccess.Repository
             var executor = new CommandExecutor("dbo.GetLogo", connectionString); 
             var result = executor.ExecuteCommand();
 
-            var exception = result as Exception;
-            if (exception != null) throw exception;
+            result.ThrowIfException();
 
             var dataSet = result as DataSet;
             
@@ -47,9 +46,7 @@ namespace DataAccess.Repository
             var logoData = logo == null ? DBNull.Value : (object)logo.ToByteArray();
             executor.AddParam("@Logo", logoData, SqlDbType.Image);
 
-            var result = executor.ExecuteCommand(true);
-            var exception = result as Exception;
-            if (exception != null) throw exception;
+            executor.ExecuteCommand(true).ThrowIfException();
         }
     }
 }

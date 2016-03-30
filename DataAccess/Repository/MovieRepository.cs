@@ -22,8 +22,7 @@ namespace DataAccess.Repository
             var moviesConnection = new CommandExecutor("dbo.BrowseMovies", connectionString);
             var result = moviesConnection.ExecuteCommand();
 
-            var exception = result as Exception;
-            if (exception != null) throw exception;
+            result.ThrowIfException();
 
             var dataSet = result as DataSet;
 
@@ -44,11 +43,10 @@ namespace DataAccess.Repository
 
         public IEnumerable<Genre> GetGenres()
         {
-            var genresConnection = new CommandExecutor("dbo.ListGenres", connectionString);
+            var genresConnection = new CommandExecutor("dbo.BrowseGenres", connectionString);
             var result = genresConnection.ExecuteCommand();
 
-            var exception = result as Exception;
-            if (exception != null) throw exception;
+            result.ThrowIfException();
 
             var dataSet = result as DataSet;
 
@@ -67,8 +65,7 @@ namespace DataAccess.Repository
             var genresConnection = new CommandExecutor("dbo.ListAgeLimits", connectionString);
             var result = genresConnection.ExecuteCommand();
 
-            var exception = result as Exception;
-            if (exception != null) throw exception;
+            result.ThrowIfException();
 
             var dataSet = result as DataSet;
 
@@ -88,8 +85,7 @@ namespace DataAccess.Repository
             movieConnection.AddParam("@MovieId", movie.Id, SqlDbType.Int);
             var result = movieConnection.ExecuteCommand();
 
-            var exception = result as Exception;
-            if (exception != null) throw exception;
+            result.ThrowIfException();
 
             var dataSet = result as DataSet;
 
@@ -155,19 +151,15 @@ namespace DataAccess.Repository
             executor.AddParam("@ReleaseDate", movie.ReleaseDate, SqlDbType.Date);
             executor.AddParam("@AgeLimitId", movie.AgeLimit.Id, SqlDbType.Int);
 
-            var result = executor.ExecuteCommand(true);
-            var exception = result as Exception;
-            if (exception != null) throw exception;
+            executor.ExecuteCommand(true).ThrowIfException();
         }
 
         public void Delete(Movie movie)
         {
             var executor = new CommandExecutor("dbo.DeleteMovie", connectionString);
             executor.AddParam("@MovieId", movie.Id, SqlDbType.Int);
-            var result = executor.ExecuteCommand();
 
-            var exception = result as Exception;
-            if (exception != null) throw exception;
+            executor.ExecuteCommand(true).ThrowIfException();
         }
 
         public void Save(Genre genre, bool update)
@@ -185,19 +177,15 @@ namespace DataAccess.Repository
 
             genreConnection.AddParam("@Name", genre.Name, SqlDbType.NVarChar);
 
-            var result = genreConnection.ExecuteCommand(true);
-            var exception = result as Exception;
-            if (exception != null) throw exception;
+            genreConnection.ExecuteCommand(true).ThrowIfException();
         }
 
         public void Delete(Genre genre)
         {
             var genreConnection = new CommandExecutor("dbo.DeleteGenre", connectionString);
             genreConnection.AddParam("@GenreId", genre.Id, SqlDbType.Int);
-            var result = genreConnection.ExecuteCommand();
 
-            var exception = result as Exception;
-            if (exception != null) throw exception;
+            genreConnection.ExecuteCommand().ThrowIfException();
         }
     }
 }

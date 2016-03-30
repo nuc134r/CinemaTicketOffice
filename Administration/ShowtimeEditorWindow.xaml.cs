@@ -33,8 +33,8 @@ namespace Administration
 
         public int SelectedMovieIndex
         {
-            set { MovieBox.SelectedIndex = value; }
             get { return MovieBox.SelectedIndex; }
+            set { MovieBox.SelectedIndex = value; }
         }
 
         public DateTime Time
@@ -51,6 +51,12 @@ namespace Administration
 
                 return DateBox.DisplayDate.Date.AddHours(hours).AddMinutes(minutes);
             }
+        }
+
+        public int SelectedAuditoriumIndex
+        {
+            get { return AuditoriumBox.SelectedIndex; }
+            set { AuditoriumBox.SelectedIndex = value; }
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)

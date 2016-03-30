@@ -61,6 +61,15 @@ namespace Administration.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Предпринимается попытка удалить зал &quot;{0}&quot;. Все сеансы в этом зале будут удалены. Подтвердить удаление?.
+        /// </summary>
+        internal static string DeleteAuditoriumConfirmationText {
+            get {
+                return ResourceManager.GetString("DeleteAuditoriumConfirmationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Подтверждение.
         /// </summary>
         internal static string DeleteConfirmationCaption {
@@ -88,7 +97,7 @@ namespace Administration.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Предпринимается попытка удалить сеанс {0} (&quot;{1}&quot;) . Подтвердить удаление?.
+        ///   Looks up a localized string similar to Предпринимается попытка удалить сеанс {0} (&quot;{1}&quot;). Подтвердить удаление?.
         /// </summary>
         internal static string DeleteShowtimeConfirmatonText {
             get {

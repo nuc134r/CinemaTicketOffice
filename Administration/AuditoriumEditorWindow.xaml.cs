@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 using Administration.Properties;
 using Administration.ViewModel;
 using DataAccess;
@@ -8,11 +10,11 @@ using DataAccess.Repository;
 
 namespace Administration
 {
-    public partial class GenreEditorWindow
+    public partial class AuditoriumEditorWindow
     {
-        private readonly GenreEditorWindowViewModel viewModel;
-
-        public GenreEditorWindow(Genre genre)
+        private readonly AuditoriumEditorWindowViewModel viewModel;
+        
+        public AuditoriumEditorWindow(Auditorium auditorium)
         {
             InitializeComponent();
 
@@ -22,9 +24,9 @@ namespace Administration
                 Settings.Default.user,
                 Settings.Default.password);
 
-            var repository = new MovieRepository(connectionString);
+            var repository = new ShowtimeRepository(connectionString);
 
-            viewModel = new GenreEditorWindowViewModel(genre, repository);
+            viewModel = new AuditoriumEditorWindowViewModel(auditorium, repository);
             DataContext = viewModel;
         }
 
@@ -44,6 +46,18 @@ namespace Administration
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
+        }
+
+        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            // Блокируем ввод значения, которое невозможно преобразовать в byte
+            var text = ((TextBox)sender).Text + e.Text;
+            byte value;
+
+            if (!byte.TryParse(text, out value))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

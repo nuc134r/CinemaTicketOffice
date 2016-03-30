@@ -11,5 +11,16 @@ namespace DataAccess.Model
         {
             get { return Rows*Seats; }
         }
+
+        public Auditorium Clone()
+        {
+            return new Auditorium
+            {
+                Id = Id,
+                Name = Name,
+                Rows = Rows,
+                Seats = Seats
+            };
+        }
     }
 }
