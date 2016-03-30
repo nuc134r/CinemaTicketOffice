@@ -1,4 +1,4 @@
-cd "C:\Users\chelm\Documents\Visual Studio 2015\Projects\CinemaTicketOffice2"
+cd %~dp0
 
 msbuild /p:Configuration=Release
 
