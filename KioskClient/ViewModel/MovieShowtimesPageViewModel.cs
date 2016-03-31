@@ -19,9 +19,14 @@ namespace KioskClient.ViewModel
 
         private Timer showtimesUpdaterTimer;
 
+        private MovieShowtimesPage view 
+        {
+            get { return (MovieShowtimesPage) base.view; }
+        }
+
         public MovieShowtimesPageViewModel(MovieShowtimesPage view, ShowtimeRepository repository, Movie movie)
         {
-            this.view = view;
+            base.view = view;
             this.repository = repository;
             Movie = movie;
 
@@ -46,7 +51,12 @@ namespace KioskClient.ViewModel
         {
             if (DateTime.Now.Second == 0)
             {
-                view.Dispatcher.Invoke(RetrieveData);
+                view.Dispatcher.Invoke(() =>
+                {
+                    view.UnwireHandlers();
+                    RetrieveData();
+                    view.WireHandlers();
+                });
 
                 showtimesUpdaterTimer.Stop();
                 showtimesUpdaterTimer.Elapsed -= ShowtimesUpdaterTimerWaitForSync;
@@ -58,7 +68,12 @@ namespace KioskClient.ViewModel
 
         private void ShowtimesUpdaterTimerOnElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
         {
-            view.Dispatcher.Invoke(RetrieveData);
+            view.Dispatcher.Invoke(() =>
+            {
+                view.UnwireHandlers();
+                RetrieveData();
+                view.WireHandlers();
+            });
         }
 
         private void RetrieveData()

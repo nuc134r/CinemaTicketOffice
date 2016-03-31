@@ -11,7 +11,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="CommonStyles.xaml" />
-                <ResourceDictionary Source="CatalogPageResources.xaml" />
+                <ResourceDictionary Source="AuditoriumMapPageResources.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
@@ -24,57 +24,24 @@
         <Viewbox Margin="35,30,0,100" >
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal" >
-                    <Canvas Height="30" Width="30" Margin="0">
-                        <TextBlock Text="1" Width="30" Height="27" TextAlignment="Center" Foreground="White" FontSize="18.667" Canvas.Top="3" />
-                    </Canvas>
-                    <Canvas Height="30" Width="30" Margin="0">
-                        <Rectangle Margin="3" Stroke="#FF4F4F4F" RadiusX="2" RadiusY="2" Height="25" Width="25">
-                            <Rectangle.Fill>
-                                <LinearGradientBrush EndPoint="1,0" StartPoint="1,1">
-                                    <GradientStop Color="#FF515151"/>
-                                    <GradientStop Color="#FFBDBDBD" Offset="1"/>
-                                </LinearGradientBrush>
-                            </Rectangle.Fill>
-                        </Rectangle>
-                        <TextBlock Text="1" Width="30" Height="25" TextAlignment="Center" Canvas.Top="7" Foreground="White" />
-                    </Canvas>
+                    <Grid Margin="0" Height="30" Width="20">
+                        <TextBlock Text="1" TextAlignment="Center" Foreground="White" FontSize="18.667" Margin="0,3,0,0" />
+                    </Grid>
+                    <CheckBox Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource SeatCheckBox}" />
+                    <CheckBox Content="2" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource SeatCheckBox}" />
+                    <CheckBox Content="3" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource SeatCheckBox}" />
+                    <CheckBox Content="4" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource SeatCheckBox}" IsEnabled="False"/>
+                    <CheckBox Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource SeatCheckBox}" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" >
-                    <Canvas Height="30" Width="30" Margin="0">
-                        <TextBlock Text="2" Width="30" Height="27" TextAlignment="Center" Foreground="White" FontSize="18.667" Canvas.Top="3" />
-                    </Canvas>
-                    <Canvas Height="30" Width="30" Margin="0">
-                        <Rectangle Fill="#FFF4F4F5" Margin="3" Stroke="Black" RadiusX="2" RadiusY="2" Height="25" Width="25"/>
-                        <TextBlock Text="1" Width="30" Height="25" TextAlignment="Center" Canvas.Top="7" />
-                    </Canvas>
-                    <Canvas Height="30" Width="30" Margin="0">
-                        <Rectangle Fill="#FFF4F4F5" Margin="3" Stroke="Black" RadiusX="2" RadiusY="2" Height="25" Width="25"/>
-                        <TextBlock Text="2" Width="30" Height="25" TextAlignment="Center" Canvas.Top="7" />
-                    </Canvas>
-                    <Canvas Height="30" Width="30" Margin="0">
-                        <Rectangle Fill="#FFF4F4F5" Margin="3" Stroke="Black" RadiusX="2" RadiusY="2" Height="25" Width="25"/>
-                        <TextBlock Text="3" Width="30" Height="25" TextAlignment="Center" Canvas.Top="7" />
-                    </Canvas>
-                    <Canvas Height="30" Width="30" Margin="0">
-                        <Rectangle Fill="#FFF4F4F5" Margin="3" Stroke="Black" RadiusX="2" RadiusY="2" Height="25" Width="25"/>
-                        <TextBlock Text="4" Width="30" Height="25" TextAlignment="Center" Canvas.Top="7" />
-                    </Canvas>
-                    <Canvas Height="30" Width="30" Margin="0">
-                        <Rectangle Fill="#FFF4F4F5" Margin="3" Stroke="Black" RadiusX="2" RadiusY="2" Height="25" Width="25"/>
-                        <TextBlock Text="5" Width="30" Height="25" TextAlignment="Center" Canvas.Top="7" />
-                    </Canvas>
-                    <Canvas Height="30" Width="30" Margin="0">
-                        <Rectangle Fill="#FFF4F4F5" Margin="3" Stroke="Black" RadiusX="2" RadiusY="2" Height="25" Width="25"/>
-                        <TextBlock Text="6" Width="30" Height="25" TextAlignment="Center" Canvas.Top="7" />
-                    </Canvas>
-                    <Canvas Height="30" Width="30" Margin="0">
-                        <Rectangle Fill="#FFF4F4F5" Margin="3" Stroke="Black" RadiusX="2" RadiusY="2" Height="25" Width="25"/>
-                        <TextBlock Text="7" Width="30" Height="25" TextAlignment="Center" Canvas.Top="7" />
-                    </Canvas>
-                    <Canvas Height="30" Width="30" Margin="0">
-                        <Rectangle Fill="#FFF4F4F5" Margin="3" Stroke="Black" RadiusX="2" RadiusY="2" Height="25" Width="25"/>
-                        <TextBlock Text="8" Width="30" Height="25" TextAlignment="Center" Canvas.Top="7" />
-                    </Canvas>
+                    <Grid Margin="0" Height="30" Width="20">
+                        <TextBlock Text="2" TextAlignment="Center" Foreground="White" FontSize="18.667" Margin="0,3,0,0" />
+                    </Grid>
+                    <CheckBox Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource SeatCheckBox}" />
+                    <CheckBox Content="2" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource SeatCheckBox}" IsEnabled="False" />
+                    <CheckBox Content="3" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource SeatCheckBox}" IsEnabled="False" />
+                    <CheckBox Content="4" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource SeatCheckBox}" />
+                    <CheckBox Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource SeatCheckBox}" />
                 </StackPanel>
             </StackPanel>
         </Viewbox>

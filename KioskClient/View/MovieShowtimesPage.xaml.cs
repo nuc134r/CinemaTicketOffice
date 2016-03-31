@@ -45,6 +45,16 @@ namespace KioskClient.View
             viewModel.GoBack();
         }
 
+        public void UnwireHandlers()
+        {
+            ShowtimesListBox.SelectionChanged -= Selector_OnSelectionChanged;
+        }
+
+        public void WireHandlers()
+        {
+            ShowtimesListBox.SelectionChanged += Selector_OnSelectionChanged;
+        }
+
         private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var showtime = (Showtime)e.AddedItems[0];
