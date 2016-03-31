@@ -1,14 +1,38 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using DataAccess.Annotations;
 using DataAccess.Model;
 
 namespace KioskClient.Domain
 {
-    public class AuditoriumSeat
+    public class AuditoriumSeat : INotifyPropertyChanged
     {
+        private bool isSelected;
         public int SeatNumber { get; set; }
         public AuditoriumRow Row { get; set; }
-        public bool IsSelected { get; set; }
+
+        public bool IsSelected
+        {
+            get { return isSelected; }
+            set
+            {
+                isSelected = value;
+                OnPropertyChanged();
+            }
+        }
+
         public bool IsFree { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            var handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 
     public class AuditoriumRow
@@ -17,12 +41,8 @@ namespace KioskClient.Domain
         public List<AuditoriumSeat> Seats { get; set; }
     }
 
-    public class AuditoriumView
+    public class AuditoriumView : INotifyPropertyChanged
     {
-        public AuditoriumView()
-        {
-        }
-
         public AuditoriumView(Auditorium auditorium)
         {
             Rows = new List<AuditoriumRow>();
@@ -37,13 +57,28 @@ namespace KioskClient.Domain
 
                 for (var j = 0; j < auditorium.Seats; j++)
                 {
-                    row.Seats.Add(new AuditoriumSeat {Row = row, SeatNumber = j + 1, IsFree = true});
+                    var seat = new AuditoriumSeat
+                    {
+                        Row = row,
+                        SeatNumber = j + 1,
+                        IsFree = true
+                    };
+                    seat.PropertyChanged += SeatOnPropertyChanged;
+
+                    row.Seats.Add(seat);
                 }
 
                 Rows.Add(row);
             }
         }
 
+        private void SeatOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
+        {
+            var handler = PropertyChanged;
+            if (handler != null) handler(sender, new PropertyChangedEventArgs(propertyChangedEventArgs.PropertyName));
+        }
+
         public List<AuditoriumRow> Rows { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
