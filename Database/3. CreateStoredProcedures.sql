@@ -301,7 +301,9 @@ AS
 		[M].Id AS [MovieId],
 		[M].Title AS [MovieTitle],
 		[A].Id AS [AuditoriumId],
-		[A].Name AS [AuditoriumName]
+		[A].Name AS [AuditoriumName],
+		[A].RowsNumber AS [AuditoriumRows],
+		[A].SeatsNumber AS [AuditoriumSeats]
     FROM 
 		Showtime as [S]
 	LEFT JOIN Auditorium AS [A]
@@ -315,6 +317,7 @@ GO
 IF OBJECT_ID('dbo.BrowsePendingShowtimes', 'P') IS NOT NULL DROP PROCEDURE [BrowsePendingShowtimes]
 GO
 CREATE PROCEDURE dbo.BrowsePendingShowtimes
+	@MovieId INT
 AS 
     SET NOCOUNT ON;
 
@@ -322,13 +325,26 @@ AS
 		[S].Id,
 		[S].ShowtimeDate,
 		[S].Price,
-		[S].ThreeDee
+		[S].ThreeDee,
+		[M].Id AS [MovieId],
+		[M].Title AS [MovieTitle],
+		[A].Id AS [AuditoriumId],
+		[A].Name AS [AuditoriumName],
+		[A].RowsNumber AS [AuditoriumRows],
+		[A].SeatsNumber AS [AuditoriumSeats]
     FROM 
 		Showtime as [S]
+	LEFT JOIN Auditorium AS [A]
+		ON [A].Id = [S].AuditoriumId
+	LEFT JOIN Movie AS [M]
+		ON [M].Id = [S].MovieId
 	WHERE
+		[M].Id = @MovieId
+		AND
 		[S].ShowtimeDate > DATEADD(hour, 3, GETDATE())
 	ORDER BY
 		[S].ShowtimeDate
+	
 GO
 
 IF OBJECT_ID('dbo.GetLogo', 'P') IS NOT NULL DROP PROCEDURE [GetLogo]

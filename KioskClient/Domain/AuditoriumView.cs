@@ -8,6 +8,7 @@ namespace KioskClient.Domain
         public int SeatNumber { get; set; }
         public AuditoriumRow Row { get; set; }
         public bool IsSelected { get; set; }
+        public bool IsFree { get; set; }
     }
 
     public class AuditoriumRow
@@ -18,6 +19,10 @@ namespace KioskClient.Domain
 
     public class AuditoriumView
     {
+        public AuditoriumView()
+        {
+        }
+
         public AuditoriumView(Auditorium auditorium)
         {
             Rows = new List<AuditoriumRow>();
@@ -32,8 +37,10 @@ namespace KioskClient.Domain
 
                 for (var j = 0; j < auditorium.Seats; j++)
                 {
-                    row.Seats.Add(new AuditoriumSeat {Row = row, SeatNumber = j + 1});
+                    row.Seats.Add(new AuditoriumSeat {Row = row, SeatNumber = j + 1, IsFree = true});
                 }
+
+                Rows.Add(row);
             }
         }
 

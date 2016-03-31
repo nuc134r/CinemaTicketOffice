@@ -57,5 +57,10 @@ namespace KioskClient
             var auditoriumMapPage = new AuditoriumMapPage(showtime);
             DataContext = auditoriumMapPage;
         }
+
+        public void NavigateBack()
+        {
+            MainFrame.GoBack();
+        }
     }
 }

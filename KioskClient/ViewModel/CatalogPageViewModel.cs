@@ -74,7 +74,7 @@ namespace KioskClient.ViewModel
 
             var selectedGenres = Genres.Where(genre => genre.IsSelected).Select(_ => _.Id).ToArray();
 
-            if (view != null) view.DetachSelectionChangedHandler();
+            if (view != null) view.UnwireHandlers();
             Movies.Clear();
 
             if (!selectedGenres.Any())
@@ -92,7 +92,7 @@ namespace KioskClient.ViewModel
                 }
             }
             
-            if (view != null) view.AttachSelectionChangedHandler();
+            if (view != null) view.WireHandlers();
         }
 
         public void GoToMovieDetails(Movie movie)

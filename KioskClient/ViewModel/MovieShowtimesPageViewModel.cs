@@ -83,7 +83,7 @@ namespace KioskClient.ViewModel
                 Showtimes = new ObservableCollection<Showtime>();
             }
 
-            var showtimes = repository.GetPendingShowtimes().ToList();
+            var showtimes = repository.GetPendingShowtimes(Movie.Id).ToList();
 
             Showtimes.Clear();
             showtimes.ForEach(showtime => Showtimes.Add(showtime));
@@ -91,7 +91,7 @@ namespace KioskClient.ViewModel
 
         public void GoBack()
         {
-            Window.NavigateToMovieDetails(Movie);
+            Window.NavigateBack();
         }
 
         public void Dispose()

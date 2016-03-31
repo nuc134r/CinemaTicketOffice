@@ -38,7 +38,9 @@ namespace DataAccess.Repository
                     Auditorium = new Auditorium
                     {
                         Id = row["AuditoriumId"].ToInt(),
-                        Name = row["AuditoriumName"].ToString()
+                        Name = row["AuditoriumName"].ToString(),
+                        Rows = row["AuditoriumRows"].ToInt(),
+                        Seats = row["AuditoriumSeats"].ToInt()
                     },
                     Price = row["Price"].ToInt(),
                     ThreeDee = row["ThreeDee"].ToBool()
@@ -46,9 +48,10 @@ namespace DataAccess.Repository
             }
         }
 
-        public IEnumerable<Showtime> GetPendingShowtimes()
+        public IEnumerable<Showtime> GetPendingShowtimes(int movieId)
         {
             var executor = new CommandExecutor("dbo.BrowsePendingShowtimes", connectionString);
+            executor.AddParam("@MovieId", movieId, SqlDbType.Int);
             var result = executor.ExecuteCommand();
 
             result.ThrowIfException();
@@ -61,6 +64,18 @@ namespace DataAccess.Repository
                 {
                     Id = row["Id"].ToInt(),
                     Time = row["ShowtimeDate"].ToDate(),
+                    Movie = new Movie
+                    {
+                        Id = row["MovieId"].ToInt(),
+                        Title = row["MovieTitle"].ToString()
+                    },
+                    Auditorium = new Auditorium
+                    {
+                        Id = row["AuditoriumId"].ToInt(),
+                        Name = row["AuditoriumName"].ToString(),
+                        Rows = row["AuditoriumRows"].ToInt(),
+                        Seats = row["AuditoriumSeats"].ToInt()
+                    },
                     Price = row["Price"].ToInt(),
                     ThreeDee = row["ThreeDee"].ToBool()
                 };

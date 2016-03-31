@@ -26,7 +26,7 @@ namespace KioskClient.ViewModel
 
         public void GoBack()
         {
-            Window.NavigateToMovieCatalog();
+            Window.NavigateBack();
         }
 
         public void GoToShowtimeList(Movie movie)

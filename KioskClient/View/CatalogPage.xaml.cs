@@ -43,16 +43,20 @@ namespace KioskClient.View
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            UnwireHandlers();
+            MoviesListBox.SelectedIndex = -1;
+            WireHandlers();
+
             var movie = (Movie) e.AddedItems[0];
             viewModel.GoToMovieDetails(movie);
         }
 
-        public void DetachSelectionChangedHandler()
+        public void UnwireHandlers()
         {
             MoviesListBox.SelectionChanged -= ListBox_SelectionChanged;
         }
 
-        public void AttachSelectionChangedHandler()
+        public void WireHandlers()
         {
             MoviesListBox.SelectionChanged += ListBox_SelectionChanged;
         }

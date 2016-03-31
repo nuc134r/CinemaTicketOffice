@@ -8,5 +8,6 @@ namespace KioskClient
         void NavigateToMovieCatalog();
         void NavigateToShowtimeList(Movie movie);
         void NavigateToAuditoriumMap(Showtime showtime);
+        void NavigateBack();
     }
 }

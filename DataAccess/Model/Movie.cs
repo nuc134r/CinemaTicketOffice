@@ -30,6 +30,7 @@ namespace DataAccess.Model
             {
                 var showtimes = Showtimes
                     .Where(showtime => showtime.Date == DateTime.Today)
+                    .OrderBy(_ => _)
                     .Select(showtime => showtime.ToShortTimeString())
                     .ToList();
 

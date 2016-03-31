@@ -4,9 +4,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:KioskClient.View"
+      xmlns:domain="clr-namespace:KioskClient.Domain"
       mc:Ignorable="d" 
       d:DesignHeight="498" d:DesignWidth="800"
-      Title="Выбор мест">
+      Title="Выбор мест" >
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -22,7 +23,61 @@
             <ColumnDefinition Width="239"/>
         </Grid.ColumnDefinitions>
         <Viewbox Margin="35,30,0,100" >
-            <StackPanel Orientation="Vertical">
+            <ListBox ItemsSource="{Binding Rows}" Background="{x:Null}" BorderThickness="0">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem" BasedOn="{StaticResource CleanListBoxItemStyle}">
+                        <Style.Setters>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                        <ContentPresenter/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style.Setters>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel IsItemsHost="True" Orientation="Vertical" Margin="0" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="domain:AuditoriumRow">
+                        <StackPanel Orientation="Horizontal" >
+                            <Grid Margin="0" Height="30" Width="20">
+                                <TextBlock Text="{Binding Number}" TextAlignment="Center" Foreground="White" FontSize="18.667" Margin="0,3,0,0" />
+                            </Grid>
+                            <ListBox ItemsSource="{Binding Seats}" Background="{x:Null}" BorderThickness="0">
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem" BasedOn="{StaticResource CleanListBoxItemStyle}">
+                                        <Style.Setters>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                                        <ContentPresenter/>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style.Setters>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel IsItemsHost="True" Orientation="Horizontal" Margin="0"  />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate DataType="domain:AuditoriumSeat">
+                                        <CheckBox Content="{Binding SeatNumber}" IsChecked="{Binding IsSelected}" IsEnabled="{Binding IsFree}" Style="{DynamicResource SeatCheckBox}" />
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <!--<StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal" >
                     <Grid Margin="0" Height="30" Width="20">
                         <TextBlock Text="1" TextAlignment="Center" Foreground="White" FontSize="18.667" Margin="0,3,0,0" />
@@ -43,7 +98,7 @@
                     <CheckBox Content="4" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource SeatCheckBox}" />
                     <CheckBox Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource SeatCheckBox}" />
                 </StackPanel>
-            </StackPanel>
+            </StackPanel>-->
         </Viewbox>
         <Button Content="Назад" Margin="35,30,35,0" Style="{DynamicResource BigBlueButtonStyle}" Grid.Column="1" Height="60" VerticalAlignment="Top" Click="BackButton_Click" />
     </Grid>
