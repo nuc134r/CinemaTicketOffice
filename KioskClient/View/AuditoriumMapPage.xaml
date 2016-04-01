@@ -111,6 +111,6 @@
             <Run Text="{Binding Total}" />
             <Run Text="₽" />
         </TextBlock>
-        <Button Content="Оплатить" Margin="5,0,35,35" Style="{DynamicResource BigGreenButtonStyle}" Grid.Column="1" Height="60" VerticalAlignment="Bottom" Click="PayButton_Click" />
+        <Button Content="Оплатить" Margin="5,0,35,35" IsEnabled="{Binding CanCheckout}"  Style="{DynamicResource BigGreenButtonStyle}" Grid.Column="1" Height="60" VerticalAlignment="Bottom" Click="PayButton_Click" />
     </Grid>
 </Page>

@@ -71,6 +71,7 @@ CREATE TABLE [Ticket]
 	ShowtimeId		INT		NOT NULL,
 	SeatNumber		INT		NOT NULL,
 	RowNumber		INT		NOT NULL,
+	IsUsed			BIT		NOT NULL DEFAULT 0,
 	
 	CONSTRAINT TicketPK PRIMARY KEY (Id),
 	CONSTRAINT TicketShowtimeFK FOREIGN KEY (ShowtimeId) REFERENCES [Showtime] (Id) ON DELETE CASCADE,

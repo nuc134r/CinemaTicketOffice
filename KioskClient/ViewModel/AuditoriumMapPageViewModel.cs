@@ -31,6 +31,7 @@ namespace KioskClient.ViewModel
 
         public string Total { get; set; }
         public string SeatsString { get; set; }
+        public bool CanCheckout { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -49,8 +50,11 @@ namespace KioskClient.ViewModel
 
             BuildSelectedSeatsString();
 
+            CanCheckout = Total != "0";
+
             OnPropertyChanged("Total");
             OnPropertyChanged("SeatsString");
+            OnPropertyChanged("CanCheckout");
         }
 
         private void BuildSelectedSeatsString()

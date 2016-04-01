@@ -311,7 +311,7 @@ AS
 	LEFT JOIN Movie AS [M]
 		ON [M].Id = [S].MovieId
 	ORDER BY
-		[S].Id
+		[S].ShowtimeDate
 GO
 
 IF OBJECT_ID('dbo.BrowsePendingShowtimes', 'P') IS NOT NULL DROP PROCEDURE [BrowsePendingShowtimes]
