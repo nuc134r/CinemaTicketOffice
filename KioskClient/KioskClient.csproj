@@ -90,6 +90,7 @@
     </ApplicationDefinition>
     <Compile Include="Domain\AuditoriumView.cs" />
     <Compile Include="IMainWindow.cs" />
+    <Compile Include="ViewModel\AuditoriumMapPageViewModel.cs" />
     <Compile Include="ViewModel\MovieDetailsPageViewModel.cs" />
     <Compile Include="ViewModel\MovieShowtimesPageViewModel.cs" />
     <Compile Include="View\AuditoriumMapPage.xaml.cs">

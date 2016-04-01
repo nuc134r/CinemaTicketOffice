@@ -70,6 +70,24 @@ namespace KioskClient.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Мест выбрано {0}.
+        /// </summary>
+        internal static string SelectedSeatsText {
+            get {
+                return ResourceManager.GetString("SelectedSeatsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ряд {0}, Место {1}.
+        /// </summary>
+        internal static string SeletedSeatLineText {
+            get {
+                return ResourceManager.GetString("SeletedSeatLineText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Список сеансов.
         /// </summary>
         internal static string ShowtimesListText {

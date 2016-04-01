@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using DataAccess;
@@ -14,7 +15,14 @@ namespace KioskClient
         public MainWindow()
         {
             InitializeComponent();
-            SetupLogo();
+            try
+            {
+                SetupLogo();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         private void SetupLogo()

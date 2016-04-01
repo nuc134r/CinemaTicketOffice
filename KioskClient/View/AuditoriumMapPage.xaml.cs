@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using DataAccess.Model;
 using KioskClient.Domain;
+using KioskClient.ViewModel;
 
 namespace KioskClient.View
 {
@@ -15,25 +16,18 @@ namespace KioskClient.View
         {
             InitializeComponent();
 
-            var auditoriumView = new AuditoriumView(showtime.Auditorium);
-            auditoriumView.PropertyChanged += AuditoriumViewOnPropertyChanged;
-            DataContext = auditoriumView;
-        }
-
-        private void AuditoriumViewOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
-        {
-            var seat = (AuditoriumSeat)sender;
-            MessageBox.Show(seat.Row.Number + " " + seat.SeatNumber);
+            viewModel = new AuditoriumMapPageViewModel(this, showtime);
+            DataContext = viewModel;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).NavigateBack();
+            viewModel.GoBack();
         }
-    }
 
-    public class AuditoriumMapPageViewModel
-    {
-
+        private void PayButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }
