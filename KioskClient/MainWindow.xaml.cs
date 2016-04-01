@@ -39,14 +39,14 @@ namespace KioskClient
             LogoImage.Source = repository.GetLogo();
         }
 
-        public void NavigateBack()
-        {
-            MainFrame.GoBack();
-        }
-
         private void MainFrame_OnNavigated(object sender, NavigationEventArgs e)
         {
             TitleTextBlock.Text = ((Page) MainFrame.Content).Title;
+        }
+
+        public void NavigateBack()
+        {
+            MainFrame.GoBack();
         }
 
         public void NavigateToMovieDetails(Movie movie)
@@ -73,9 +73,10 @@ namespace KioskClient
             DataContext = auditoriumMapPage;
         }
 
-        public void NavigateToPaymentPage(Showtime showtime, IEnumerable<AuditoriumSeat> seats)
+        public void NavigateToCheckoutPage(Showtime showtime, IEnumerable<AuditoriumSeat> seats)
         {
-            
+            var checkoutPage = new CheckoutPage(showtime, seats);
+            DataContext = checkoutPage;
         }
     }
 }

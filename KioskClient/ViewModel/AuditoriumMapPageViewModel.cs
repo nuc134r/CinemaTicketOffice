@@ -92,10 +92,10 @@ namespace KioskClient.ViewModel
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public void GoToPaymentPage()
+        public void GoToCheckoutPage()
         {
             var selectedSeats = seats.Where(seat => seat.IsSelected);
-            Window.NavigateToPaymentPage(showtime, selectedSeats);
+            Window.NavigateToCheckoutPage(showtime, selectedSeats);
         }
     }
 }

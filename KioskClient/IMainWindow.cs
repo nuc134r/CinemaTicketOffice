@@ -11,6 +11,6 @@ namespace KioskClient
         void NavigateToShowtimeList(Movie movie);
         void NavigateToAuditoriumMap(Showtime showtime);
         void NavigateBack();
-        void NavigateToPaymentPage(Showtime showtime, IEnumerable<AuditoriumSeat> seats);
+        void NavigateToCheckoutPage(Showtime showtime, IEnumerable<AuditoriumSeat> seats);
     }
 }

@@ -29,7 +29,7 @@
     <InstallUrl>http://ticketofficesystem.azurewebsites.net/client/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -91,10 +91,14 @@
     <Compile Include="Domain\AuditoriumView.cs" />
     <Compile Include="IMainWindow.cs" />
     <Compile Include="ViewModel\AuditoriumMapPageViewModel.cs" />
+    <Compile Include="ViewModel\CheckoutPageViewModel.cs" />
     <Compile Include="ViewModel\MovieDetailsPageViewModel.cs" />
     <Compile Include="ViewModel\MovieShowtimesPageViewModel.cs" />
     <Compile Include="View\AuditoriumMapPage.xaml.cs">
       <DependentUpon>AuditoriumMapPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CheckoutPage.xaml.cs">
+      <DependentUpon>CheckoutPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MovieDetailsPage.xaml.cs">
       <DependentUpon>MovieDetailsPage.xaml</DependentUpon>
@@ -111,6 +115,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CatalogPageResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CheckoutPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
