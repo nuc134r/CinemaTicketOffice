@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using DataAccess;
 using DataAccess.Model;
 using DataAccess.Repository;
+using KioskClient.Domain;
 using KioskClient.Properties;
 using KioskClient.View;
 
@@ -37,6 +39,11 @@ namespace KioskClient
             LogoImage.Source = repository.GetLogo();
         }
 
+        public void NavigateBack()
+        {
+            MainFrame.GoBack();
+        }
+
         private void MainFrame_OnNavigated(object sender, NavigationEventArgs e)
         {
             TitleTextBlock.Text = ((Page) MainFrame.Content).Title;
@@ -66,9 +73,9 @@ namespace KioskClient
             DataContext = auditoriumMapPage;
         }
 
-        public void NavigateBack()
+        public void NavigateToPaymentPage(Showtime showtime, IEnumerable<AuditoriumSeat> seats)
         {
-            MainFrame.GoBack();
+            
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using DataAccess.Annotations;
 using DataAccess.Model;
@@ -85,6 +86,12 @@ namespace KioskClient.ViewModel
         {
             var handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void GoToPaymentPage()
+        {
+            var selectedSeats = seats.Where(seat => seat.IsSelected);
+            Window.NavigateToPaymentPage(showtime, selectedSeats);
         }
     }
 }

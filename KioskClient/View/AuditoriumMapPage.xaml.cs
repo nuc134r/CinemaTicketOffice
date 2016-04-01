@@ -27,7 +27,7 @@ namespace KioskClient.View
 
         private void PayButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            viewModel.GoToPaymentPage();
         }
     }
 }

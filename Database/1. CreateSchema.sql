@@ -10,6 +10,7 @@ IF OBJECT_ID('dbo.AgeLimit', 'U')		IS NOT NULL DROP TABLE [AgeLimit];
 IF OBJECT_ID('dbo.Genre', 'U')			IS NOT NULL DROP TABLE [Genre];
 IF OBJECT_ID('dbo.Auditorium', 'U')		IS NOT NULL DROP TABLE [Auditorium];
 IF OBJECT_ID('dbo.Logo', 'U')			IS NOT NULL DROP TABLE [Logo];
+IF OBJECT_ID('dbo.Ticket', 'U')			IS NOT NULL DROP TABLE [Ticket];
 
 /********************************
  *	  Возрастные ограничения	*
@@ -59,6 +60,23 @@ CREATE TABLE [Genre]
 	CONSTRAINT GenrePK PRIMARY KEY (Id),
 	CONSTRAINT GenreNameAK UNIQUE (Name),
 	CONSTRAINT GenreNameFilledCK CHECK (Name <> '')
+)
+
+/********************************
+ *			  Билеты			*
+ ********************************/
+CREATE TABLE [Ticket] 
+(
+	Id				INT		IDENTITY,  
+	ShowtimeId		INT		NOT NULL,
+	SeatNumber		INT		NOT NULL,
+	RowNumber		INT		NOT NULL,
+	
+	CONSTRAINT TicketPK PRIMARY KEY (Id),
+	CONSTRAINT TicketShowtimeFK FOREIGN KEY (ShowtimeId) REFERENCES [Showtime] (Id) ON DELETE CASCADE,
+	CONSTRAINT SeatNumberAK UNIQUE (ShowtimeId, SeatNumber, RowNumber),
+	CONSTRAINT SeatNumberPositiveCK CHECK (SeatNumber > 0),
+	CONSTRAINT RowNumberPositiveCK CHECK (RowNumber > 0)
 )
 
 /********************************

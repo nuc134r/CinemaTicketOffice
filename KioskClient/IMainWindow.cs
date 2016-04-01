@@ -1,4 +1,6 @@
-﻿using DataAccess.Model;
+﻿using System.Collections.Generic;
+using DataAccess.Model;
+using KioskClient.Domain;
 
 namespace KioskClient
 {
@@ -9,5 +11,6 @@ namespace KioskClient
         void NavigateToShowtimeList(Movie movie);
         void NavigateToAuditoriumMap(Showtime showtime);
         void NavigateBack();
+        void NavigateToPaymentPage(Showtime showtime, IEnumerable<AuditoriumSeat> seats);
     }
 }
