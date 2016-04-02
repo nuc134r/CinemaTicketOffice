@@ -106,7 +106,7 @@ namespace DataAccess {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Нет сеансов сегодня.
+        ///   Looks up a localized string similar to нет сеансов.
         /// </summary>
         internal static string NoShowtimesTodayText {
             get {

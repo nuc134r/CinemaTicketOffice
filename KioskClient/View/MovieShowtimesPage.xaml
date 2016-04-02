@@ -24,7 +24,7 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="239"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Назад" Margin="35,30,35,0" Style="{DynamicResource BigBlueButtonStyle}" Grid.Column="4" Height="60" VerticalAlignment="Top" Click="BackButton_Click" />
+        <Button Content="Назад" Margin="0,30,35,0" Style="{DynamicResource BigBlueButtonStyle}" Grid.Column="4" Height="60" VerticalAlignment="Top" Click="BackButton_Click" />
         <Image Source="{Binding Movie.Poster}" Height="264" Margin="0,55,10,0" VerticalAlignment="Top" Grid.Column="1"/>
         <TextBlock Margin="0,324,10,10" TextWrapping="Wrap" Foreground="White" Grid.Column="1">
             <Run Text="{Binding Movie.Title}" FontFamily="Segoe UI Light" FontSize="22" />

@@ -17,11 +17,11 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
+            <ColumnDefinition  />
             <ColumnDefinition Width="239"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Отмена" Margin="0,35,35,0" Style="{DynamicResource BigRedButtonStyle}" Grid.Column="1" Height="60" VerticalAlignment="Top" Click="CancelButton_Click" />
-        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" Height="275" FontSize="35" FontFamily="Segoe UI Light" TextWrapping="Wrap" Foreground="White" VerticalAlignment="Center" Width="300" >
+        <Button Content="Отмена" Margin="0,30,35,0" Style="{DynamicResource BigRedButtonStyle}" Height="60" VerticalAlignment="Top" Click="CancelButton_Click" HorizontalAlignment="Right" Width="204" Grid.Column="1" />
+        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" Height="274" FontSize="35" FontFamily="Segoe UI Light" TextWrapping="Wrap" Foreground="White" VerticalAlignment="Center" Width="310" Margin="250,112,26,112"  >
             <Run Text="Оплата:" Foreground="DarkGray" />
             <Run Text="{Binding Total}" />
             <Run Text="₽" />
@@ -30,7 +30,8 @@
             <Run Text="Для оплаты воспользуйтесь устройством для чтения пластиковых карт, находящимся под экраном" FontSize="18" Foreground="DarkGray" />
             <LineBreak />
             <LineBreak />
-            <Run Text="⬇️" FontSize="25" />
+            <Run Text="⬇️" FontSize="25" Foreground="{Binding ArrowAnimatedBrush}" />
         </TextBlock>
+        <Button Grid.Column="1" Content="Имитировать оплату" HorizontalAlignment="Left" Height="83" Margin="0,0,0,39" VerticalAlignment="Bottom" Width="204" Opacity="0.3" Click="EmulateButton_Click" />
     </Grid>
 </Page>

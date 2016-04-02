@@ -36,6 +36,7 @@ namespace KioskClient
                             Settings.Default.password);
 
             var repository = new SettingsRepository(connectionString);
+
             LogoImage.Source = repository.GetLogo();
         }
 
@@ -77,6 +78,11 @@ namespace KioskClient
         {
             var checkoutPage = new CheckoutPage(showtime, seats);
             DataContext = checkoutPage;
+        }
+
+        public void NavigateToThanksPage()
+        {
+            
         }
     }
 }

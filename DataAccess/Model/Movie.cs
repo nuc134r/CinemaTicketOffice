@@ -24,19 +24,36 @@ namespace DataAccess.Model
             }
         }
 
-        public string ShowtimesString
+        public string SorryString
         {
             get
             {
                 var showtimes = Showtimes
-                    .Where(showtime => showtime.Date == DateTime.Today)
-                    .OrderBy(_ => _)
-                    .Select(showtime => showtime.ToShortTimeString())
+                    .Where(time => time > DateTime.Now)
+                    .Select(time => time.ToShortTimeString())
                     .ToList();
 
                 if (!showtimes.Any())
                 {
                     return Resources.NoShowtimesTodayText;
+                }
+
+                return string.Empty;
+            }
+        }
+
+        public string ShowtimesString
+        {
+            get
+            {
+                var showtimes = Showtimes
+                    .Where(time => time > DateTime.Now)
+                    .Select(time => time.ToShortTimeString())
+                    .ToList();
+
+                if (!showtimes.Any())
+                {
+                    return string.Empty;
                 }
 
                 if (Showtimes.All(_ => _.Date > DateTime.Now.Date))

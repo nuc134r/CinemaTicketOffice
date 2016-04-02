@@ -133,7 +133,7 @@
     <value>минута</value>
   </data>
   <data name="NoShowtimesTodayText" xml:space="preserve">
-    <value>Нет сеансов сегодня</value>
+    <value>нет сеансов</value>
   </data>
   <data name="ThreeDeeText" xml:space="preserve">
     <value>3D</value>

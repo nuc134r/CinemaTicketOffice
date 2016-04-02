@@ -12,5 +12,6 @@ namespace KioskClient
         void NavigateToAuditoriumMap(Showtime showtime);
         void NavigateBack();
         void NavigateToCheckoutPage(Showtime showtime, IEnumerable<AuditoriumSeat> seats);
+        void NavigateToThanksPage();
     }
 }
