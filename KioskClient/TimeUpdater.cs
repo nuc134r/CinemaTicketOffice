@@ -6,10 +6,6 @@ using DataAccess;
 
 namespace KioskClient
 {
-    /// <summary>
-    /// Provides current time.
-    /// This class is made for using as autoupdated XAML binding.
-    /// </summary>
     public class TimeUpdater : INotifyPropertyChanged
     {
         public TimeUpdater()

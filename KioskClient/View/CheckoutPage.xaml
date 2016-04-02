@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:KioskClient.View"
       mc:Ignorable="d" 
       d:DesignHeight="498" d:DesignWidth="800"
-      Title="Оплата">
+      Title="">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
