@@ -1,9 +1,8 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
+using DataAccess;
 using DataAccess.Model;
-using KioskClient.Domain;
+using DataAccess.Repository;
+using KioskClient.Properties;
 using KioskClient.ViewModel;
 
 namespace KioskClient.View
@@ -16,7 +15,15 @@ namespace KioskClient.View
         {
             InitializeComponent();
 
-            viewModel = new AuditoriumMapPageViewModel(this, showtime);
+            var connectionString = ConnectionStringBuilder.Build(
+                Settings.Default.server,
+                Settings.Default.database,
+                Settings.Default.user,
+                Settings.Default.password);
+
+            var repository = new TicketRepository(connectionString);
+
+            viewModel = new AuditoriumMapPageViewModel(this, repository, showtime);
             DataContext = viewModel;
         }
 

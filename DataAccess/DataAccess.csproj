@@ -54,6 +54,7 @@
     <Compile Include="Model\Auditorium.cs" />
     <Compile Include="Model\Genre.cs" />
     <Compile Include="Model\Movie.cs" />
+    <Compile Include="Model\Seat.cs" />
     <Compile Include="Model\Showtime.cs" />
     <Compile Include="NumericCaseService.cs" />
     <Compile Include="Properties\Annotations.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="ObjectExtensions.cs" />
     <Compile Include="Repository\SettingsRepository.cs" />
     <Compile Include="Repository\ShowtimeRepository.cs" />
+    <Compile Include="Repository\TicketRepository.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

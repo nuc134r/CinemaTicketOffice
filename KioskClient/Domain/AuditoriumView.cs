@@ -43,7 +43,7 @@ namespace KioskClient.Domain
 
     public class AuditoriumView : INotifyPropertyChanged
     {
-        public AuditoriumView(Auditorium auditorium)
+        public AuditoriumView(Auditorium auditorium, List<Seat> occupiedSeats)
         {
             Rows = new List<AuditoriumRow>();
 
@@ -69,6 +69,11 @@ namespace KioskClient.Domain
                 }
 
                 Rows.Add(row);
+            }
+
+            foreach (var seat in occupiedSeats)
+            {
+                Rows[seat.RowNumber - 1].Seats[seat.SeatNumber - 1].IsFree = false;
             }
         }
 

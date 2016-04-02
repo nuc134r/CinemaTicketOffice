@@ -77,7 +77,7 @@ namespace KioskClient
 
         public void NavigateToCheckoutPage(Showtime showtime, IEnumerable<AuditoriumSeat> seats)
         {
-            var checkoutPage = new CheckoutPage(showtime, seats);
+            var checkoutPage = new CheckoutPage(showtime, seats.ToList());
             DataContext = checkoutPage;
         }
 

@@ -5,8 +5,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using DataAccess;
 using DataAccess.Model;
+using DataAccess.Repository;
 using KioskClient.Domain;
+using KioskClient.Properties;
 using KioskClient.ViewModel;
 
 namespace KioskClient.View
@@ -15,13 +18,19 @@ namespace KioskClient.View
     {
         private readonly CheckoutPageViewModel viewModel;
 
-        public CheckoutPage(Showtime showtime, IEnumerable<AuditoriumSeat> seats)
+        public CheckoutPage(Showtime showtime, List<AuditoriumSeat> seats)
         {
             InitializeComponent();
 
-            var total = showtime.Price * seats.Count();
+            var connectionString = ConnectionStringBuilder.Build(
+                Settings.Default.server,
+                Settings.Default.database,
+                Settings.Default.user,
+                Settings.Default.password);
 
-            viewModel = new CheckoutPageViewModel(this, total);
+            var repository = new TicketRepository(connectionString);
+
+            viewModel = new CheckoutPageViewModel(this, repository, showtime, seats);
             DataContext = viewModel;
 
             SetUpAnimations();
@@ -55,6 +64,7 @@ namespace KioskClient.View
 
         private void EmulateButton_Click(object sender, RoutedEventArgs e)
         {
+            viewModel.SaveTickets();
             viewModel.GoToThanksPage();
         }
     }
