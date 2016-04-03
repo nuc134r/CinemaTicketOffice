@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Windows;
 
 namespace DataAccess.Connection
@@ -21,7 +22,7 @@ namespace DataAccess.Connection
             this.storedProc = storedProc;
         }
 
-        public void AddParam(string name, object value, SqlDbType type, string typeName = null)
+        public void SetParam(string name, object value, SqlDbType type, string typeName = null)
         {
             var param = new SqlParameter(name, type)
             {

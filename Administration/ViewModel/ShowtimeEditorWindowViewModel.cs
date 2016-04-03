@@ -11,13 +11,13 @@ namespace Administration.ViewModel
         private readonly ShowtimeEditorWindow view;
         private readonly MovieRepository movieRepository;
         private readonly ShowtimeRepository showtimeRepository;
-        private readonly bool createMode;
+        public bool CreateMode { get; set; }
 
         public ShowtimeEditorWindowViewModel(ShowtimeEditorWindow view, Showtime showtime, MovieRepository movieRepository, ShowtimeRepository showtimeRepository)
         {
             if (showtime == null)
             {
-                createMode = true;
+                CreateMode = true;
                 showtime = new Showtime();
             }
 
@@ -29,7 +29,7 @@ namespace Administration.ViewModel
             Movies = movieRepository.GetMovies().ToList();
             Auditoriums = showtimeRepository.GetAuditoriums().ToList();
 
-            if (createMode) return;
+            if (CreateMode) return;
 
             var movie = Movies.FirstOrDefault(_ => _.Id == showtime.Movie.Id);
             view.SelectedMovieIndex = Movies.IndexOf(movie);
@@ -50,7 +50,7 @@ namespace Administration.ViewModel
             Showtime.Movie = Movies[view.SelectedMovieIndex];
             Showtime.Time = view.Time;
 
-            showtimeRepository.Save(Showtime, !createMode);
+            showtimeRepository.Save(Showtime, !CreateMode);
         }
     }
 }

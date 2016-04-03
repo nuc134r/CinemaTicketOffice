@@ -436,6 +436,40 @@ AS
 	DELETE FROM Auditorium WHERE Id = @Id
 GO
 
+IF OBJECT_ID('dbo.RegisterTickets', 'P') IS NOT NULL DROP PROCEDURE [RegisterTickets]
+GO
+CREATE PROCEDURE dbo.RegisterTickets
+	@ShowtimeId INT,
+	@Seat INT,
+	@Row INT
+AS
+	INSERT INTO [Ticket]
+	(
+		ShowtimeId,
+		SeatNumber,
+		RowNumber
+	)
+	SELECT
+		@ShowtimeId,
+		@Seat,
+		@Row
+
+GO
+
+IF OBJECT_ID('dbo.GetOccupiedSeats', 'P') IS NOT NULL DROP PROCEDURE [GetOccupiedSeats]
+GO
+CREATE PROCEDURE dbo.GetOccupiedSeats
+	@ShowtimeId INT
+AS
+	SELECT
+		SeatNumber,
+		RowNumber
+	FROM
+		[Ticket]
+	WHERE
+		ShowtimeId = @ShowtimeId
+GO
+
 /********************************
  *			  Admin				*
  ********************************/
@@ -493,4 +527,8 @@ GO
 GRANT EXECUTE ON dbo.GetLogo TO kioskuser
 GO
 GRANT EXECUTE ON dbo.BrowsePendingShowtimes TO kioskuser
+GO
+GRANT EXECUTE ON dbo.RegisterTickets TO kioskuser
+GO
+GRANT EXECUTE ON dbo.GetOccupiedSeats TO kioskuser
 GO

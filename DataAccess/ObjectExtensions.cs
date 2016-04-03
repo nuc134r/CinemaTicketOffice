@@ -27,10 +27,12 @@ namespace DataAccess
             return bool.Parse(o.ToString());
         }
 
-        public static void ThrowIfException(this object o)
+        public static object ThrowIfException(this object o)
         {
             var exception = o as Exception;
             if (exception != null) throw exception;
+
+            return o;
         }
     }
 }

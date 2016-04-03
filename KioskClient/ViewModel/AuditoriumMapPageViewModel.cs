@@ -24,7 +24,7 @@ namespace KioskClient.ViewModel
             this.showtime = showtime;
             seats = new List<AuditoriumSeat>();
 
-            var occupiedSeats = repository.GetOccupiedSeats(showtime.Id);
+            var occupiedSeats = repository.GetOccupiedSeats(showtime.Id).ToList();
 
             Auditorium = new AuditoriumView(showtime.Auditorium, occupiedSeats);
             Auditorium.PropertyChanged += SelectionChanged;

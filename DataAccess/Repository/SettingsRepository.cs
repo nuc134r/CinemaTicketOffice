@@ -44,7 +44,7 @@ namespace DataAccess.Repository
             var executor = new CommandExecutor("dbo.SetLogo", connectionString); 
             
             var logoData = logo == null ? DBNull.Value : (object)logo.ToByteArray();
-            executor.AddParam("@Logo", logoData, SqlDbType.Image);
+            executor.SetParam("@Logo", logoData, SqlDbType.Image);
 
             executor.ExecuteCommand(true).ThrowIfException();
         }

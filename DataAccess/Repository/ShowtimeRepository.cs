@@ -51,7 +51,7 @@ namespace DataAccess.Repository
         public IEnumerable<Showtime> GetPendingShowtimes(int movieId)
         {
             var executor = new CommandExecutor("dbo.BrowsePendingShowtimes", connectionString);
-            executor.AddParam("@MovieId", movieId, SqlDbType.Int);
+            executor.SetParam("@MovieId", movieId, SqlDbType.Int);
             var result = executor.ExecuteCommand();
 
             result.ThrowIfException();
@@ -88,18 +88,18 @@ namespace DataAccess.Repository
             if (update)
             {
                 executor = new CommandExecutor("dbo.UpdateShowtime", connectionString);
-                executor.AddParam("@Id", showtime.Id, SqlDbType.Int);
+                executor.SetParam("@Id", showtime.Id, SqlDbType.Int);
             }
             else
             {
                 executor = new CommandExecutor("dbo.CreateShowtime", connectionString);
             }
 
-            executor.AddParam("@MovieId", showtime.Movie.Id, SqlDbType.Int);
-            executor.AddParam("@AuditoriumId", showtime.Auditorium.Id, SqlDbType.Int);
-            executor.AddParam("@ShowtimeDate", showtime.Time, SqlDbType.DateTime);
-            executor.AddParam("@Price", showtime.Price, SqlDbType.Money);
-            executor.AddParam("@ThreeDee", showtime.ThreeDee, SqlDbType.Bit);
+            executor.SetParam("@MovieId", showtime.Movie.Id, SqlDbType.Int);
+            executor.SetParam("@AuditoriumId", showtime.Auditorium.Id, SqlDbType.Int);
+            executor.SetParam("@ShowtimeDate", showtime.Time, SqlDbType.DateTime);
+            executor.SetParam("@Price", showtime.Price, SqlDbType.Money);
+            executor.SetParam("@ThreeDee", showtime.ThreeDee, SqlDbType.Bit);
 
             executor.ExecuteCommand(true).ThrowIfException();
         }
@@ -107,7 +107,7 @@ namespace DataAccess.Repository
         public void Delete(Showtime showtime)
         {
             var executor = new CommandExecutor("dbo.DeleteShowtime", connectionString);
-            executor.AddParam("@Id", showtime.Id, SqlDbType.Int);
+            executor.SetParam("@Id", showtime.Id, SqlDbType.Int);
 
             executor.ExecuteCommand(true).ThrowIfException();
         }
@@ -139,16 +139,16 @@ namespace DataAccess.Repository
             if (update)
             {
                 executor = new CommandExecutor("dbo.UpdateAuditorium", connectionString);
-                executor.AddParam("@Id", auditorium.Id, SqlDbType.Int);
+                executor.SetParam("@Id", auditorium.Id, SqlDbType.Int);
             }
             else
             {
                 executor = new CommandExecutor("dbo.CreateAuditorium", connectionString);
             }
 
-            executor.AddParam("@Name", auditorium.Name, SqlDbType.NVarChar);
-            executor.AddParam("@Rows", auditorium.Rows, SqlDbType.Int);
-            executor.AddParam("@Seats", auditorium.Seats, SqlDbType.Int);
+            executor.SetParam("@Name", auditorium.Name, SqlDbType.NVarChar);
+            executor.SetParam("@Rows", auditorium.Rows, SqlDbType.Int);
+            executor.SetParam("@Seats", auditorium.Seats, SqlDbType.Int);
 
             executor.ExecuteCommand(true).ThrowIfException();
         }
@@ -156,7 +156,7 @@ namespace DataAccess.Repository
         public void Delete(Auditorium auditorium)
         {
             var executor = new CommandExecutor("dbo.DeleteAuditorium", connectionString);
-            executor.AddParam("@Id", auditorium.Id, SqlDbType.Int);
+            executor.SetParam("@Id", auditorium.Id, SqlDbType.Int);
 
             executor.ExecuteCommand(true).ThrowIfException();
         }

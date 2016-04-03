@@ -12,7 +12,7 @@ namespace Administration
 {
     public partial class ShowtimeEditorWindow
     {
-        private ShowtimeEditorWindowViewModel viewModel;
+        private readonly ShowtimeEditorWindowViewModel viewModel;
 
         public ShowtimeEditorWindow(Showtime showtime)
         {

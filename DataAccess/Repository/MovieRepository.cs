@@ -82,7 +82,7 @@ namespace DataAccess.Repository
         public void GetMovieDetails(Movie movie)
         {
             var movieConnection = new CommandExecutor("dbo.MovieDetails", connectionString);
-            movieConnection.AddParam("@MovieId", movie.Id, SqlDbType.Int);
+            movieConnection.SetParam("@MovieId", movie.Id, SqlDbType.Int);
             var result = movieConnection.ExecuteCommand();
 
             result.ThrowIfException();
@@ -129,27 +129,27 @@ namespace DataAccess.Repository
             if (update)
             {
                 executor = new CommandExecutor("dbo.UpdateMovie", connectionString);
-                executor.AddParam("@Id", movie.Id, SqlDbType.Int);
+                executor.SetParam("@Id", movie.Id, SqlDbType.Int);
             }
             else
             {
                 executor = new CommandExecutor("dbo.CreateMovie", connectionString);
             }
-            executor.AddParam("@Title", movie.Title, SqlDbType.NVarChar);
-            executor.AddParam("@Plot", movie.Plot, SqlDbType.NVarChar);
-            executor.AddParam("@Duration", movie.Duration, SqlDbType.SmallInt);
+            executor.SetParam("@Title", movie.Title, SqlDbType.NVarChar);
+            executor.SetParam("@Plot", movie.Plot, SqlDbType.NVarChar);
+            executor.SetParam("@Duration", movie.Duration, SqlDbType.SmallInt);
 
             var poster = movie.Poster == null ? DBNull.Value : (object)movie.Poster.ToByteArray();
-            executor.AddParam("@Poster", poster, SqlDbType.Image);
+            executor.SetParam("@Poster", poster, SqlDbType.Image);
 
             var genresList = new DataTable();
             genresList.Columns.Add("Id");
 
             movie.Genres.ForEach(genre => genresList.Rows.Add(genre.Id));
             
-            executor.AddParam("@Genres", genresList, SqlDbType.Structured, "dbo.IdList");
-            executor.AddParam("@ReleaseDate", movie.ReleaseDate, SqlDbType.Date);
-            executor.AddParam("@AgeLimitId", movie.AgeLimit.Id, SqlDbType.Int);
+            executor.SetParam("@Genres", genresList, SqlDbType.Structured, "dbo.IdList");
+            executor.SetParam("@ReleaseDate", movie.ReleaseDate, SqlDbType.Date);
+            executor.SetParam("@AgeLimitId", movie.AgeLimit.Id, SqlDbType.Int);
 
             executor.ExecuteCommand(true).ThrowIfException();
         }
@@ -157,7 +157,7 @@ namespace DataAccess.Repository
         public void Delete(Movie movie)
         {
             var executor = new CommandExecutor("dbo.DeleteMovie", connectionString);
-            executor.AddParam("@MovieId", movie.Id, SqlDbType.Int);
+            executor.SetParam("@MovieId", movie.Id, SqlDbType.Int);
 
             executor.ExecuteCommand(true).ThrowIfException();
         }
@@ -168,14 +168,14 @@ namespace DataAccess.Repository
             if (update)
             {
                 genreConnection = new CommandExecutor("dbo.UpdateGenre", connectionString);
-                genreConnection.AddParam("@Id", genre.Id, SqlDbType.Int);
+                genreConnection.SetParam("@Id", genre.Id, SqlDbType.Int);
             }
             else
             {
                 genreConnection = new CommandExecutor("dbo.CreateGenre", connectionString);
             }
 
-            genreConnection.AddParam("@Name", genre.Name, SqlDbType.NVarChar);
+            genreConnection.SetParam("@Name", genre.Name, SqlDbType.NVarChar);
 
             genreConnection.ExecuteCommand(true).ThrowIfException();
         }
@@ -183,7 +183,7 @@ namespace DataAccess.Repository
         public void Delete(Genre genre)
         {
             var genreConnection = new CommandExecutor("dbo.DeleteGenre", connectionString);
-            genreConnection.AddParam("@GenreId", genre.Id, SqlDbType.Int);
+            genreConnection.SetParam("@GenreId", genre.Id, SqlDbType.Int);
 
             genreConnection.ExecuteCommand().ThrowIfException();
         }

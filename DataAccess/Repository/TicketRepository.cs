@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using DataAccess.Connection;
 using DataAccess.Model;
 
 namespace DataAccess.Repository
@@ -12,18 +15,37 @@ namespace DataAccess.Repository
             this.connectionString = connectionString;
         }
 
-        public List<Seat> GetOccupiedSeats(int showtimeId)
+        public IEnumerable<Seat> GetOccupiedSeats(int showtimeId)
         {
-            return new List<Seat>
+            var executor = new CommandExecutor("dbo.GetOccupiedSeats", connectionString);
+            executor.SetParam("@ShowtimeId", showtimeId, SqlDbType.Int);
+            var result = executor.ExecuteCommand();
+                
+            result.ThrowIfException();
+
+            var dataSet = result as DataSet;
+
+            foreach (DataRow row in dataSet.Tables[0].Rows)
             {
-                new Seat {RowNumber = 1, SeatNumber = 2},
-                new Seat {RowNumber = 2, SeatNumber = 5}
-            };
+                yield return new Seat
+                {
+                    SeatNumber = row["SeatNumber"].ToInt(),
+                    RowNumber = row["RowNumber"].ToInt()
+                };
+            }
         }
 
         public void SaveTickets(int showtimeId, List<Seat> seats)
         {
-            
+            foreach (var seat in seats)
+            {
+                var executor = new CommandExecutor("dbo.RegisterTickets", connectionString);
+                executor.SetParam("@ShowtimeId", showtimeId, SqlDbType.Int);
+                executor.SetParam("@Seat", seat.SeatNumber, SqlDbType.Int);
+                executor.SetParam("@Row", seat.RowNumber, SqlDbType.Int);
+
+                executor.ExecuteCommand(true).ThrowIfException();
+            }
         }
     }
 }

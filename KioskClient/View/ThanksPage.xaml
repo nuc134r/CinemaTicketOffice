@@ -13,7 +13,7 @@
             <Run Text="Приятного просмотра" />
             <LineBreak />
             <LineBreak />
-            <Run Text="Заберите билет из печатного устройства" FontSize="18" Foreground="DarkGray" />
+            <Run Text="Заберите билеты из печатного устройства" FontSize="18" Foreground="DarkGray" />
         </TextBlock>
 
     </Grid>
