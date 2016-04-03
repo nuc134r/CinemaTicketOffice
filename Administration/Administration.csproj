@@ -105,6 +105,9 @@
     <Compile Include="ShowtimeEditorWindow.xaml.cs">
       <DependentUpon>ShowtimeEditorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TicketEditorWindow.xaml.cs">
+      <DependentUpon>TicketEditorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\AuditoriumEditorWindowViewModel.cs" />
     <Compile Include="ViewModel\AuditoriumListPageViewModel.cs" />
     <Compile Include="ViewModel\GenreEditorWindowViewModel.cs" />
@@ -114,8 +117,12 @@
     <Compile Include="ViewModel\MovieListPageViewModel.cs" />
     <Compile Include="ViewModel\ShowtimeEditorWindowViewModel.cs" />
     <Compile Include="ViewModel\ShowtimeListPageViewModel.cs" />
+    <Compile Include="ViewModel\TicketListPageViewModel.cs" />
     <Compile Include="View\AuditoriumListPage.xaml.cs">
       <DependentUpon>AuditoriumListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TicketListPage.xaml.cs">
+      <DependentUpon>TicketListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\GenreListPage.xaml.cs">
       <DependentUpon>GenreListPage.xaml</DependentUpon>
@@ -128,9 +135,6 @@
     </Compile>
     <Compile Include="View\MovieListPage.xaml.cs">
       <DependentUpon>MovieListPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ListPageBase.xaml.cs">
-      <DependentUpon>ListPageBase.xaml</DependentUpon>
     </Compile>
     <Page Include="AuditoriumEditorWindow.xaml">
       <SubType>Designer</SubType>
@@ -168,7 +172,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="TicketEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AuditoriumListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\TicketListPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -188,10 +200,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\ListPageBase.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -210,6 +218,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="Administration_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
@@ -223,9 +232,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Editors\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{b1b71a96-7931-4e2d-8b85-08e17697e82e}</Project>

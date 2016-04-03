@@ -1,0 +1,35 @@
+﻿<Window x:Class="Administration.TicketEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Administration"
+        mc:Ignorable="d"
+        Title="Билет" Height="215" Width="300" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="11"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1" Margin="10,0,0,38">
+            <Run Text="Фильм:"/>
+            <Run Text="{Binding MovieTitle}"/>
+            <LineBreak />
+            <Run Text="Сеанс:"/>
+            <Run Text="{Binding ShowtimeDate}"/>
+            <LineBreak />
+            <Run Text="Зал:"/>
+            <Run Text="{Binding AuditoriumName}"/>
+            <LineBreak />
+            <Run Text="Ряд:"/>
+            <Run Text="{Binding RowNumber}"/>
+            <Run Text="   "/>
+            <Run Text="Место:"/>
+            <Run Text="{Binding SeatNumber}"/>
+            <LineBreak />
+            <Run Text="Дата продажи:"/>
+            <Run Text="{Binding SeatNumber}"/>
+            <LineBreak />
+        </TextBlock>
+    </Grid>
+</Window>

@@ -1,0 +1,25 @@
+﻿<Page x:Class="Administration.View.TicketListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Administration.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="363.324" d:DesignWidth="594.53"
+      Title="ListPageBase">
+
+    <Grid>
+        <Button x:Name="EditButton" Content="Просмотреть" Margin="0,0,495,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" Click="EditButton_Click"/>
+        <Button x:Name="DeleteButton" Content="Аннулировать" HorizontalAlignment="Right" Width="100" Click="DeleteButton_Click" Height="20" VerticalAlignment="Top"/>
+        <ListView x:Name="listView" ItemsSource="{Binding}" Margin="0,25,0,0" Foreground="Black" SelectedIndex="0" MouseDoubleClick="ListView_OnMouseDoubleClick">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Номер"  DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn Header="Фильм"  DisplayMemberBinding="{Binding MovieTitle}" />
+                    <GridViewColumn Header="Дата"  DisplayMemberBinding="{Binding ShowtimeDate}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Page>

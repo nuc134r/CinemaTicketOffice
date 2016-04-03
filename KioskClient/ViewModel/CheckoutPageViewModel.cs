@@ -50,7 +50,10 @@ namespace KioskClient.ViewModel
                     SeatNumber = seat.SeatNumber
                 });
 
-            repository.SaveTickets(showtime.Id, seatList.ToList());
+            foreach (var seat in seatList)
+            {
+                repository.RegisterTicket(showtime.Id, seat);
+            }
         }
     }
 }

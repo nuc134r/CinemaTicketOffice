@@ -56,6 +56,7 @@
     <Compile Include="Model\Movie.cs" />
     <Compile Include="Model\Seat.cs" />
     <Compile Include="Model\Showtime.cs" />
+    <Compile Include="Model\Ticket.cs" />
     <Compile Include="NumericCaseService.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

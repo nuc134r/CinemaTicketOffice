@@ -35,17 +35,24 @@ namespace DataAccess.Repository
             }
         }
 
-        public void SaveTickets(int showtimeId, List<Seat> seats)
+        public void RegisterTicket(int showtimeId, Seat seat)
         {
-            foreach (var seat in seats)
-            {
-                var executor = new CommandExecutor("dbo.RegisterTickets", connectionString);
-                executor.SetParam("@ShowtimeId", showtimeId, SqlDbType.Int);
-                executor.SetParam("@Seat", seat.SeatNumber, SqlDbType.Int);
-                executor.SetParam("@Row", seat.RowNumber, SqlDbType.Int);
+            var executor = new CommandExecutor("dbo.RegisterTickets", connectionString);
+            executor.SetParam("@ShowtimeId", showtimeId, SqlDbType.Int);
+            executor.SetParam("@Seat", seat.SeatNumber, SqlDbType.Int);
+            executor.SetParam("@Row", seat.RowNumber, SqlDbType.Int);
 
-                executor.ExecuteCommand(true).ThrowIfException();
-            }
+            executor.ExecuteCommand(true).ThrowIfException();
+        }
+
+        public IEnumerable<Ticket> GetTickets()
+        {
+            return new List<Ticket>();
+        }
+
+        public void Delete(Ticket ticket)
+        {
+            
         }
     }
 }
