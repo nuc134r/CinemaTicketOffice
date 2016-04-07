@@ -46,12 +46,7 @@ namespace DataAccess.Model
         {
             get
             {
-                var showtimes = Showtimes
-                    .Where(time => time > DateTime.Now)
-                    .Select(time => time.ToShortTimeString())
-                    .ToList();
-
-                if (!showtimes.Any())
+                if (!Showtimes.Any())
                 {
                     return string.Empty;
                 }
@@ -60,6 +55,13 @@ namespace DataAccess.Model
                 {
                     return Resources.TomorrowText;
                 }
+
+                var showtimes = Showtimes
+                    .Where(time => time.Date == DateTime.Today
+                                   &&
+                                   time > DateTime.Now)
+                    .Select(time => time.ToShortTimeString())
+                    .ToList();
 
                 return string.Join(" ", showtimes);
             }

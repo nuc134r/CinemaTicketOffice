@@ -497,6 +497,8 @@ GRANT EXECUTE ON dbo.CreateShowtime TO adminuser
 GO
 GRANT EXECUTE ON dbo.UpdateShowtime TO adminuser
 GO
+GRANT EXECUTE ON dbo.DeleteShowtime TO adminuser
+GO
 GRANT EXECUTE ON dbo.BrowseShowtimes TO adminuser
 GO
 GRANT EXECUTE ON dbo.BrowseAuditoriums TO adminuser
