@@ -70,38 +70,11 @@ namespace DataAccess {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to минуту.
-        /// </summary>
-        internal static string MinutesGenetivePlural {
-            get {
-                return ResourceManager.GetString("MinutesGenetivePlural", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to минуты.
-        /// </summary>
-        internal static string MinutesGenitiveSingular {
-            get {
-                return ResourceManager.GetString("MinutesGenitiveSingular", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to осталось {0} мин.
         /// </summary>
         internal static string MinutesLeftString {
             get {
                 return ResourceManager.GetString("MinutesLeftString", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to минута.
-        /// </summary>
-        internal static string MinutesNominative {
-            get {
-                return ResourceManager.GetString("MinutesNominative", resourceCulture);
             }
         }
         

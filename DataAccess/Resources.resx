@@ -120,17 +120,8 @@
   <data name="HoursLeftString" xml:space="preserve">
     <value>осталось {0} ч {1} мин</value>
   </data>
-  <data name="MinutesGenetivePlural" xml:space="preserve">
-    <value>минуту</value>
-  </data>
-  <data name="MinutesGenitiveSingular" xml:space="preserve">
-    <value>минуты</value>
-  </data>
   <data name="MinutesLeftString" xml:space="preserve">
     <value>осталось {0} мин</value>
-  </data>
-  <data name="MinutesNominative" xml:space="preserve">
-    <value>минута</value>
   </data>
   <data name="NoShowtimesTodayText" xml:space="preserve">
     <value>нет сеансов</value>
