@@ -470,6 +470,39 @@ AS
 		ShowtimeId = @ShowtimeId
 GO
 
+IF OBJECT_ID('dbo.BrowseTickets', 'P') IS NOT NULL DROP PROCEDURE [BrowseTickets]
+GO
+CREATE PROCEDURE dbo.BrowseTickets
+AS
+	SELECT
+		[T].Id,
+		[T].SeatNumber,
+		[T].RowNumber,
+		[M].Title,
+		[S].ShowtimeDate,
+		DATEADD(hour, 3, [T].SellDate) AS SellDate,
+		[A].Name
+	FROM
+		[Ticket] AS [T]
+	INNER JOIN
+		[Showtime] AS [S]
+	ON [S].Id = [T].ShowtimeId
+	INNER JOIN
+		[Auditorium] AS [A]
+	ON [A].Id = [S].AuditoriumId
+	INNER JOIN
+		[Movie] AS [M]
+	ON [M].Id = [S].MovieId
+GO
+
+IF OBJECT_ID('dbo.DeleteTicket', 'P') IS NOT NULL DROP PROCEDURE [DeleteTicket]
+GO
+CREATE PROCEDURE dbo.DeleteTicket
+	@Id INT
+AS
+	DELETE FROM Ticket WHERE Id = @Id
+GO
+
 /********************************
  *			  Admin				*
  ********************************/
@@ -509,9 +542,13 @@ GRANT EXECUTE ON dbo.SetLogo TO adminuser
 GO
 GRANT EXECUTE ON dbo.CreateAuditorium TO adminuser
 GO
+GRANT EXECUTE ON dbo.DeleteTicket TO adminuser
+GO
 GRANT EXECUTE ON dbo.UpdateAuditorium TO adminuser
 GO
 GRANT EXECUTE ON dbo.DeleteAuditorium TO adminuser
+GO
+GRANT EXECUTE ON dbo.BrowseTickets TO adminuser
 GO
 GRANT EXEC ON TYPE::dbo.IdList TO adminuser
 GO

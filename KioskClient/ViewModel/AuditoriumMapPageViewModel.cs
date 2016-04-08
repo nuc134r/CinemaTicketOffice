@@ -13,8 +13,8 @@ namespace KioskClient.ViewModel
 {
     public class AuditoriumMapPageViewModel : ViewModelBase, INotifyPropertyChanged
     {
-        private readonly List<AuditoriumSeat> seats;
         private readonly TicketRepository repository;
+        private readonly List<AuditoriumSeat> seats;
         private readonly Showtime showtime;
 
         public AuditoriumMapPageViewModel(AuditoriumMapPage view, TicketRepository repository, Showtime showtime)
@@ -42,7 +42,7 @@ namespace KioskClient.ViewModel
 
         private void SelectionChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
         {
-            var changedSeat = (AuditoriumSeat)sender;
+            var changedSeat = (AuditoriumSeat) sender;
 
             if (changedSeat.IsSelected)
             {
@@ -73,16 +73,11 @@ namespace KioskClient.ViewModel
                 }
                 else
                 {
-                    seats.ForEach(
-                        seat =>
-                        {
-                            SeatsString += string.Format(Resources.SeletedSeatLineText + "\n", seat.Row.Number,
-                                seat.SeatNumber);
-                        });
+                    seats.ForEach(seat => { SeatsString += seat.SeatString; });
                 }
             }
 
-            Total = (showtime.Price * seats.Count).ToString();
+            Total = (showtime.Price*seats.Count).ToString();
         }
 
         public void GoBack()

@@ -19,6 +19,8 @@ namespace Administration.ViewModel
         {
             this.view = view;
             this.repository = repository;
+
+            RetrieveData();
         }
 
         public ObservableCollection<Ticket> Tickets { get; set; }

@@ -38,6 +38,9 @@ namespace Administration
                 case "2":
                     DataContext = new ShowtimeListPage(this);
                     break;
+                case "4":
+                    DataContext = new TicketListPage(this);
+                    break;
                 case "5":
                     DataContext = new LogoSetupPage(this);
                     break;

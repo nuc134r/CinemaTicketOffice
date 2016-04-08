@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using DataAccess.Connection;
 using DataAccess.Model;
@@ -20,7 +19,7 @@ namespace DataAccess.Repository
             var executor = new CommandExecutor("dbo.GetOccupiedSeats", connectionString);
             executor.SetParam("@ShowtimeId", showtimeId, SqlDbType.Int);
             var result = executor.ExecuteCommand();
-                
+
             result.ThrowIfException();
 
             var dataSet = result as DataSet;
@@ -47,12 +46,46 @@ namespace DataAccess.Repository
 
         public IEnumerable<Ticket> GetTickets()
         {
-            return new List<Ticket>();
+            var executor = new CommandExecutor("dbo.BrowseTickets", connectionString);
+            var result = executor.ExecuteCommand();
+
+            result.ThrowIfException();
+
+            var dataSet = result as DataSet;
+
+            foreach (DataRow row in dataSet.Tables[0].Rows)
+            {
+                yield return new Ticket
+                {
+                    Id = row["Id"].ToInt(),
+                    Seat = new Seat
+                    {
+                        SeatNumber = row["SeatNumber"].ToInt(),
+                        RowNumber = row["RowNumber"].ToInt(),
+                    },
+                    Showtime = new Showtime
+                    {
+                        Auditorium = new Auditorium
+                        {
+                            Name = row["Name"].ToString()
+                        },
+                        Movie = new Movie
+                        {
+                            Title = row["Title"].ToString()
+                        },
+                        Time = row["ShowtimeDate"].ToDate()
+                    },
+                    SellDate = row["SellDate"].ToDate()
+                };
+            }
         }
 
         public void Delete(Ticket ticket)
         {
-            
+            var executor = new CommandExecutor("dbo.DeleteTicket", connectionString);
+            executor.SetParam("@Id", ticket.Id, SqlDbType.Int);
+
+            executor.ExecuteCommand(true).ThrowIfException();
         }
     }
 }

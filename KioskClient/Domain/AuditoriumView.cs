@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using DataAccess.Annotations;
 using DataAccess.Model;
+using KioskClient.Properties;
 
 namespace KioskClient.Domain
 {
@@ -25,6 +26,12 @@ namespace KioskClient.Domain
         }
 
         public bool IsFree { get; set; }
+
+        public string SeatString
+        {
+            get { return string.Format(Resources.SeatText, Row.Number, SeatNumber); }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

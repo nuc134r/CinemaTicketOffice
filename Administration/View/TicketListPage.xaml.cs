@@ -1,4 +1,4 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
 using System.Windows.Input;
 using Administration.Properties;
 using Administration.ViewModel;
@@ -10,13 +10,8 @@ namespace Administration.View
 {
     public partial class TicketListPage
     {
-        private readonly MainWindow window;
         private readonly TicketListPageViewModel viewModel;
-
-        private Ticket SelectedTicket
-        {
-            get { return (Ticket)listView.SelectedItem; }
-        }
+        private readonly MainWindow window;
 
         public TicketListPage(MainWindow window)
         {
@@ -35,6 +30,11 @@ namespace Administration.View
             DataContext = viewModel.Tickets;
         }
 
+        private Ticket SelectedTicket
+        {
+            get { return (Ticket) listView.SelectedItem; }
+        }
+
         public int ListCount
         {
             set { window.StatusBarCount.Content = value; }
@@ -42,23 +42,20 @@ namespace Administration.View
 
         private void ListView_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            viewModel.OpenEditor(SelectedTicket);
+            if (SelectedTicket != null)
+                viewModel.OpenEditor(SelectedTicket);
         }
 
-        private void CreateButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.OpenEditor(null);
+            if (SelectedTicket != null)
+                viewModel.OpenEditor(SelectedTicket);
         }
 
-        private void EditButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.OpenEditor(SelectedTicket);
-        }
-
-        private void DeleteButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            if (SelectedTicket == null) return;
-            viewModel.Delete(SelectedTicket);
+            if (SelectedTicket != null)
+                viewModel.Delete(SelectedTicket);
         }
     }
 }

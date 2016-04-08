@@ -135,6 +135,9 @@
   <data name="NoShowtimesTodayText" xml:space="preserve">
     <value>нет сеансов</value>
   </data>
+  <data name="SeatText" xml:space="preserve">
+    <value>Ряд {0}, Место {1}</value>
+  </data>
   <data name="ThreeDeeText" xml:space="preserve">
     <value>3D</value>
   </data>

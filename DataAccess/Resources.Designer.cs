@@ -115,6 +115,15 @@ namespace DataAccess {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ряд {0}, Место {1}.
+        /// </summary>
+        internal static string SeatText {
+            get {
+                return ResourceManager.GetString("SeatText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 3D.
         /// </summary>
         internal static string ThreeDeeText {

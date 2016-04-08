@@ -1,3 +1,5 @@
+using System;
+
 namespace DataAccess.Model
 {
     public class Ticket
@@ -6,6 +8,7 @@ namespace DataAccess.Model
         public Showtime Showtime { get; set; }
         public Seat Seat { get; set; }
         public bool IsUsed { get; set; }
+        public DateTime SellDate { get; set; }
 
         public Ticket Clone()
         {
@@ -14,7 +17,8 @@ namespace DataAccess.Model
                 Id = Id,
                 Showtime = Showtime,
                 Seat = Seat,
-                IsUsed = IsUsed
+                IsUsed = IsUsed,
+                SellDate = SellDate
             };
         }
     }

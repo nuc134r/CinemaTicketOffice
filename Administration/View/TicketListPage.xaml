@@ -9,14 +9,15 @@
       Title="ListPageBase">
 
     <Grid>
-        <Button x:Name="EditButton" Content="Просмотреть" Margin="0,0,495,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" Click="EditButton_Click"/>
+        <Button x:Name="EditButton" Content="Просмотреть" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" Click="EditButton_Click"/>
         <Button x:Name="DeleteButton" Content="Аннулировать" HorizontalAlignment="Right" Width="100" Click="DeleteButton_Click" Height="20" VerticalAlignment="Top"/>
         <ListView x:Name="listView" ItemsSource="{Binding}" Margin="0,25,0,0" Foreground="Black" SelectedIndex="0" MouseDoubleClick="ListView_OnMouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Номер"  DisplayMemberBinding="{Binding Id}" />
-                    <GridViewColumn Header="Фильм"  DisplayMemberBinding="{Binding MovieTitle}" />
-                    <GridViewColumn Header="Дата"  DisplayMemberBinding="{Binding ShowtimeDate}" />
+                    <GridViewColumn Header="Фильм"  DisplayMemberBinding="{Binding Showtime.Movie.Title}" />
+                    <GridViewColumn Header="Дата"   DisplayMemberBinding="{Binding Showtime.Time}" />
+                    <GridViewColumn Header="Место"   DisplayMemberBinding="{Binding Seat.SeatString}" />
                 </GridView>
             </ListView.View>
         </ListView>

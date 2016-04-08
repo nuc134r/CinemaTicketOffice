@@ -120,11 +120,11 @@
   <data name="NoShowtimesText" xml:space="preserve">
     <value>Сеансов нет</value>
   </data>
+  <data name="SeatText" xml:space="preserve">
+    <value>Ряд {0}, Место {1}</value>
+  </data>
   <data name="SelectedSeatsText" xml:space="preserve">
     <value>Мест выбрано {0}</value>
-  </data>
-  <data name="SeletedSeatLineText" xml:space="preserve">
-    <value>Ряд {0}, Место {1}</value>
   </data>
   <data name="ShowtimesListText" xml:space="preserve">
     <value>Список сеансов</value>

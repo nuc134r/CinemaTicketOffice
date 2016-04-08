@@ -12,23 +12,26 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="1" Margin="10,0,0,38">
+            <Run Text="Уникальный код:"/>
+            <Run Text="{Binding Id}"/>
+            <LineBreak />
             <Run Text="Фильм:"/>
-            <Run Text="{Binding MovieTitle}"/>
+            <Run Text="{Binding Showtime.Movie.Title}"/>
             <LineBreak />
             <Run Text="Сеанс:"/>
-            <Run Text="{Binding ShowtimeDate}"/>
+            <Run Text="{Binding Showtime.Time}"/>
             <LineBreak />
             <Run Text="Зал:"/>
-            <Run Text="{Binding AuditoriumName}"/>
+            <Run Text="{Binding Showtime.Auditorium.Name}"/>
             <LineBreak />
             <Run Text="Ряд:"/>
-            <Run Text="{Binding RowNumber}"/>
+            <Run Text="{Binding Seat.RowNumber}"/>
             <Run Text="   "/>
             <Run Text="Место:"/>
-            <Run Text="{Binding SeatNumber}"/>
+            <Run Text="{Binding Seat.SeatNumber}"/>
             <LineBreak />
             <Run Text="Дата продажи:"/>
-            <Run Text="{Binding SeatNumber}"/>
+            <Run Text="{Binding SellDate}"/>
             <LineBreak />
         </TextBlock>
     </Grid>
