@@ -16,18 +16,18 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Label Padding="0,5,0,0" Content="Фильм" VerticalAlignment="Top" Grid.Row="1" Height="26" Margin="10,0,0,0" HorizontalAlignment="Left" Width="68"/>
-        <ComboBox x:Name="MovieBox" ItemsSource="{Binding Movies}" DisplayMemberPath="Title" Margin="10,26,10,0" Grid.Row="1" VerticalAlignment="Top" Height="22" SelectedIndex="0" Grid.ColumnSpan="2"/>
-        <DatePicker x:Name="DateBox" DisplayDate="{Binding Showtime.Time}" SelectedDate="{Binding Showtime.Time}" HorizontalAlignment="Left" Margin="10,76,0,0" Grid.Row="1" VerticalAlignment="Top" Width="130" Height="24"/>
+        <ComboBox x:Name="MovieBox" ItemsSource="{Binding Movies}" DisplayMemberPath="Title" Margin="10,26,10,0" Grid.Row="1" VerticalAlignment="Top" Height="22" SelectedIndex="0" Grid.ColumnSpan="2" TabIndex="0"/>
+        <DatePicker x:Name="DateBox" DisplayDate="{Binding Showtime.Time}" SelectedDate="{Binding Showtime.Time}" HorizontalAlignment="Left" Margin="10,76,0,0" Grid.Row="1" VerticalAlignment="Top" Width="130" Height="24" TabIndex="1"/>
         <Label Padding="0,5,0,0" Content="Дата и время" VerticalAlignment="Top" Grid.Row="1" Height="26" Margin="10,50,0,0" HorizontalAlignment="Left" Width="130"/>
-        <TextBox x:Name="HoursBox" HorizontalAlignment="Left" TextAlignment="Center" VerticalContentAlignment="Center" Height="24" Margin="148,76,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" Padding="0" PreviewTextInput="HoursBox_OnPreviewTextInput" />
-        <TextBox x:Name="MinutesBox" HorizontalAlignment="Left" TextAlignment="Center" VerticalContentAlignment="Center" Height="24" Margin="189,76,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" Padding="0" PreviewTextInput="MinutesBox_OnPreviewTextInput" />
+        <TextBox x:Name="HoursBox" HorizontalAlignment="Left" TextAlignment="Center" VerticalContentAlignment="Center" Height="24" Margin="148,76,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" Padding="0" PreviewTextInput="HoursBox_OnPreviewTextInput" TabIndex="2" />
+        <TextBox x:Name="MinutesBox" HorizontalAlignment="Left" TextAlignment="Center" VerticalContentAlignment="Center" Height="24" Margin="189,76,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" Padding="0" PreviewTextInput="MinutesBox_OnPreviewTextInput" TabIndex="3" />
         <Label Padding="0,5,0,0" Content=":" VerticalAlignment="Top" Grid.Row="1" Height="24" Margin="182,76,0,0" HorizontalAlignment="Left" Width="7"/>
         <Label Padding="0,5,0,0" Content="Зал" VerticalAlignment="Top" Grid.Row="1" Height="26" Margin="1,50,0,0" HorizontalAlignment="Left" Width="130" Grid.Column="1"/>
-        <ComboBox x:Name="AuditoriumBox" ItemsSource="{Binding Auditoriums}" IsEnabled="{Binding CreateMode}" DisplayMemberPath="Name" Margin="1,76,10,0" Grid.Row="1" VerticalAlignment="Top" Height="22" SelectedIndex="0" Grid.Column="1"/>
-        <CheckBox IsChecked="{Binding Showtime.ThreeDee}" Content="В формате 3D" Margin="0,104,0,0" Grid.Row="1" VerticalAlignment="Top" Height="15" HorizontalAlignment="Left" Width="102" Grid.Column="1"/>
+        <ComboBox x:Name="AuditoriumBox" ItemsSource="{Binding Auditoriums}" IsEnabled="{Binding CreateMode}" DisplayMemberPath="Name" Margin="1,76,10,0" Grid.Row="1" VerticalAlignment="Top" Height="22" SelectedIndex="0" Grid.Column="1" TabIndex="4"/>
+        <CheckBox IsChecked="{Binding Showtime.ThreeDee}" Content="В формате 3D" Margin="0,104,0,0" Grid.Row="1" VerticalAlignment="Top" Height="15" HorizontalAlignment="Left" Width="102" Grid.Column="1" TabIndex="5"/>
         <Label Padding="0,5,0,0" Content="Цена" VerticalAlignment="Top" Grid.Row="1" Height="26" Margin="10,129,0,0" HorizontalAlignment="Left" Width="130"/>
-        <TextBox VerticalContentAlignment="Center" Height="24" Margin="10,155,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Showtime.Price}" VerticalAlignment="Top" Padding="0" PreviewTextInput="PriceBox_OnPreviewTextInput"/>
-        <Button Content="Сохранить" Margin="0,0,90,10" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" Height="20" Grid.Column="1" Click="SaveButton_Click" IsDefault="True" />
-        <Button Content="Отмена" Margin="0,0,10,10" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" Height="20" Grid.Column="1" IsCancel="True" Click="CancelButton_Click" />
+        <TextBox VerticalContentAlignment="Center" Height="24" Margin="10,155,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Showtime.Price}" VerticalAlignment="Top" Padding="0" PreviewTextInput="PriceBox_OnPreviewTextInput" TabIndex="6"/>
+        <Button Content="Сохранить" Margin="0,0,90,10" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" Height="20" Grid.Column="1" Click="SaveButton_Click" IsDefault="True" TabIndex="7" />
+        <Button Content="Отмена" Margin="0,0,10,10" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" Height="20" Grid.Column="1" IsCancel="True" Click="CancelButton_Click" TabIndex="8" />
     </Grid>
 </Window>
