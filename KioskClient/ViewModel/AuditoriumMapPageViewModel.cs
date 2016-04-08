@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -64,7 +65,6 @@ namespace KioskClient.ViewModel
 
         private void BuildSelectedSeatsString()
         {
-            SeatsString = "";
             if (seats.Count != 0)
             {
                 if (seats.Count > 3)
@@ -73,7 +73,8 @@ namespace KioskClient.ViewModel
                 }
                 else
                 {
-                    seats.ForEach(seat => { SeatsString += seat.SeatString; });
+                    SeatsString = "";
+                    seats.ForEach(seat => { SeatsString += seat.SeatString + Environment.NewLine; });
                 }
             }
 

@@ -6,6 +6,8 @@ using DataAccess;
 using DataAccess.Model;
 using DataAccess.Repository;
 
+// ._.
+
 namespace Administration.View
 {
     public partial class AuditoriumListPage
