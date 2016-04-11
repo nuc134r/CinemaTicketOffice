@@ -91,6 +91,15 @@ namespace KioskClient.ViewModel
                     }
                 }
             }
+
+            if (Movies.Count == 0)
+            {
+                view.ShowNoResultsText();
+            }
+            else
+            {
+                view.HideNoResultsText();
+            }
             
             if (view != null) view.WireHandlers();
         }

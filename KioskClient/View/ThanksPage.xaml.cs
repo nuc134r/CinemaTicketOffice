@@ -1,5 +1,4 @@
-﻿using System;
-using System.Timers;
+﻿using System.Timers;
 using System.Windows;
 using KioskClient.ViewModel;
 
@@ -7,28 +6,39 @@ namespace KioskClient.View
 {
     public partial class ThanksPage
     {
+        private readonly Timer delayTimer;
         private readonly ThanksPageViewModel viewModel;
-        private readonly Timer timer;
+        private Timer timer;
 
         public ThanksPage()
         {
             InitializeComponent();
 
             viewModel = new ThanksPageViewModel(this);
-            timer = new Timer(7000);
-            timer.Elapsed += TimerOnElapsed;
+
+            delayTimer = new Timer(1500);
+            delayTimer.Elapsed += DelayTimerOnElapsed;
         }
 
         private void ThanksPage_OnLoaded(object sender, RoutedEventArgs e)
         {
-            timer.Start();
+            delayTimer.Start();
         }
 
-        private void TimerOnElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
+        private void DelayTimerOnElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
         {
-            timer.Stop();
+            delayTimer.Stop();
 
-            Dispatcher.Invoke(viewModel.GoToCatalogPage);
+            DriveConnection.EjectDiskD();
+
+            timer = new Timer(2000);
+            timer.Elapsed += (o, eventArgs) =>
+            {
+                timer.Stop();
+                Dispatcher.Invoke(viewModel.GoToCatalogPage);
+            };
+
+            timer.Start();
         }
     }
 }

@@ -47,7 +47,7 @@
                                 <Run Text="{Binding SorryString, Mode=OneWay}" Foreground="#999999" FontSize="23" FontFamily="Consolas" />
                                 <Run Text="{Binding ShowtimesString, Mode=OneWay}" Foreground="White" FontSize="23" FontFamily="Consolas" />
                             </TextBlock>
-                            
+
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -76,5 +76,6 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </Grid>
+        <TextBlock x:Name="noResultsBox" TextWrapping="Wrap" Text="Фильмов по критериям не найдено" Margin="0,130,310,148" VerticalAlignment="Center" TextAlignment="Center" Foreground="White" FontSize="32" FontFamily="Segoe UI Light" Visibility="Hidden"/>
     </Grid>
 </Page>

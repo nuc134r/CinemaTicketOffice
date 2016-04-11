@@ -34,6 +34,16 @@ namespace KioskClient.View
             GenresGrid.Width = 0;
         }
 
+        public void HideNoResultsText()
+        {
+            noResultsBox.Visibility = Visibility.Hidden;
+        }
+
+        public void ShowNoResultsText()
+        {
+            noResultsBox.Visibility = Visibility.Visible;
+        }
+
         private void ResetFilterButton_OnClick(object sender, RoutedEventArgs e)
         {
             viewModel.ResetGenresFilter();
