@@ -91,7 +91,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CaseService.cs" />
     <Compile Include="Domain\AuditoriumView.cs" />
     <Compile Include="DriveConnection.cs" />
     <Compile Include="IMainWindow.cs" />

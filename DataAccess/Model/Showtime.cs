@@ -33,7 +33,12 @@ namespace DataAccess.Model
                 {
                     if (minutes < 60)
                     {
-                        return string.Format(Resources.MinutesLeftString, minutes);
+                        var caseService = new NumericCaseService(
+                            "осталась {0} минута",
+                            "осталось {0} минуты",
+                            "осталось {0} минут");
+
+                        return string.Format(caseService.GetCaseString((int)minutes), minutes);
                     }
                     return string.Format(Resources.HoursLeftString, (int)(minutes / 60), minutes % 60);
                 }

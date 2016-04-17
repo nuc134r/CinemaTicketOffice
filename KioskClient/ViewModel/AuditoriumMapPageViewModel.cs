@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using DataAccess.Annotations;
+using DataAccess;
 using DataAccess.Model;
 using DataAccess.Repository;
 using KioskClient.Domain;
@@ -69,14 +69,17 @@ namespace KioskClient.ViewModel
             if (seats.Count == 0) return string.Empty;
             if (seats.Count > 3)
             {
-                return string.Format(Resources.SelectedSeatsText, seats.Count);
+                var caseService = new NumericCaseService(
+                    "Выбрано {0} место",
+                    "Выбрано {0} места",
+                    "Выбрано {0} мест");
+
+                return string.Format(caseService.GetCaseString(seats.Count), seats.Count);
             }
-            else
-            {
-                var seatsString = "";
-                seats.ForEach(seat => { seatsString += seat.SeatString + Environment.NewLine; });
-                return seatsString;
-            }
+
+            var seatsString = "";
+            seats.ForEach(seat => { seatsString += seat.SeatString + Environment.NewLine; });
+            return seatsString;
         }
 
         public void GoBack()
@@ -84,7 +87,7 @@ namespace KioskClient.ViewModel
             Window.NavigateBack();
         }
 
-        [NotifyPropertyChangedInvocator]
+        [DataAccess.Annotations.NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             var handler = PropertyChanged;
