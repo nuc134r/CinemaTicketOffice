@@ -54,31 +54,29 @@ namespace KioskClient.ViewModel
                 seats.Remove(changedSeat);
             }
 
-            BuildSelectedSeatsString();
+            SeatsString = BuildSelectedSeatsString();
+            Total = (showtime.Price * seats.Count).ToString();
 
-            CanCheckout = Total != "0";
+            CanCheckout = seats.Count != 0;
 
             OnPropertyChanged("Total");
             OnPropertyChanged("SeatsString");
             OnPropertyChanged("CanCheckout");
         }
 
-        private void BuildSelectedSeatsString()
+        private string BuildSelectedSeatsString()
         {
-            if (seats.Count != 0)
+            if (seats.Count == 0) return string.Empty;
+            if (seats.Count > 3)
             {
-                if (seats.Count > 3)
-                {
-                    SeatsString = string.Format(Resources.SelectedSeatsText, seats.Count);
-                }
-                else
-                {
-                    SeatsString = "";
-                    seats.ForEach(seat => { SeatsString += seat.SeatString + Environment.NewLine; });
-                }
+                return string.Format(Resources.SelectedSeatsText, seats.Count);
             }
-
-            Total = (showtime.Price*seats.Count).ToString();
+            else
+            {
+                var seatsString = "";
+                seats.ForEach(seat => { seatsString += seat.SeatString + Environment.NewLine; });
+                return seatsString;
+            }
         }
 
         public void GoBack()
