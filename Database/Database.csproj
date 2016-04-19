@@ -41,9 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="2. CreateUsers.sql" />
-    <Content Include="3. CreateStoredProcedures.sql" />
-    <Content Include="4. FillScript.sql" />
+    <Content Include="2. CreateRoles.sql" />
+    <Content Include="3. CreateLogins.sql" />
+    <Content Include="4. CreateUsers.sql" />
+    <Content Include="5. GrantRoles.sql" />
+    <Content Include="6. CreateStoredProc.sql" />
+    <Content Include="7. FillScript.sql" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

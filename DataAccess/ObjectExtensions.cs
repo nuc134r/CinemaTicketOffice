@@ -19,12 +19,12 @@ namespace DataAccess
 
         public static DateTime ToDate(this object o)
         {
-            return DateTime.Parse(o.ToString());
+            return (DateTime) o;
         }
 
         public static bool ToBool(this object o)
         {
-            return bool.Parse(o.ToString());
+            return (bool) o;
         }
 
         public static object ThrowIfException(this object o)
