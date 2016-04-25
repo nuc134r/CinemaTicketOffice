@@ -29,7 +29,7 @@ namespace KioskClient.View
         {
             delayTimer.Stop();
 
-            DriveConnection.EjectDiskD();
+            //SystemDriveConnection.EjectDiskE();
 
             timer = new Timer(2000);
             timer.Elapsed += (o, eventArgs) =>

@@ -41,7 +41,6 @@ CREATE TABLE [Movie]
 	AgeLimitId		INT					NOT NULL DEFAULT 1, 
 
 	CONSTRAINT MoviePK PRIMARY KEY (Id),
-	CONSTRAINT AgeLimitFK FOREIGN KEY (AgeLimitId) REFERENCES [AgeLimit] (Id),
 	
 	CONSTRAINT MovieTitleAK	UNIQUE (Title),
 	CONSTRAINT MovieTitleFilledCK CHECK (Title <> ''),
@@ -63,6 +62,23 @@ CREATE TABLE [Genre]
 )
 
 /********************************
+ *			  Сеансы			*
+ ********************************/
+CREATE TABLE [Showtime]
+(
+	Id				INT				IDENTITY,
+	MovieId			INT				NOT NULL,
+	AuditoriumId	INT				NOT NULL,
+	ShowtimeDate	DateTime		NOT NULL,
+	Price			MONEY			NOT NULL,
+	ThreeDee		BIT				NOT NULL DEFAULT 0,
+	
+	CONSTRAINT ShowtimePK PRIMARY KEY (Id),
+	CONSTRAINT ShowtimePricePositiveCK CHECK (Price >= 0),
+	CONSTRAINT ShowtimeAK UNIQUE (MovieId, AuditoriumId, ShowtimeDate)
+)
+
+/********************************
  *			  Билеты			*
  ********************************/
 CREATE TABLE [Ticket] 
@@ -75,7 +91,6 @@ CREATE TABLE [Ticket]
 	SellDate		DATETIME	NOT NULL DEFAULT GETDATE(),
 	
 	CONSTRAINT TicketPK PRIMARY KEY (Id),
-	CONSTRAINT TicketShowtimeFK FOREIGN KEY (ShowtimeId) REFERENCES [Showtime] (Id) ON DELETE CASCADE,
 	CONSTRAINT SeatNumberAK UNIQUE (ShowtimeId, SeatNumber, RowNumber),
 	CONSTRAINT SeatNumberPositiveCK CHECK (SeatNumber > 0),
 	CONSTRAINT RowNumberPositiveCK CHECK (RowNumber > 0)
@@ -89,8 +104,6 @@ CREATE TABLE [MovieGenres]
 	MovieId			INT				NOT NULL,
 	GenreId			INT				NOT NULL,
 	
-	CONSTRAINT MovieGenreFK FOREIGN KEY (MovieId) REFERENCES [Movie] (Id) ON DELETE CASCADE,
-	CONSTRAINT GenreMovieFK FOREIGN KEY (GenreId) REFERENCES [Genre] (Id) ON DELETE CASCADE,
 	CONSTRAINT MovieGenreAK UNIQUE (MovieId, GenreId)
 )
 
@@ -107,25 +120,6 @@ CREATE TABLE [Auditorium]
 	CONSTRAINT AuditoriumPK PRIMARY KEY (Id),
 	CONSTRAINT AuditoriumSeatsNumberPositiveCK CHECK (SeatsNumber > 0),
 	CONSTRAINT AuditoriumRowsNumberPositiveCK CHECK (RowsNumber > 0)
-)
-
-/********************************
- *			  Сеансы			*
- ********************************/
-CREATE TABLE [Showtime]
-(
-	Id				INT				IDENTITY,
-	MovieId			INT				NOT NULL,
-	AuditoriumId	INT				NOT NULL,
-	ShowtimeDate	DateTime		NOT NULL,
-	Price			MONEY			NOT NULL,
-	ThreeDee		BIT				NOT NULL DEFAULT 0,
-	
-	CONSTRAINT ShowtimePK PRIMARY KEY (Id),
-	CONSTRAINT MovieShowtimeFK FOREIGN KEY (MovieId) REFERENCES [Movie] (Id) ON DELETE CASCADE,
-	CONSTRAINT AuditoriumShowtimeFK FOREIGN KEY (AuditoriumId) REFERENCES [Auditorium] (Id) ON DELETE CASCADE,
-	CONSTRAINT ShowtimePricePositiveCK CHECK (Price >= 0),
-	CONSTRAINT ShowtimeAK UNIQUE (MovieId, AuditoriumId, ShowtimeDate)
 )
 
 /********************************

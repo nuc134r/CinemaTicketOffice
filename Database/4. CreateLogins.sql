@@ -14,6 +14,3 @@ GO
 
 CREATE LOGIN birdsuperadmin WITH PASSWORD = 'superadmin-1234'
 GO
-CREATE USER birdsuperadmin FOR LOGIN birdsuperadmin
-GO
-EXEC sp_addrolemember N'loginmanager', N'birdsuperadmin'

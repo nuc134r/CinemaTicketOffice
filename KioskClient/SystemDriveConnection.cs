@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace KioskClient
 {
-    public static class DriveConnection
+    public static class SystemDriveConnection
     {
         // Constants used in DLL methods
         private const uint GENERICREAD = 0x80000000;
@@ -38,7 +38,7 @@ namespace KioskClient
             ref uint lpBytesReturned,
             IntPtr lpOverlapped);
 
-        public static void EjectDiskD()
+        public static void EjectDiskE()
         {
             Eject(@"\\.\E:");
         }

@@ -1,8 +1,6 @@
 ﻿
 /* admin */
 
-GRANT CONNECT TO greenbird_admin
-GO
 GRANT EXECUTE ON dbo.BrowseMovies TO greenbird_admin
 GO
 GRANT EXECUTE ON dbo.MovieDetails TO greenbird_admin
@@ -52,8 +50,6 @@ GO
 
 /* user */
 
-GRANT CONNECT TO greenbird_user
-GO
 GRANT EXECUTE ON dbo.BrowseMovies TO greenbird_user
 GO
 GRANT EXECUTE ON dbo.MovieDetails TO greenbird_user
@@ -71,6 +67,4 @@ GO
 
 /* superadmin */
 
-GRANT CONNECT TO greenbird_superadmin
-GO
 GRANT ALTER ANY USER TO greenbird_superadmin

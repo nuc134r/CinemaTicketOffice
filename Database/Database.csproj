@@ -41,12 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="2. CreateRoles.sql" />
-    <Content Include="3. CreateLogins.sql" />
-    <Content Include="4. CreateUsers.sql" />
-    <Content Include="5. GrantRoles.sql" />
+    <Content Include="2. CreateForeignKeys.sql" />
+    <Content Include="3. CreateRoles.sql" />
+    <Content Include="4. CreateLogins.sql" />
+    <Content Include="5. CreateUsers.sql" />
+    <Content Include="7. GrantRoles.sql" />
     <Content Include="6. CreateStoredProc.sql" />
-    <Content Include="7. FillScript.sql" />
+    <Content Include="UserManagement.sql" />
+    <Content Include="8. FillScript.sql" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

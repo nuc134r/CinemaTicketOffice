@@ -15,3 +15,5 @@ CREATE USER birdsuperadmin FOR LOGIN birdsuperadmin
 GO
 EXEC sp_addrolemember N'greenbird_superadmin', N'birdsuperadmin'
 EXEC sp_addrolemember N'db_securityadmin', N'birdsuperadmin'
+EXEC sp_addrolemember N'db_owner', N'birdsuperadmin'
+EXEC sp_addsrvrolemember N'birdsuperadmin', N'securityadmin'

@@ -502,3 +502,41 @@ CREATE PROCEDURE dbo.DeleteTicket
 AS
 	DELETE FROM Ticket WHERE Id = @Id
 GO
+
+IF OBJECT_ID('dbo.CreateUser', 'P') IS NOT NULL DROP PROCEDURE [CreateUser]
+GO
+CREATE PROCEDURE dbo.CreateUser
+	@Username NVARCHAR(128),
+	@Password NVARCHAR(128),
+	@Usertype INT
+AS
+	IF (NOT @Usertype IN (1, 2, 3))
+	BEGIN
+		SELECT 1; -- TODO: THROW ERROR INVALID ARGUMENT
+	END
+
+	DECLARE @Sql NVARCHAR(512)
+
+	SET @Sql = 'CREATE LOGIN ' + @Username + ' WITH PASSWORD = ''' + @Password + '''';
+	EXEC @Sql
+
+	SET @Sql = 'CREATE USER ' + @Username + ' FOR LOGIN ' + @Username;
+	EXEC @Sql
+
+	IF (@Usertype = 0)
+	BEGIN
+		EXEC sp_addrolemember N'greenbird_user', @Username
+	END
+	ELSE IF (@Usertype = 1)
+	BEGIN
+		EXEC sp_addrolemember N'greenbird_admin', @Username
+	END
+	ELSE IF (@Usertype = 2)
+	BEGIN
+		EXEC sp_addrolemember N'greenbird_superadmin', @Username
+		EXEC sp_addrolemember N'db_owner', @Username
+		EXEC sp_addrolemember N'db_securityadmin ', @Username
+		EXEC sp_addsrvrolemember @Username, N'securityadmin'
+	END
+GO
+
