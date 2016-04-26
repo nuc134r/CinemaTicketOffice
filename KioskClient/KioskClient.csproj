@@ -105,6 +105,7 @@
     <Compile Include="View\CheckoutPage.xaml.cs">
       <DependentUpon>CheckoutPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\IRefreshablePage.cs" />
     <Compile Include="View\MovieDetailsPage.xaml.cs">
       <DependentUpon>MovieDetailsPage.xaml</DependentUpon>
     </Compile>

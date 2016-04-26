@@ -108,5 +108,10 @@ namespace KioskClient.ViewModel
         {
             Window.NavigateToMovieDetails(movie);
         }
+
+        public void Refresh()
+        {
+            RetrieveData();
+        }
     }
 }

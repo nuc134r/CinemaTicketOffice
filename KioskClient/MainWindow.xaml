@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Cinema Ticket Office" WindowStartupLocation="CenterScreen" WindowState="Maximized" 
         AllowsTransparency="True" WindowStyle="None" Background="#FF1F1F1F" Topmost="True" 
-        d:DesignWidth="1233.018" d:DesignHeight="595.267" MinWidth="800" MinHeight="600" >
+        d:DesignWidth="1233.018" d:DesignHeight="595.267" MinWidth="800" MinHeight="600" PreviewKeyDown="MainWindow_OnPreviewKeyDown" >
     <Window.Resources>
         <local:TimeUpdater x:Key="TimeUpdater"/>
     </Window.Resources>

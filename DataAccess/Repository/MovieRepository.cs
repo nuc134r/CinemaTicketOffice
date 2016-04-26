@@ -10,16 +10,16 @@ namespace DataAccess.Repository
 {
     public class MovieRepository : IMovieRepository
     {
-        private readonly string connectionString;
+        public string ConnectionString;
 
         public MovieRepository(string connectionString)
         {
-            this.connectionString = connectionString;
+            ConnectionString = connectionString;
         }
 
         public IEnumerable<Movie> GetMovies()
         {
-            var moviesConnection = new CommandExecutor("dbo.BrowseMovies", connectionString);
+            var moviesConnection = new CommandExecutor("dbo.BrowseMovies", ConnectionString);
             var result = moviesConnection.ExecuteCommand();
 
             result.ThrowIfException();
@@ -43,7 +43,7 @@ namespace DataAccess.Repository
 
         public IEnumerable<Genre> GetGenres()
         {
-            var genresConnection = new CommandExecutor("dbo.BrowseGenres", connectionString);
+            var genresConnection = new CommandExecutor("dbo.BrowseGenres", ConnectionString);
             var result = genresConnection.ExecuteCommand();
 
             result.ThrowIfException();
@@ -62,7 +62,7 @@ namespace DataAccess.Repository
 
         public IEnumerable<AgeLimit> GetAgeLimits()
         {
-            var genresConnection = new CommandExecutor("dbo.ListAgeLimits", connectionString);
+            var genresConnection = new CommandExecutor("dbo.ListAgeLimits", ConnectionString);
             var result = genresConnection.ExecuteCommand();
 
             result.ThrowIfException();
@@ -81,7 +81,7 @@ namespace DataAccess.Repository
 
         public void GetMovieDetails(Movie movie)
         {
-            var movieConnection = new CommandExecutor("dbo.MovieDetails", connectionString);
+            var movieConnection = new CommandExecutor("dbo.MovieDetails", ConnectionString);
             movieConnection.SetParam("@MovieId", movie.Id, SqlDbType.Int);
             var result = movieConnection.ExecuteCommand();
 
@@ -128,12 +128,12 @@ namespace DataAccess.Repository
             CommandExecutor executor;
             if (update)
             {
-                executor = new CommandExecutor("dbo.UpdateMovie", connectionString);
+                executor = new CommandExecutor("dbo.UpdateMovie", ConnectionString);
                 executor.SetParam("@Id", movie.Id, SqlDbType.Int);
             }
             else
             {
-                executor = new CommandExecutor("dbo.CreateMovie", connectionString);
+                executor = new CommandExecutor("dbo.CreateMovie", ConnectionString);
             }
             executor.SetParam("@Title", movie.Title, SqlDbType.NVarChar);
             executor.SetParam("@Plot", movie.Plot, SqlDbType.NVarChar);
@@ -156,7 +156,7 @@ namespace DataAccess.Repository
 
         public void Delete(Movie movie)
         {
-            var executor = new CommandExecutor("dbo.DeleteMovie", connectionString);
+            var executor = new CommandExecutor("dbo.DeleteMovie", ConnectionString);
             executor.SetParam("@MovieId", movie.Id, SqlDbType.Int);
 
             executor.ExecuteCommand(true).ThrowIfException();
@@ -167,12 +167,12 @@ namespace DataAccess.Repository
             CommandExecutor genreConnection;
             if (update)
             {
-                genreConnection = new CommandExecutor("dbo.UpdateGenre", connectionString);
+                genreConnection = new CommandExecutor("dbo.UpdateGenre", ConnectionString);
                 genreConnection.SetParam("@Id", genre.Id, SqlDbType.Int);
             }
             else
             {
-                genreConnection = new CommandExecutor("dbo.CreateGenre", connectionString);
+                genreConnection = new CommandExecutor("dbo.CreateGenre", ConnectionString);
             }
 
             genreConnection.SetParam("@Name", genre.Name, SqlDbType.NVarChar);
@@ -182,7 +182,7 @@ namespace DataAccess.Repository
 
         public void Delete(Genre genre)
         {
-            var genreConnection = new CommandExecutor("dbo.DeleteGenre", connectionString);
+            var genreConnection = new CommandExecutor("dbo.DeleteGenre", ConnectionString);
             genreConnection.SetParam("@GenreId", genre.Id, SqlDbType.Int);
 
             genreConnection.ExecuteCommand().ThrowIfException();

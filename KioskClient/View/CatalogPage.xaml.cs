@@ -8,9 +8,10 @@ using KioskClient.ViewModel;
 
 namespace KioskClient.View
 {
-    public partial class CatalogPage
+    public partial class CatalogPage : IRefreshablePage
     {
         private readonly CatalogPageViewModel viewModel;
+        private MovieRepository repository;
 
         public CatalogPage()
         {
@@ -23,7 +24,7 @@ namespace KioskClient.View
                 Settings.Default.user,
                 Settings.Default.password);
 
-            var repository = new MovieRepository(connectionString);
+            repository = new MovieRepository(connectionString);
             viewModel = new CatalogPageViewModel(this, repository);
 
             DataContext = viewModel;
@@ -69,6 +70,19 @@ namespace KioskClient.View
         public void WireHandlers()
         {
             MoviesListBox.SelectionChanged += ListBox_SelectionChanged;
+        }
+
+        public void Refresh()
+        {
+            Settings.Default.Reload();
+
+            repository.ConnectionString = ConnectionStringBuilder.Build(
+                Settings.Default.server,
+                Settings.Default.database,
+                Settings.Default.user,
+                Settings.Default.password);
+
+            viewModel.Refresh();
         }
     }
 }

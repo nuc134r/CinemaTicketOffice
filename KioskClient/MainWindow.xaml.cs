@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Navigation;
 using DataAccess;
 using DataAccess.Model;
@@ -18,6 +20,7 @@ namespace KioskClient
         public MainWindow()
         {
             InitializeComponent();
+
             try
             {
                 SetupLogo();
@@ -44,6 +47,25 @@ namespace KioskClient
         private void MainFrame_OnNavigated(object sender, NavigationEventArgs e)
         {
             TitleTextBlock.Text = ((Page) MainFrame.Content).Title;
+        }
+
+        private void MainWindow_OnPreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F5)
+            {
+                if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
+                {
+                    Process.Start(System.AppDomain.CurrentDomain.BaseDirectory);
+                }
+                else
+                {
+                    var page = DataContext as IRefreshablePage;
+                    if (page != null)
+                    {
+                        page.Refresh();
+                    }
+                }
+            }
         }
 
         public void NavigateBack()
