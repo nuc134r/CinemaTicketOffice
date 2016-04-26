@@ -74,7 +74,7 @@ namespace KioskClient.ViewModel
                     "Выбрано {0} места",
                     "Выбрано {0} мест");
 
-                return string.Format(caseService.GetCaseString(seats.Count), seats.Count);
+                return caseService.GetCaseString(seats.Count);
             }
 
             var seatsString = "";

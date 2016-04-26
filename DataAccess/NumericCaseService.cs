@@ -15,14 +15,14 @@
 
         public string GetCaseString(int number)
         {
-            if (number >= 5 && number <= 20) return many;
+            if (number >= 5 && number <= 20) return string.Format(many, number);
 
             var lastDigit = number % 10;
 
-            if (lastDigit == 1) return single;
-            if (lastDigit > 1 && lastDigit < 5) return coupleOf;
+            if (lastDigit == 1) return string.Format(single, number);
+            if (lastDigit > 1 && lastDigit < 5) return string.Format(coupleOf, number);
 
-            return many;
+            return string.Format(many, number);
         }
     }
 }

@@ -38,7 +38,7 @@ namespace DataAccess.Model
                             "осталось {0} минуты",
                             "осталось {0} минут");
 
-                        return string.Format(caseService.GetCaseString((int)minutes), minutes);
+                        return caseService.GetCaseString((int)minutes);
                     }
                     return string.Format(Resources.HoursLeftString, (int)(minutes / 60), minutes % 60);
                 }

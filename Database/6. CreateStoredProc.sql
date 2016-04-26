@@ -534,6 +534,7 @@ AS
 	ELSE IF (@Usertype = 2)
 	BEGIN
 		EXEC sp_addrolemember N'greenbird_superadmin', @Username
+
 		EXEC sp_addrolemember N'db_owner', @Username
 		EXEC sp_addrolemember N'db_securityadmin ', @Username
 		EXEC sp_addsrvrolemember @Username, N'securityadmin'
