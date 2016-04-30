@@ -21,7 +21,7 @@
             <ColumnDefinition Width="239"/>
         </Grid.ColumnDefinitions>
         <Button Content="Отмена" Margin="0,30,35,0" Style="{DynamicResource BigRedButtonStyle}" Height="60" VerticalAlignment="Top" Click="CancelButton_Click" HorizontalAlignment="Right" Width="204" Grid.Column="1" />
-        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" Height="274" FontSize="35" FontFamily="Segoe UI Light" TextWrapping="Wrap" Foreground="White" VerticalAlignment="Center" Width="310" Margin="250,112,26,112"  >
+        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" Height="250" FontSize="35" FontFamily="Segoe UI Light" TextWrapping="Wrap" Foreground="White" VerticalAlignment="Center" Width="310" Margin="250,112,26,112"  >
             <Run Text="Оплата:" Foreground="DarkGray" />
             <Run Text="{Binding Total}" />
             <Run Text="₽" />
