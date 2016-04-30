@@ -1,10 +1,12 @@
 using System;
 using System.ComponentModel;
+using System.Data;
 using System.Windows;
 using Administration.Interfaces;
 using Administration.Properties;
 using DataAccess;
 using DataAccess.Connection;
+using DataAccess.Model;
 
 namespace Administration.ViewModel
 {
@@ -40,7 +42,7 @@ namespace Administration.ViewModel
         {
             var connectionString = ConnectionStringBuilder.Build(Server, Database, User, Password);
 
-            var executor = new CommandExecutor("SELECT 1", connectionString, false);
+            var executor = new CommandExecutor("dbo.CurrentRole", connectionString);
             var result = executor.ExecuteCommand();
 
             view.Dispatcher.Invoke(() =>
@@ -53,6 +55,9 @@ namespace Administration.ViewModel
                     MessageBox.Show(exception.Message);
                     return;
                 }
+
+                var userTypeId = (result as DataSet).Tables[0].Rows[0].ItemArray[0].ToInt();
+                Settings.Default.currentRole = (UserType) (userTypeId - 1);
 
                 Settings.Default.server = Server;
                 Settings.Default.database = Database;

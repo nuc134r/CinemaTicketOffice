@@ -135,4 +135,7 @@
   <data name="DeleteTicketConfirmatonText" xml:space="preserve">
     <value>Предпринимается попытка аннулировать билет. Подтвердить аннулирование?</value>
   </data>
+  <data name="DeleteUserConfirmatonText" xml:space="preserve">
+    <value>Предпринимается попытка удалить пользователя {0}. Подтвердить удаление?</value>
+  </data>
 </root>

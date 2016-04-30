@@ -1,5 +1,30 @@
 ﻿SET NOCOUNT ON;
 
+IF OBJECT_ID('dbo.CurrentRole', 'P') IS NOT NULL DROP PROCEDURE [CurrentRole]
+GO
+CREATE PROCEDURE dbo.CurrentRole
+AS
+	SELECT 
+		CASE name
+			WHEN 'greenbird_user'		THEN 1
+			WHEN 'greenbird_admin'		THEN 2
+			WHEN 'greenbird_superadmin' THEN 3
+		END
+	FROM 
+		sys.database_role_members AS [RM]
+	LEFT JOIN sys.database_principals AS [P]
+		ON [RM].role_principal_id = [P].principal_id
+	WHERE
+		[P].name LIKE 'greenbird_%'
+		AND
+		[RM].member_principal_id = (SELECT 
+										principal_id
+									FROM 
+										sys.database_principals AS [P]
+									WHERE 
+										[P].name = CURRENT_USER)
+GO
+
 IF OBJECT_ID('dbo.BrowseMovies', 'P') IS NOT NULL DROP PROCEDURE [BrowseMovies]
 GO
 CREATE PROCEDURE dbo.BrowseMovies
@@ -532,26 +557,27 @@ CREATE PROCEDURE dbo.CreateUser
 AS
 	IF (NOT @Usertype IN (1, 2, 3))
 	BEGIN
-		SELECT 1; -- TODO: THROW ERROR INVALID ARGUMENT
+		RAISERROR('INVALID ARGUMENT: @Usertype', 16, 1)
+		RETURN 1
 	END
 
 	DECLARE @Sql NVARCHAR(512)
 
 	SET @Sql = 'CREATE LOGIN ' + @Username + ' WITH PASSWORD = ''' + @Password + '''';
-	EXEC @Sql
+	EXEC (@Sql)
 
 	SET @Sql = 'CREATE USER ' + @Username + ' FOR LOGIN ' + @Username;
-	EXEC @Sql
+	EXEC (@Sql)
 
-	IF (@Usertype = 0)
+	IF (@Usertype = 1)
 	BEGIN
 		EXEC sp_addrolemember N'greenbird_user', @Username
 	END
-	ELSE IF (@Usertype = 1)
+	ELSE IF (@Usertype = 2)
 	BEGIN
 		EXEC sp_addrolemember N'greenbird_admin', @Username
 	END
-	ELSE IF (@Usertype = 2)
+	ELSE IF (@Usertype = 3)
 	BEGIN
 		EXEC sp_addrolemember N'greenbird_superadmin', @Username
 
@@ -561,3 +587,33 @@ AS
 	END
 GO
 
+IF OBJECT_ID('dbo.BrowseUsers', 'P') IS NOT NULL DROP PROCEDURE [BrowseUsers]
+GO
+CREATE PROCEDURE dbo.BrowseUsers
+AS
+	SELECT 
+		[P].name AS [User],
+		CASE [P2].name
+			WHEN 'greenbird_user'		THEN 1
+			WHEN 'greenbird_admin'		THEN 2
+			WHEN 'greenbird_superadmin' THEN 3
+		END AS [Role]
+
+	FROM
+		(SELECT 
+			principal_id,
+			name 
+		FROM 
+			sys.database_principals AS [P]
+		WHERE 
+			[P].type_desc = 'SQL_USER' 
+			AND 
+			[P].default_schema_name = 'dbo') AS [P]
+
+	LEFT JOIN sys.database_role_members AS [RM]
+		ON [P].principal_id = [RM].member_principal_id
+	LEFT JOIN sys.database_principals AS [P2]
+		ON [RM].role_principal_id = [P2].principal_id
+	WHERE
+		[P2].name LIKE 'greenbird_%'
+GO

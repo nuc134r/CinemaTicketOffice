@@ -113,5 +113,14 @@ namespace Administration.Properties {
                 return ResourceManager.GetString("DeleteTicketConfirmatonText", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Предпринимается попытка удалить пользователя {0}. Подтвердить удаление?.
+        /// </summary>
+        internal static string DeleteUserConfirmatonText {
+            get {
+                return ResourceManager.GetString("DeleteUserConfirmatonText", resourceCulture);
+            }
+        }
     }
 }
