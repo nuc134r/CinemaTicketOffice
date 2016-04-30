@@ -34,12 +34,18 @@ namespace DataAccess.Repository
             }
         }
 
-        public void RegisterTicket(int showtimeId, Seat seat)
+        public void RegisterTickets(int showtimeId, List<Seat> seats)
         {
             var executor = new CommandExecutor("dbo.RegisterTickets", connectionString);
+
             executor.SetParam("@ShowtimeId", showtimeId, SqlDbType.Int);
-            executor.SetParam("@Seat", seat.SeatNumber, SqlDbType.Int);
-            executor.SetParam("@Row", seat.RowNumber, SqlDbType.Int);
+
+            var seatList = new DataTable();
+            seatList.Columns.Add("SeatNumber");
+            seatList.Columns.Add("RowNumber");
+
+            seats.ForEach(seat => seatList.Rows.Add(seat.SeatNumber, seat.RowNumber));
+            executor.SetParam("@Tickets", seatList, SqlDbType.Structured, "dbo.SeatList");
 
             executor.ExecuteCommand(true).ThrowIfException();
         }

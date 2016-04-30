@@ -10,12 +10,12 @@ using DataAccess.Repository;
 
 namespace Administration.ViewModel
 {
-    public class TicketListPageViewModel
+    public class SeatListPageViewModel
     {
         private readonly TicketRepository repository;
-        private readonly TicketListPage view;
+        private readonly SeatListPage view;
 
-        public TicketListPageViewModel(TicketListPage view, TicketRepository repository)
+        public SeatListPageViewModel(SeatListPage view, TicketRepository repository)
         {
             this.view = view;
             this.repository = repository;

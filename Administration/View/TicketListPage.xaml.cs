@@ -8,12 +8,12 @@ using DataAccess.Repository;
 
 namespace Administration.View
 {
-    public partial class TicketListPage
+    public partial class SeatListPage
     {
-        private readonly TicketListPageViewModel viewModel;
+        private readonly SeatListPageViewModel viewModel;
         private readonly MainWindow window;
 
-        public TicketListPage(MainWindow window)
+        public SeatListPage(MainWindow window)
         {
             this.window = window;
             InitializeComponent();
@@ -26,7 +26,7 @@ namespace Administration.View
 
             var repository = new TicketRepository(connectionString);
 
-            viewModel = new TicketListPageViewModel(this, repository);
+            viewModel = new SeatListPageViewModel(this, repository);
             DataContext = viewModel.Tickets;
         }
 

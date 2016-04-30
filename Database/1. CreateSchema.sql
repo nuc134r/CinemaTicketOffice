@@ -126,8 +126,21 @@ CREATE TABLE [Auditorium]
  *    Список идентификаторов	*
  ********************************/
 IF TYPE_ID('dbo.IdList') IS NULL
-CREATE TYPE [dbo].[IdList] AS TABLE(
+CREATE TYPE [dbo].[IdList] AS TABLE
+(
     [Id] INT NOT NULL
+);
+
+/********************************
+ *       Список билетов			*
+ ********************************/
+--DROP TYPE [dbo].[SeatList]
+ 
+IF TYPE_ID('dbo.SeatList') IS NULL 
+CREATE TYPE [dbo].[SeatList] AS TABLE
+(
+    [SeatNumber] INT NOT NULL,
+    [RowNumber] INT NOT NULL
 );
 
 /********************************

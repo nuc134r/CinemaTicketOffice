@@ -47,6 +47,8 @@ GRANT EXECUTE ON dbo.BrowseTickets TO greenbird_admin
 GO
 GRANT EXEC ON TYPE::dbo.IdList TO greenbird_admin
 GO
+GRANT EXEC ON TYPE::dbo.SeatList TO greenbird_admin
+GO
 
 /* user */
 
@@ -63,6 +65,8 @@ GO
 GRANT EXECUTE ON dbo.RegisterTickets TO greenbird_user
 GO
 GRANT EXECUTE ON dbo.GetOccupiedSeats TO greenbird_user
+GO
+GRANT EXEC ON TYPE::dbo.SeatList TO greenbird_user
 GO
 
 /* superadmin */

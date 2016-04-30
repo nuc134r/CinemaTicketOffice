@@ -88,7 +88,7 @@ AS
 	WHERE 
 		MovieId = @MovieId
 		AND
-		ShowtimeDate > DATEADD(hour, 3, GETDATE())
+		ShowtimeDate > DATEADD(hour, 0, GETDATE())
 GO
 
 IF OBJECT_ID('dbo.CreateMovie', 'P') IS NOT NULL DROP PROCEDURE [CreateMovie]
@@ -341,7 +341,7 @@ AS
 	WHERE
 		[M].Id = @MovieId
 		AND
-		[S].ShowtimeDate > DATEADD(hour, 3, GETDATE())
+		[S].ShowtimeDate > DATEADD(hour, 0, GETDATE())
 	ORDER BY
 		[S].ShowtimeDate
 	
@@ -440,19 +440,39 @@ IF OBJECT_ID('dbo.RegisterTickets', 'P') IS NOT NULL DROP PROCEDURE [RegisterTic
 GO
 CREATE PROCEDURE dbo.RegisterTickets
 	@ShowtimeId INT,
-	@Seat INT,
-	@Row INT
+	@Tickets SeatList READONLY
 AS
-	INSERT INTO [Ticket]
-	(
-		ShowtimeId,
+	DECLARE
+		@SeatNumber INT,
+		@RowNumber INT
+
+	DECLARE TicketCursor CURSOR FOR 
+	SELECT 
 		SeatNumber,
-		RowNumber
-	)
-	SELECT
-		@ShowtimeId,
-		@Seat,
-		@Row
+		RowNumber 
+	FROM 
+		@Tickets
+ 
+	OPEN TicketCursor
+	FETCH NEXT FROM TicketCursor INTO @SeatNumber, @RowNumber 
+ 
+	WHILE @@FETCH_STATUS=0
+	BEGIN
+		INSERT INTO [Ticket]
+		(
+			ShowtimeId,
+			SeatNumber,
+			RowNumber
+		)
+		SELECT
+			@ShowtimeId,
+			@SeatNumber,
+			@RowNumber
+
+		FETCH NEXT FROM TicketCursor INTO @SeatNumber, @RowNumber 
+	END
+	CLOSE TicketCursor
+	DEALLOCATE TicketCursor
 
 GO
 
@@ -480,7 +500,7 @@ AS
 		[T].RowNumber,
 		[M].Title,
 		[S].ShowtimeDate,
-		DATEADD(hour, 3, [T].SellDate) AS SellDate,
+		DATEADD(hour, 0, [T].SellDate) AS SellDate,
 		[A].Name
 	FROM
 		[Ticket] AS [T]
