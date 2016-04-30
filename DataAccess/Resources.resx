@@ -123,6 +123,15 @@
   <data name="MinutesLeftString" xml:space="preserve">
     <value>осталось {0} мин</value>
   </data>
+  <data name="MinutesTextCouple" xml:space="preserve">
+    <value>осталось {0} минуты</value>
+  </data>
+  <data name="MinutesTextMany" xml:space="preserve">
+    <value>осталось {0} минут</value>
+  </data>
+  <data name="MinutesTextSingle" xml:space="preserve">
+    <value>осталась {0} минута</value>
+  </data>
   <data name="NoShowtimesTodayText" xml:space="preserve">
     <value>нет сеансов</value>
   </data>

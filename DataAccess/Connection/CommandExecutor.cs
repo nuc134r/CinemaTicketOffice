@@ -45,13 +45,12 @@ namespace DataAccess.Connection
             using (var connection = new SqlConnection())
             {
                 connection.ConnectionString = connectionString;
-                var adapter = new SqlDataAdapter();
+                
                 var sqlCommand = new SqlCommand(command, connection)
                 {
                     CommandType = storedProc ? CommandType.StoredProcedure : CommandType.Text
                 };
                 paramList.ForEach(param => sqlCommand.Parameters.Add(param));
-                adapter.SelectCommand = sqlCommand;
 
                 try
                 {
@@ -63,6 +62,7 @@ namespace DataAccess.Connection
                     }
                     else
                     {
+                        var adapter = new SqlDataAdapter {SelectCommand = sqlCommand};
                         adapter.Fill(dataSet);
                         result = dataSet;
                     }

@@ -34,9 +34,9 @@ namespace DataAccess.Model
                     if (minutes < 60)
                     {
                         var caseService = new NumericCaseService(
-                            "осталась {0} минута",
-                            "осталось {0} минуты",
-                            "осталось {0} минут");
+                            Resources.MinutesTextSingle,
+                            Resources.MinutesTextCouple,
+                            Resources.MinutesTextMany);
 
                         return caseService.GetCaseString((int)minutes);
                     }

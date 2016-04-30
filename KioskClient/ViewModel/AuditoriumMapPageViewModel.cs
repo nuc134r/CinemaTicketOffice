@@ -70,9 +70,9 @@ namespace KioskClient.ViewModel
             if (seats.Count > 3)
             {
                 var caseService = new NumericCaseService(
-                    "Выбрано {0} место",
-                    "Выбрано {0} места",
-                    "Выбрано {0} мест");
+                    Resources.SeatsTextSingle,
+                    Resources.SeatsTextCouple,
+                    Resources.SeatsTextMany);
 
                 return caseService.GetCaseString(seats.Count);
             }

@@ -79,6 +79,33 @@ namespace DataAccess {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to осталось {0} минуты.
+        /// </summary>
+        internal static string MinutesTextCouple {
+            get {
+                return ResourceManager.GetString("MinutesTextCouple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to осталось {0} минут.
+        /// </summary>
+        internal static string MinutesTextMany {
+            get {
+                return ResourceManager.GetString("MinutesTextMany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to осталась {0} минута.
+        /// </summary>
+        internal static string MinutesTextSingle {
+            get {
+                return ResourceManager.GetString("MinutesTextSingle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to нет сеансов.
         /// </summary>
         internal static string NoShowtimesTodayText {

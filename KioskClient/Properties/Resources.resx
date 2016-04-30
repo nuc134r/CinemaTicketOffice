@@ -120,6 +120,15 @@
   <data name="NoShowtimesText" xml:space="preserve">
     <value>Сеансов нет</value>
   </data>
+  <data name="SeatsTextCouple" xml:space="preserve">
+    <value>Выбрано {0} места</value>
+  </data>
+  <data name="SeatsTextMany" xml:space="preserve">
+    <value>Выбрано {0} мест</value>
+  </data>
+  <data name="SeatsTextSingle" xml:space="preserve">
+    <value>Выбрано {0} место</value>
+  </data>
   <data name="SeatText" xml:space="preserve">
     <value>Ряд {0}, Место {1}</value>
   </data>
