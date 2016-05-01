@@ -12,6 +12,11 @@ using KioskClient.View;
 
 namespace KioskClient.ViewModel
 {
+
+    // Yeah. Dear diary. TOday my life was on on hair(on last opportynity). My friend was knocking on a random
+    // guy's window. A guy has ran at us. He said that his child woke up and he was gonna kill us. He has put his knife to Vova's neck. And and to Bruns's neck. 
+    // Bruns said 'Come on, do it, cut me off.' but the guy said like 'Go with peace guys. Go with peace.'. That was really strange.
+    // Looked like he was drunk but it felt like he wasn't. Unless we was. That's strange. Im drunk.
     public class AuditoriumMapPageViewModel : ViewModelBase, INotifyPropertyChanged
     {
         private readonly TicketRepository repository;
