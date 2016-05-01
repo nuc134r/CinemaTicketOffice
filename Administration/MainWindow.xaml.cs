@@ -3,14 +3,20 @@ using System.Windows;
 using System.Windows.Controls;
 using Administration.Properties;
 using Administration.View;
+using Administration.ViewModel;
 
 namespace Administration
 {
     public partial class MainWindow
     {
+        private readonly MainWindowViewModel viewModel;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            viewModel = new MainWindowViewModel(Settings.Default.currentRole);
+            DataContext = viewModel;
 
             SectionListTreeView.SelectedItemChanged += TreeView_SelectedItemChanged;
         }
@@ -25,30 +31,33 @@ namespace Administration
             var item = (TreeViewItem) SectionListTreeView.SelectedItem;
             if (item == null || item.Tag == null) return;
 
-            var pageNumber = item.Tag.ToString();
+            var pageId = item.Tag.ToString();
 
-            switch (pageNumber)
+            switch (pageId)
             {
                 case "0":
-                    DataContext = new MovieListPage(this);
+                    viewModel.Frame = new MovieListPage(this);
                     break;
                 case "1":
-                    DataContext = new GenreListPage(this);
+                    viewModel.Frame = new GenreListPage(this);
                     break;
                 case "2":
-                    DataContext = new ShowtimeListPage(this);
+                    viewModel.Frame = new ShowtimeListPage(this);
                     break;
                 case "4":
-                    DataContext = new SeatListPage(this);
+                    viewModel.Frame = new SeatListPage(this);
                     break;
                 case "5":
-                    DataContext = new LogoSetupPage(this);
+                    viewModel.Frame = new LogoSetupPage(this);
                     break;
                 case "3":
-                    DataContext = new AuditoriumListPage(this);
+                    viewModel.Frame = new AuditoriumListPage(this);
+                    break;
+                case "6":
+                    viewModel.Frame = new UserListPage(this);
                     break;
                 default:
-                    DataContext = null;
+                    viewModel.Frame = null;
                     break;
             }
         }

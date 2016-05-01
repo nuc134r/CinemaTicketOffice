@@ -122,5 +122,14 @@ namespace Administration.Properties {
                 return ResourceManager.GetString("DeleteUserConfirmatonText", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пользователь, с которым производится вход не является  администратором GreenBird.
+        /// </summary>
+        internal static string InvalidUserMessageText {
+            get {
+                return ResourceManager.GetString("InvalidUserMessageText", resourceCulture);
+            }
+        }
     }
 }

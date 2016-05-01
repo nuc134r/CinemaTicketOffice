@@ -138,4 +138,7 @@
   <data name="DeleteUserConfirmatonText" xml:space="preserve">
     <value>Предпринимается попытка удалить пользователя {0}. Подтвердить удаление?</value>
   </data>
+  <data name="InvalidUserMessageText" xml:space="preserve">
+    <value>Пользователь, с которым производится вход не является  администратором GreenBird</value>
+  </data>
 </root>

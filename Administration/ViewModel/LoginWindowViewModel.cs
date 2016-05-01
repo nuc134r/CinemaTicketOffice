@@ -56,8 +56,21 @@ namespace Administration.ViewModel
                     return;
                 }
 
-                var userTypeId = (result as DataSet).Tables[0].Rows[0].ItemArray[0].ToInt();
-                Settings.Default.currentRole = (UserType) (userTypeId - 1);
+                try
+                {
+                    var userTypeId = (result as DataSet).Tables[0].Rows[0].ItemArray[0].ToInt();
+                    Settings.Default.currentRole = (UserType) (userTypeId - 1);
+
+                    if (Settings.Default.currentRole == UserType.User)
+                    {
+                        throw new Exception();
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(Resources.InvalidUserMessageText);
+                    return;
+                }
 
                 Settings.Default.server = Server;
                 Settings.Default.database = Database;

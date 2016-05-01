@@ -12,7 +12,7 @@ namespace KioskClient.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -25,7 +25,7 @@ namespace KioskClient.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("SERGIO-LAPTOP\\MSSQL2008R2")]
         public string server {
             get {
                 return ((string)(this["server"]));
@@ -37,7 +37,7 @@ namespace KioskClient.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("CinemaDB")]
+        [global::System.Configuration.DefaultSettingValueAttribute("cinemadb")]
         public string database {
             get {
                 return ((string)(this["database"]));
@@ -49,7 +49,7 @@ namespace KioskClient.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("kioskuser")]
+        [global::System.Configuration.DefaultSettingValueAttribute("birduser")]
         public string user {
             get {
                 return ((string)(this["user"]));
@@ -58,7 +58,7 @@ namespace KioskClient.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("kiosk")]
+        [global::System.Configuration.DefaultSettingValueAttribute("user-1234")]
         public string password {
             get {
                 return ((string)(this["password"]));

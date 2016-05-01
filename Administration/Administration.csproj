@@ -115,6 +115,7 @@
     <Compile Include="ViewModel\GenreEditorWindowViewModel.cs" />
     <Compile Include="ViewModel\GenreListPageViewModel.cs" />
     <Compile Include="ViewModel\LoginWindowViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\MovieEditorWindowViewModel.cs" />
     <Compile Include="ViewModel\MovieListPageViewModel.cs" />
     <Compile Include="ViewModel\ShowtimeEditorWindowViewModel.cs" />

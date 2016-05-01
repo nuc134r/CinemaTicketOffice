@@ -27,18 +27,17 @@ namespace Administration
             base.OnStartup(e);
             ConfigureCulture();
 
-            var mainWindow = new MainWindow();
             var loginWindow = new LoginWindow();
-
             var result = loginWindow.ShowDialog();
 
             if (result.HasValue && result.Value)
             {
+                var mainWindow = new MainWindow();
                 mainWindow.Show();
             }
             else
             {
-                mainWindow.Close();
+                Application.Current.Shutdown();
             }
         }
     }
