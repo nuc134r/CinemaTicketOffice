@@ -110,6 +110,9 @@
     <Compile Include="TicketEditorWindow.xaml.cs">
       <DependentUpon>TicketEditorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserEditorWindow.xaml.cs">
+      <DependentUpon>UserEditorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\AuditoriumEditorWindowViewModel.cs" />
     <Compile Include="ViewModel\AuditoriumListPageViewModel.cs" />
     <Compile Include="ViewModel\GenreEditorWindowViewModel.cs" />
@@ -180,6 +183,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TicketEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserEditorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
