@@ -83,3 +83,5 @@ GRANT EXECUTE ON dbo.BrowseUsers TO greenbird_superadmin
 GO
 GRANT EXECUTE ON dbo.CreateUser TO greenbird_superadmin
 GO
+GRANT EXECUTE ON dbo.DeleteUser TO greenbird_superadmin
+GO

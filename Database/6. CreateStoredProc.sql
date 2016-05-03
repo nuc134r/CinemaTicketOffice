@@ -617,3 +617,17 @@ AS
 	WHERE
 		[P2].name LIKE 'greenbird_%'
 GO
+
+IF OBJECT_ID('dbo.DeleteUser', 'P') IS NOT NULL DROP PROCEDURE [DeleteUser]
+GO
+CREATE PROCEDURE dbo.DeleteUser
+	@Username NVARCHAR(128)
+AS
+	DECLARE @Sql NVARCHAR(512)
+
+	SET @Sql = 'DROP USER ' + @Username;
+	EXEC (@Sql)
+
+	SET @Sql = 'DROP LOGIN ' + @Username;
+	EXEC (@Sql)
+GO

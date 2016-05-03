@@ -50,7 +50,12 @@ namespace DataAccess.Repository
 
         public void Delete(User user)
         {
-            
+            var executor = new CommandExecutor("dbo.DeleteUser", connectionString);
+
+            executor.SetParam("@Username", user.Login, SqlDbType.NVarChar);
+
+            var result = executor.ExecuteCommand();
+            result.ThrowIfException();
         }
 
         public void Create(User user)
