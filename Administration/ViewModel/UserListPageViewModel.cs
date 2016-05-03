@@ -34,10 +34,10 @@ namespace Administration.ViewModel
                     user = user.Clone();
                 }
 
-                //var editor = new UserEditorWindow(user);
-                //var result = editor.ShowDialog();
+                var editor = new UserEditorWindow(user);
+                var result = editor.ShowDialog();
 
-                //if (result.HasValue && result.Value)
+                if (result.HasValue && result.Value)
                 {
                     RetrieveData();
                 }

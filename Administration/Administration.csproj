@@ -124,6 +124,7 @@
     <Compile Include="ViewModel\ShowtimeEditorWindowViewModel.cs" />
     <Compile Include="ViewModel\ShowtimeListPageViewModel.cs" />
     <Compile Include="ViewModel\TicketListPageViewModel.cs" />
+    <Compile Include="ViewModel\UserEditorWindowViewModel.cs" />
     <Compile Include="ViewModel\UserListPageViewModel.cs" />
     <Compile Include="View\AuditoriumListPage.xaml.cs">
       <DependentUpon>AuditoriumListPage.xaml</DependentUpon>

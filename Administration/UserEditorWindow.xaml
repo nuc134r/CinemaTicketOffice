@@ -5,13 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Administration"
         mc:Ignorable="d"
-        Title="Пользователь" Height="300" Width="300" ResizeMode="NoResize">
+        Title="Пользователь" Height="270" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="11"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Label Padding="0,5,0,0" Content="Логин" VerticalAlignment="Top" Grid.Row="1" Height="26" Margin="10,0,0,0" HorizontalAlignment="Left" Width="130"/>
-        <TextBox VerticalContentAlignment="Center" Height="24" Margin="10,26,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Login}" VerticalAlignment="Top" Padding="0" TabIndex="6"/>
+        <Label Padding="0,5,0,0" Content="Логин:" VerticalAlignment="Top" Grid.Row="1" Height="26" Margin="10,0,0,0" HorizontalAlignment="Left" Width="130"/>
+        <TextBox TabIndex="0" VerticalContentAlignment="Center" IsEnabled="{Binding CreateMode}" Height="24" Margin="10,26,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding User.Login}" VerticalAlignment="Top" Padding="0"/>
+        <Label Padding="0,5,0,0" Content="Пароль:" VerticalAlignment="Top" Grid.Row="1" Height="26" Margin="10,50,0,0" HorizontalAlignment="Left" Width="130"/>
+        <PasswordBox x:Name="passwordBox" IsEnabled="{Binding CreateMode}" Margin="10,76,10,0" VerticalAlignment="Top" Height="22" TabIndex="1" Grid.Row="1"/>
+        <Label Padding="0,5,0,0" Content="Тип:" VerticalAlignment="Top" Grid.Row="1" Height="26" Margin="10,100,0,0" HorizontalAlignment="Left" Width="130"/>
+        <RadioButton x:Name="UserRadio" TabIndex="2" Content="User" IsChecked="True" IsEnabled="{Binding CreateMode}" HorizontalAlignment="Left" Margin="10,126,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <RadioButton x:Name="AdminRadio" TabIndex="3" Content="Admin" IsEnabled="{Binding CreateMode}" HorizontalAlignment="Left" Margin="10,146,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <RadioButton x:Name="SuperadminRadio" TabIndex="4" Content="Superadmin" IsEnabled="{Binding CreateMode}" HorizontalAlignment="Left" Margin="10,166,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Button Content="Сохранить" IsEnabled="{Binding CreateMode}" Margin="0,0,90,10" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" Height="20" Click="SaveButton_Click" IsDefault="True" TabIndex="5" />
+        <Button Content="Отмена" Margin="0,0,10,10" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" Height="20" IsCancel="True" Click="CancelButton_Click" TabIndex="6" />
     </Grid>
 </Window>

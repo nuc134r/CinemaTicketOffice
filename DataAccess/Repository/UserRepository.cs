@@ -52,5 +52,19 @@ namespace DataAccess.Repository
         {
             
         }
+
+        public void Create(User user)
+        {
+            var executor = new CommandExecutor("dbo.CreateUser", connectionString);
+
+            executor.SetParam("@Username", user.Login, SqlDbType.NVarChar);
+            executor.SetParam("@Password", user.Password, SqlDbType.NVarChar);
+
+            var userType = ((int) user.Type) + 1;
+            executor.SetParam("@Usertype", userType, SqlDbType.Int);
+
+            var result = executor.ExecuteCommand();
+            result.ThrowIfException();
+        }
     }
 }

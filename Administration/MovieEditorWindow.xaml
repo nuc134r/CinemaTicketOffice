@@ -19,7 +19,7 @@
             <ColumnDefinition Width="5"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Padding="0,5,0,0" Content="Название" VerticalAlignment="Top" Grid.Row="1" Height="26" Margin="10,0,0,0" HorizontalAlignment="Left" Width="68"/>
+        <Label Padding="0,5,0,0" Content="Название:" VerticalAlignment="Top" Grid.Row="1" Height="26" Margin="10,0,0,0" HorizontalAlignment="Left" Width="68"/>
         <Label Content="Сюжет:" Margin="10,49,0,0" VerticalAlignment="Top" Grid.Row="1" Height="26" HorizontalAlignment="Left" Width="137" Padding="0,5,0,0"/>
         <TextBox Text="{Binding Movie.Title}" Height="23" Margin="10,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1" TabIndex="0"/>
         <TextBox Text="{Binding Movie.Plot}" Height="100" Margin="10,75,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1" Grid.ColumnSpan="5" AcceptsReturn="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" TabIndex="3"/>
