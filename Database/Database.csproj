@@ -47,7 +47,6 @@
     <Content Include="5. CreateUsers.sql" />
     <Content Include="7. GrantRoles.sql" />
     <Content Include="6. CreateStoredProc.sql" />
-    <Content Include="updateschema.sql" />
     <Content Include="9. CreateTriggers.sql" />
     <Content Include="8. FillScript.sql" />
     <Compile Include="Properties\AssemblyInfo.cs" />
