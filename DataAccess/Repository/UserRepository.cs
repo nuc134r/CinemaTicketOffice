@@ -25,7 +25,7 @@ namespace DataAccess.Repository
 
             foreach (DataRow row in dataSet.Tables[0].Rows)
             {
-                var type = UserType.User;
+                UserType type = UserType.User;
 
                 switch (row["Role"].ToInt())
                 {
@@ -65,7 +65,7 @@ namespace DataAccess.Repository
             executor.SetParam("@Username", user.Login, SqlDbType.NVarChar);
             executor.SetParam("@Password", user.Password, SqlDbType.NVarChar);
 
-            var userType = (int) user.Type + 1;
+            var userType = ((int) user.Type) + 1;
             executor.SetParam("@Usertype", userType, SqlDbType.Int);
 
             var result = executor.ExecuteCommand();
