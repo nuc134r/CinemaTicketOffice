@@ -318,7 +318,7 @@ CREATE PROCEDURE dbo.BrowseShowtimes
 AS 
     SET NOCOUNT ON;
 
-    SELECT 
+    SELECT
 		[S].Id,
 		[S].ShowtimeDate,
 		[S].Price,
@@ -346,7 +346,7 @@ CREATE PROCEDURE dbo.BrowsePendingShowtimes
 AS 
     SET NOCOUNT ON;
 
-    SELECT 
+    SELECT
 		[S].Id,
 		[S].ShowtimeDate,
 		[S].Price,
@@ -498,7 +498,6 @@ AS
 	END
 	CLOSE TicketCursor
 	DEALLOCATE TicketCursor
-
 GO
 
 IF OBJECT_ID('dbo.GetOccupiedSeats', 'P') IS NOT NULL DROP PROCEDURE [GetOccupiedSeats]
@@ -557,7 +556,7 @@ CREATE PROCEDURE dbo.CreateUser
 AS
 	IF (NOT @Usertype IN (1, 2, 3))
 	BEGIN
-		RAISERROR('INVALID ARGUMENT: @Usertype', 16, 1)
+		RAISERROR('INVALID ARGUMENT @Usertype', 16, 1)
 		RETURN 1
 	END
 
@@ -601,14 +600,14 @@ AS
 
 	FROM
 		(SELECT 
-			principal_id,
-			name 
-		FROM 
-			sys.database_principals AS [P]
-		WHERE 
-			[P].type_desc = 'SQL_USER' 
-			AND 
-			[P].default_schema_name = 'dbo') AS [P]
+		 	 principal_id,
+		 	 name 
+		 FROM 
+		 	 sys.database_principals AS [P]
+		 WHERE 
+		 	 [P].type_desc = 'SQL_USER' 
+		 	 AND 
+		 	 [P].default_schema_name = 'dbo') AS [P]
 
 	LEFT JOIN sys.database_role_members AS [RM]
 		ON [P].principal_id = [RM].member_principal_id
