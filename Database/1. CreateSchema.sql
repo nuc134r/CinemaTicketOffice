@@ -11,6 +11,7 @@ IF OBJECT_ID('dbo.Genre', 'U')			IS NOT NULL DROP TABLE [Genre];
 IF OBJECT_ID('dbo.Auditorium', 'U')		IS NOT NULL DROP TABLE [Auditorium];
 IF OBJECT_ID('dbo.Logo', 'U')			IS NOT NULL DROP TABLE [Logo];
 IF OBJECT_ID('dbo.Ticket', 'U')			IS NOT NULL DROP TABLE [Ticket];
+IF OBJECT_ID('dbo.Log', 'U')			IS NOT NULL DROP TABLE [Log];
 
 /********************************
  *	  Возрастные ограничения	*
@@ -151,11 +152,19 @@ CREATE TABLE [Logo]
 	Logo	IMAGE	NULL
 )
 
-INSERT INTO [Logo] 
+INSERT INTO [Logo] (Logo) VALUES (NULL)
+
+/********************************
+ *			 Протокол			*
+ ********************************/
+CREATE TABLE [Log]
 (
-	Logo
-)
-VALUES
-(
-	NULL
+	Id				INT					IDENTITY,
+	[User]			NVARCHAR(128)		NOT NULL,
+	[Date]			DATETIME			NOT NULL DEFAULT GETDATE(),
+	EntityTable		NVARCHAR(128)		NOT NULL,
+	EntityId		INT					NULL,
+	OperationType	INT					NOT NULL,
+
+	CONSTRAINT LogPK PRIMARY KEY (Id)
 )
