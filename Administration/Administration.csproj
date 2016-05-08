@@ -117,6 +117,7 @@
     <Compile Include="ViewModel\AuditoriumListPageViewModel.cs" />
     <Compile Include="ViewModel\GenreEditorWindowViewModel.cs" />
     <Compile Include="ViewModel\GenreListPageViewModel.cs" />
+    <Compile Include="ViewModel\LogEntryListPageViewModel.cs" />
     <Compile Include="ViewModel\LoginWindowViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\MovieEditorWindowViewModel.cs" />
@@ -128,6 +129,9 @@
     <Compile Include="ViewModel\UserListPageViewModel.cs" />
     <Compile Include="View\AuditoriumListPage.xaml.cs">
       <DependentUpon>AuditoriumListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LogEntryListPage.xaml.cs">
+      <DependentUpon>LogEntryListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserListPage.xaml.cs">
       <DependentUpon>UserListPage.xaml</DependentUpon>
@@ -192,6 +196,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AuditoriumListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\LogEntryListPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

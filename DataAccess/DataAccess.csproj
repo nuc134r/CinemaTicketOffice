@@ -53,7 +53,9 @@
     <Compile Include="Model\AgeLimit.cs" />
     <Compile Include="Model\Auditorium.cs" />
     <Compile Include="Model\Genre.cs" />
+    <Compile Include="Model\LogEntry.cs" />
     <Compile Include="Model\Movie.cs" />
+    <Compile Include="Model\OperationType.cs" />
     <Compile Include="Model\Seat.cs" />
     <Compile Include="Model\Showtime.cs" />
     <Compile Include="Model\Ticket.cs" />
@@ -64,6 +66,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IMovieRepository.cs" />
     <Compile Include="Repository\IShowtimeRepository.cs" />
+    <Compile Include="Repository\LogsRepository.cs" />
     <Compile Include="Repository\MovieRepository.cs" />
     <Compile Include="ObjectExtensions.cs" />
     <Compile Include="Repository\SettingsRepository.cs" />

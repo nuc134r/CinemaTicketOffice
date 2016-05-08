@@ -1,0 +1,25 @@
+﻿<Page x:Class="Administration.View.LogEntryListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Administration.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="363.324" d:DesignWidth="594.53"
+      Title="ListPageBase">
+
+    <Grid>
+        <Button x:Name="EditButton" Content="Просмотреть" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" Click="EditButton_Click"/>
+        <ListView x:Name="listView" ItemsSource="{Binding}" Margin="0,25,0,0" Foreground="Black" SelectedIndex="0" MouseDoubleClick="ListView_OnMouseDoubleClick">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Дата"  DisplayMemberBinding="{Binding Date}" />
+                    <GridViewColumn Header="Пользователь" DisplayMemberBinding="{Binding User}" />
+                    <GridViewColumn Header="Действие" DisplayMemberBinding="{Binding OperationTypeString}" />
+                    <GridViewColumn Header="Тип данных" DisplayMemberBinding="{Binding TableName}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Page>

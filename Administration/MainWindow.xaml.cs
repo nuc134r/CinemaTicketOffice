@@ -56,6 +56,9 @@ namespace Administration
                 case "6":
                     viewModel.Frame = new UserListPage(this);
                     break;
+                case "7":
+                    viewModel.Frame = new LogEntryListPage(this);
+                    break;
                 default:
                     viewModel.Frame = null;
                     break;

@@ -30,6 +30,7 @@
                 <TreeViewItem Header="Залы" Tag="3" />
             </TreeViewItem>
             <TreeViewItem Header="Пользователи" Tag="6" Visibility="{Binding SuperadminVisibility}" />
+            <TreeViewItem Header="Протоколирование" Tag="7" Visibility="{Binding AdminVisibility}" />
         </TreeView>
         <StatusBar Margin="0" Grid.ColumnSpan="3" Height="23" VerticalAlignment="Bottom">
             <StatusBar.ItemsPanel>
