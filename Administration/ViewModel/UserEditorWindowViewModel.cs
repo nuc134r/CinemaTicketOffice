@@ -29,6 +29,11 @@ namespace Administration.ViewModel
 
         public bool CreateMode { get; set; }
 
+        public bool NotCreateMode
+        {
+            get { return !CreateMode; }
+        }
+
         public User User { get; set; }
 
         public void Save()

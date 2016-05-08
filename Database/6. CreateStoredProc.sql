@@ -562,10 +562,10 @@ AS
 
 	DECLARE @Sql NVARCHAR(512)
 
-	SET @Sql = 'CREATE LOGIN ' + @Username + ' WITH PASSWORD = ''' + @Password + '''';
+	SET @Sql = 'CREATE LOGIN [' + @Username + '] WITH PASSWORD = ''' + @Password + '''';
 	EXEC (@Sql)
 
-	SET @Sql = 'CREATE USER ' + @Username + ' FOR LOGIN ' + @Username;
+	SET @Sql = 'CREATE USER [' + @Username + '] FOR LOGIN [' + @Username + ']';
 	EXEC (@Sql)
 
 	IF (@Usertype = 1)
@@ -622,11 +622,17 @@ GO
 CREATE PROCEDURE dbo.DeleteUser
 	@Username NVARCHAR(128)
 AS
+	IF (CURRENT_USER = @Username)
+	BEGIN
+		RAISERROR('Cannot remove current user', 16, 1)
+		RETURN 1
+	END
+
 	DECLARE @Sql NVARCHAR(512)
 
-	SET @Sql = 'DROP USER ' + @Username;
+	SET @Sql = 'DROP USER [' + @Username + ']';
 	EXEC (@Sql)
 
-	SET @Sql = 'DROP LOGIN ' + @Username;
+	SET @Sql = 'DROP LOGIN [' + @Username + ']';
 	EXEC (@Sql)
 GO
