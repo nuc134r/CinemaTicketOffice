@@ -53,7 +53,7 @@ namespace Administration.ViewModel
                     genre = genre.Clone();
                 }
 
-                var editor = new GenreEditorWindow(genre);
+                var editor = new Editors.GenreEditorWindow(genre);
                 var result = editor.ShowDialog();
 
                 if (result.HasValue && result.Value)

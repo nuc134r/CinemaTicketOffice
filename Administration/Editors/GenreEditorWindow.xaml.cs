@@ -6,7 +6,7 @@ using DataAccess;
 using DataAccess.Model;
 using DataAccess.Repository;
 
-namespace Administration
+namespace Administration.Editors
 {
     public partial class GenreEditorWindow
     {

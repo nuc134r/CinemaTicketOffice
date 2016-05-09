@@ -8,12 +8,12 @@ namespace Administration.ViewModel
 {
     public class ShowtimeEditorWindowViewModel
     {
-        private readonly ShowtimeEditorWindow view;
+        private readonly Editors.ShowtimeEditorWindow view;
         private readonly MovieRepository movieRepository;
         private readonly ShowtimeRepository showtimeRepository;
         public bool CreateMode { get; set; }
 
-        public ShowtimeEditorWindowViewModel(ShowtimeEditorWindow view, Showtime showtime, MovieRepository movieRepository, ShowtimeRepository showtimeRepository)
+        public ShowtimeEditorWindowViewModel(Editors.ShowtimeEditorWindow view, Showtime showtime, MovieRepository movieRepository, ShowtimeRepository showtimeRepository)
         {
             if (showtime == null)
             {

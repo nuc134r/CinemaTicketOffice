@@ -54,7 +54,7 @@ namespace Administration.ViewModel
                     auditorium = auditorium.Clone();
                 }
 
-                var editor = new AuditoriumEditorWindow(auditorium);
+                var editor = new Editors.AuditoriumEditorWindow(auditorium);
                 var result = editor.ShowDialog();
 
                 if (result.HasValue && result.Value)

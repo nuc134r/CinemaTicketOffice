@@ -11,7 +11,7 @@ using DataAccess.Model;
 using DataAccess.Repository;
 using Microsoft.Win32;
 
-namespace Administration
+namespace Administration.Editors
 {
     public partial class MovieEditorWindow : IMovieEditorWindow
     {

@@ -34,7 +34,7 @@ namespace Administration.ViewModel
                     ticket = ticket.Clone();
                 }
 
-                var editor = new TicketEditorWindow(ticket);
+                var editor = new Editors.TicketEditorWindow(ticket);
                 var result = editor.ShowDialog();
 
                 if (result.HasValue && result.Value)

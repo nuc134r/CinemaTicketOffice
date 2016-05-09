@@ -53,7 +53,7 @@ namespace Administration.ViewModel
                     logEntry = logEntry.Clone();
                 }
 
-                //var editor = new TicketEditorWindow(logEntry);
+                //var editor = new LogEntryEditorWindow(logEntry);
                 //var result = editor.ShowDialog();
 
                 //if (result.HasValue && result.Value)

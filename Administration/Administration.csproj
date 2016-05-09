@@ -89,30 +89,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AuditoriumEditorWindow.xaml.cs">
+    <Compile Include="Editors\AuditoriumEditorWindow.xaml.cs">
       <DependentUpon>AuditoriumEditorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GenreEditorWindow.xaml.cs">
+    <Compile Include="Editors\GenreEditorWindow.xaml.cs">
       <DependentUpon>GenreEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\MovieEditorWindow.xaml.cs">
+      <DependentUpon>MovieEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\ShowtimeEditorWindow.xaml.cs">
+      <DependentUpon>ShowtimeEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\TicketEditorWindow.xaml.cs">
+      <DependentUpon>TicketEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\UserEditorWindow.xaml.cs">
+      <DependentUpon>UserEditorWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\ILoginWindow.cs" />
     <Compile Include="Interfaces\IMovieEditorWindow.cs" />
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MenuSection.cs" />
-    <Compile Include="MovieEditorWindow.xaml.cs">
-      <DependentUpon>MovieEditorWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ShowtimeEditorWindow.xaml.cs">
-      <DependentUpon>ShowtimeEditorWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="TicketEditorWindow.xaml.cs">
-      <DependentUpon>TicketEditorWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserEditorWindow.xaml.cs">
-      <DependentUpon>UserEditorWindow.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Model\MenuSection.cs" />
     <Compile Include="ViewModel\AuditoriumEditorWindowViewModel.cs" />
     <Compile Include="ViewModel\AuditoriumListPageViewModel.cs" />
     <Compile Include="ViewModel\GenreEditorWindowViewModel.cs" />
@@ -151,11 +151,27 @@
     <Compile Include="View\MovieListPage.xaml.cs">
       <DependentUpon>MovieListPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="AuditoriumEditorWindow.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Editors\AuditoriumEditorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="GenreEditorWindow.xaml">
+    <Page Include="Editors\GenreEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Editors\MovieEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Editors\ShowtimeEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Editors\TicketEditorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Editors\UserEditorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -176,22 +192,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MainWindowResources.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MovieEditorWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ShowtimeEditorWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TicketEditorWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserEditorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

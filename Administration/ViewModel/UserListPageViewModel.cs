@@ -34,7 +34,7 @@ namespace Administration.ViewModel
                     user = user.Clone();
                 }
 
-                var editor = new UserEditorWindow(user);
+                var editor = new Editors.UserEditorWindow(user);
                 var result = editor.ShowDialog();
 
                 if (result.HasValue && result.Value)

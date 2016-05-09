@@ -6,9 +6,9 @@ namespace Administration.ViewModel
     public class UserEditorWindowViewModel
     {
         private readonly UserRepository repository;
-        private readonly UserEditorWindow view;
+        private readonly Editors.UserEditorWindow view;
 
-        public UserEditorWindowViewModel(UserEditorWindow view, User user, UserRepository repository)
+        public UserEditorWindowViewModel(Editors.UserEditorWindow view, User user, UserRepository repository)
         {
             if (user == null)
             {

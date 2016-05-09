@@ -1,4 +1,4 @@
-﻿namespace Administration
+﻿namespace Administration.Model
 {
     public class MenuSection
     {

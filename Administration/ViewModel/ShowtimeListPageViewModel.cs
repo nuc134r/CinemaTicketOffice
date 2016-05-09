@@ -53,7 +53,7 @@ namespace Administration.ViewModel
                     showtime = showtime.Clone();
                 }
 
-                var editor = new ShowtimeEditorWindow(showtime);
+                var editor = new Editors.ShowtimeEditorWindow(showtime);
                 var result = editor.ShowDialog();
 
                 if (result.HasValue && result.Value)

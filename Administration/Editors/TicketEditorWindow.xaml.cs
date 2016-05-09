@@ -1,6 +1,6 @@
 ﻿using DataAccess.Model;
 
-namespace Administration
+namespace Administration.Editors
 {
     public partial class TicketEditorWindow
     {

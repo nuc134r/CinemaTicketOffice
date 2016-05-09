@@ -54,7 +54,7 @@ namespace Administration.ViewModel
                     movie = movie.Clone();
                 }
 
-                var editor = new MovieEditorWindow(movie);
+                var editor = new Editors.MovieEditorWindow(movie);
                 var result = editor.ShowDialog();
 
                 if (result.HasValue && result.Value)
