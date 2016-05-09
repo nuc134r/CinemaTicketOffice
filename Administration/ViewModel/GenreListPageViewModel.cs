@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Windows;
+using Administration.Editors;
 using Administration.Properties;
 using Administration.View;
 using DataAccess.Model;
@@ -53,7 +54,7 @@ namespace Administration.ViewModel
                     genre = genre.Clone();
                 }
 
-                var editor = new Editors.GenreEditorWindow(genre);
+                var editor = new GenreEditorWindow(genre);
                 var result = editor.ShowDialog();
 
                 if (result.HasValue && result.Value)

@@ -61,6 +61,33 @@ namespace DataAccess {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to создание.
+        /// </summary>
+        internal static string CreationText {
+            get {
+                return ResourceManager.GetString("CreationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to удаление.
+        /// </summary>
+        internal static string DeletionText {
+            get {
+                return ResourceManager.GetString("DeletionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to редактирование.
+        /// </summary>
+        internal static string EditingText {
+            get {
+                return ResourceManager.GetString("EditingText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to осталось {0} ч {1} мин.
         /// </summary>
         internal static string HoursLeftString {

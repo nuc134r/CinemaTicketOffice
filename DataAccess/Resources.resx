@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CreationText" xml:space="preserve">
+    <value>создание</value>
+  </data>
+  <data name="DeletionText" xml:space="preserve">
+    <value>удаление</value>
+  </data>
+  <data name="EditingText" xml:space="preserve">
+    <value>редактирование</value>
+  </data>
   <data name="HoursLeftString" xml:space="preserve">
     <value>осталось {0} ч {1} мин</value>
   </data>

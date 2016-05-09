@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Windows;
+using Administration.Editors;
 using Administration.Properties;
 using Administration.View;
 using DataAccess.Model;
@@ -54,7 +55,7 @@ namespace Administration.ViewModel
                     movie = movie.Clone();
                 }
 
-                var editor = new Editors.MovieEditorWindow(movie);
+                var editor = new MovieEditorWindow(movie);
                 var result = editor.ShowDialog();
 
                 if (result.HasValue && result.Value)

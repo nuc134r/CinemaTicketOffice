@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Windows;
+using Administration.Editors;
 using Administration.Properties;
 using Administration.View;
 using DataAccess.Model;
@@ -34,7 +35,7 @@ namespace Administration.ViewModel
                     user = user.Clone();
                 }
 
-                var editor = new Editors.UserEditorWindow(user);
+                var editor = new UserEditorWindow(user);
                 var result = editor.ShowDialog();
 
                 if (result.HasValue && result.Value)

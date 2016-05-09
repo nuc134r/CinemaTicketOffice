@@ -1,53 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using DataAccess.Annotations;
 using DataAccess.Model;
-using KioskClient.Properties;
 
 namespace KioskClient.Domain
 {
-    public class AuditoriumSeat : INotifyPropertyChanged
-    {
-        private bool isSelected;
-        public int SeatNumber { get; set; }
-        public AuditoriumRow Row { get; set; }
-
-        public bool IsSelected
-        {
-            get { return isSelected; }
-            set
-            {
-                isSelected = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public bool IsFree { get; set; }
-
-        public string SeatString
-        {
-            get { return string.Format(Resources.SeatText, Row.Number, SeatNumber); }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
-
-    public class AuditoriumRow
-    {
-        public int Number { get; set; }
-        public List<AuditoriumSeat> Seats { get; set; }
-    }
-
     public class AuditoriumView : INotifyPropertyChanged
     {
         public AuditoriumView(Auditorium auditorium, List<Seat> occupiedSeats)
@@ -84,13 +40,13 @@ namespace KioskClient.Domain
             }
         }
 
+        public List<AuditoriumRow> Rows { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private void SeatOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
         {
             var handler = PropertyChanged;
             if (handler != null) handler(sender, new PropertyChangedEventArgs(propertyChangedEventArgs.PropertyName));
         }
-
-        public List<AuditoriumRow> Rows { get; set; }
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

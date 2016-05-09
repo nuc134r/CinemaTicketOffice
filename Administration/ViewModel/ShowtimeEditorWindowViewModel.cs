@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
+using Administration.Editors;
 using DataAccess.Model;
 using DataAccess.Repository;
 
@@ -8,12 +8,12 @@ namespace Administration.ViewModel
 {
     public class ShowtimeEditorWindowViewModel
     {
-        private readonly Editors.ShowtimeEditorWindow view;
         private readonly MovieRepository movieRepository;
         private readonly ShowtimeRepository showtimeRepository;
-        public bool CreateMode { get; set; }
+        private readonly ShowtimeEditorWindow view;
 
-        public ShowtimeEditorWindowViewModel(Editors.ShowtimeEditorWindow view, Showtime showtime, MovieRepository movieRepository, ShowtimeRepository showtimeRepository)
+        public ShowtimeEditorWindowViewModel(ShowtimeEditorWindow view, Showtime showtime,
+            MovieRepository movieRepository, ShowtimeRepository showtimeRepository)
         {
             if (showtime == null)
             {
@@ -39,6 +39,8 @@ namespace Administration.ViewModel
 
             view.Time = showtime.Time;
         }
+
+        public bool CreateMode { get; set; }
 
         public Showtime Showtime { get; set; }
         public List<Movie> Movies { get; set; }

@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Windows;
+using Administration.Editors;
 using Administration.Properties;
 using Administration.View;
 using DataAccess.Model;
@@ -53,10 +54,10 @@ namespace Administration.ViewModel
                     logEntry = logEntry.Clone();
                 }
 
-                //var editor = new LogEntryEditorWindow(logEntry);
-                //var result = editor.ShowDialog();
+                var editor = new LogEntryEditorWindow(logEntry);
+                var result = editor.ShowDialog();
 
-                //if (result.HasValue && result.Value)
+                if (result.HasValue && result.Value)
                 {
                     RetrieveData();
                 }

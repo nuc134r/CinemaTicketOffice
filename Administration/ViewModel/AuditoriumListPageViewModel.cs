@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Windows;
+using Administration.Editors;
 using Administration.Properties;
 using Administration.View;
 using DataAccess.Model;
@@ -54,7 +55,7 @@ namespace Administration.ViewModel
                     auditorium = auditorium.Clone();
                 }
 
-                var editor = new Editors.AuditoriumEditorWindow(auditorium);
+                var editor = new AuditoriumEditorWindow(auditorium);
                 var result = editor.ShowDialog();
 
                 if (result.HasValue && result.Value)

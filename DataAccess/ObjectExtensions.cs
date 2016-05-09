@@ -17,7 +17,7 @@ namespace DataAccess
             return value;
         }
 
-        public static int? ToNulllableInt(this object o)
+        public static int? ToNullableInt(this object o)
         {
             int value;
             var result = int.TryParse(o.ToString(), out value);

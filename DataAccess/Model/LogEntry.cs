@@ -18,11 +18,11 @@ namespace DataAccess.Model
                 switch (OperationType)
                 {
                     case OperationType.Creation:
-                        return "Создание";
+                        return Resources.CreationText;
                     case OperationType.Editing:
-                        return "Редактирование";
+                        return Resources.EditingText;
                     case OperationType.Deletion:
-                        return "Удаление";
+                        return Resources.DeletionText;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }

@@ -1,0 +1,29 @@
+﻿<Window x:Class="Administration.Editors.LogEntryEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Administration"
+        mc:Ignorable="d"
+        Title="Запись в протоколе" Height="166" Width="351" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="11"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1" Margin="10,0,10,10" TextWrapping="WrapWithOverflow">
+            <Run Text="Дата:"/>
+            <Run Text="{Binding Date}" FontWeight="Bold"/>
+            <LineBreak />
+            <LineBreak />
+            <Run Text="Пользователь"/>
+            <Run Text="{Binding User}" FontWeight="Bold" />
+            <Run Text="осуществил"/>
+            <Run Text="{Binding OperationTypeString, Mode=OneWay}" FontWeight="Bold"/>
+            <Run Text="в таблице"/>
+            <Run Text="{Binding TableName}" FontWeight="Bold"/>
+            <Run Text="для сущности с идентификатором"/>
+            <Run Text="{Binding EntitiyId}" FontWeight="Bold"/>
+        </TextBlock>
+    </Grid>
+</Window>

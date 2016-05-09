@@ -1,3 +1,4 @@
+using Administration.Editors;
 using DataAccess.Model;
 using DataAccess.Repository;
 
@@ -6,9 +7,9 @@ namespace Administration.ViewModel
     public class UserEditorWindowViewModel
     {
         private readonly UserRepository repository;
-        private readonly Editors.UserEditorWindow view;
+        private readonly UserEditorWindow view;
 
-        public UserEditorWindowViewModel(Editors.UserEditorWindow view, User user, UserRepository repository)
+        public UserEditorWindowViewModel(UserEditorWindow view, User user, UserRepository repository)
         {
             if (user == null)
             {

@@ -31,7 +31,7 @@ namespace DataAccess.Repository
                     Date = row["Date"].ToDate(),
                     User = row["User"].ToString(),
                     OperationType = (OperationType) (row["OperationType"].ToInt() + 1),
-                    EntitiyId = row["EntityId"].ToNulllableInt(),
+                    EntitiyId = row["EntityId"].ToNullableInt(),
                     TableName = row["EntityTable"].ToString()
                 };
             }

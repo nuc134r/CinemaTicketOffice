@@ -95,14 +95,17 @@
     <Compile Include="Editors\GenreEditorWindow.xaml.cs">
       <DependentUpon>GenreEditorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Editors\TicketEditorWindow.xaml.cs">
+      <DependentUpon>TicketEditorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Editors\MovieEditorWindow.xaml.cs">
       <DependentUpon>MovieEditorWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Editors\ShowtimeEditorWindow.xaml.cs">
       <DependentUpon>ShowtimeEditorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Editors\TicketEditorWindow.xaml.cs">
-      <DependentUpon>TicketEditorWindow.xaml</DependentUpon>
+    <Compile Include="Editors\LogEntryEditorWindow.xaml.cs">
+      <DependentUpon>LogEntryEditorWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Editors\UserEditorWindow.xaml.cs">
       <DependentUpon>UserEditorWindow.xaml</DependentUpon>
@@ -159,6 +162,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Editors\TicketEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Editors\MovieEditorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -167,7 +174,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Editors\TicketEditorWindow.xaml">
+    <Page Include="Editors\LogEntryEditorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

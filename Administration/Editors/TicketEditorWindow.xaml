@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Administration"
+        xmlns:local="clr-namespace:Administration.Editors"
         mc:Ignorable="d"
-        Title="Билет" Height="215" Width="300" ResizeMode="NoResize">
+        Title="Билет" Height="215" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="11"/>
