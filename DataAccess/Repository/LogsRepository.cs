@@ -31,8 +31,8 @@ namespace DataAccess.Repository
                     Date = row["Date"].ToDate(),
                     User = row["User"].ToString(),
                     OperationType = (OperationType) (row["OperationType"].ToInt() + 1),
-                    EntitiyId = row["EntityId"].ToInt(),
-                    TableName = row["TableName"].ToString()
+                    EntitiyId = row["EntityId"].ToNulllableInt(),
+                    TableName = row["EntityTable"].ToString()
                 };
             }
         }

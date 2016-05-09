@@ -9,6 +9,7 @@ AS
 			WHEN 'greenbird_user'		THEN 1
 			WHEN 'greenbird_admin'		THEN 2
 			WHEN 'greenbird_superadmin' THEN 3
+			ELSE 0
 		END
 	FROM 
 		sys.database_role_members AS [RM]
@@ -24,6 +25,8 @@ AS
 									WHERE 
 										[P].name = CURRENT_USER)
 GO
+
+GRANT EXECUTE ON dbo.CurrentRole TO PUBLIC
 
 IF OBJECT_ID('dbo.BrowseMovies', 'P') IS NOT NULL DROP PROCEDURE [BrowseMovies]
 GO
@@ -635,4 +638,21 @@ AS
 
 	SET @Sql = 'DROP LOGIN [' + @Username + ']';
 	EXEC (@Sql)
+GO
+
+IF OBJECT_ID('dbo.BrowseLogs', 'P') IS NOT NULL DROP PROCEDURE [BrowseLogs]
+GO
+CREATE PROCEDURE dbo.BrowseLogs
+AS
+	SELECT 
+		Id,
+		[User],
+		[Date],
+		EntityTable,
+		EntityId,
+		OperationType
+	FROM 
+		[Log]
+	ORDER BY
+		[Date] DESC
 GO

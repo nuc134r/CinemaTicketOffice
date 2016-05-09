@@ -33,35 +33,42 @@ namespace Administration
 
             var pageId = item.Tag.ToString();
 
-            switch (pageId)
+            try
             {
-                case "0":
-                    viewModel.Frame = new MovieListPage(this);
-                    break;
-                case "1":
-                    viewModel.Frame = new GenreListPage(this);
-                    break;
-                case "2":
-                    viewModel.Frame = new ShowtimeListPage(this);
-                    break;
-                case "4":
-                    viewModel.Frame = new SeatListPage(this);
-                    break;
-                case "5":
-                    viewModel.Frame = new LogoSetupPage(this);
-                    break;
-                case "3":
-                    viewModel.Frame = new AuditoriumListPage(this);
-                    break;
-                case "6":
-                    viewModel.Frame = new UserListPage(this);
-                    break;
-                case "7":
-                    viewModel.Frame = new LogEntryListPage(this);
-                    break;
-                default:
-                    viewModel.Frame = null;
-                    break;
+                switch (pageId)
+                {
+                    case "0":
+                        viewModel.Frame = new MovieListPage(this);
+                        break;
+                    case "1":
+                        viewModel.Frame = new GenreListPage(this);
+                        break;
+                    case "2":
+                        viewModel.Frame = new ShowtimeListPage(this);
+                        break;
+                    case "4":
+                        viewModel.Frame = new SeatListPage(this);
+                        break;
+                    case "5":
+                        viewModel.Frame = new LogoSetupPage(this);
+                        break;
+                    case "3":
+                        viewModel.Frame = new AuditoriumListPage(this);
+                        break;
+                    case "6":
+                        viewModel.Frame = new UserListPage(this);
+                        break;
+                    case "7":
+                        viewModel.Frame = new LogEntryListPage(this);
+                        break;
+                    default:
+                        viewModel.Frame = null;
+                        break;
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
         }
 

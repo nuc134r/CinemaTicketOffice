@@ -17,6 +17,19 @@ namespace DataAccess
             return value;
         }
 
+        public static int? ToNulllableInt(this object o)
+        {
+            int value;
+            var result = int.TryParse(o.ToString(), out value);
+
+            if (!result)
+            {
+                return null;
+            }
+
+            return value;
+        }
+
         public static DateTime ToDate(this object o)
         {
             return (DateTime) o;

@@ -8,7 +8,7 @@ namespace DataAccess.Model
         public string User { get; set; }
         public DateTime Date { get; set; }
         public string TableName { get; set; }
-        public int EntitiyId { get; set; }
+        public int? EntitiyId { get; set; }
         public OperationType OperationType { get; set; }
 
         public string OperationTypeString

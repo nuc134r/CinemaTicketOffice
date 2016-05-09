@@ -1,8 +1,6 @@
 ﻿
 /* admin */
 
-GRANT EXECUTE ON dbo.CurrentRole TO greenbird_admin
-GO
 GRANT EXECUTE ON dbo.BrowseMovies TO greenbird_admin
 GO
 GRANT EXECUTE ON dbo.MovieDetails TO greenbird_admin
@@ -47,6 +45,8 @@ GRANT EXECUTE ON dbo.DeleteAuditorium TO greenbird_admin
 GO
 GRANT EXECUTE ON dbo.BrowseTickets TO greenbird_admin
 GO
+GRANT EXECUTE ON dbo.BrowseLogs TO greenbird_admin
+GO
 GRANT EXEC ON TYPE::dbo.IdList TO greenbird_admin
 GO
 GRANT EXEC ON TYPE::dbo.SeatList TO greenbird_admin
@@ -54,8 +54,6 @@ GO
 
 /* user */
 
-GRANT EXECUTE ON dbo.CurrentRole TO greenbird_user
-GO
 GRANT EXECUTE ON dbo.BrowseMovies TO greenbird_user
 GO
 GRANT EXECUTE ON dbo.MovieDetails TO greenbird_user
@@ -75,8 +73,6 @@ GO
 
 /* superadmin */
 
-GRANT EXECUTE ON dbo.CurrentRole TO greenbird_superadmin
-GO
 GRANT ALTER ANY USER TO greenbird_superadmin
 GO
 GRANT EXECUTE ON dbo.BrowseUsers TO greenbird_superadmin
