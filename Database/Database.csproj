@@ -47,9 +47,11 @@
     <Content Include="5. CreateUsers.sql" />
     <Content Include="7. GrantRoles.sql" />
     <Content Include="6. CreateStoredProc.sql" />
+    <Content Include="I0. CreateBackupScript.sql" />
     <Content Include="9. CreateTriggers.sql" />
     <Content Include="8. FillScript.sql" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="LaunchBackup.bat" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="1. CreateSchema.sql" />
