@@ -69,8 +69,11 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -80,9 +83,11 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -116,6 +121,7 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\MenuSection.cs" />
+    <Compile Include="Report\SoldTickets.Designer.cs" />
     <Compile Include="ViewModel\AuditoriumEditorWindowViewModel.cs" />
     <Compile Include="ViewModel\AuditoriumListPageViewModel.cs" />
     <Compile Include="ViewModel\GenreEditorWindowViewModel.cs" />
@@ -135,6 +141,9 @@
     </Compile>
     <Compile Include="View\LogEntryListPage.xaml.cs">
       <DependentUpon>LogEntryListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SoldTicketsReportPage.xaml.cs">
+      <DependentUpon>SoldTicketsReportPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserListPage.xaml.cs">
       <DependentUpon>UserListPage.xaml</DependentUpon>
@@ -210,6 +219,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\SoldTicketsReportPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\UserListPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -254,12 +267,24 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\SoldTicketsReport.rdlc" />
     <None Include="Administration_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Report\SoldTickets.xsc">
+      <DependentUpon>SoldTickets.xsd</DependentUpon>
+    </None>
+    <None Include="Report\SoldTickets.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SoldTickets1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Report\SoldTickets.xss">
+      <DependentUpon>SoldTickets.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

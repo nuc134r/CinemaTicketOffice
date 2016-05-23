@@ -41,6 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Content Include="2. CreateForeignKeys.sql" />
     <Content Include="3. CreateRoles.sql" />
     <Content Include="4. CreateLogins.sql" />
@@ -52,6 +57,10 @@
     <Content Include="FillScript.sql" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="LaunchBackup.bat" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="1. CreateSchema.sql" />

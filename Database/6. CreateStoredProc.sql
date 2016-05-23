@@ -528,7 +528,8 @@ AS
 		[M].Title,
 		[S].ShowtimeDate,
 		DATEADD(hour, 0, [T].SellDate) AS SellDate,
-		[A].Name
+		[A].Name,
+		[S].Price
 	FROM
 		[Ticket] AS [T]
 	INNER JOIN
