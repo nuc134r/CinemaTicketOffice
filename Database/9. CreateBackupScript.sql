@@ -1,4 +1,6 @@
-﻿USE [master] 
+﻿-- https://support.microsoft.com/en-us/kb/2019698
+
+USE [master] 
 GO 
 /****** Object:  StoredProcedure [dbo].[sp_BackupDatabases] ******/ 
 SET ANSI_NULLS ON 

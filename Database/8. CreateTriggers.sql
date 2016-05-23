@@ -28,13 +28,14 @@ FETCH NEXT FROM TablesCursor INTO @TableName
 
 WHILE @@FETCH_STATUS=0
 BEGIN
+	-- If table has [Id] column then we will take it into [dbo].[Log]
 	IF EXISTS(SELECT * 
 			  FROM sys.columns 
 			  WHERE Name = N'Id' AND Object_ID = Object_ID(@TableName))
 	BEGIN
 		SET @IdValue = '[Id]'
 	END
-	ELSE
+	ELSE 
 	BEGIN
 		SET @IdValue = 'NULL'
 	END

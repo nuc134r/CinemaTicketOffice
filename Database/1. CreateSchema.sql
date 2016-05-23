@@ -70,7 +70,7 @@ CREATE TABLE [Showtime]
 	Id				INT				IDENTITY,
 	MovieId			INT				NOT NULL,
 	AuditoriumId	INT				NOT NULL,
-	ShowtimeDate	DateTime		NOT NULL,
+	ShowtimeDate	DATETIME		NOT NULL,
 	Price			MONEY			NOT NULL,
 	ThreeDee		BIT				NOT NULL DEFAULT 0,
 	
