@@ -82,5 +82,16 @@ namespace Administration.Properties {
                 this["currentRole"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SERGIO-LAPTOP\\MSSQL2008R2;Initial Catalog=cinemadb;Integrated Securit" +
+            "y=True")]
+        public string cinemadbConnectionString {
+            get {
+                return ((string)(this["cinemadbConnectionString"]));
+            }
+        }
     }
 }
