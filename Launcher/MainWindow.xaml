@@ -5,39 +5,60 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Launcher"
         mc:Ignorable="d"
-        Title="Система Автоматизации Продажи Билетов" Height="346" Width="327" ResizeMode="NoResize">
+        Title="Система Автоматизации Продажи Билетов" Height="434" Width="640" ResizeMode="NoResize">
     <Grid>
-        <TabControl x:Name="tabControl">
-            <TabItem Header="SQL Server">
+        <TabControl x:Name="tabControl" Margin="0,68,0,0" BorderThickness="0">
+            <TabItem Header="SQL Server" Height="0">
                 <Grid>
-                    <Label Content="Сервер:" VerticalAlignment="Top" Height="26" Margin="13,6,0,0" HorizontalAlignment="Left" Width="68"/>
-                    <TextBox x:Name="serverTB" Text="{Binding Server}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="-1" Margin="91,10,17,0"/>
-                    <Label Content="Логин:" VerticalAlignment="Top" Height="26" Margin="13,62,0,0" HorizontalAlignment="Left" Width="68"/>
-                    <TextBox x:Name="loginTB" Text="{Binding User}" IsEnabled="{Binding IsNotTrustedConnection}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="2" Margin="91,66,17,0"/>
-                    <Label Content="Пароль:" VerticalAlignment="Top" Height="26" Margin="13,88,0,0" HorizontalAlignment="Left" Width="68"/>
+                    <Label Content="Сервер:" VerticalAlignment="Top" Height="26" Margin="13,37,0,0" HorizontalAlignment="Left" Width="68"/>
+                    <TextBox x:Name="serverTB" Text="{Binding Server}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="-1" Margin="91,41,17,0"/>
+                    <Label Content="Логин:" VerticalAlignment="Top" Height="26" Margin="13,93,0,0" HorizontalAlignment="Left" Width="68"/>
+                    <TextBox x:Name="loginTB" Text="{Binding User}" IsEnabled="{Binding IsNotTrustedConnection}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="2" Margin="91,97,17,0"/>
+                    <Label Content="Пароль:" VerticalAlignment="Top" Height="26" Margin="13,119,0,0" HorizontalAlignment="Left" Width="68"/>
                     <Button x:Name="connectButton" Content="Соединить" HorizontalAlignment="Right" Width="90" Height="20" VerticalAlignment="Bottom" TabIndex="4" IsDefault="True" Margin="0,0,17,14" Click="connectButton_Click"/>
-                    <PasswordBox x:Name="passwordBox" VerticalAlignment="Top" IsEnabled="{Binding IsNotTrustedConnection}" Height="23" TabIndex="3" Margin="91,92,17,0"/>
+                    <PasswordBox x:Name="passwordBox" VerticalAlignment="Top" IsEnabled="{Binding IsNotTrustedConnection}" Height="23" TabIndex="3" Margin="91,123,17,0"/>
                     <Label x:Name="ConnectingStatusLabel" HorizontalContentAlignment="Left" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="95" Foreground="#FF1A00C1" Margin="13,0,0,12"/>
-                    <CheckBox x:Name="checkBox" IsChecked="{Binding IsTrustedConnection}" Content="Безопасное соединение" HorizontalAlignment="Left" Margin="17,41,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="checkBox" IsChecked="{Binding IsTrustedConnection}" Content="Безопасное соединение" HorizontalAlignment="Left" Margin="17,72,0,0" VerticalAlignment="Top"/>
+                    <TextBlock Height="26" Margin="13,10,7,0" TextWrapping="Wrap" VerticalAlignment="Top">
+                        <Run Text="Введите данные для подключения к SQL Server:"/>
+                    </TextBlock>
                 </Grid>
             </TabItem>
-            <TabItem Header="Создание БД">
+            <TabItem Header="Создание БД" Height="0">
                 <Grid>
-                    <Label Content="Имя базы:" VerticalAlignment="Top" Height="26" Margin="13,6,0,0" HorizontalAlignment="Left" Width="68"/>
-                    <TextBox IsEnabled="{Binding IsConnected}" Text="{Binding Database}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="-1" Margin="91,10,17,0"/>
-                    <Button Content="Создать" IsEnabled="{Binding IsConnected}" HorizontalAlignment="Right" Width="90" Height="20" VerticalAlignment="Bottom" TabIndex="4" IsDefault="True" Margin="0,0,17,14" Click="createButton_Click"/>
-                    <TextBox x:Name="logTextBox" HorizontalAlignment="Left" Margin="13,47,0,49" TextWrapping="Wrap" Width="285" VerticalScrollBarVisibility="Visible" IsReadOnly="True" BorderThickness="0"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Имя базы:" VerticalAlignment="Top" Height="26" Margin="10,46,0,0" HorizontalAlignment="Left" Width="68" Grid.Column="1"/>
+                    <TextBox IsEnabled="{Binding NewDatabaseSelected}" Text="{Binding Database}" Height="22" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="-1" Margin="83,50,12,0" Grid.Column="1"/>
+                    <Button IsEnabled="{Binding NewDatabaseSelected}" Content="Создать"  HorizontalAlignment="Right" Width="90" Height="20" VerticalAlignment="Bottom" TabIndex="4" IsDefault="True" Margin="0,0,17,69" Click="createButton_Click" Grid.Column="1"/>
+                    <TextBox x:Name="logTextBox" HorizontalAlignment="Left" Margin="10,77,0,102" TextWrapping="Wrap" Width="293" VerticalScrollBarVisibility="Visible" IsReadOnly="True" BorderThickness="0" Grid.Column="1"/>
+                    <RadioButton IsChecked="{Binding ExistingDatabaseSelected}" Content="Существующая база данных" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top"/>
+                    <RadioButton IsChecked="{Binding NewDatabaseSelected}" Content="Новая база данных" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Button Content="Назад" HorizontalAlignment="Left" Width="90" Height="20" VerticalAlignment="Bottom" TabIndex="4" IsDefault="True" Margin="17,0,0,14" Click="BackButton_Click"/>
+                    <ComboBox IsEnabled="{Binding ExistingDatabaseSelected}" x:Name="comboBox" Margin="30,50,73,0" VerticalAlignment="Top" SelectedIndex="0"/>
+                    <Button IsEnabled="{Binding ExistingDatabaseSelected}" Content="Далее" HorizontalAlignment="Right" Width="90" Height="20" VerticalAlignment="Bottom" TabIndex="4" IsDefault="True" Margin="0,0,17,14" Click="NextButton_Click" Grid.Column="1"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Запуск приложений">
+            <TabItem Header="Запуск приложений" Height="0">
                 <Grid>
-                    <Button x:Name="button" Content="Запуск основного приложения" Margin="10,31,10,0" Height="47" VerticalAlignment="Top" Click="launchKioskButton_Click"/>
-                    <Button x:Name="button_Copy" Content="Запуск приложения для администрирования" Margin="10,83,10,0" Height="47" VerticalAlignment="Top" Click="launchAdminButton_Click"/>
+                    <Button Content="Запуск основного приложения" IsEnabled="{Binding IsConnected}" Margin="10,64,10,0" Height="47" VerticalAlignment="Top" Click="launchKioskButton_Click"/>
+                    <Button Content="Запуск приложения для администрирования" IsEnabled="{Binding IsConnected}" Margin="10,116,10,0" Height="47" VerticalAlignment="Top" Click="launchAdminButton_Click"/>
+                    <TextBlock Height="49" Margin="10,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top">
+                        В приложение будут переданы текущие параметры подключения к SQL Server.
+                    </TextBlock>
+                    <Button Content="Назад" HorizontalAlignment="Left" Width="90" Height="20" VerticalAlignment="Bottom" TabIndex="4" IsDefault="True" Margin="17,0,0,14" Click="BackButton2_Click"/>
                 </Grid>
             </TabItem>
 
 
         </TabControl>
+        <TextBlock Height="48" Margin="10,5,10,0" TextWrapping="Wrap" VerticalAlignment="Top">
+            <Run FontSize="20">Система Автоматизации Продажи Билетов</Run>
+            <LineBreak />
+            <Run FontSize="15">Мастер запуска</Run>
+        </TextBlock>
 
     </Grid>
 </Window>

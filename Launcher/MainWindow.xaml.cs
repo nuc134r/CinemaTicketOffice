@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media;
@@ -62,6 +63,8 @@ namespace Launcher
         {
             ConnectingStatusLabel.Content = "Подключён";
             ConnectingStatusLabel.Foreground = new SolidColorBrush(Colors.YellowGreen);
+
+            tabControl.SelectedIndex = 1;
         }
 
         private void SetUpAnimations()
@@ -100,9 +103,35 @@ namespace Launcher
             MessageBox.Show(message);
         }
 
-        public void ShowDatabaseCreatedMessage()
+        public void OnDatabaseCreatedMessage()
         {
-            MessageBox.Show("База данных успешно создана!");
+            tabControl.SelectedIndex = 2;
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            tabControl.SelectedIndex = 0;
+        }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            tabControl.SelectedIndex = 2;
+        }
+
+        public string GetExisitingDatabaseName()
+        {
+            return comboBox.Text;
+        }
+
+        public void SetDatabaseList(List<string> databaseList)
+        {
+            comboBox.Items.Clear();
+            databaseList.ForEach(item => comboBox.Items.Add(item));
+        }
+
+        private void BackButton2_Click(object sender, RoutedEventArgs e)
+        {
+            tabControl.SelectedIndex = 1;
         }
     }
 }
