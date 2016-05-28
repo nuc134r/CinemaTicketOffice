@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KioskClient", "KioskClient\KioskClient.csproj", "{4F3F1270-ABD6-431D-BFC1-96483141A921}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{A01C25DA-1031-4686-A0AC-96A7632C0C9C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Administration", "Administration\Administration.csproj", "{7E4CF164-0AB4-4168-A47A-78D4D11CBF2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher", "Launcher\Launcher.csproj", "{99A22249-7BAE-4D68-BB9A-9F2CE351CAB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{7E4CF164-0AB4-4168-A47A-78D4D11CBF2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E4CF164-0AB4-4168-A47A-78D4D11CBF2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E4CF164-0AB4-4168-A47A-78D4D11CBF2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99A22249-7BAE-4D68-BB9A-9F2CE351CAB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99A22249-7BAE-4D68-BB9A-9F2CE351CAB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99A22249-7BAE-4D68-BB9A-9F2CE351CAB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99A22249-7BAE-4D68-BB9A-9F2CE351CAB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

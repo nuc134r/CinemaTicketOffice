@@ -1,4 +1,4 @@
-cd %~dp0
+cd %~dp0\..\
 
 msbuild /p:Configuration=Release
 

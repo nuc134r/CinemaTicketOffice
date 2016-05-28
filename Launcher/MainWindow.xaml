@@ -1,0 +1,43 @@
+﻿<Window x:Class="Launcher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Launcher"
+        mc:Ignorable="d"
+        Title="Система Автоматизации Продажи Билетов" Height="346" Width="327" ResizeMode="NoResize">
+    <Grid>
+        <TabControl x:Name="tabControl">
+            <TabItem Header="SQL Server">
+                <Grid>
+                    <Label Content="Сервер:" VerticalAlignment="Top" Height="26" Margin="13,6,0,0" HorizontalAlignment="Left" Width="68"/>
+                    <TextBox x:Name="serverTB" Text="{Binding Server}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="-1" Margin="91,10,17,0"/>
+                    <Label Content="Логин:" VerticalAlignment="Top" Height="26" Margin="13,62,0,0" HorizontalAlignment="Left" Width="68"/>
+                    <TextBox x:Name="loginTB" Text="{Binding User}" IsEnabled="{Binding IsNotTrustedConnection}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="2" Margin="91,66,17,0"/>
+                    <Label Content="Пароль:" VerticalAlignment="Top" Height="26" Margin="13,88,0,0" HorizontalAlignment="Left" Width="68"/>
+                    <Button x:Name="connectButton" Content="Соединить" HorizontalAlignment="Right" Width="90" Height="20" VerticalAlignment="Bottom" TabIndex="4" IsDefault="True" Margin="0,0,17,14" Click="connectButton_Click"/>
+                    <PasswordBox x:Name="passwordBox" VerticalAlignment="Top" IsEnabled="{Binding IsNotTrustedConnection}" Height="23" TabIndex="3" Margin="91,92,17,0"/>
+                    <Label x:Name="ConnectingStatusLabel" HorizontalContentAlignment="Left" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="95" Foreground="#FF1A00C1" Margin="13,0,0,12"/>
+                    <CheckBox x:Name="checkBox" IsChecked="{Binding IsTrustedConnection}" Content="Безопасное соединение" HorizontalAlignment="Left" Margin="17,41,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Создание БД">
+                <Grid>
+                    <Label Content="Имя базы:" VerticalAlignment="Top" Height="26" Margin="13,6,0,0" HorizontalAlignment="Left" Width="68"/>
+                    <TextBox IsEnabled="{Binding IsConnected}" Text="{Binding Database}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="-1" Margin="91,10,17,0"/>
+                    <Button Content="Создать" IsEnabled="{Binding IsConnected}" HorizontalAlignment="Right" Width="90" Height="20" VerticalAlignment="Bottom" TabIndex="4" IsDefault="True" Margin="0,0,17,14" Click="createButton_Click"/>
+                    <TextBox x:Name="logTextBox" HorizontalAlignment="Left" Margin="13,47,0,49" TextWrapping="Wrap" Width="285" VerticalScrollBarVisibility="Visible" IsReadOnly="True" BorderThickness="0"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Запуск приложений">
+                <Grid>
+                    <Button x:Name="button" Content="Запуск основного приложения" Margin="10,31,10,0" Height="47" VerticalAlignment="Top" Click="launchKioskButton_Click"/>
+                    <Button x:Name="button_Copy" Content="Запуск приложения для администрирования" Margin="10,83,10,0" Height="47" VerticalAlignment="Top" Click="launchAdminButton_Click"/>
+                </Grid>
+            </TabItem>
+
+
+        </TabControl>
+
+    </Grid>
+</Window>

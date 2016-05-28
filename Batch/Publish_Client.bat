@@ -1,4 +1,4 @@
-cd %~dp0\KioskClient
+cd %~dp0\..\KioskClient
 
 msbuild KioskClient.csproj /p:Configuration=Release /t:publish
 

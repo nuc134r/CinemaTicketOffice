@@ -2,15 +2,30 @@
 
 /* admin */
 
-CREATE LOGIN birdadmin WITH PASSWORD = 'admin-1234'
-GO
+IF NOT EXISTS 
+    (SELECT name  
+     FROM master.sys.server_principals
+     WHERE name = 'birdadmin')
+BEGIN
+    CREATE LOGIN birdadmin WITH PASSWORD = 'admin-1234';
+END
 
 /* user */
 
-CREATE LOGIN birduser WITH PASSWORD = 'user-1234'
-GO
+IF NOT EXISTS 
+    (SELECT name  
+     FROM master.sys.server_principals
+     WHERE name = 'birduser')
+BEGIN
+	CREATE LOGIN birduser WITH PASSWORD = 'user-1234';
+END
 
 /* superadmin */
 
-CREATE LOGIN birdsuperadmin WITH PASSWORD = 'superadmin-1234'
-GO
+IF NOT EXISTS 
+    (SELECT name  
+     FROM master.sys.server_principals
+     WHERE name = 'birdsuperadmin')
+BEGIN
+	CREATE LOGIN birdsuperadmin WITH PASSWORD = 'superadmin-1234';
+END
