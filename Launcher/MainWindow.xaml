@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Launcher"
         mc:Ignorable="d"
-        Title="Система Автоматизации Продажи Билетов" Height="434" Width="640" ResizeMode="NoResize">
+        Title="Мастер запуска" Height="434" Width="640" ResizeMode="NoResize">
     <Grid>
         <TabControl x:Name="tabControl" Margin="0,68,0,0" BorderThickness="0">
             <TabItem Header="SQL Server" Height="0">
@@ -58,6 +58,11 @@
             <Run FontSize="20">Система Автоматизации Продажи Билетов</Run>
             <LineBreak />
             <Run FontSize="15">Мастер запуска</Run>
+        </TextBlock>
+        <TextBlock Height="48" TextAlignment="Right" Margin="10,5,10,0" TextWrapping="Wrap" VerticalAlignment="Top">
+            <Run FontSize="20"></Run>
+            <LineBreak />
+            <Run FontSize="15" Text="{Binding CurrentPageText}" />
         </TextBlock>
 
     </Grid>

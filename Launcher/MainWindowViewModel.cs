@@ -17,10 +17,12 @@ namespace Launcher
         private bool isConnected;
         private bool isTrustedConnection = true;
         private bool existingDatabaseSelected = true;
+        private string currentPageText;
 
         public MainWindowViewModel(MainWindow view)
         {
             this.view = view;
+            CurrentPageText = "1 из 3";
         }
 
         public bool IsConnected
@@ -35,6 +37,12 @@ namespace Launcher
 
         public string Server { get; set; }
         public string Database { get; set; }
+
+        public string CurrentPageText
+        {
+            get { return currentPageText; }
+            set { currentPageText = value; OnPropertyChanged(); }
+        }
 
         public bool ExistingDatabaseSelected
         {
@@ -216,8 +224,8 @@ namespace Launcher
 
         private void UpdateDatabasesList(string connectionString)
         {
-            var cexecutor = new CommandExecutor("SELECT name FROM sys.databases d WHERE d.database_id > 4", connectionString, false);
-            var result = cexecutor.ExecuteCommand().ThrowIfException();
+            var executor = new CommandExecutor("SELECT name FROM sys.databases d WHERE d.database_id > 4", connectionString, false);
+            var result = executor.ExecuteCommand().ThrowIfException();
 
             var databases = new List<string>();
             foreach (DataRow row in (result as DataSet).Tables[0].Rows)

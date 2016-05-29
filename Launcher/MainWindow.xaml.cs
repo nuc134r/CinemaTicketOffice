@@ -65,6 +65,7 @@ namespace Launcher
             ConnectingStatusLabel.Foreground = new SolidColorBrush(Colors.YellowGreen);
 
             tabControl.SelectedIndex = 1;
+            viewModel.CurrentPageText = "2 из 3";
         }
 
         private void SetUpAnimations()
@@ -105,17 +106,21 @@ namespace Launcher
 
         public void OnDatabaseCreatedMessage()
         {
+            MessageBox.Show("База данных успешно создана!");
             tabControl.SelectedIndex = 2;
+            viewModel.CurrentPageText = "3 из 3";
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             tabControl.SelectedIndex = 0;
+            viewModel.CurrentPageText = "1 из 3";
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
             tabControl.SelectedIndex = 2;
+            viewModel.CurrentPageText = "3 из 3";
         }
 
         public string GetExisitingDatabaseName()
@@ -127,11 +132,13 @@ namespace Launcher
         {
             comboBox.Items.Clear();
             databaseList.ForEach(item => comboBox.Items.Add(item));
+			comboBox.SelectedIndex = 0;
         }
 
         private void BackButton2_Click(object sender, RoutedEventArgs e)
         {
             tabControl.SelectedIndex = 1;
+            viewModel.CurrentPageText = "2 из 3";
         }
     }
 }
