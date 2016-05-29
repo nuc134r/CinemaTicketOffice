@@ -1,6 +1,4 @@
-using System;
 using System.IO;
-using System.Runtime.Serialization;
 using System.Windows.Media.Imaging;
 
 namespace DataAccess
@@ -21,7 +19,7 @@ namespace DataAccess
                 using (var reader = new BinaryReader(stream))
                 {
                     stream.Position = 0;
-                    buffer = reader.ReadBytes((int)stream.Length);
+                    buffer = reader.ReadBytes((int) stream.Length);
                 }
             }
 

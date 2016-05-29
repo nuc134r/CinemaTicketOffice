@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Data.SqlClient;
+using Administration.Properties;
 using Administration.Report;
 using Administration.Report.SoldTicketsTableAdapters;
+using DataAccess;
 using Microsoft.Reporting.WinForms;
 
 namespace Administration.View
@@ -24,15 +27,20 @@ namespace Administration.View
 
             dataset.BeginInit();
 
-            reportDataSource1.Name = "SoldTicketsDataSet"; //Name of the report dataset in our .RDLC file
+            reportDataSource1.Name = "SoldTicketsDataSet";
             reportDataSource1.Value = dataset.BrowseTickets;
             _reportViewer.LocalReport.DataSources.Add(reportDataSource1);
             _reportViewer.LocalReport.ReportEmbeddedResource = "Administration.Report.SoldTicketsReport.rdlc";
 
             dataset.EndInit();
 
-            //fill data into adventureWorksDataSet
-            var adapter = new BrowseTicketsTableAdapter {ClearBeforeFill = true};
+            var connectionString = ConnectionStringBuilder.Build(
+                Settings.Default.server,
+                Settings.Default.database,
+                Settings.Default.user,
+                Settings.Default.password);
+            var connection = new SqlConnection(connectionString);
+            var adapter = new BrowseTicketsTableAdapter { ClearBeforeFill = true, Connection = connection };
             adapter.Fill(dataset.BrowseTickets);
 
             _reportViewer.SetDisplayMode(DisplayMode.PrintLayout);
