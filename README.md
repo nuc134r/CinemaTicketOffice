@@ -17,7 +17,7 @@ MVVM pattern intended but it's MVC in fact because I store links to `View` to im
 
 # Screenshots
 
-Quick start wizard:
+### Quick start wizard
 
 ![image](https://user-images.githubusercontent.com/13202642/29816845-72c0232a-8cbe-11e7-997a-da18534891a3.png)
 
@@ -25,11 +25,13 @@ Quick start wizard:
 
 ![image](https://user-images.githubusercontent.com/13202642/29816889-9dba116c-8cbe-11e7-9e29-b43d81df1925.png)
 
-Admin app:
+### Admin app
 
 ![image](https://user-images.githubusercontent.com/13202642/29816909-b212818a-8cbe-11e7-8b4a-c5f06967c498.png)
 
-It launches windowed only in debug mode. I have too large screen to make screenshots in fullscreen mode and I'm too lazy to mess up with the resolution. `¯\_(ツ)_/¯`
+### Kiosk app
+
+It launches windowed only in debug mode. I have too large screen to make screenshots in fullscreen mode and I'm too lazy to mess around with the resolution. `¯\_(ツ)_/¯`
 
 As always I have put a lot of effort to UI and UX and hope it was worth it.
 
