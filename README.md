@@ -9,9 +9,9 @@ MVVM pattern intended but it's MVC in fact because I store links to `View` to im
 # Things I was proud of when I just finished the project
 
 * Seat selection screen
-  * It utilizes `Viewbox` and it's ability to scale inner controls
+  * It utilizes `Viewbox` and it's ability to scale inner controls (to fit cinema rooms of different sizes)
   * It generates controls dynamically
-  * Every seat control is styled checkbox
+  * Every seat control is a styled checkbox
 * Project structure
 * Quick start wizard (because my teacher didn't manage to prepare database and compile the project)
 
