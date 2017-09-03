@@ -33,7 +33,7 @@ MVVM pattern intended but it's MVC in fact because I store links to `View` to im
 
 It launches windowed only in debug mode. I have too large screen to make screenshots in fullscreen mode and I'm too lazy to mess around with the resolution. `¯\_(ツ)_/¯`
 
-As always I have put a lot of effort to UI and UX and hope it was worth it.
+As always I have put a lot of effort into UI and UX and hope it was worth it.
 
 ![image](https://user-images.githubusercontent.com/13202642/29744193-ae5a8e60-8aa8-11e7-9082-2c717793ce4c.png)
 
