@@ -13,7 +13,7 @@ MVVM pattern intended but it's MVC in fact because I store links to `View` to im
   * It generates controls dynamically
   * Every seat control is a styled checkbox
 * Project structure
-* Quick start wizard (because my teacher didn't manage to prepare database and compile the project)
+* Quick start wizard (because my teacher didn't manage to set up database and compile the project)
 
 # Screenshots
 
